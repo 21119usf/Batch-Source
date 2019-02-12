@@ -95,5 +95,25 @@ public class LoopyLoops {
 		//wileyWhile(11);
 		doWileyWhile(22);
 	}
-
+	/*Conditionals
+	 * Logical Operators
+	 * < > <= >= != ==
+	 *  OR 
+	 *  a|b - bit wise
+	 *  a||b- short circuit OR If a is true, return true w/o b
+	 *  AND
+	 *  a&b -bit wise
+	 *  a&&b checks boths and evaluates true iff both are true
+	 *  EQUALS
+	 *  ==
+	 *  compare values of primitives
+	 *  compare the reference for objects. NOT THE CONTENTS
+	 *  != is good for checking nulls
+	 *  .equals()
+	 *  method inherited Object
+	 *  All reference types have it
+	 *  looking at content
+	 *  
+	 *  
+	 */
 }
