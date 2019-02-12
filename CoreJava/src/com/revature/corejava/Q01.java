@@ -37,10 +37,10 @@ public class Q01 {
 	// Main
 	public static void main(String[] args) {
 		// Default
-		Q01 q = new Q01();
-		q.printArray();
-		q.bubbleSort();
-		q.printArray();
+		Q01 q0 = new Q01();
+		q0.printArray();
+		q0.bubbleSort();
+		q0.printArray();
 		
 		// Custom input
 		int[] array = {0, 5, 10, 15, 20, 25, 45, 40, 30, 35};
