@@ -1,5 +1,6 @@
 package com.revature.corejava;
 
+// Class to sort an array using bubble sort
 public class Q01 {
 	private int[] arr;
 	
