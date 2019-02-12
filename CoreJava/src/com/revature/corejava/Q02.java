@@ -1,5 +1,6 @@
 package com.revature.corejava;
 
+// Class to compute the first n Fibonacci numbers
 public class Q02 {
 	private int n;
 	
