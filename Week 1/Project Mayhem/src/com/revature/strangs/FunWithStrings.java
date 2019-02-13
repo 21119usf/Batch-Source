@@ -15,12 +15,16 @@ public class FunWithStrings {
 	 * if it does not exist, it will create a new string literal in the string pool
 	 * String a= "dog"; same reference as s
 	 * a=a+"house";
-	 * 
+	 * String APIhas utility methods!
+	 * String- String Pool, Immutable, thread safe, fast
+	 * StringBuilder- No String pool, Mutable,not thread safe,fast
+	 * StringBuffer- No String pool, Mutable,thread safe,slow
 	 */
 	public static void main(String[] args) {
 		String a="blah";
 		System.out.println(a.hashCode());
 		a="woo";
+		
 		System.out.println(a.hashCode());
 		System.out.println(a);
 		String b="blah";
