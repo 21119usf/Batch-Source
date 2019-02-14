@@ -33,5 +33,6 @@ public class Q17 {
 		System.out.print("Enter time: ");
 		q0.setTime(sc.nextDouble());
 		System.out.println("Interest:  " + q0.computeInterest());
+		sc.close();
 	}
 }
