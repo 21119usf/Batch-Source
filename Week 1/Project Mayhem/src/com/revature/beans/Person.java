@@ -1,10 +1,16 @@
 package com.revature.beans;
 
+import java.io.Serializable;
+
 import com.revature.classtypes.Hunt;
 import com.revature.exceptions.IncreasedByNegativeNumberException;
 
-public class Person implements Hunt{
+public class Person implements Hunt,Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1252118972783119768L;
 	/*
 	 * Code Blocks- {things between}
 	 */
@@ -15,7 +21,7 @@ public class Person implements Hunt{
 	
 	private String name;
 	private int age;
-	private int weight;
+	private transient int weight;
 	static String homePlanet;
 	//Constructors
 	public Person(String name, int age, int weight){
