@@ -1,0 +1,13 @@
+package com.revature.strings;
+
+public class FunWithStrings {
+	/*Strings
+	 * not char or Character
+	 * Fully Qualified class name:java.lang.String
+	 * 
+	 */
+	
+	public static void main(String[] args) {
+		
+	}
+}

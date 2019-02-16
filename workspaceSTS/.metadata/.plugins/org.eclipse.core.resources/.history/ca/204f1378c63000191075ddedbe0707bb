@@ -1,0 +1,17 @@
+package homework1;
+
+public class Q19 {
+	//Create an ArrayList and insert integers 1 through 10. Display the ArrayList.
+	//Add all the even numbers up and display the result. Add all the odd numbers up
+	//and display the result. Remove the prime numbers from the ArrayList and print out
+	//the remaining ArrayList.
+	public static void sumUp(int[] arr, int option) {
+		int sum = 0;
+		for (int i: arr) {
+			if (i%2 == option) {
+				sum += i;
+			}
+		}
+		System.out.println(sum);
+	}
+}

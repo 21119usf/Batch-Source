@@ -1,0 +1,30 @@
+package com.revature.example;
+
+public class LoopExample {
+/*
+ * doWhilex
+ * while
+ * forx
+ * if
+ * switch
+ */
+	
+	static int[] myArray = {1,0,5,6,3,2,3,7,9,8}; //10 elements
+	
+	public static void main(String[] args) {
+		int index = 0;
+		do {
+			System.out.println(myArray[index--]);
+		} while (index>0);
+		
+		for(int i = 0; i < 10; i++) {
+			System.out.print(myArray[i] + " ");
+		}
+		
+		System.out.println();
+		index = 0;
+		while (myArray[index] != 5) {
+			System.out.print(myArray[index++] + " ");
+		}
+	}
+}

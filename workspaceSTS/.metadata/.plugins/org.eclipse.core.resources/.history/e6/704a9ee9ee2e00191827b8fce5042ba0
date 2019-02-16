@@ -1,0 +1,19 @@
+package homework1;
+
+import java.util.Scanner;
+
+public class Q4 {
+	//Write a program to compute N factorial.
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Please input a number: ");
+		int N = input.nextInt();
+		
+		
+		System.out.println(N + " factorial is ");
+		int product = 1;
+		while (N > 0) {
+			product *= N--;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+package com.revature.example;
+
+import java.util.Scanner;
+
+public class ExceptionExample {
+	
+	public static double divideByNum(double x, double y) {
+		return x/y;
+	}
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Please input a number to divide: ");
+		double x = input.nextInt();
+		
+		System.out.print("Please input a number to divide by: ");
+		double y = input.nextInt();
+		
+		try {
+			divideByNum(x, y);
+		}
+		catch (Exception e) {
+			System.out.println("Division by zero exception");
+		}
+		
+	}
+}

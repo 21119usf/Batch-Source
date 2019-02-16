@@ -1,0 +1,11 @@
+package com.revature.example;
+
+public class Overload {
+	public Overload(String phrase1, String phrase2) {
+		System.out.println(phrase1 + phrase2);
+	}
+}
+
+public static void main(String[] args) {
+	
+}

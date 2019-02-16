@@ -1,0 +1,24 @@
+INDEX VERSION 1.131+C:\Users\marka\Revature\sts-bundle\workspaceSTS\.metadata\.plugins\org.eclipse.jdt.core
+2788572482.index
+2282105866.index
+3410799879.index
+2734441614.index
+2653106281.index
+634298842.index
+1970285378.index
+3882795973.index
+1650135229.index
+183409040.index
+3622269427.index
+2659456151.index
+1907863258.index
+1636081597.index
+1840791584.index
+2680294392.index
+3591804778.index
+517137171.index
+890351586.index
+969963233.index
+3523293318.index
+757927364.index
+3530967161.index

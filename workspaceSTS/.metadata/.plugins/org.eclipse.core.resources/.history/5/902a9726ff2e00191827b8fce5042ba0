@@ -1,0 +1,45 @@
+package com.revature.flows;
+
+public class LoopyLoops {
+	/* If statement- For decision making, provides multiple paths of execution
+	 * 
+	 * if (<conditional>) {
+	 * 		<What to do if true>
+	 * }
+	 * else if (<second conditional>){
+	 * 		<What to do if 2nd conditional is true>
+	 * }
+	 * else {
+	 * 		<What to do if false>
+	 * }
+	 */
+	
+	/* Switch Cases
+	 * Provides multiple paths of execution based on some value
+	 * the "switch" is based on an integer numeric, a string,
+	 * a char, a boolean, or enum.
+	 * 
+	 */
+	
+	static String color;
+	public static void whatColor(String color) {
+		switch(color) {
+		case "green":
+			System.out.println("Green");
+			break;
+		case "purple":
+			System.out.println("Purple");
+			break;
+		case "crimson":
+			System.out.println("Crimson");
+			break;
+		default:
+			System.out.println("Good job");
+		}
+	}
+	
+	public static void main(String[] args) {
+		whatColor("purple");
+	}
+
+}
