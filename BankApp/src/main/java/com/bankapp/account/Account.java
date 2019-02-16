@@ -63,6 +63,10 @@ public class Account {
 	public void addOwner(Customer c) {
 		owners.add(c);
 	}
+	// Close account
+	public void close() {
+		setOpen(false);
+	}
 
 	// Get/set methods
 	public UUID getId() {
