@@ -4,8 +4,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.bankapp.person.Customer;
+import com.bankapp.person.Employee;
 
 public class MenuUtils {
+	private static Customer currentCustomer;
+	private static Employee currentEmployee;
 	private static Scanner sc = new Scanner(System.in);
 	
 	// Display landing page and get desired option
@@ -15,8 +18,8 @@ public class MenuUtils {
 		
 		// Continue until valid option
 		do {
-			System.out.println("1. Login");
-			System.out.println("2. Register");
+			System.out.println("1. Customer");
+			System.out.println("2. Employee");
 			System.out.println("0. Exit");
 			System.out.print(">>> ");
 			
@@ -38,8 +41,92 @@ public class MenuUtils {
 		return option;
 	}
 	
-	// Display login page
-	public static void displayLogin() {
+	// Display customer entry page
+	public static void displayCustomerEntry() {
+		boolean notValidOption = true;
+		int option = 0;
+		
+		// Continue until valid option
+		do {
+			System.out.println("1. Customer Login");
+			System.out.println("2. Register");
+			System.out.println("0. Back");
+			System.out.print(">>> ");
+			
+			try {
+				option = sc.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid option. Try again.");
+				sc.nextLine();
+			}
+			
+			if (option == 1 || option == 2 || option == 0) {
+				notValidOption = false;
+				sc.nextLine();	// Clear buffer
+			} else {
+				System.out.println("Invalid option. Try again.");
+			}
+		} while (notValidOption);
+		
+		// Redirect
+		switch (option) {
+		case 1:
+			displayLogin(1);
+			break;
+		case 2:
+			displayRegistration();
+			break;
+		case 0:
+			displayLanding();
+			break;
+		default:
+			displayLanding();
+			break;
+		}
+	}
+	
+	// Display employee entry page
+	public static void displayEmployeeEntry() {
+		boolean notValidOption = true;
+		int option = 0;
+		
+		// Continue until valid option
+		do {
+			System.out.println("1. Employee Login");
+			System.out.println("0. Back");
+			System.out.print(">>> ");
+			
+			try {
+				option = sc.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid option. Try again.");
+				sc.nextLine();
+			}
+			
+			if (option == 1 || option == 0) {
+				notValidOption = false;
+				sc.nextLine();	// Clear buffer
+			} else {
+				System.out.println("Invalid option. Try again.");
+			}
+		} while (notValidOption);
+		
+		// Redirect
+		switch (option) {
+		case 1:
+			displayLogin(2);
+			break;
+		case 0:
+			displayLanding();
+			break;
+		default:
+			displayLanding();
+			break;
+		}
+	}
+	
+	// Display login page. flag: 1 = Customer, 2 = Employee
+	public static void displayLogin(int flag) {
 		int loginCount = 0;
 		boolean notValidLogin = true;
 		
@@ -47,17 +134,18 @@ public class MenuUtils {
 		String username;
 		String password;
 		do {
-			System.out.print("Username: ");
+			System.out.println("Enter Username: ");
+			System.out.print(">>> ");
 			username = sc.nextLine();
-			System.out.print("Password: ");
+			System.out.println("Password: ");
+			System.out.print(">>> ");
 			password = sc.nextLine();
 			
 			// Validate
-			if (validateLogin(username, password)) {
+			if (validateLogin(username, password, flag)) {
 				notValidLogin = false;
 				System.out.println("Credentials accepted. Logging in.");
 			} else {
-				System.out.println("Invalid credentials.");
 				loginCount++;
 			}
 		} while (notValidLogin && loginCount < 3);
@@ -67,15 +155,56 @@ public class MenuUtils {
 			System.out.println("Three invalid attempts. Bye.");
 			System.exit(0);
 		}
+		
+		// Redirect
+		switch (flag) {
+		case 1:
+			displayCustomerAccounts(currentCustomer);
+			break;
+		case 2:
+			displayEmployeeMenu();
+			break;
+		default:
+			displayLanding();
+			break;
+		}
 	}
 	
 	// Validate login credentials
-	private static boolean validateLogin(String un, String pw) {
-		boolean isValid = false;
-		
-		// Open Customer data file and check credentials
-		
-		return isValid;
+	private static boolean validateLogin(String un, String pw, int flag) {
+		// Customer login
+		if (flag == 1) {
+			for (Customer c : CustomerUtils.customers) {
+				if (c.getUsername().equals(un)) {
+					if (c.getPassword().equals(pw)) {
+						currentCustomer = c;
+						System.out.println("Logged in!");
+						return true;
+					} else {
+						System.out.println("Invalid credentials.");
+						return false;
+					}
+				}
+			}
+			System.out.println("No user \"" + un + "\" found.");
+		}
+		// Employee login
+		else if (flag == 2) {
+			for (Employee e : EmployeeUtils.employees) {
+				if (e.getUsername().equals(un)) {
+					if (e.getPassword().equals(pw)) {
+						currentEmployee = e;
+						System.out.println("Logged in!");
+						return true;
+					} else {
+						System.out.println("Invalid credentials.");
+						return false;
+					}
+				}
+			}
+			System.out.println("No user \"" + un + "\" found.");
+		}
+		return false;
 	}
 	
 	// Display registration page
@@ -218,5 +347,15 @@ public class MenuUtils {
 		} else {
 			return true;
 		}
+	}
+	
+	// Display customer accounts page
+	private static void displayCustomerAccounts(Customer c) {
+		
+	}
+	
+	// Display employee menu page
+	private static void displayEmployeeMenu() {
+		
 	}
 }
