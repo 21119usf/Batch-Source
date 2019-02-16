@@ -1,6 +1,6 @@
 package beans;
 
-public class User {
+public abstract class User {
 	protected String name;
 	protected String address;
 	protected String email;
@@ -11,10 +11,20 @@ public class User {
 	protected int accessLevel;
 
 	
-	//Constructor
+	//Constructors
+	public User() {
+		this.name = "";
+		this.address = "";
+		this.email = "";
+		this.phoneNum = "";
+		this.userName = "";
+		this.password = "";
+		this.accountNum = -1;
+		this.accessLevel = -1;
+	}
+	
 	public User(String name, String address, String email, String phoneNum, String userName, String password,
 			int accountNum, int accessLevel) {
-		super();
 		this.name = name;
 		this.address = address;
 		this.email = email;
@@ -77,11 +87,20 @@ public class User {
 	}
 
 	
-	//What will be printed out when placed in a print method
+	//Printing Methods
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", address=" + address + ", email=" + email + ", phoneNum=" + phoneNum
-				+ ", userName=" + userName + ", password=" + password + ", accountNum=" + accountNum + ", accessLevel="
+		return "User [Name:" + name + ", Address:" + address + ", E-mail:" + email + ", Phone #:" + phoneNum
+				+ ", Username:" + userName + ", Password:" + password + ", Account #:" + accountNum + ", Access Level:"
 				+ accessLevel + "]";
 	}
+	
+	public void printPersonalInfo() {
+		System.out.println("Name: " + getName()
+						+ "\nAddress: " + getAddress()
+						+ "\nE-mail: " + getEmail()
+						+ "\nPhone #: " + getPhoneNum());
+	}
+	
+	public abstract void printAccountInfo();
 }

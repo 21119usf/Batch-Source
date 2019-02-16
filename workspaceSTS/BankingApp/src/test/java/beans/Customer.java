@@ -10,18 +10,27 @@ public class Customer extends User {
 	protected ArrayList<Integer> jointAccounts;
 	
 	
-	//Constructor
+	//Constructors
+	public Customer() {
+		super();
+		this.balance = 0.0;
+		this.overseerAccount = -1;
+		this.isJointAccount = false;
+		this.accessLevel = 2;
+		jointAccounts = new ArrayList<Integer>();
+	}
+	
 	public Customer(String name, String address, String email, String phoneNum, String userName, String password,
-			int accountNum, int accessLevel, double balance, int overseerAccount, boolean isJointAccount) {
-		super(name, address, email, phoneNum, userName, password, accountNum, accessLevel);
-		this.balance = balance;
+			int accountNum, int overseerAccount, boolean isJointAccount) {
+		super(name, address, email, phoneNum, userName, password, accountNum, 2);
+		this.balance = 0.0;
 		this.overseerAccount = overseerAccount;
 		this.isJointAccount = isJointAccount;
 		jointAccounts = new ArrayList<Integer>();
 	}
 
 
-	//Setters and Getters (Except for int[] jointAccounts
+	//Setters and Getters (Except for ArrayList<Integer> jointAccounts)
 	public double getBalance() {
 		return balance;
 	}
@@ -56,15 +65,27 @@ public class Customer extends User {
 		jointAccounts.remove(accountNum);
 	}
 
-
+	
+	//Printing Methods
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", address=" + address + ", email=" + email + ", phoneNum=" + phoneNum
-				+ ", userName=" + userName + ", password=" + password + ", accountNum=" + accountNum + ", accessLevel="
-				+ accessLevel + ", balance=" + balance + ", overseerAccount=" + overseerAccount + ", isJointAccount="
-				+ isJointAccount + ", jointAccounts=" + jointAccounts + "]";
+		return "Customer [Name:" + name + ", Address:" + address + ", E-mail:" + email + ", Phone #:" + phoneNum
+				+ ", Username:" + userName + ", Password:" + password + ", Account #:" + accountNum + ", Access Level:"
+				+ accessLevel + ", Balance:" + balance + ", Overseer:" + overseerAccount + ", Joint Account:"
+				+ isJointAccount + ", Joint Accounts:" + jointAccounts.toString() + "]";
 	}
-	
-	
+
+
+	@Override
+	public void printAccountInfo() {
+		System.out.println("Username: " + getUserName()
+						+ "\nPassword: " + getPassword()
+						+ "\nBalance: " + getBalance()
+						+ "\nJoint Account: " + isJointAccount()
+						+ "\nJoint Accounts: " + jointAccounts.toString()
+						+ "\nAccount #: " + getAccountNum()
+						+ "\nOverseer: " + getOverseerAccount()
+						+ "\nAccess Level: " + getAccessLevel());
+	}
 
 }

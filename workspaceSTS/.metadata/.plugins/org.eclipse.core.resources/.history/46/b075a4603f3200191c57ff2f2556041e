@@ -1,0 +1,11 @@
+package beans;
+
+public class Admin extends Employee {
+
+	public Admin(String name, String address, String email, String phoneNum, String userName, String password,
+			int accountNum, int overseerAccount) {
+		super(name, address, email, phoneNum, userName, password, accountNum, -1);
+		accessLevel = 0;
+	}
+
+}
