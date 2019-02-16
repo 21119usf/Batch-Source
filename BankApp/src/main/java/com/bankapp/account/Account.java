@@ -14,12 +14,13 @@ public class Account {
 	private ArrayList<Customer> owners;
 	
 	// Constructor
-	Account() {
+	public Account(Customer c) {
 		setId(count++);
 		setStatus("Pending");
 		setOpen(false);
 		setBalance(0.00);
-		setOwners(new ArrayList<Customer>());
+		owners = new ArrayList<Customer>();
+		setOwners(c);
 	}
 	
 	// Deposit into account
@@ -90,8 +91,8 @@ public class Account {
 	public ArrayList<Customer> getOwners() {
 		return owners;
 	}
-	public void setOwners(ArrayList<Customer> owners) {
-		this.owners = owners;
+	public void setOwners(Customer c) {
+		this.owners.add(c);
 	}
 	public boolean isOpen() {
 		return open;
