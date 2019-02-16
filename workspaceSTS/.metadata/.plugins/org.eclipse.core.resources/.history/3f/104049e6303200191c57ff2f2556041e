@@ -1,0 +1,12 @@
+package beans;
+
+public class User {
+	public String name;
+	public String address;
+	public String email;
+	public String phoneNum;
+	public String userName;
+	public String password;
+	public int accountNum;
+	public int accessLevel;
+}

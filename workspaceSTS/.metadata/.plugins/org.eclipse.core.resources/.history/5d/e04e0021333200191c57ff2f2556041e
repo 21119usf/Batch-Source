@@ -1,0 +1,13 @@
+package beans;
+
+import beans.User;
+
+public class Customer extends User {
+	
+	protected double balance;
+	protected int overseerAccount;
+	protected boolean isJointAccount;
+	protected int[] jointAccounts;
+	
+
+}
