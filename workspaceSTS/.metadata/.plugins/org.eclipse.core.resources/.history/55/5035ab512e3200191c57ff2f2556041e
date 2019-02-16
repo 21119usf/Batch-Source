@@ -56,19 +56,12 @@ public class Person implements Hunt, Serializable{
 		return this.weight;
 	}
 	
-	
-	
-//	public String toString() {
-//		return "Person's name: " + this.name +
-//				"\nAge: " + this.age +
-//				"\nWeight: " + this.weight;
-//	}
-	
-	@Override
 	public String toString() {
-		return "Person [name=" + name + ", age=" + age + ", weight=" + weight + "]";
+		return "Person's name: " + this.name +
+				"\nAge: " + this.age +
+				"\nWeight: " + this.weight;
 	}
-
+	
 	public void increaseAgeBy(int x) throws IncreasedByNegativeNumberException{
 		if (x < 0)
 			throw new IncreasedByNegativeNumberException();

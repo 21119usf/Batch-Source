@@ -14,6 +14,19 @@ public class IOWithCollections {
 	private static final String personFile = "person.txt";
 	public static ArrayList<Person> personList = new ArrayList<Person>();
 	
+	public static void main(String[] args) {
+		try {
+			ObjectOutputStream objectOut =
+					new ObjectOutputStream(new FileOutputStream(personFile));
+			objectOut.writeObject(personList);;
+			objectOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void writePersonFile() {
 		try {
 			ObjectOutputStream objectOut=
