@@ -1,13 +1,13 @@
 package com.bankapp.account;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 import com.bankapp.person.Customer;
 
 // Account class
 public class Account {
-	private UUID id;
+	private static int count = 0;
+	private int id;
 	private String status;
 	private boolean open;
 	private double balance;
@@ -15,7 +15,7 @@ public class Account {
 	
 	// Constructor
 	Account() {
-		setId(UUID.randomUUID());
+		setId(count++);
 		setStatus("Pending");
 		setOpen(false);
 		setBalance(0.00);
@@ -69,10 +69,10 @@ public class Account {
 	}
 
 	// Get/set methods
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(UUID id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getStatus() {
@@ -97,6 +97,12 @@ public class Account {
 		return open;
 	}
 	public void setOpen(boolean open) {
-		this.open = open;
+		if (open) {
+			this.open = true;
+			this.status = "Open";
+		} else {
+			this.open = false;
+			this.status = "Closed";
+		}
 	}
 }
