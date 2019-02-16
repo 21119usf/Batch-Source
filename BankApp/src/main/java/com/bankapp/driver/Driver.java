@@ -1,61 +1,18 @@
 package com.bankapp.driver;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.bankapp.account.Account;
+import com.bankapp.utils.AccountUtils;
 import com.bankapp.person.Customer;
+import com.bankapp.utils.CustomerUtils;
 import com.bankapp.person.Employee;
+import com.bankapp.utils.EmployeeUtils;
 
 // Driver class for BankApp
 public class Driver {
-	private static String employeesFile = "Employees.ser";
-	private static String customersFile = "Customers.ser";
-	private static String accountsFile = "Accounts.ser";
-	private static ArrayList<Employee> employees = new ArrayList<Employee>();
-	private static ArrayList<Customer> customers = new ArrayList<Customer>();
-	private static ArrayList<Account> accounts = new ArrayList<Account>();
 	private static Scanner sc = new Scanner(System.in);
-	
-	// Save customers to file
-	private static void saveCustomers() {
-		try {
-			FileOutputStream cf = new FileOutputStream(customersFile);
-			ObjectOutputStream oos = new ObjectOutputStream(cf);
-			oos.writeObject(customers);
-			oos.close();
-			cf.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	// Load customers from file
-	@SuppressWarnings("unchecked")
-	private static void loadCustomers() {
-		try {
-			FileInputStream cf = new FileInputStream(customersFile);
-			ObjectInputStream ois = new ObjectInputStream(cf);
-			customers = (ArrayList<Customer>)ois.readObject();
-			ois.close();
-			cf.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	// Display landing page and get desired option
 	private static int displayLanding() {
@@ -66,8 +23,8 @@ public class Driver {
 		do {
 			System.out.println("1. Login");
 			System.out.println("2. Register");
-			System.out.println();
 			System.out.println("0. Exit");
+			System.out.print(">>> ");
 			
 			try {
 				option = sc.nextInt();
@@ -144,8 +101,7 @@ public class Driver {
 		boolean notValidUsername = true;
 		do {
 			System.out.println("Enter a username");
-			System.out.println("(Must be greater than 5 characters)");
-			System.out.print("Username: ");
+			System.out.print(">>> ");
 			username = sc.nextLine();
 			if (validUsername(username)) {
 				notValidUsername = false;
@@ -159,11 +115,11 @@ public class Driver {
 		String p0, p1;
 		do {
 			System.out.println("Enter a password");
-			System.out.println("(Must be greater than 5 characters)");
-			System.out.print("Password: ");
+			System.out.print(">>> ");
 			p0 = sc.nextLine();
 			if (validPassword(p0)) {
-				System.out.print("Confirm password: ");
+				System.out.println("Confirm password: ");
+				System.out.print(">>> ");
 				p1 = sc.nextLine();
 				if (p0.equals(p1)) {
 					password = p0;
@@ -175,19 +131,24 @@ public class Driver {
 		} while (notValidPassword);
 		
 		// First and last names, email and address
-		System.out.print("Enter your first name: ");
+		System.out.println("Enter your first name: ");
+		System.out.print(">>> ");
 		firstName = sc.nextLine();
-		System.out.print("Enter your last name: ");
+		System.out.println("Enter your last name: ");
+		System.out.print(">>> ");
 		lastName = sc.nextLine();
-		System.out.print("Enter your email address: ");
+		System.out.println("Enter your email address: ");
+		System.out.print(">>> ");
 		email = sc.nextLine();
-		System.out.print("Enter your full address: ");
+		System.out.println("Enter your full address: ");
+		System.out.print(">>> ");
 		address = sc.nextLine();
 		
 		// Phone number
 		boolean notValidPhoneNumber = true;
 		do {
-			System.out.print("Enter your phone number: ");
+			System.out.println("Enter your phone number: ");
+			System.out.print(">>> ");
 			try {
 				phoneNumber = sc.nextLong();
 				if (validPhoneNumber(phoneNumber)) {
@@ -204,7 +165,8 @@ public class Driver {
 		// Social security number
 		boolean notValidSsNumber = true;
 		do {
-			System.out.print("Enter your social security number: ");
+			System.out.println("Enter your social security number: ");
+			System.out.print(">>> ");
 			try {
 				ssNumber = sc.nextLong();
 				if (validSsNumber(ssNumber)) {
@@ -221,8 +183,8 @@ public class Driver {
 		// Create Customer object and store data
 		Customer c = new Customer(username, password, firstName, lastName, 
 		email, address, phoneNumber, ssNumber);
-		customers.add(c);
-		saveCustomers();
+		CustomerUtils.customers.add(c);
+		CustomerUtils.saveCustomers();
 	}
 	
 	// Validate username
@@ -267,7 +229,7 @@ public class Driver {
 	// Main
 	public static void main(String[] args) {
 		// Load Customer data from file
-		loadCustomers();
+		CustomerUtils.loadCustomers();
 		
 		// Load Account data from file
 		
