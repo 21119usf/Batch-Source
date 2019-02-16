@@ -1,13 +1,13 @@
 package com.bankapp.person;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 import com.bankapp.account.Account;
 
 // Customer class
 public class Customer extends Person {
-	private UUID id;
+	private static int count = 0;
+	private int id;
 	private String username;
 	private String password;
 	private String email;
@@ -16,7 +16,7 @@ public class Customer extends Person {
 	
 	// Constructor
 	Customer(String un, String pw, String em, String pn) {
-		setId(UUID.randomUUID());
+		setId(count++);
 		setUsername(un);
 		setPassword(pw);
 		setEmail(em);
@@ -24,10 +24,10 @@ public class Customer extends Person {
 	}
 
 	// Get/set methods
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(UUID id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getUsername() {
