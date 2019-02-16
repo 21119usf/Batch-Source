@@ -6,21 +6,27 @@ import com.bankapp.account.Account;
 
 // Customer class
 public class Customer extends Person {
+	private static final long serialVersionUID = 4473186511868357784L;
 	private static int count = 0;
 	private int id;
 	private String username;
 	private String password;
 	private String email;
-	private String phoneNumber;
+	private long phoneNumber;
 	private ArrayList<Account> accounts;
 	
 	// Constructor
-	Customer(String un, String pw, String em, String pn) {
+	public Customer(String un, String pw, String fn, String ln, 
+	String em, String ad, long pn, long ss) {
 		setId(count++);
 		setUsername(un);
 		setPassword(pw);
+		setFirstName(fn);
+		setLastName(ln);
 		setEmail(em);
+		setAddress(ad);
 		setPhoneNumber(pn);
+		setSsNumber(ss);
 	}
 
 	// Get/set methods
@@ -48,10 +54,10 @@ public class Customer extends Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public ArrayList<Account> getAccounts() {
@@ -59,5 +65,12 @@ public class Customer extends Person {
 	}
 	public void setAccounts(ArrayList<Account> accounts) {
 		this.accounts = accounts;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", username=" + username + ", password="
+				+ password + ", email=" + email + ", phoneNumber=" + phoneNumber
+				+ ", accounts=" + accounts + "]";
 	}
 }

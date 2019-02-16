@@ -1,15 +1,14 @@
 package com.bankapp.person;
 
+import java.io.Serializable;
+
 // Abstract Person class
-public abstract class Person {
+public abstract class Person implements Serializable {
+	private static final long serialVersionUID = 2873971097414980959L;
 	private String firstName;
 	private String lastName;
-	private int ssNumber;
+	private long ssNumber;
 	private String address;
-	private String city;
-	private String state;
-	private int zipcode;
-	private String country;
 
 	String getFirstName() {
 		return firstName;
@@ -23,10 +22,10 @@ public abstract class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getSsNumber() {
+	public long getSsNumber() {
 		return ssNumber;
 	}
-	public void setSsNumber(int ssNumber) {
+	public void setSsNumber(long ssNumber) {
 		this.ssNumber = ssNumber;
 	}
 	public String getAddress() {
@@ -34,29 +33,5 @@ public abstract class Person {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public int getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(int zipcode) {
-		this.zipcode = zipcode;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
 	}
 }

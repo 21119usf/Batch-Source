@@ -4,13 +4,14 @@ import com.bankapp.account.Account;
 
 // Employee class
 public class Employee extends Person {
+	private static final long serialVersionUID = 6683281331440066118L;
 	private static int count = 0;
 	private int id;
 	private String username;
 	private String password;
 	
 	// Constructor
-	Employee(String un, String pw) {
+	public Employee(String un, String pw) {
 		setId(count++);
 		setUsername(un);
 		setPassword(pw);
