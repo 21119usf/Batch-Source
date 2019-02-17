@@ -1,6 +1,6 @@
 # Batch-Source
 ## Core Java Assignment
-Listed below are the instructions to run the core java assignment.
+Listed below are instructions on how to run the core java assignment.
 * Open Spring Tool Suite
 * Go to File/Open Projects from File System...
 * Click on Directory...
