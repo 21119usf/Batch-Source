@@ -1,0 +1,26 @@
+package beans;
+
+import java.util.ArrayList;
+
+public class Bank {
+	private ArrayList<Customer> customers;
+	private ArrayList<Employee> employees;
+	private ArrayList<Admin> admins;
+	private ArrayList<User> pendingApprovalQueue;
+	
+	
+	//Constructors
+	public Bank() {
+		this.customers = new ArrayList<Customer>();
+		this.employees = new ArrayList<Employee>();
+		this.admins = new ArrayList<Admin>();
+		this.pendingApprovalQueue = new ArrayList<User>();
+		Admin superUser = new Admin();
+		superUser.setName("Admin");
+		superUser.setUserName("Admin");
+		superUser.setPassword("");
+		
+	}
+	
+	
+}

@@ -13,11 +13,11 @@ public abstract class User {
 	
 	//Constructors
 	public User() {
-		this.name = "";
-		this.address = "";
-		this.email = "";
-		this.phoneNum = "";
-		this.userName = "";
+		this.name = "N/A";
+		this.address = "N/A";
+		this.email = "N/A";
+		this.phoneNum = "N/A";
+		this.userName = "N/A";
 		this.password = "";
 		this.accountNum = -1;
 		this.accessLevel = -1;

@@ -46,7 +46,7 @@ public class Employee extends User {
 	//Printing Methods
 	@Override
 	public String toString() {
-		return "Customer [Name:" + name + ", Address:" + address + ", E-mail:" + email + ", Phone #:" + phoneNum
+		return "Employee [Name:" + name + ", Address:" + address + ", E-mail:" + email + ", Phone #:" + phoneNum
 				+ ", Username:" + userName + ", Password:" + password + ", Account #:" + accountNum + ", Access Level:"
 				+ accessLevel + ", Overseer:" + overseerAccount + ", Customer Accounts:" + customerAccounts.toString() + "]";
 	}

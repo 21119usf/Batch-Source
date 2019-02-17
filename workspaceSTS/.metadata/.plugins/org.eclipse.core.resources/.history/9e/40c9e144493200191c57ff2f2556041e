@@ -1,0 +1,93 @@
+package beans;
+
+import java.util.ArrayList;
+
+public class Bank {
+	private ArrayList<Customer> customers;
+	private ArrayList<Employee> employees;
+	private ArrayList<Admin> admins;
+	private ArrayList<User> pendingApprovalQueue;
+	
+	
+	//Constructor
+	public Bank() {
+		this.customers = new ArrayList<Customer>();
+		this.employees = new ArrayList<Employee>();
+		this.admins = new ArrayList<Admin>();
+		this.pendingApprovalQueue = new ArrayList<User>();
+		Admin superUser = new Admin();
+		superUser.setName("Admin");
+		superUser.setUserName("Admin");
+		admins.add(superUser);
+	}
+	
+	
+	//Methods
+	public boolean login(String username, String password) {
+		return false;
+	}
+	
+	public boolean registerApplication() {
+		return false;
+	}
+	
+	public boolean deposit(double amount) {
+		return false;
+	}
+	
+	public boolean withdraw(double amount) {
+		return false;
+	}
+	
+	public boolean transfer(double amount) {
+		return false;
+	}
+	
+	public boolean approve() {
+		return false;
+	}
+	
+	public boolean deny() {
+		return false;
+	}
+	
+	public void viewPersonalInfo() {
+		
+	}
+	
+	public void viewAccountInfo() {
+		
+	}
+	
+	public void viewCustomerBalance() {
+		
+	}
+	
+	public boolean cancelAccount() {
+		return false;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
