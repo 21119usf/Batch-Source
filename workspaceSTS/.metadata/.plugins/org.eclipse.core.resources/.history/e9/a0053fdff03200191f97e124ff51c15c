@@ -1,0 +1,49 @@
+package beans;
+
+import java.util.ArrayList;
+
+public class Employee extends User {
+	protected ArrayList<Integer> customerAccounts;
+	
+	
+	//Constructor
+	public Employee() {
+		super();
+		this.accessLevel = 1;
+		customerAccounts = new ArrayList<Integer>();
+	}
+	
+	public Employee(String name, String address, String email, String phoneNum, String userName, String password,
+			int accountNum) {
+		super(name, address, email, phoneNum, userName, password, accountNum, 1);
+		customerAccounts = new ArrayList<Integer>();
+	}
+
+	
+	//Adding and removing accounts to the list of accounts adjoined to
+	public void addCustomerAccount(int accountNum) {
+		customerAccounts.add(accountNum);
+	}
+	
+	public void removeCustomerAccount(int accountNum) {
+		customerAccounts.remove(accountNum);
+	}
+	
+	
+	//Printing Methods
+	@Override
+	public String toString() {
+		return "Employee [\nName: " + name + "\nAddress: " + address + "\nE-mail: " + email + "\nPhone #: " + phoneNum
+				+ "\nUsername: " + userName + "\nPassword: " + password + "\nAccount #: " + accountNum + "\nAccess Level: "
+				+ accessLevel + "\nCustomer Accounts: " + customerAccounts.toString() + "\n]";
+	}
+	
+	@Override
+	public void printAccountInfo() {
+		System.out.println("Username: " + getUserName()
+						+ "\nPassword: " + getPassword()
+						+ "\nCustomer Accounts: " + customerAccounts.toString()
+						+ "\nAccount #: " + getAccountNum()
+						+ "\nAccess Level: " + getAccessLevel());
+	}
+}

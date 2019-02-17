@@ -6,7 +6,7 @@ public abstract class User {
 	protected String email;
 	protected String phoneNum;
 	protected String userName;		//Must be Unique
-	protected transient String password;
+	protected String password;
 	protected int accountNum;		//Must be Unique
 	protected int accessLevel;
 
@@ -17,9 +17,9 @@ public abstract class User {
 		this.address = "N/A";
 		this.email = "N/A";
 		this.phoneNum = "N/A";
-		this.userName = "N/A";
+		this.userName = "N/A";  //requires validation
 		this.password = "";
-		this.accountNum = -1;
+		this.accountNum = -1;	//requires validation
 		this.accessLevel = -1;
 	}
 	
@@ -90,9 +90,9 @@ public abstract class User {
 	//Printing Methods
 	@Override
 	public String toString() {
-		return "User [Name:" + name + ", Address:" + address + ", E-mail:" + email + ", Phone #:" + phoneNum
-				+ ", Username:" + userName + ", Password:" + password + ", Account #:" + accountNum + ", Access Level:"
-				+ accessLevel + "]";
+		return "User [\nName: " + name + "\nAddress: " + address + "\nE-mail: " + email + "\nPhone #: " + phoneNum
+				+ "\nUsername: " + userName + "\nPassword: " + password + "\nAccount #: " + accountNum + "\nAccess Level: "
+				+ accessLevel + "\n]";
 	}
 	
 	public void printPersonalInfo() {

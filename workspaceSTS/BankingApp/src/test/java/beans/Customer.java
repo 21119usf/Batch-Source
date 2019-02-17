@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Customer extends User {
 	
 	protected double balance;
-	protected int overseerAccount;
 	protected boolean isJointAccount;
 	protected ArrayList<Integer> jointAccounts;
 	
@@ -14,17 +13,15 @@ public class Customer extends User {
 	public Customer() {
 		super();
 		this.balance = 0.0;
-		this.overseerAccount = -1;
 		this.isJointAccount = false;
 		this.accessLevel = 2;
 		jointAccounts = new ArrayList<Integer>();
 	}
 	
 	public Customer(String name, String address, String email, String phoneNum, String userName, String password,
-			int accountNum, int overseerAccount, boolean isJointAccount) {
+			int accountNum, boolean isJointAccount) {
 		super(name, address, email, phoneNum, userName, password, accountNum, 2);
 		this.balance = 0.0;
-		this.overseerAccount = overseerAccount;
 		this.isJointAccount = isJointAccount;
 		jointAccounts = new ArrayList<Integer>();
 	}
@@ -37,14 +34,6 @@ public class Customer extends User {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
-	}
-
-	public int getOverseerAccount() {
-		return overseerAccount;
-	}
-
-	public void setOverseerAccount(int overseerAccount) {
-		this.overseerAccount = overseerAccount;
 	}
 
 	public boolean isJointAccount() {
@@ -69,10 +58,10 @@ public class Customer extends User {
 	//Printing Methods
 	@Override
 	public String toString() {
-		return "Customer [Name:" + name + ", Address:" + address + ", E-mail:" + email + ", Phone #:" + phoneNum
-				+ ", Username:" + userName + ", Password:" + password + ", Account #:" + accountNum + ", Access Level:"
-				+ accessLevel + ", Balance:" + balance + ", Overseer:" + overseerAccount + ", Joint Account:"
-				+ isJointAccount + ", Joint Accounts:" + jointAccounts.toString() + "]";
+		return "Customer [\nName: " + name + "\nAddress: " + address + "\nE-mail: " + email + "\nPhone #: " + phoneNum
+				+ "\nUsername: " + userName + "\nPassword: " + password + "\nAccount #: " + accountNum + "\nAccess Level: "
+				+ accessLevel + "\nBalance: " + balance + "\nJoint Account: "
+				+ isJointAccount + "\nJoint Accounts: " + jointAccounts.toString() + "\n]";
 	}
 
 
@@ -84,7 +73,6 @@ public class Customer extends User {
 						+ "\nJoint Account: " + isJointAccount()
 						+ "\nJoint Accounts: " + jointAccounts.toString()
 						+ "\nAccount #: " + getAccountNum()
-						+ "\nOverseer: " + getOverseerAccount()
 						+ "\nAccess Level: " + getAccessLevel());
 	}
 
