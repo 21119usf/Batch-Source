@@ -9,6 +9,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.bankapp.account.Account;
+import com.bankapp.menu.Menu;
+import com.bankapp.person.Customer;
 import com.bankapp.person.Employee;
 
 public class EmployeeUtils {
@@ -69,6 +72,7 @@ public class EmployeeUtils {
 			if (validateLogin(username, password) != null) {
 				notValidLogin = false;
 				System.out.println("Credentials accepted. Logging in.");
+				displayLanding();
 			} else {
 				loginCount++;
 			}
@@ -141,7 +145,7 @@ public class EmployeeUtils {
 			}
 		} while (notValidPassword);
 		
-		// First and last names, email and address
+		// First and last names
 		System.out.println("Enter your first name: ");
 		System.out.print(">>> ");
 		firstName = sc.nextLine();
@@ -177,5 +181,118 @@ public class EmployeeUtils {
 		} else {
 			return true;
 		}
+	}
+	
+	// Display customer accounts page
+	public static void displayLanding() {
+		int option = 0;
+		
+		while (true) {
+			ArrayList<String> al = new ArrayList<String>();
+			al.add("Exit");
+			al.add("Approve Account");
+			al.add("View Account Information");
+			al.add("View Customer Information");
+			Menu m = new Menu(al);
+			option = m.display();
+			
+			// Redirect
+			switch (option) {
+			case 0:
+				System.out.println("Logging out.");
+				System.exit(0);
+			case 1:
+				approveAccount();
+				break;
+			case 2:
+				displayAccountInfo();
+				break;
+			case 3:
+				displayCustomerInfo();
+				break;
+			default:
+				System.out.println("Logging out.");
+				System.exit(0);
+			}
+		}
+	}
+	
+	// Approve an account
+	private static void approveAccount() {
+		int id = 0;
+		
+		// Get account ID
+		System.out.println("Enter account ID:");
+		System.out.print(">>> ");
+		if (sc.hasNextInt()) {
+			id = sc.nextInt();
+			sc.nextLine();    // Clear buffer
+		} else {
+			System.out.println("Invalid ID");
+			sc.nextLine();
+		}
+		
+		// Search account
+		Account a = AccountUtils.getAccount(id);
+		if (a != null) {
+			a.setOpen(true);
+			System.out.println("Account opened!");
+		} else {
+			System.out.println("Account not found");
+		}
+		
+		return;
+	}
+	
+	// Display account information
+	private static void displayAccountInfo() {
+		int id = 0;
+		
+		// Get account ID
+		System.out.println("Enter account ID:");
+		System.out.print(">>> ");
+		if (sc.hasNextInt()) {
+			id = sc.nextInt();
+			sc.nextLine();    // Clear buffer
+		} else {
+			System.out.println("Invalid ID");
+			sc.nextLine();
+		}
+		
+		// Search account
+		Account a = AccountUtils.getAccount(id);
+		if (a != null) {
+			AccountUtils.printAccountDetails(a);
+		} else {
+			System.out.println("Account not found");
+		}
+		
+		return;
+	}
+	
+	// Display customer information
+	private static void displayCustomerInfo() {
+		int id = 0;
+		
+		// Get customer ID
+		System.out.println("Enter customer ID:");
+		System.out.print(">>> ");
+		if (sc.hasNextInt()) {
+			id = sc.nextInt();
+			sc.nextLine();    // Clear buffer
+		} else {
+			System.out.println("Invalid ID");
+			sc.nextLine();
+		}
+		
+		// Search customer
+		Customer c = CustomerUtils.getCustomer(id);
+		if (c != null) {
+			CustomerUtils.printCustomerInfo(c);
+		} else {
+			System.out.println("Account not found");
+		}
+		
+		return;
 	}
 }

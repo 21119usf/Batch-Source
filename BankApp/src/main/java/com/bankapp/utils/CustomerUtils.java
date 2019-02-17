@@ -84,7 +84,7 @@ public class CustomerUtils {
 			if (currentCustomer != null) {
 				notValidLogin = false;
 				System.out.println("Credentials accepted. Logging in.");
-				displayCustomerLanding();
+				displayLanding();
 			} else {
 				loginCount++;
 			}
@@ -261,40 +261,42 @@ public class CustomerUtils {
 		return true;
 	}
 	
-	// Display customer accounts page
-	public static void displayCustomerLanding() {
+	// Display customer landing page
+	public static void displayLanding() {
 		int option = 0;
 		
-		ArrayList<String> al = new ArrayList<String>();
-		al.add("Exit");
-		al.add("Accounts");
-		al.add("View Personal Information");
-		al.add("Edit Personal Information");
-		Menu m = new Menu(al);
-		option = m.display();
-		
-		// Redirect
-		switch (option) {
-		case 1:
-			displayCustomerAccounts();
-			break;
-		case 2:
-			displayCustomerInfo();
-			break;
-		case 3:
-			editCustomerInfo();
-			break;
-		case 0:
-			System.out.println("Logging out.");
-			System.exit(0);
-		default:
-			System.out.println("Logging out.");
-			System.exit(0);
+		while (true) {
+			ArrayList<String> al = new ArrayList<String>();
+			al.add("Exit");
+			al.add("Accounts");
+			al.add("View Personal Information");
+			al.add("Edit Personal Information");
+			Menu m = new Menu(al);
+			option = m.display();
+			
+			// Redirect
+			switch (option) {
+			case 1:
+				displayAccounts();
+				break;
+			case 2:
+				printCustomerInfo(currentCustomer);
+				break;
+			case 3:
+				editCustomerInfo();
+				break;
+			case 0:
+				System.out.println("Logging out.");
+				System.exit(0);
+			default:
+				System.out.println("Logging out.");
+				System.exit(0);
+			}
 		}
 	}
 	
 	// Display currentCustomer accounts
-	public static void displayCustomerAccounts() {
+	public static void displayAccounts() {
 		int option = 0;
 		ArrayList<Account> accounts = currentCustomer.getAccounts();
 		
@@ -310,7 +312,7 @@ public class CustomerUtils {
 		
 		// Redirect
 		if (option == 0) {
-			CustomerUtils.displayCustomerLanding();
+			return;
 		} else if (option == 1) {
 			AccountUtils.displayOpenAccount(currentCustomer);
 		} else {
@@ -319,13 +321,13 @@ public class CustomerUtils {
 	}
 	
 	// Display currentCustomer personal info
-	private static void displayCustomerInfo() {
-		System.out.println("Your ID:\t\t" + currentCustomer.getId());
-		System.out.println("Your username:\t\t" + currentCustomer.getUsername());
-		System.out.println("Your password:\t\t" + currentCustomer.getPassword());
-		System.out.println("Your phone number:\t" + currentCustomer.getPhoneNumber());
-		System.out.println("Your email:\t\t" + currentCustomer.getEmail());
-		displayCustomerLanding();
+	public static void printCustomerInfo(Customer c) {
+		System.out.println("Your ID:\t\t\t" + c.getId());
+		System.out.println("Your username:\t\t" + c.getUsername());
+		System.out.println("Your password:\t\t" + c.getPassword());
+		System.out.println("Your phone number:\t" + c.getPhoneNumber());
+		System.out.println("Your email:\t\t\t" + c.getEmail());
+		return;
 	}
 	
 	// Edit currentCustomer personal info
@@ -344,7 +346,7 @@ public class CustomerUtils {
 		option = m.display();
 		
 		if (option == 0) {
-			displayCustomerLanding();
+			return;
 		} else if (option == 1) {
 			// password
 		} else if (option == 2) {

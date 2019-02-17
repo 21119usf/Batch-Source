@@ -79,7 +79,7 @@ public class AccountUtils {
 		
 		// Redirect
 		if (option == 0) {
-			CustomerUtils.displayCustomerAccounts();
+			CustomerUtils.displayAccounts();
 		} else if (option == 1) {
 			AccountUtils.deposit(a);
 		} else if (option == 2) {
