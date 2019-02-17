@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.bankapp.person.Customer;
 import com.bankapp.person.Employee;
 
 public class EmployeeUtils {
@@ -29,9 +28,9 @@ public class EmployeeUtils {
 		} catch (FileNotFoundException e) {
 			System.out.println("Employee.ser not found");
 		} catch (IOException e) {
-			
+			// e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			
+			// e.printStackTrace();
 		}
 	}
 	
@@ -98,5 +97,85 @@ public class EmployeeUtils {
 		}
 		System.out.println("No user \"" + un + "\" found.");
 		return null;
+	}
+	
+	// Register employee
+	public static void displayRegistration() {
+		String username = "";
+		String password = "";
+		String firstName = "";
+		String lastName = "";
+		
+		System.out.println("Enter some personal account information:");
+		
+		// Username
+		boolean notValidUsername = true;
+		do {
+			System.out.println("Enter a username");
+			System.out.print(">>> ");
+			username = sc.nextLine();
+			if (validUsername(username)) {
+				notValidUsername = false;
+			} else {
+				System.out.println("Username invalid or taken.");
+			}
+		} while (notValidUsername);
+		
+		// Password
+		boolean notValidPassword = true;
+		String p0, p1;
+		do {
+			System.out.println("Enter a password");
+			System.out.print(">>> ");
+			p0 = sc.nextLine();
+			if (validPassword(p0)) {
+				System.out.println("Confirm password: ");
+				System.out.print(">>> ");
+				p1 = sc.nextLine();
+				if (p0.equals(p1)) {
+					password = p0;
+					notValidPassword = false;
+				} else {
+					System.out.println("Mismatched passwords.");
+				}
+			}
+		} while (notValidPassword);
+		
+		// First and last names, email and address
+		System.out.println("Enter your first name: ");
+		System.out.print(">>> ");
+		firstName = sc.nextLine();
+		System.out.println("Enter your last name: ");
+		System.out.print(">>> ");
+		lastName = sc.nextLine();
+		
+		// Create Customer object and store data
+		Employee e = new Employee(username, password, firstName, lastName);
+		employees.add(e);
+		saveEmployees();
+		
+		// Redirect
+		displayLogin();
+	}
+	
+	// Validate username
+	private static boolean validUsername(String un) {
+		//boolean validUsername = false;
+		
+		if (un.length() < 6) {
+			return false;
+		}
+		// Open Customer data file and check for taken username
+
+		return true;
+	}
+	
+	// Validate password
+	private static boolean validPassword(String pw) {
+		if (pw.length() < 6) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

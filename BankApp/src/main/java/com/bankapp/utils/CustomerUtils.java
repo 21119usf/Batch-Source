@@ -268,7 +268,8 @@ public class CustomerUtils {
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Exit");
 		al.add("Accounts");
-		al.add("Personal Information");
+		al.add("View Personal Information");
+		al.add("Edit Personal Information");
 		Menu m = new Menu(al);
 		option = m.display();
 		
@@ -279,6 +280,9 @@ public class CustomerUtils {
 			break;
 		case 2:
 			displayCustomerInfo();
+			break;
+		case 3:
+			editCustomerInfo();
 			break;
 		case 0:
 			System.out.println("Logging out.");
@@ -322,5 +326,68 @@ public class CustomerUtils {
 		System.out.println("Your phone number:\t" + currentCustomer.getPhoneNumber());
 		System.out.println("Your email:\t\t" + currentCustomer.getEmail());
 		displayCustomerLanding();
+	}
+	
+	// Edit currentCustomer personal info
+	private static void editCustomerInfo() {
+		int option = 0;
+		
+		ArrayList<String> al = new ArrayList<String>();
+		al.add("Back");
+		al.add("Edit Password");
+		al.add("Edit First Name");
+		al.add("Edit Last Name");
+		al.add("Edit Email");
+		al.add("Edit Address");
+		al.add("Edit Phone Number");
+		Menu m = new Menu(al);
+		option = m.display();
+		
+		if (option == 0) {
+			displayCustomerLanding();
+		} else if (option == 1) {
+			// password
+		} else if (option == 2) {
+			System.out.println("Enter First Name:");
+			System.out.print(">>> ");
+			String s = sc.nextLine();
+			currentCustomer.setFirstName(s);
+		} else if (option == 3) {
+			System.out.println("Enter Last Name:");
+			System.out.print(">>> ");
+			String s = sc.nextLine();
+			currentCustomer.setLastName(s);
+		} else if (option == 4) {
+			System.out.println("Enter Email:");
+			System.out.print(">>> ");
+			String s = sc.nextLine();
+			currentCustomer.setEmail(s);
+		} else if (option == 5) {
+			System.out.println("Enter Address:");
+			System.out.print(">>> ");
+			String s = sc.nextLine();
+			currentCustomer.setAddress(s);
+		} else if (option == 6) {
+			boolean notValidPhoneNumber = true;
+			long phoneNumber = currentCustomer.getPhoneNumber();
+			do {
+				System.out.println("Enter your phone number: ");
+				System.out.print(">>> ");
+				try {
+					phoneNumber = sc.nextLong();
+					if (validPhoneNumber(phoneNumber)) {
+						notValidPhoneNumber = false;
+					} else {
+						System.out.println("Invalid phone number");
+						sc.nextLine();
+					}
+				} catch (InputMismatchException e) {
+					System.out.println("Numerals only, no hyphens.");
+					sc.nextLine();		// Clear buffer
+				}
+			} while (notValidPhoneNumber);
+			currentCustomer.setPhoneNumber(phoneNumber);
+		}
+		saveCustomers();
 	}
 }

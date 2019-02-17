@@ -31,9 +31,9 @@ public class AccountUtils {
 		} catch (FileNotFoundException e) {
 			System.out.println("Accounts.ser not found");
 		} catch (IOException e) {
-			
+			// e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			
+			// e.printStackTrace();
 		}
 	}
 	
