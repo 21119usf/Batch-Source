@@ -1,13 +1,13 @@
 package com.bankapp.person;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.bankapp.account.Account;
 
 // Customer class
 public class Customer extends Person {
 	private static final long serialVersionUID = 4473186511868357784L;
-	private static int count = 0;
 	private int id;
 	private String username;
 	private String password;
@@ -18,7 +18,8 @@ public class Customer extends Person {
 	// Constructor
 	public Customer(String un, String pw, String fn, String ln, 
 	String em, String ad, long pn, long ss) {
-		setId(count++);
+		Random rnd = new Random();
+		id = 100000 + rnd.nextInt(900000);
 		setUsername(un);
 		setPassword(pw);
 		setFirstName(fn);
@@ -27,6 +28,7 @@ public class Customer extends Person {
 		setAddress(ad);
 		setPhoneNumber(pn);
 		setSsNumber(ss);
+		accounts = new ArrayList<Account>();
 	}
 
 	// Get/set methods

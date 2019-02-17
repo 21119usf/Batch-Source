@@ -1,18 +1,20 @@
 package com.bankapp.person;
 
+import java.util.Random;
+
 import com.bankapp.account.Account;
 
 // Employee class
 public class Employee extends Person {
 	private static final long serialVersionUID = 6683281331440066118L;
-	private static int count = 0;
 	private int id;
 	private String username;
 	private String password;
 	
 	// Constructor
 	public Employee(String un, String pw) {
-		setId(count++);
+		Random rnd = new Random();
+		id = 100000 + rnd.nextInt(900000);
 		setUsername(un);
 		setPassword(pw);
 	}
