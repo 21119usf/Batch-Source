@@ -273,22 +273,6 @@ public class Bank {
 		}
 		return false;
 	}
-	
-	public User findAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
-	}
 }
 
 

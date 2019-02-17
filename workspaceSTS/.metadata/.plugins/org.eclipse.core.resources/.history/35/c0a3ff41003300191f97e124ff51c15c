@@ -258,36 +258,8 @@ public class Bank {
 		System.out.println("$" + customer.getBalance());
 	}
 	
-	public boolean cancelAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return customers.remove(e);
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
+	public boolean cancelAccount() {
 		return false;
-	}
-	
-	public User findAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
 	}
 }
 

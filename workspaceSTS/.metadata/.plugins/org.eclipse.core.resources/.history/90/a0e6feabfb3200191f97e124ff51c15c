@@ -64,24 +64,13 @@ public class Customer extends User {
 	}
 	
 	public void withdraw(double amount) {
-		if (amount < 0)
+		if (amount < 0) {
 			System.out.println("Cannot withdraw a negative amount");
+		}
 		else if (amount > getBalance())
 			System.out.println("Insufficient Funds");
 		else
 			setBalance(getBalance() - amount);
-	}
-	
-	public void transfer(Customer destination, double amount) {
-		if (amount < 0)
-			System.out.println("Cannot transfer a negative amount");
-		else if (amount > getBalance())
-			System.out.println("Insufficient Funds");
-		else {
-			setBalance(getBalance() - amount);
-			destination.setBalance(getBalance() + amount);
-		}
-			
 	}
 
 	
@@ -90,7 +79,7 @@ public class Customer extends User {
 	public String toString() {
 		return "Customer [\nName: " + name + "\nAddress: " + address + "\nE-mail: " + email + "\nPhone #: " + phoneNum
 				+ "\nUsername: " + userName + "\nPassword: " + password + "\nAccount #: " + accountNum + "\nAccess Level: "
-				+ accessLevel + "\nBalance: $" + balance + "\nJoint Account: "
+				+ accessLevel + "\nBalance: " + balance + "\nJoint Account: "
 				+ isJointAccount + "\nJoint Accounts: " + jointAccounts.toString() + "\n]";
 	}
 
@@ -99,7 +88,7 @@ public class Customer extends User {
 	public void printAccountInfo() {
 		System.out.println("Username: " + getUserName()
 						+ "\nPassword: " + getPassword()
-						+ "\nBalance: $" + getBalance()
+						+ "\nBalance: " + getBalance()
 						+ "\nJoint Account: " + isJointAccount()
 						+ "\nJoint Accounts: " + jointAccounts.toString()
 						+ "\nAccount #: " + getAccountNum()

@@ -90,7 +90,7 @@ public class Customer extends User {
 	public String toString() {
 		return "Customer [\nName: " + name + "\nAddress: " + address + "\nE-mail: " + email + "\nPhone #: " + phoneNum
 				+ "\nUsername: " + userName + "\nPassword: " + password + "\nAccount #: " + accountNum + "\nAccess Level: "
-				+ accessLevel + "\nBalance: $" + balance + "\nJoint Account: "
+				+ accessLevel + "\nBalance: " + balance + "\nJoint Account: "
 				+ isJointAccount + "\nJoint Accounts: " + jointAccounts.toString() + "\n]";
 	}
 
@@ -99,7 +99,7 @@ public class Customer extends User {
 	public void printAccountInfo() {
 		System.out.println("Username: " + getUserName()
 						+ "\nPassword: " + getPassword()
-						+ "\nBalance: $" + getBalance()
+						+ "\nBalance: " + getBalance()
 						+ "\nJoint Account: " + isJointAccount()
 						+ "\nJoint Accounts: " + jointAccounts.toString()
 						+ "\nAccount #: " + getAccountNum()

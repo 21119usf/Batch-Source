@@ -203,91 +203,40 @@ public class Bank {
 		option = input.nextInt();
 	}
 	
-	public boolean deposit(User depositor, Customer depositee, double amount) {
-		if (depositor.equals(depositee) || depositor.getAccessLevel() == 0) {//if the depositor is depositing to themselves
-			depositee.deposit(amount);										//	or if the depositor is an admin
-			return true;
-		}
-		return false;			
-	}
-	
-	public boolean withdraw(User withdrawer, Customer withdrawee, double amount) {
-		if (withdrawer.equals(withdrawee) || withdrawer.getAccessLevel() == 0) {//if the withdrawer is withdrawing from themselves
-			withdrawee.deposit(amount);										//	or if the withdrawer is an admin
-			return true;
-		}
+	public boolean deposit(double amount) {
 		return false;
 	}
 	
-	public boolean transfer(User user, Customer source, Customer destination, double amount) {
-		if (user.equals(source) || user.getAccessLevel() == 0) { 
-			source.transfer(destination, amount);
-			return true;
-		}
+	public boolean withdraw(double amount) {
 		return false;
 	}
 	
-	public void approveCustomer(Customer customer) {
-		customers.add(customer);
-		pendingApprovalQueue.remove(customer);
-	}
-	
-	public void approveEmployee(Employee employee) {
-		employees.add(employee);
-		pendingApprovalQueue.remove(employee);
-	}
-	
-	public void approveAdmin(Admin admin) {
-		admins.add(admin);
-		pendingApprovalQueue.remove(admin);
-	}
-	
-	public void deny(User user) {
-		pendingApprovalQueue.remove(user);
-	}
-	
-	public void viewPersonalInfo(User user) {
-		user.printPersonalInfo();
-	}
-	
-	public void viewAccountInfo(User user) {
-		user.printAccountInfo();
-	}
-	
-	public void viewCustomerBalance(Customer customer) {
-		System.out.println("$" + customer.getBalance());
-	}
-	
-	public boolean cancelAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return customers.remove(e);
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
+	public boolean transfer(double amount) {
 		return false;
 	}
 	
-	public User findAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
+	public boolean approve() {
+		return false;
+	}
+	
+	public boolean deny() {
+		return false;
+	}
+	
+	public void viewPersonalInfo() {
+		
+	}
+	
+	public void viewAccountInfo() {
+		
+	}
+	
+	public void viewCustomerBalance() {
+		
+	}
+	
+	public boolean cancelAccount() {
+		return false;
 	}
 }
 

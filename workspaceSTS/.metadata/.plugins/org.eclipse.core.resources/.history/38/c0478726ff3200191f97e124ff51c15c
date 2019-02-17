@@ -246,48 +246,20 @@ public class Bank {
 		pendingApprovalQueue.remove(user);
 	}
 	
-	public void viewPersonalInfo(User user) {
-		user.printPersonalInfo();
+	public void viewPersonalInfo() {
+		
 	}
 	
-	public void viewAccountInfo(User user) {
-		user.printAccountInfo();
+	public void viewAccountInfo() {
+		
 	}
 	
-	public void viewCustomerBalance(Customer customer) {
-		System.out.println("$" + customer.getBalance());
+	public void viewCustomerBalance() {
+		
 	}
 	
-	public boolean cancelAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return customers.remove(e);
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
+	public boolean cancelAccount() {
 		return false;
-	}
-	
-	public User findAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
 	}
 }
 

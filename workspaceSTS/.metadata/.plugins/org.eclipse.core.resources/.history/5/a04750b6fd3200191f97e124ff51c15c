@@ -227,67 +227,33 @@ public class Bank {
 		return false;
 	}
 	
-	public void approveCustomer(Customer customer) {
-		customers.add(customer);
-		pendingApprovalQueue.remove(customer);
-	}
-	
-	public void approveEmployee(Employee employee) {
-		employees.add(employee);
-		pendingApprovalQueue.remove(employee);
-	}
-	
-	public void approveAdmin(Admin admin) {
-		admins.add(admin);
-		pendingApprovalQueue.remove(admin);
-	}
-	
-	public void deny(User user) {
+	public void approve(User user) {
+		int typeOfAccount = user.getAccessLevel();
+		switch (typeOfAccount) {
+			case 0: //The account being approved is an admin
+				admins.add((Customer)user);
+		}
 		pendingApprovalQueue.remove(user);
 	}
 	
-	public void viewPersonalInfo(User user) {
-		user.printPersonalInfo();
-	}
-	
-	public void viewAccountInfo(User user) {
-		user.printAccountInfo();
-	}
-	
-	public void viewCustomerBalance(Customer customer) {
-		System.out.println("$" + customer.getBalance());
-	}
-	
-	public boolean cancelAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return customers.remove(e);
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
-		}
+	public boolean deny() {
 		return false;
 	}
 	
-	public User findAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
+	public void viewPersonalInfo() {
+		
+	}
+	
+	public void viewAccountInfo() {
+		
+	}
+	
+	public void viewCustomerBalance() {
+		
+	}
+	
+	public boolean cancelAccount() {
+		return false;
 	}
 }
 

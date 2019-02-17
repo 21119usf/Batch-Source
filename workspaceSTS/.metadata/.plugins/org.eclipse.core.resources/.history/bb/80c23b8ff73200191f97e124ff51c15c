@@ -87,13 +87,6 @@ public abstract class User {
 	}
 
 	
-	//Utility Methods
-	public boolean equals(User user) {
-		if (this.userName.equals(user.userName))
-			return true;
-		return false;
-	}
-	
 	//Printing Methods
 	@Override
 	public String toString() {
