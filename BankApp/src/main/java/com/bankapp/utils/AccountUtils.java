@@ -204,7 +204,7 @@ public class AccountUtils {
 		
 		accounts.add(a);
 		saveAccounts();
-		c.getAccounts().add(a);
+		c.getAccounts().add(a.getId());
 		CustomerUtils.saveCustomers();
 		displayAccountMenu(a);
 		

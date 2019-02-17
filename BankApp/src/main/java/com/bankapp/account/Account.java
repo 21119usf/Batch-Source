@@ -52,7 +52,6 @@ public class Account implements Serializable {
 			balance -= round(d, 2);
 			return true;
 		}
-		System.out.println("DENIED");
 		return false;
 	}
 	// Transfer funds from this account into another

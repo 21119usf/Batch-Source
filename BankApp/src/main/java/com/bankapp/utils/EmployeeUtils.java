@@ -237,6 +237,7 @@ public class EmployeeUtils {
 		if (a != null) {
 			a.setOpen(true);
 			System.out.println("Account opened!");
+			AccountUtils.saveAccounts();
 		} else {
 			System.out.println("Account not found");
 		}
@@ -262,7 +263,15 @@ public class EmployeeUtils {
 		// Search account
 		Account a = AccountUtils.getAccount(id);
 		if (a != null) {
-			AccountUtils.printAccountDetails(a);
+			System.out.println("Account ID:\t" + a.getId());
+			System.out.println("Status:\t\t" + a.getStatus());
+			System.out.println("Open:\t\t" + a.isOpen());
+			System.out.println("Balance:\t$" + String.format("%.2f", a.getBalance()));
+			ArrayList<Customer> al = a.getOwners();
+			System.out.print("Owners:\t\t");
+			for (Customer c : al) {
+				System.out.println(c.getUsername() + " ");
+			}
 		} else {
 			System.out.println("Account not found");
 		}
@@ -288,7 +297,12 @@ public class EmployeeUtils {
 		// Search customer
 		Customer c = CustomerUtils.getCustomer(id);
 		if (c != null) {
-			CustomerUtils.printCustomerInfo(c);
+			System.out.println("Your ID:\t\t\t" + c.getId());
+			System.out.println("Your username:\t\t" + c.getUsername());
+			System.out.println("Your password:\t\t" + c.getPassword());
+			System.out.println("Your phone number:\t" + c.getPhoneNumber());
+			System.out.println("Your email:\t\t\t" + c.getEmail());
+			return;
 		} else {
 			System.out.println("Account not found");
 		}

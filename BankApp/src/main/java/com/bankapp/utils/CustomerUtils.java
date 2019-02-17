@@ -276,6 +276,9 @@ public class CustomerUtils {
 			
 			// Redirect
 			switch (option) {
+			case 0:
+				System.out.println("Logging out.");
+				System.exit(0);
 			case 1:
 				displayAccounts();
 				break;
@@ -285,9 +288,6 @@ public class CustomerUtils {
 			case 3:
 				editCustomerInfo();
 				break;
-			case 0:
-				System.out.println("Logging out.");
-				System.exit(0);
 			default:
 				System.out.println("Logging out.");
 				System.exit(0);
@@ -298,13 +298,13 @@ public class CustomerUtils {
 	// Display currentCustomer accounts
 	public static void displayAccounts() {
 		int option = 0;
-		ArrayList<Account> accounts = currentCustomer.getAccounts();
+		ArrayList<Integer> acctIds = currentCustomer.getAccounts();
 		
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Back");
 		al.add(">>> Open Account <<<");
-		for (Account a : accounts) {
-			al.add(a.getName());
+		for (Integer id : acctIds) {
+			al.add(Integer.toString(id));
 		}
 		
 		Menu m = new Menu(al);
@@ -312,11 +312,12 @@ public class CustomerUtils {
 		
 		// Redirect
 		if (option == 0) {
-			return;
+			displayLanding();
 		} else if (option == 1) {
 			AccountUtils.displayOpenAccount(currentCustomer);
 		} else {
-			AccountUtils.displayAccountMenu(accounts.get(option-2));
+			Account a = AccountUtils.getAccount(acctIds.get(option-2));
+			AccountUtils.displayAccountMenu(a);
 		}
 	}
 	

@@ -3,8 +3,6 @@ package com.bankapp.person;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.bankapp.account.Account;
-
 // Customer class
 public class Customer extends Person {
 	private static final long serialVersionUID = 4473186511868357784L;
@@ -13,7 +11,7 @@ public class Customer extends Person {
 	private String password;
 	private String email;
 	private long phoneNumber;
-	private ArrayList<Account> accounts;
+	private ArrayList<Integer> accountIds;
 	
 	// Constructor
 	public Customer(String un, String pw, String fn, String ln, 
@@ -28,7 +26,7 @@ public class Customer extends Person {
 		setAddress(ad);
 		setPhoneNumber(pn);
 		setSsNumber(ss);
-		accounts = new ArrayList<Account>();
+		accountIds = new ArrayList<Integer>();
 	}
 
 	// Get/set methods
@@ -62,17 +60,17 @@ public class Customer extends Person {
 	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public ArrayList<Account> getAccounts() {
-		return accounts;
+	public ArrayList<Integer> getAccounts() {
+		return accountIds;
 	}
-	public void setAccounts(ArrayList<Account> accounts) {
-		this.accounts = accounts;
+	public void setAccounts(ArrayList<Integer> accounts) {
+		this.accountIds = accounts;
 	}
 
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", username=" + username + ", password="
 				+ password + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", accounts=" + accounts + "]";
+				+ ", accounts=" + accountIds + "]";
 	}
 }
