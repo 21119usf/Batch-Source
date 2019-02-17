@@ -12,11 +12,13 @@ public class Employee extends Person {
 	private String password;
 	
 	// Constructor
-	public Employee(String un, String pw) {
+	public Employee(String un, String pw, String fn, String ln) {
 		Random rnd = new Random();
 		id = 100000 + rnd.nextInt(900000);
 		setUsername(un);
 		setPassword(pw);
+		setFirstName(fn);
+		setLastName(ln);
 	}
 	
 	// Approve an account
