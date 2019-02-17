@@ -312,7 +312,8 @@ public class CustomerUtils {
 		
 		// Redirect
 		if (option == 0) {
-			displayLanding();
+			//displayLanding();
+			return;
 		} else if (option == 1) {
 			AccountUtils.displayOpenAccount(currentCustomer);
 		} else {

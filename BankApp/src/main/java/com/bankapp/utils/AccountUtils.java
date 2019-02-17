@@ -79,7 +79,8 @@ public class AccountUtils {
 		
 		// Redirect
 		if (option == 0) {
-			CustomerUtils.displayAccounts();
+			//CustomerUtils.displayAccounts();
+			return;
 		} else if (option == 1) {
 			AccountUtils.deposit(a);
 		} else if (option == 2) {
@@ -89,9 +90,10 @@ public class AccountUtils {
 		} else if (option == 4) {
 			AccountUtils.printAccountDetails(a);
 		} else if (option == 5) {
-			//AccountUtils.closeAccount(a);
+			AccountUtils.closeAccount(a);
 		}
-		displayAccountMenu(a);
+		//displayAccountMenu(a);
+		return;
 	}
 	
 	// Deposit
@@ -209,6 +211,26 @@ public class AccountUtils {
 		displayAccountMenu(a);
 		
 		return a;
+	}
+	
+	// Close account
+	public static void closeAccount(Account a) {
+		ArrayList<String> al = new ArrayList<String>();
+		System.out.println("Are you sure?");
+		al.add("Cancel");
+		al.add("No");
+		al.add("No");
+		al.add("No");
+		al.add("Yes");
+		Menu m = new Menu(al);
+		int option = m.display();
+		
+		if (option == 4) {
+			a.setOpen(false);
+			System.out.println("Account " + a.getId() + " closed.");
+			saveAccounts();
+		}
+		return;
 	}
 	
 	// Print account details

@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
+import com.bankapp.person.Admin;
 import com.bankapp.person.Customer;
 import com.bankapp.person.Employee;
 
@@ -18,6 +19,7 @@ public class EmployeeUtils {
 	private static Scanner sc = new Scanner(System.in);
 	private static String employeesFile = "Employees.ser";
 	private static ArrayList<Employee> employees = new ArrayList<Employee>();
+	private static Employee currentEmployee;
 	
 	// Load employees from file
 	@SuppressWarnings("unchecked")
@@ -69,7 +71,8 @@ public class EmployeeUtils {
 			password = sc.nextLine();
 			
 			// Validate
-			if (validateLogin(username, password) != null) {
+			currentEmployee = validateLogin(username, password);
+			if (currentEmployee != null) {
 				notValidLogin = false;
 				System.out.println("Credentials accepted. Logging in.");
 				displayLanding();
@@ -153,9 +156,26 @@ public class EmployeeUtils {
 		System.out.print(">>> ");
 		lastName = sc.nextLine();
 		
-		// Create Customer object and store data
-		Employee e = new Employee(username, password, firstName, lastName);
-		employees.add(e);
+		// Admin?
+		System.out.println("Is this an Admin account?");
+		ArrayList<String> al = new ArrayList<String>();
+		boolean isAdmin = false;
+		al.add("Yes");
+		al.add("No");
+		Menu m = new Menu(al);
+		int option = m.display();
+		if (option == 0) {
+			isAdmin = true;
+		}
+		
+		// Create Employee/Admin object and store data
+		if (isAdmin) {
+			Admin e = new Admin(username, password, firstName, lastName);
+			employees.add(e);
+		} else {
+			Employee e = new Employee(username, password, firstName, lastName);
+			employees.add(e);
+		}
 		saveEmployees();
 		
 		// Redirect
@@ -193,6 +213,9 @@ public class EmployeeUtils {
 			al.add("Approve Account");
 			al.add("View Account Information");
 			al.add("View Customer Information");
+			if (currentEmployee instanceof Admin) {
+				al.add("Edit Account");
+			}
 			Menu m = new Menu(al);
 			option = m.display();
 			
@@ -209,6 +232,13 @@ public class EmployeeUtils {
 				break;
 			case 3:
 				displayCustomerInfo();
+				break;
+			case 4:
+				if (currentEmployee instanceof Admin) {
+					displayAccountEditor();
+				} else {
+					System.out.println("Invalid option");
+				}
 				break;
 			default:
 				System.out.println("Logging out.");
@@ -303,6 +333,58 @@ public class EmployeeUtils {
 			System.out.println("Your phone number:\t" + c.getPhoneNumber());
 			System.out.println("Your email:\t\t\t" + c.getEmail());
 			return;
+		} else {
+			System.out.println("Account not found");
+		}
+		
+		return;
+	}
+	
+	// Admin account editor
+	private static void displayAccountEditor() {
+		int id = 0;
+		
+		// Get account ID
+		System.out.println("Enter account ID:");
+		System.out.print(">>> ");
+		if (sc.hasNextInt()) {
+			id = sc.nextInt();
+			sc.nextLine();    // Clear buffer
+		} else {
+			System.out.println("Invalid ID");
+			sc.nextLine();
+		}
+		
+		// Search account
+		Account a = AccountUtils.getAccount(id);
+		if (a != null) {
+			int option = 0;
+			
+			ArrayList<String> al = new ArrayList<String>();
+			al.add("Back");
+			al.add("Deposit");
+			al.add("Withdraw");
+			al.add("Transfer Funds");
+			al.add("View Details");
+			al.add(">>> Close Account <<<");
+			
+			Menu m = new Menu(al);
+			option = m.display();
+			
+			// Redirect
+			if (option == 0) {
+				CustomerUtils.displayAccounts();
+			} else if (option == 1) {
+				AccountUtils.deposit(a);
+			} else if (option == 2) {
+				AccountUtils.withdraw(a);
+			} else if (option == 3) {
+				AccountUtils.transfer(a);
+			} else if (option == 4) {
+				AccountUtils.printAccountDetails(a);
+			} else if (option == 5) {
+				AccountUtils.closeAccount(a);
+			}
 		} else {
 			System.out.println("Account not found");
 		}
