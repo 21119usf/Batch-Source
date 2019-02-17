@@ -1,2 +1,5 @@
 hola como estas
+<<<<<<< HEAD
 i do not speak spanish
+=======
+>>>>>>> 9304d7605aa05c889055da3c550135bb31afe78e
