@@ -1,0 +1,7 @@
+package com.revature.exceptions;
+
+import java.lang.Object.Throwable.Exception;
+
+public class NotWearingAHatException extends Exception {
+
+}

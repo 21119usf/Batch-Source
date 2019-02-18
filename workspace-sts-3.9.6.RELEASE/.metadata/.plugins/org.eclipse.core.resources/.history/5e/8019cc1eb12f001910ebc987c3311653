@@ -1,0 +1,130 @@
+package com.revature.core.java.assignment;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+import com.revature.core.java.assignment.helpers.Employee;
+import com.revature.core.java.assignment.sorters.*;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+		System.out.println("Q1 -------------------------\n");
+		
+		BubbleSort sorter = new BubbleSort();
+		int[] arrayToBeSorted = {1,0,5,6,3,2,3,7,9,8,4};
+		sorter.sort(arrayToBeSorted);
+		for(int i : arrayToBeSorted)
+		{
+			System.out.println(i);
+		}
+		
+		System.out.println("Q2 -------------------------\n");
+		
+		Fibonacci fibonacci = new Fibonacci();
+		fibonacci.displayFibonacciSequence(25);
+		
+		System.out.println("Q3 -------------------------\n");
+		
+		StringReverser stringReverser = new StringReverser();
+		System.out.println(stringReverser.reverseString("some random words"));
+		
+		System.out.println("Q4 -------------------------\n");
+		
+		Factorial factorial = new Factorial();
+		System.out.println(factorial.computeFactorial(4));
+		
+		System.out.println("Q5 -------------------------\n");
+		
+		Substring substring = new Substring();
+		System.out.println(substring.getSubstring("Dictionary", 4));
+		
+		System.out.println("Q6 -------------------------\n");
+		
+		OddOrEven oddOrEven = new OddOrEven();
+		System.out.println(oddOrEven.determineOddOrEven(5));
+		
+		System.out.println("Q7 -------------------------\n");
+		
+		ArrayList<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(new Employee("Nick", 24, "Software"));
+		employeeList.add(new Employee("Toby", 32, "Human Recources"));
+		employeeList.add(new Employee("Angela", 48, "Accounting"));
+		employeeList.add(new Employee("Micheal", 45, "Management"));
+		
+		Collections.sort(employeeList, new SortEmployeeByName());
+		
+		for(Employee employee : employeeList)
+		{
+			System.out.println(employee.getName());
+		}
+		
+		Collections.sort(employeeList, new SortByEmployeeAge());
+		
+		for(Employee employee : employeeList)
+		{
+			System.out.println(employee.getAge());
+		}
+		
+		Collections.sort(employeeList, new SortByEmployeeDepartment());
+		
+		for(Employee employee : employeeList)
+		{
+			System.out.println(employee.getDepartment());
+		}
+		
+		System.out.println("Q8 -------------------------\n");
+		
+		PalindromSeperator palindromeSeperator = new PalindromSeperator();
+		
+		ArrayList<String> randomWords = new ArrayList<String>();
+		randomWords.add("karen");
+		randomWords.add("madam");
+		randomWords.add("tom");
+		randomWords.add("civic");
+		randomWords.add("radar");
+		randomWords.add("jimmy");
+		randomWords.add("kayak");
+		randomWords.add("john");
+		randomWords.add("refer");
+		randomWords.add("billy");
+		randomWords.add("did");
+		
+		ArrayList<String> palindromes = palindromeSeperator.seperatePalindromes(randomWords);
+		
+		for(String word : palindromes)
+		{
+			System.out.println(word);
+		}
+		
+		System.out.println("Q9 -------------------------\n");
+		
+		ArrayList<Integer> numbers = new ArrayList<Integer>();
+		
+		for(int i = 1; i <= 100; i++)
+		{
+			numbers.add(i);
+		}
+		
+		PrimeNumberFinder primeFinder = new PrimeNumberFinder();
+		
+		ArrayList<Integer> primes = primeFinder.findPrimeNumbers(numbers);
+		
+		for(Integer prime : primes)
+		{
+			System.out.println(prime);
+		}
+		
+		System.out.println("Q10 -------------------------\n");
+		
+		SmallestNumber smallestNumberFinder = new SmallestNumber();
+		
+		System.out.println(smallestNumberFinder.findSmallestNumber(11, 9));
+		
+		System.out.println("Q11 -------------------------\n");
+		
+		
+	}
+
+}

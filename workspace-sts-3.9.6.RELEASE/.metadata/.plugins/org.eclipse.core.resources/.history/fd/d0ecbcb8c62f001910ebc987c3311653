@@ -1,0 +1,9 @@
+package com.revature.exceptions;
+
+public class NotWearingAHatException extends Exception 
+{
+	public NotWearingAHatException()
+	{
+		System.out.println("You don't have a hat to take off!");
+	}
+}

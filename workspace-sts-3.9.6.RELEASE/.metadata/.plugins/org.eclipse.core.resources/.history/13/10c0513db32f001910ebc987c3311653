@@ -1,0 +1,39 @@
+package com.revature.core.java.assignment;
+
+import java.util.ArrayList;
+
+public class EvenNumbers 
+{
+	public ArrayList<Integer> findEvenNumbers(ArrayList<Integer> numbers)
+	{
+		ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
+		
+		for(int number : numbers)
+		{
+			if(isEvenNumber(number))
+			{
+				evenNumbers.add(number);
+			}
+		}
+		
+		return null;
+	}
+	
+	private static boolean isEvenNumber(int number)
+	{
+		boolean isEven = false;
+		for(int i = 0; i <= number; i++)
+		{
+			if(isEven)
+			{
+				isEven = false;
+			}
+			else
+			{
+				isEven = true;
+			}
+		}
+		
+		return isEven;
+	}
+}

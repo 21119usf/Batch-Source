@@ -1,0 +1,17 @@
+package com.revature.core.java.assignment;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import com.revature.core.java.assignment.helpers.Employee;
+
+public class EmployeeSorter implements Comparator<Employee>
+{
+
+	@Override
+	public int compare(Employee o1, Employee o2) 
+	{
+		return 0;
+	}
+	
+}

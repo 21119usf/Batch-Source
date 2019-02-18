@@ -1,0 +1,26 @@
+package com.revature.core.java.assignment;
+
+import java.util.ArrayList;
+
+public class ArrayListActions 
+{
+	private ArrayList<Integer> list;
+	
+	public ArrayListActions(int size)
+	{
+		list = new ArrayList<Integer>();
+		
+		for(int i = 1; i <= size; i++)
+		{
+			list.add(i);
+		}
+	}
+	
+	public void displayArrayList()
+	{
+		for(Integer i : this.list)
+		{
+			System.out.println(i);
+		}
+	}
+}

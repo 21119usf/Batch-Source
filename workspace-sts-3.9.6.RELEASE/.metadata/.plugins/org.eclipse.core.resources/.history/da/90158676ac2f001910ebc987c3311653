@@ -1,0 +1,42 @@
+package com.revature.junit5;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class StringTest 
+{
+	@BeforeAll
+	static void beforeAll()
+	{
+		System.out.println("Before All");
+	}
+	
+	@BeforeEach
+	void beforeEach()
+	{
+		System.out.println("Before Each");
+	}
+	
+	@Test
+	void toUpperCaseTest() 
+	{
+		String string = "abcd";
+		
+		String result = string.toUpperCase();
+		
+		//assertEquals(expected, actual);
+		assertEquals("ABCD", result);
+	}
+	
+	@Test
+	void containsTest()
+	{
+		String string = "abcdefg";
+		boolean result = string.contains("ijk");
+		
+		assertFalse(result);
+	}
+}

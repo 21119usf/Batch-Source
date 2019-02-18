@@ -1,0 +1,21 @@
+package com.revature.varargs;
+
+public class FunWithVarargs 
+{
+	static void VATest(int ...i)
+	{
+		System.out.println("Number of args is: " + i.length + "Contents: ");
+		
+		for(int x : i)
+		{
+			System.out.println(x + " ");
+		}
+	}
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

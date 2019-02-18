@@ -1,0 +1,9 @@
+package com.revature.core.java.assignment;
+
+public class InterestCalculator 
+{
+	public double calculateInterest(double principle, double rate, int months)
+	{
+		return principle * rate * months;
+	}
+}

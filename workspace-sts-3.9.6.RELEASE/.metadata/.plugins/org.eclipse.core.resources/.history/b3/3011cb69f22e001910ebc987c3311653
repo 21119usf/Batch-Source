@@ -1,0 +1,25 @@
+package com.revature.core.java.assignment;
+
+public class Fibonacci 
+{
+	public void displayFibonacciSequence(int n)
+	{
+		int previous = 0;
+		int y = 1;
+		for(int i = 0; i < n; i++)
+		{
+			if(i <= 1)
+			{
+				System.out.println(i);
+			}
+			else
+			{
+				int temp = previous + y;
+				System.out.println(temp);
+				previous = y;
+				y = temp;
+			}
+		}
+	}
+
+}

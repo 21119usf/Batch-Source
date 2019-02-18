@@ -1,0 +1,43 @@
+package com.revature.core.java.assignment;
+
+public class BubbleSort 
+{
+	private static void swap(int a, int b)
+	{
+		int temp = a;
+		a = b;
+		b = temp;
+	}
+	
+	private static boolean isSorted(int[] x)
+	{
+		boolean sorted = true;
+		int temp = x[x.length - 1];
+		for(int i = 0; i < (x.length - 1); i++)
+		{
+			if(x[i] > temp)
+			{
+				sorted = false;
+			}
+		}
+		
+		return sorted;
+	}
+	
+	public void sort(int[] x)
+	{
+		boolean sorted = false;
+		while(sorted == false)
+		{
+			for(int i = 0; i < (x.length - 1); i++)
+			{
+				if(x[i] > x[i + 1])
+				{
+					swap(x[i], x[i+1]);
+				}
+			}
+			
+			sorted = isSorted(x);
+		}
+	}
+}

@@ -1,0 +1,20 @@
+package com.revature.core.java.assignment;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+		BubbleSort sorter = new BubbleSort();
+		
+		int[] arrayToBeSorted = {1,0,5,6,3,2,3,7,9,8,4};
+		
+		sorter.sort(arrayToBeSorted);
+		
+		for(int i : arrayToBeSorted)
+		{
+			System.out.println(i);
+		}
+
+	}
+
+}
