@@ -71,10 +71,9 @@ public class Driver {
 		displayIntArr(fn.getFibNumsArray());		
 		
 		// Question 3
-		printDisplayMsgNewLine(3, "Substring");
-		String exampleString = "Hello World";
-		int idx = 8;
-		System.out.println(new SubstringClass().substring(exampleString, idx));
+		printDisplayMsgNewLine(3, "Reverse String");
+		ReverseString rs = new ReverseString();
+		
 		
 		// Question 4
 		printDisplayMsgNewLine(4, "Compute N Factorial");
@@ -82,7 +81,11 @@ public class Driver {
 		ComputeNFactorial cnf = new ComputeNFactorial(factorialNum);
 		System.out.println(factorialNum + "! is: " + cnf.computeFactorial());
 		
-		// Question 5		
+		// Question 5	
+		printDisplayMsgNewLine(5, "Substring");
+		String exampleString = "Hello World";
+		int idx = 8;
+		System.out.println(new SubstringClass().substring(exampleString, idx));
 		
 		// Question 6
 		printDisplayMsgNewLine(6, "Is Integer Even");

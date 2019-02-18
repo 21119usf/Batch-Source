@@ -1,0 +1,4 @@
+[INFO ] 2019-02-17 10:54:59.148 [main] Logging - this is set to info: trial
+[WARN ] 2019-02-17 10:54:59.151 [main] Logging - this is set to warn: trial
+[ERROR] 2019-02-17 10:54:59.151 [main] Logging - This is set to error: trial
+[FATAL] 2019-02-17 10:54:59.151 [main] Logging - This is set to fatal: trial
