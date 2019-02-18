@@ -1,0 +1,7 @@
+User#:Username:UserStatus:PassEncrypt:
+1:Austin:1:673155:true
+2:James:1:-900485:false
+3:Melissa:3:787578:true
+4:Max:2:-286478:false
+5:Richard:3:-6908:false
+6:MadMax:1:-267331:false

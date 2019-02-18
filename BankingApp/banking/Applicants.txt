@@ -1,0 +1,11 @@
+#:Username:Joint:passhash:Approved
+1:Austin:true:673155:true
+2:James:false:-900485:false
+3:Melissa:true:787578:true
+4:Max:true:-286478:false
+5:Richard:false:-6908:false
+6:MadMax:true:-267331:false
+7:feral:false:802099:false
+8:feral2:false:980811:false
+9:Panama:false:705196:false
+10:jump:false:162212:false

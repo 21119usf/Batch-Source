@@ -1,20 +1,27 @@
 package com.revature.beans;
 
+import java.io.Serializable;
+
 import com.revature.exceptions.IncreasedByNegativeNumberException;
 
-public class Person {
+public class Person implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7001386760118127111L;
+
 	/*
 	 * Code Blocks (CB)- {things between curly braces}
 	 */
 	//Instance CB
-	{System.out.println("I'm in an instance code block");}
-	//Static code block
-	static {System.out.println("I'm in a static code block");}
+//	{System.out.println("I'm in an instance code block");}
+//	//Static code block
+//	static {System.out.println("I'm in a static code block");}
 	
 	private String name;
 	private int age;
-	private int weight;
+	private transient int weight;
 	static String homePlanet;
 	//constructors
 	public Person(String name, int age, int weight){
