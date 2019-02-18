@@ -44,9 +44,9 @@ public class Q19 {
 		System.out.print("The sum of the odd numbers is: ");
 		sumUp(arr, 1);
 		
-		for (int i: arr) {
+		for (int i = 1; i <= 10; i++) {
 			if (isPrime(i))
-				arr.remove(i);
+				arr.remove((Object)i);
 		}
 		
 		System.out.println("The list with primes removed: ");

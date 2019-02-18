@@ -7,11 +7,14 @@ public class Q02 {
 		int prev = 0;
 		int curr = 1;
 		int next;
+		
+		//print out the first 2 numbers manually
 		if (nthFib > 0)
 			System.out.println("1\t" + prev);
 		if (nthFib > 1)
 			System.out.println("2\t" + curr);
 		
+		//print out the rest of the sequence
 		for (int count = 2; count < nthFib; count++) {
 			next = prev + curr;
 			prev = curr;

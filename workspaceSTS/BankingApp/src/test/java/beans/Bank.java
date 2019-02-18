@@ -387,13 +387,13 @@ public class Bank {
 							System.out.print("How much would you like to deposit? (Enter in the form $X.XX)\n> $");
 							amount = doubles.nextDouble();
 							deposit(user, tempCustomer, amount);
-							System.out.println("Transaction complete");
+							//System.out.println("Transaction complete");
 							break;
 						case 1:							//Withdrawal
 							System.out.print("How much would you like to withdraw? (Enter in the form $X.XX)\n> $");
 							amount = doubles.nextDouble();
 							withdraw(user, tempCustomer, amount);
-							System.out.println("Transaction complete");
+							//System.out.println("Transaction complete");
 							break;
 						case 2:							//Transfer
 							if (tempCustomer.jointAccounts.size() == 0) {
@@ -414,7 +414,7 @@ public class Bank {
 							}
 							Customer recipient = findCustomer(line);
 							transfer(user, tempCustomer, recipient, amount);
-							System.out.println("Transaction complete");
+							//System.out.println("Transaction complete");
 							break;
 						case 3:							//Do nothing by choice
 							break;
@@ -444,11 +444,201 @@ public class Bank {
 	}//admin menu
 	
 	public void employeeMenu(Employee user) {
+		Scanner input = new Scanner(System.in);
+		Scanner strings = new Scanner(System.in);
+		Scanner doubles = new Scanner(System.in);
+		int option;
+		String line;
+		double amount;
 		
+		while (true) {
+			System.out.print("\nWelcome " + user.getUserName() + "."
+					+ "\nWhat would you like to do today?"
+					+ "\n(0) - View user information"
+					+ "\n(1) - View the pending list of applications to approve/deny"
+					+ "\n(2) - Logout"
+					+ "\n> ");
+			option = input.nextInt();
+			switch (option) {
+			case 0:										//View information pertaining to a User
+				System.out.print("\nWhose user information do you want to view?"
+						+ "\n(0) - Mine"
+						+ "\n(1) - A Customer's"
+						+ "\n(2) - Cancel"
+						+ "\n> ");
+				option = input.nextInt();
+				switch (option) {
+					case 0:									//View information pertaining to me(Employee)
+						System.out.print("\nWhich information do you want to see?"
+								+ "\n(0) - Account information"
+								+ "\n(1) - Personal information"
+								+ "\n(2) - Cancel"
+								+ "\n> ");
+						option = input.nextInt();
+						switch (option) {
+							case 0:							//View my(Employee) account information
+								viewAccountInfo(user);
+								break;
+							case 1:							//View my(Employee) personal information
+								viewPersonalInfo(user);
+								break;
+							case 2:							//Do nothing by choice
+								break;
+							default:						//Invalid choice
+								System.out.println("Invalid Option");
+								break;
+						}
+						break;
+				
+					case 1:									//View information pertaining to a Customer
+						System.out.print("Customer's Username: ");
+						line = strings.nextLine();
+						Customer tempCustomer = findCustomer(line);
+						if (tempCustomer == null) {
+							System.out.println("Customer with the username '" + line + "' was not found");
+							break;
+						}
+						System.out.print("\nWhich information do you want to see?"
+								+ "\n(0) - Account information"
+								+ "\n(1) - Personal information"
+								+ "\n(2) - Balance"
+								+ "\n(3) - Cancel"
+								+ "\n> ");
+						option = input.nextInt();
+						switch (option) {
+							case 0:							//View the customer's Account information
+								viewAccountInfo(tempCustomer);
+								break;
+							case 1:							//View the customer's Personal information
+								viewPersonalInfo(tempCustomer);
+								break;
+							case 2:							//View the customer's current balance
+								System.out.println(tempCustomer.getUserName() + "'s Balance is");
+								viewCustomerBalance(tempCustomer);
+								break;
+							case 3:							//Do nothing by choice
+								break;
+							default:						//Invalid choice
+								System.out.println("Invalid Option");
+								break;
+						}
+						break;
+					case 2:
+						break;
+					default:
+						System.out.println("Invalid Option");
+					}
+					break;
+			case 1:										//View the list of applications to approve/deny
+				approveMenu(user.getAccessLevel());
+				break;
+			case 2:										//logout, return to login screen
+				return;
+			default:									//Invalid choice
+				System.out.println("Invalid Option");
+				break;
+		}//outermost switch statement
+				
+		}
 	}
 	
 	public void customerMenu(Customer user) {
+		Scanner input = new Scanner(System.in);
+		Scanner strings = new Scanner(System.in);
+		Scanner doubles = new Scanner(System.in);
+		int option;
+		String line;
+		double amount;
 		
+		while (true) {
+			System.out.print("\nWelcome " + user.getUserName() + "."
+					+ "\nWhat would you like to do today?"
+					+ "\n(0) - View my information"
+					+ "\n(1) - Perform a transaction"
+					+ "\n(2) - Logout"
+					+ "\n> ");
+			option = input.nextInt();
+			switch (option) {
+				case 0:									//View information pertaining to me(Customer)
+					System.out.print("\nWhich information do you want to see?"
+							+ "\n(0) - Account information"
+							+ "\n(1) - Personal information"
+							+ "\n(2) - View my balance"
+							+ "\n(3) - Cancel"
+							+ "\n> ");
+					option = input.nextInt();
+					switch (option) {
+						case 0:							//View my(Customer) account information
+							viewAccountInfo(user);
+							break;
+						case 1:							//View my(Customer) personal information
+							viewPersonalInfo(user);
+							break;
+						case 2:
+							System.out.println("My balance is " + user.getBalance());
+						case 3:							//Do nothing by choice
+							break;
+						default:						//Invalid choice
+							System.out.println("Invalid Option");
+							break;
+					}
+					break;	
+				case 1:										//Perform a transaction
+					System.out.print("\nWhat type of transaction would you like to perform?"
+							+ "\n(0) - Deposit"
+							+ "\n(1) - Withdrawal"
+							+ "\n(2) - Transfer"
+							+ "\n(3) - Cancel"
+							+ "\n> ");
+					option = input.nextInt();
+					switch (option) {
+						case 0:							//Deposit
+							System.out.print("How much would you like to deposit? (Enter in the form $X.XX)\n> $");
+							amount = doubles.nextDouble();
+							deposit(user, user, amount);
+							//System.out.println("Transaction complete");
+							break;
+						case 1:							//Withdrawal
+							System.out.print("How much would you like to withdraw? (Enter in the form $X.XX)\n> $");
+							amount = doubles.nextDouble();
+							withdraw(user, user, amount);
+							//System.out.println("Transaction complete");
+							break;
+						case 2:							//Transfer
+							if (user.jointAccounts.size() == 0) {
+								System.out.println("This account does not have any joint accounts.");
+								break;
+							}
+							System.out.print("How much would you like to transfer? (Enter in the form $X.XX)\n> $");
+							amount = doubles.nextDouble();
+							System.out.println("The following are accounts you are adjoined to?");
+							for (String c: user.jointAccounts)
+								System.out.println(c);
+							System.out.print("Please type the username of the recipient of the transfer: ");
+							line = strings.nextLine();
+							while (!user.jointAccounts.contains(line)) {
+								System.out.print("There is no account with the username '" + line + "' adjoined to this account.\n"
+												+"Please type the username of the recipient of the transfer: ");
+								line = strings.nextLine();
+							}
+							Customer recipient = findCustomer(line);
+							transfer(user, user, recipient, amount);
+							//System.out.println("Transaction complete");
+							break;
+						case 3:							//Do nothing by choice
+							break;
+						default:						//Invalid choice
+							System.out.println("Invalid Option");
+							break;
+					}
+					break;
+				case 2:										//logout, return to login screen
+					return;
+				default:									//Invalid choice
+					System.out.println("Invalid Option");
+					break;
+			}//outermost switch statement
+		}//while loop
 	}
 	
 	public void approveMenu(int accessLevel) {
@@ -517,7 +707,7 @@ public class Bank {
 	
 	public boolean withdraw(User withdrawer, Customer withdrawee, double amount) {
 		if (withdrawer.equals(withdrawee) || withdrawer.getAccessLevel() == 0) {//if the withdrawer is withdrawing from themselves
-			withdrawee.deposit(amount);										//	or if the withdrawer is an admin
+			withdrawee.withdraw(amount);										//	or if the withdrawer is an admin
 			return true;
 		}
 		return false;
