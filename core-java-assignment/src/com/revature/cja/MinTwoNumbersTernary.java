@@ -1,4 +1,4 @@
-// Q10. Find the minimum of two numbers using ternary operators.
+//Q10. Find the minimum of two numbers using ternary operators.
 
 package com.revature.cja;
 

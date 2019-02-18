@@ -1,4 +1,5 @@
-// Q6. Write a program to determine if an integer is even without using the modulus operator (%)
+//Q6. Write a program to determine if an integer is even without using the modulus
+//operator (%)
 
 package com.revature.cja;
 

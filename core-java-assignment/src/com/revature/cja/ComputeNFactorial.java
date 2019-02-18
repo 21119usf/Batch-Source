@@ -1,4 +1,4 @@
-// Q4. Write a program to compute N factorial.
+//Q4. Write a program to compute N factorial.
 
 package com.revature.cja;
 

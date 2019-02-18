@@ -1,5 +1,6 @@
-// Driver class for CORE JAVA ASSIGNMENT
-// Create one Java project for the homework with a separate class for each question, and use comments liberally in your code.
+//CORE JAVA ASSIGNMENT:
+//Create one Java project for the homework with a separate class for each
+//question, and use comments liberally in your code:
 
 package com.revature.cja;
 
@@ -7,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-
 
 // package for question 11 (access two float-variables 
 // from a class that exists in another package)
@@ -37,6 +37,7 @@ public class Driver {
 		System.out.println(dashes);
 	}
 	
+	// display for Is Upper Case Homework Question
 	public static void displayIsUpperCase(boolean isUpperCase, String str) {
 		if (isUpperCase) {
 			System.out.println(isUpperCase + ", the String \"" + str + "\" does contain a uppercase!");
@@ -72,8 +73,11 @@ public class Driver {
 		
 		// Question 3
 		printDisplayMsgNewLine(3, "Reverse String");
+		String nonReverseString = "Revature";
+		System.out.println("Non reversed String: " + nonReverseString);
 		ReverseString rs = new ReverseString();
-		
+		String reversedString = rs.reverseString(nonReverseString);
+		System.out.println("Reversed String: " + reversedString);
 		
 		// Question 4
 		printDisplayMsgNewLine(4, "Compute N Factorial");
@@ -170,7 +174,7 @@ public class Driver {
 		// Question 15
 		printDisplayMsgNewLine(15, "Interface with Simple Methods");
 		SimpleMethodsClass sm = new SimpleMethodsClass();
-		int num3 = 5, num4 = 10;
+		double num3 = 5, num4 = 10;
 		System.out.println(sm.addition(num4, num3));
 		System.out.println(sm.subtraction(num4, num3));
 		System.out.println(sm.multiplication(num4, num3));

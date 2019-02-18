@@ -1,3 +1,14 @@
+//Q20. Create a notepad file called Data.txt and enter the following:
+//Mickey:Mouse:35:Arizona
+//Hulk:Hogan:50:Virginia
+//Roger:Rabbit:22:California
+//Wonder:Woman:18:Montana
+//Write a program that would read from the file and print it out to the screen in the
+//following format:
+//Name: Mickey Mouse
+//Age: 35 years
+//State: Arizona State
+
 package com.revature.cja;
 
 import java.io.File;
@@ -10,6 +21,7 @@ public class ReadFromFile {
 	
 	private static final String inFile = "Data.txt";
 	
+	// method to read content from file
 	public String readInputStreamContents() {
 		InputStream is = null;
 		File file = new File(inFile);
@@ -47,6 +59,7 @@ public class ReadFromFile {
 		
 	}
 	
+	// method to format the string
 	public void formatString(String str) {
 		String[] formatMsg = str.split("\n");
 		for (int i = 0; i < formatMsg.length; i++) {
