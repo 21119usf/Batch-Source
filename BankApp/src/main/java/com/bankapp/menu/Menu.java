@@ -20,6 +20,7 @@ public class Menu {
 		do {
 			// Display menu
 			int count = 0;
+			System.out.println();
 			for (String item : items) {
 				System.out.println(count + ". " + item);
 				count++;
