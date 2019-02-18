@@ -1,9 +1,11 @@
 package com.revature.beans;
 
+import java.io.Serializable;
+
 import com.revature.classtypes.Hunt;
 import com.revature.exceptions.IncreasedByNegativeNumberException;
 
-public class Person implements Hunt{
+public class Person implements Hunt, Serializable{
 	
 	/*
 	 * Code Blocks- {things between}
