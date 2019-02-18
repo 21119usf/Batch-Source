@@ -7,15 +7,14 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		int option;
-		User user = null;
 		boolean restart = true;
 		while (restart) {
 			option = bank.start();
 		
 			switch (option) {
 			case 1:
-				user = bank.login();
-				//System.out.println(user);
+				//bank.login();
+				bank.printContents();
 				break;
 			case 2:
 				bank.registerApplication();
@@ -25,7 +24,6 @@ public class Driver {
 			}
 			if (!restart)
 				break;
-			bank.loggedInMenu(user);
 		}
 		System.out.println("Exiting");
 	}

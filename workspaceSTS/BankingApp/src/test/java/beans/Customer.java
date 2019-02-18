@@ -6,7 +6,7 @@ public class Customer extends User {
 	
 	protected double balance;
 	protected boolean isJointAccount;
-	protected ArrayList<Integer> jointAccounts;
+	protected ArrayList<String> jointAccounts;
 	
 	
 	//Constructors
@@ -15,7 +15,7 @@ public class Customer extends User {
 		this.balance = 0.0;
 		this.isJointAccount = false;
 		this.accessLevel = 2;
-		jointAccounts = new ArrayList<Integer>();
+		jointAccounts = new ArrayList<String>();
 	}
 	
 	public Customer(String name, String address, String email, String phoneNum, String userName, String password,
@@ -23,7 +23,7 @@ public class Customer extends User {
 		super(name, address, email, phoneNum, userName, password, accountNum, 2);
 		this.balance = 0.0;
 		this.isJointAccount = isJointAccount;
-		jointAccounts = new ArrayList<Integer>();
+		jointAccounts = new ArrayList<String>();
 	}
 
 
@@ -46,8 +46,8 @@ public class Customer extends User {
 	
 	
 	//Adding and removing accounts to the list of accounts adjoined to
-	public void addJointAccount(int accountNum) {
-		jointAccounts.add(accountNum);
+	public void addJointAccount(String username) {
+		jointAccounts.add(username);
 	}
 	
 	public void removeJointAccount(int accountNum) {
@@ -78,7 +78,7 @@ public class Customer extends User {
 		else if (amount > getBalance())
 			System.out.println("Insufficient Funds");
 		else {
-			setBalance(getBalance() - amount);
+			this.setBalance(getBalance() - amount);
 			destination.setBalance(getBalance() + amount);
 		}
 			

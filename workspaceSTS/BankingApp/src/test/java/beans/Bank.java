@@ -7,7 +7,11 @@ public class Bank {
 	private ArrayList<Customer> customers;
 	private ArrayList<Employee> employees;
 	private ArrayList<Admin> admins;
-	private ArrayList<User> pendingApprovalQueue;
+	private ArrayList<Customer> pendingApprovalCustomers;
+	private ArrayList<Employee> pendingApprovalStaff;
+	private int[] customerOptions = {1, 2, 3, 4, 5, 6, 9};
+	private int[] employeeOptions = {1, 2, 3, 8, 9};
+	private int[] adminOptions    = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	
 	
 	//Constructor
@@ -15,7 +19,8 @@ public class Bank {
 		this.customers = new ArrayList<Customer>();
 		this.employees = new ArrayList<Employee>();
 		this.admins = new ArrayList<Admin>();
-		this.pendingApprovalQueue = new ArrayList<User>();
+		this.pendingApprovalCustomers = new ArrayList<Customer>();
+		this.pendingApprovalStaff= new ArrayList<Employee>();
 		
 		Admin superUser = new Admin();
 		superUser.setName("Admin");
@@ -42,10 +47,10 @@ public class Bank {
 	}
 	
 	
-	public User login() {
+	public void login() {
 		Scanner input = new Scanner(System.in); 
-		String username;
-		String password;
+		String username = "";
+		String password = "";
 		User user = null;
 		boolean successfulLogin = false;
 		
@@ -60,7 +65,16 @@ public class Bank {
 			else
 				successfulLogin = true;
 		}
-		return user;
+		switch (user.getAccessLevel()) {
+			case 0:
+				adminMenu((Admin)user);
+				break;
+			case 1:
+				employeeMenu((Employee)user);
+				break;
+			case 2:
+				customerMenu((Customer)user);
+		}
 	}
 	
 	public User validateCredentials(String username, String password) {
@@ -92,10 +106,15 @@ public class Bank {
 			if (e.userName.equals(username))
 				return false;
 		}
-		for (User e: pendingApprovalQueue)
+		for (User e: pendingApprovalCustomers)
 			if (e.userName.equals(username)) {
 				return false;
 		}
+		for (User e: pendingApprovalStaff)
+			if (e.userName.equals(username)) {
+				return false;
+		}
+		
 		return true;
 	}
 	
@@ -117,6 +136,10 @@ public class Bank {
 			break;
 		case 3:
 			newUser = new Admin();
+			break;
+		default:
+			System.out.println("Invalid Option\n\n");
+			return;
 		}
 		System.out.print("Please enter the following information for your account"
 							+ "\nName: ");
@@ -151,7 +174,10 @@ public class Bank {
 						+ "\nIs this what you would like to submit? (y/n)\n> ");
 		char c = input.nextLine().charAt(0);
 		if (c == 'y' || c == 'Y') {
-			pendingApprovalQueue.add(newUser);
+			if (newUser.getAccessLevel() == 0 || newUser.getAccessLevel() == 1)
+				pendingApprovalStaff.add((Employee)newUser);
+			else
+				pendingApprovalCustomers.add((Customer)newUser);
 			System.out.println("Your application was submitted successfully."
 							+ "\nPlease wait for a staff member to approve your application."
 							+ "\nOnce approved you may log in to your account and manage it");
@@ -165,18 +191,7 @@ public class Bank {
 		int option;
 		switch(user.getAccessLevel()) {
 		case 0: 		//Admin Menu
-			System.out.print("\nWelcome " + user.getUserName() + "."
-					+ "\nWhat would you like to do today?"
-					+ "\n(1) - View a user's account info"
-					+ "\n(2) - View a user's personal info"
-					+ "\n(3) - View a customer's balance"
-					+ "\n(4) - Deposit Money into customer's account"
-					+ "\n(5) - Withdraw Money from customer's account"
-					+ "\n(6) - Transfer Money between two customer's accounts"
-					+ "\n(7) - Account Cancellation"
-					+ "\n(8) - View the pending list of applications to approve/deny"
-					+ "\n(9) - Logout"
-					+ "\n> ");
+			//adminMenu(user);
 			break;
 		case 1:			//Employee Menu
 			System.out.print("\nWelcome " + user.getUserName() + "."
@@ -201,6 +216,256 @@ public class Bank {
 					+ "\n> ");
 		}
 		option = input.nextInt();
+		while(!validateOption(user, option)) {
+			System.out.print("Invalid Option\n> ");
+			option = input.nextInt();
+		}
+		
+		switch (option) {
+			case 1:
+				viewAccountInfo(user);
+				break;
+			case 2:
+				viewPersonalInfo(user);
+				break;
+			case 3:
+				//viewCustomerBalance(user);
+				break;
+			case 4:
+				
+				break;
+			case 5:
+				
+				break;
+			case 6:
+				
+				break;
+			case 7:
+				
+				break;
+			case 8:
+				
+				break;
+			case 9:
+				
+		}
+	}
+	
+	public void adminMenu(Admin user) {
+		Scanner input = new Scanner(System.in);
+		Scanner strings = new Scanner(System.in);
+		Scanner doubles = new Scanner(System.in);
+		int option;
+		String line;
+		double amount;
+		
+		while (true) {
+			System.out.print("\nWelcome " + user.getUserName() + "."
+					+ "\nWhat would you like to do today?"
+					+ "\n(0) - View user information"
+					+ "\n(1) - Perform a transaction for a Customer"
+					+ "\n(2) - View the pending list of applications to approve/deny"
+					+ "\n(3) - Account Cancelation"
+					+ "\n(4) - Logout"
+					+ "\n> ");
+			option = input.nextInt();
+			switch (option) {
+				case 0:										//View information pertaining to a User
+					System.out.print("\nWhose user information do you want to view?"
+							+ "\n(0) - Mine"
+							+ "\n(1) - An Employee's"
+							+ "\n(2) - A Customer's"
+							+ "\n(3) - Cancel"
+							+ "\n> ");
+					option = input.nextInt();
+					switch (option) {
+					case 0:									//View information pertaining to me(Admin)
+						System.out.print("\nWhich information do you want to see?"
+								+ "\n(0) - Account information"
+								+ "\n(1) - Personal information"
+								+ "\n(2) - Cancel"
+								+ "\n> ");
+						option = input.nextInt();
+						switch (option) {
+							case 0:							//View my(Admin) account information
+								viewAccountInfo(user);
+								break;
+							case 1:							//View my(Admin) personal information
+								viewPersonalInfo(user);
+								break;
+							case 2:							//Do nothing by choice
+								break;
+							default:						//Invalid choice
+								System.out.println("Invalid Option");
+								break;
+						}
+						break;
+					case 1:									//View information pertaining to an Employee
+						System.out.print("Employee's Username: ");
+						line = strings.nextLine();
+						Employee tempEmployee = findEmployee(line);
+						if (tempEmployee == null) {
+							System.out.println("Employee with the username '" + line + "' was not found");
+							break;
+						}
+						System.out.print("\nWhich information do you want to see?"
+								+ "\n(0) - Account information"
+								+ "\n(1) - Personal information"
+								+ "\n(2) - Cancel"
+								+ "\n> ");
+						option = input.nextInt();
+						switch (option) {
+							case 0:							//View the employee's Account information
+								viewAccountInfo(tempEmployee);
+								break;
+							case 1:							//View the employee's Personal information
+								viewPersonalInfo(tempEmployee);
+								break;
+							case 2:							//Do nothing by choice
+								break;
+							default:						//Invalid choice
+								System.out.println("Invalid Option");
+								break;
+						}
+						break;
+					case 2:									//View information pertaining to a Customer
+						System.out.print("Customer's Username: ");
+						line = strings.nextLine();
+						Customer tempCustomer = findCustomer(line);
+						if (tempCustomer == null) {
+							System.out.println("Customer with the username '" + line + "' was not found");
+							break;
+						}
+						System.out.print("\nWhich information do you want to see?"
+								+ "\n(0) - Account information"
+								+ "\n(1) - Personal information"
+								+ "\n(2) - Balance"
+								+ "\n(3) - Cancel"
+								+ "\n> ");
+						option = input.nextInt();
+						switch (option) {
+							case 0:							//View the customer's Account information
+								viewAccountInfo(tempCustomer);
+								break;
+							case 1:							//View the customer's Personal information
+								viewPersonalInfo(tempCustomer);
+								break;
+							case 2:							//View the customer's current balance
+								System.out.println(tempCustomer.getUserName() + "'s Balance is");
+								viewCustomerBalance(tempCustomer);
+								break;
+							case 3:							//Do nothing by choice
+								break;
+							default:						//Invalid choice
+								System.out.println("Invalid Option");
+								break;
+						}
+						break;	
+					}
+					break;
+				case 1:										//Perform a transaction
+					System.out.print("Customer's Username: ");
+					line = strings.nextLine();
+					Customer tempCustomer = findCustomer(line);
+					if (tempCustomer == null) {
+						System.out.println("Customer with the username '" + line + "' was not found");
+						break;
+					}
+					System.out.print("\nWhat type of transaction would you like to perform?"
+							+ "\n(0) - Deposit"
+							+ "\n(1) - Withdrawal"
+							+ "\n(2) - Transfer"
+							+ "\n(3) - Cancel"
+							+ "\n> ");
+					option = input.nextInt();
+					switch (option) {
+						case 0:							//Deposit
+							System.out.print("How much would you like to deposit? (Enter in the form $X.XX)\n> $");
+							amount = doubles.nextDouble();
+							deposit(user, tempCustomer, amount);
+							break;
+						case 1:							//Withdrawal
+							System.out.print("How much would you like to withdraw? (Enter in the form $X.XX)\n> $");
+							amount = doubles.nextDouble();
+							deposit(user, tempCustomer, amount);
+							break;
+						case 2:							//Transfer
+							if (tempCustomer.jointAccounts.size() == 0) {
+								System.out.println("You do not have any accounts you are joint with");
+								break;
+							}
+							System.out.print("How much would you like to transfer? (Enter in the form $X.XX)\n> $");
+							amount = doubles.nextDouble();
+							System.out.println("The following are accounts you are adjoined to?");
+							for (String c: tempCustomer.jointAccounts)
+								System.out.println(c);
+							System.out.print("Please type the username of the recipient of the transfer: ");
+							line = strings.nextLine();
+							while (!tempCustomer.jointAccounts.contains(line)) {
+								System.out.print("You do not have an account with the username '" + line + "' adjoined to you\n"
+												+"Please type the username of the recipient of the transfer: ");
+								line = strings.nextLine();
+							}
+							Customer recipient = findCustomer(line);
+							transfer(user, tempCustomer, recipient, amount);					
+							break;
+						case 3:							//Do nothing by choice
+							break;
+						default:						//Invalid choice
+							System.out.println("Invalid Option");
+							break;
+					}
+					break;
+				case 2:										//View the list of applications to approve/deny
+					
+					break;
+				case 3:										//Cancel an account
+					System.out.print("Username of the account to cancel: ");
+					line = strings.nextLine();
+					if (!cancelAccount(line))
+						System.out.println("Customer with the username '" + line + "' was not found");
+					else
+						System.out.println("Account successfully removed");
+					break;
+				case 4:										//logout, return to login screen
+					return;
+				default:									//Invalid choice
+					System.out.println("Invalid Option");
+					break;
+			}//outermost switch statement
+		}//while loop
+	}//admin menu
+	
+	public void employeeMenu(Employee user) {
+		
+	}
+	
+	public void customerMenu(Customer user) {
+		
+	}
+	
+	public boolean validateOption(User user, int option) {
+		int access = user.getAccessLevel();
+		boolean validOption = false;
+		if (access == 0) {
+			for (int i: adminOptions) {
+				if (i == option)
+					validOption = true;
+			}
+		}
+		else if (access == 1) {
+			for (int i: employeeOptions) {
+				if (i == option)
+					validOption = true;
+			}
+		}
+		else if (access == 2) {
+			for (int i: customerOptions) {
+				if (i == option)
+					validOption = true;
+			}
+		}
+		return validOption;
 	}
 	
 	public boolean deposit(User depositor, Customer depositee, double amount) {
@@ -229,21 +494,22 @@ public class Bank {
 	
 	public void approveCustomer(Customer customer) {
 		customers.add(customer);
-		pendingApprovalQueue.remove(customer);
+		pendingApprovalCustomers.remove(customer);
 	}
 	
 	public void approveEmployee(Employee employee) {
 		employees.add(employee);
-		pendingApprovalQueue.remove(employee);
+		pendingApprovalStaff.remove(employee);
 	}
 	
 	public void approveAdmin(Admin admin) {
 		admins.add(admin);
-		pendingApprovalQueue.remove(admin);
+		pendingApprovalStaff.remove(admin);
 	}
 	
 	public void deny(User user) {
-		pendingApprovalQueue.remove(user);
+		pendingApprovalCustomers.remove(user);
+		pendingApprovalStaff.remove(user);
 	}
 	
 	public void viewPersonalInfo(User user) {
@@ -288,6 +554,35 @@ public class Bank {
 				return e;
 		}
 		return null;
+	}
+	
+	public Customer findCustomer(String username) {
+		for (Customer e: customers) {
+			if (e.userName.equals(username))
+				return e;
+		}
+		return null;
+	}
+	
+	public Employee findEmployee(String username) {
+		for (Employee e: employees) {
+			if (e.userName.equals(username))
+				return e;
+		}
+		return null;
+	}
+	
+	public Admin findAdmin(String username) {
+		for (Admin e: admins) {
+			if (e.userName.equals(username))
+				return e;
+		}
+		return null;
+	}
+	
+	public void printContents() {
+		System.out.println("Customers:\n " + pendingApprovalCustomers
+							+"Admins/Employees:\n " + pendingApprovalStaff);
 	}
 }
 
