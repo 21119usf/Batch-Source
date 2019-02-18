@@ -20,10 +20,10 @@ public class Driver {
 		// Redirect
 		switch (option) {
 		case 1:		// Customer
-			MenuUtils.displayCustomerEntry();
+			CustomerUtils.displayCustomerEntry();
 			break;
 		case 2:		// Employee
-			MenuUtils.displayEmployeeEntry();
+			EmployeeUtils.displayEmployeeEntry();
 			break;
 		case 0:		// Exit
 			System.out.println("Goodbye");

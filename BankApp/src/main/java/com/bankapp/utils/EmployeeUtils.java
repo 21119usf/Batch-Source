@@ -54,6 +54,32 @@ public class EmployeeUtils {
 		}
 	}
 	
+	// Display employee entry page
+	public static void displayEmployeeEntry() {
+		ArrayList<String> al = new ArrayList<String>();
+		al.add("Back");
+		al.add("Employee Login");
+		al.add("Register");
+		Menu m = new Menu(al);
+		int option = m.display();
+		
+		// Redirect
+		switch (option) {
+		case 0:
+			displayLanding();
+			break;
+		case 1:
+			EmployeeUtils.displayLogin();
+			break;
+		case 2:
+			EmployeeUtils.displayRegistration();
+			break;
+		default:
+			displayLanding();
+			break;
+		}
+	}
+	
 	// Display login
 	public static void displayLogin() {
 		int loginCount = 0;
@@ -63,6 +89,7 @@ public class EmployeeUtils {
 		String username;
 		String password;
 		do {
+			System.out.println("Please Login");
 			System.out.println("Enter Username: ");
 			System.out.print(">>> ");
 			username = sc.nextLine();
@@ -184,12 +211,18 @@ public class EmployeeUtils {
 	
 	// Validate username
 	private static boolean validUsername(String un) {
-		//boolean validUsername = false;
-		
+		// Username must be at least 6 characters
 		if (un.length() < 6) {
+			System.out.println("Username must be at least 6 characters.");
 			return false;
 		}
+		
 		// Open Customer data file and check for taken username
+		for (Employee e : employees) {
+			if (e.getUsername().equals(un)) {
+				return false;
+			}
+		}
 
 		return true;
 	}
@@ -300,7 +333,7 @@ public class EmployeeUtils {
 			ArrayList<Customer> al = a.getOwners();
 			System.out.print("Owners:\t\t");
 			for (Customer c : al) {
-				System.out.println(c.getUsername() + " ");
+				System.out.print(c.getUsername() + " ");
 			}
 		} else {
 			System.out.println("Account not found");

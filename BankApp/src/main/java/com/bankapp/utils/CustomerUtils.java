@@ -63,6 +63,32 @@ public class CustomerUtils {
 		return null;
 	}
 	
+	// Display customer entry page
+	public static void displayCustomerEntry() {
+		ArrayList<String> al = new ArrayList<String>();
+		al.add("Back");
+		al.add("Customer Login");
+		al.add("Register");
+		Menu m = new Menu(al);
+		int option = m.display();
+		
+		// Redirect
+		switch (option) {
+		case 0:
+			displayLanding();
+			break;
+		case 1:
+			CustomerUtils.displayLogin();
+			break;
+		case 2:
+			CustomerUtils.displayRegistration();
+			break;
+		default:
+			displayLanding();
+			break;
+		}
+	}
+	
 	// Display login
 	public static void displayLogin() {
 		int loginCount = 0;
@@ -72,6 +98,7 @@ public class CustomerUtils {
 		String username;
 		String password;
 		do {
+			System.out.println("Please Login");
 			System.out.println("Enter Username: ");
 			System.out.print(">>> ");
 			username = sc.nextLine();
@@ -225,12 +252,18 @@ public class CustomerUtils {
 	
 	// Validate username
 	private static boolean validUsername(String un) {
-		//boolean validUsername = false;
-		
+		// Username should be at least 6 characters
 		if (un.length() < 6) {
+			System.out.println("Username must be at least 6 characters.");
 			return false;
 		}
+		
 		// Open Customer data file and check for taken username
+		for (Customer c : customers) {
+			if (c.getUsername().equals(un)) {
+				return false;
+			}
+		}
 
 		return true;
 	}

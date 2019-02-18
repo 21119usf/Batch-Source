@@ -187,13 +187,14 @@ public class AccountUtils {
 		System.out.println("Should this be a joint account?");
 		option = m.display();
 		if (option == 0) {
-			System.out.println("Enter other user's ID:");
+			System.out.println("Enter other user's ID number:");
 			System.out.print(">>> ");
 			try {
 				int id = sc.nextInt();
 				Customer c2 = CustomerUtils.getCustomer(id);
 				if (c2 != null) {
 					a.addOwner(c2);
+					saveAccounts();
 				} else {
 					System.out.println("User ID not found");
 					displayOpenAccount(c);
@@ -242,7 +243,7 @@ public class AccountUtils {
 		ArrayList<Customer> al = a.getOwners();
 		System.out.print("Owners:\t\t");
 		for (Customer c : al) {
-			System.out.println(c.getUsername() + " ");
+			System.out.print(c.getUsername() + " ");
 		}
 		
 		displayAccountMenu(a);
