@@ -180,7 +180,7 @@ public class Bank {
 				pendingApprovalCustomers.add((Customer)newUser);
 			System.out.println("Your application was submitted successfully."
 							+ "\nPlease wait for a staff member to approve your application."
-							+ "\nOnce approved you may log in to your account and manage it.");
+							+ "\nOnce approved you may log in to your account and manage it");
 		}
 		else if (c == 'n' || c == 'N')
 			System.out.println("Your application was not submitted.");
@@ -360,11 +360,7 @@ public class Bank {
 								System.out.println("Invalid Option");
 								break;
 						}
-						break;
-					case 3:
-						break;
-					default:
-						System.out.println("Invalid Option");
+						break;	
 					}
 					break;
 				case 1:										//Perform a transaction
@@ -387,17 +383,15 @@ public class Bank {
 							System.out.print("How much would you like to deposit? (Enter in the form $X.XX)\n> $");
 							amount = doubles.nextDouble();
 							deposit(user, tempCustomer, amount);
-							System.out.println("Transaction complete");
 							break;
 						case 1:							//Withdrawal
 							System.out.print("How much would you like to withdraw? (Enter in the form $X.XX)\n> $");
 							amount = doubles.nextDouble();
-							withdraw(user, tempCustomer, amount);
-							System.out.println("Transaction complete");
+							deposit(user, tempCustomer, amount);
 							break;
 						case 2:							//Transfer
 							if (tempCustomer.jointAccounts.size() == 0) {
-								System.out.println("This account does not have any joint accounts.");
+								System.out.println("You do not have any accounts you are joint with");
 								break;
 							}
 							System.out.print("How much would you like to transfer? (Enter in the form $X.XX)\n> $");
@@ -413,8 +407,7 @@ public class Bank {
 								line = strings.nextLine();
 							}
 							Customer recipient = findCustomer(line);
-							transfer(user, tempCustomer, recipient, amount);
-							System.out.println("Transaction complete");
+							transfer(user, tempCustomer, recipient, amount);					
 							break;
 						case 3:							//Do nothing by choice
 							break;
@@ -452,35 +445,7 @@ public class Bank {
 	}
 	
 	public void approveMenu(int accessLevel) {
-		Scanner input = new Scanner(System.in);
-		char choice;
-		int arraySize = pendingApprovalCustomers.size();
-		if (arraySize != 0) {
-			Customer tempCustomer = null;
-			for (int i = 0; i < arraySize; i++) {
-				tempCustomer = pendingApprovalCustomers.remove(0);
-				System.out.print("\n" + tempCustomer + "\nApprove? (y/n)\n> ");
-				choice = input.nextLine().charAt(0);
-				if (choice == 'Y' || choice == 'y')
-					customers.add(tempCustomer);
-			}
-		}
-		arraySize = pendingApprovalStaff.size();
-		if (arraySize != 0 && accessLevel == 0) {
-			Employee tempEmployee = null;
-			for (int i = 0; i < arraySize; i++) {
-				tempEmployee = pendingApprovalStaff.remove(0);
-				System.out.print("\n" + tempEmployee + "\nApprove? (y/n)\n> ");
-				choice = input.nextLine().charAt(0);
-				if (choice == 'Y' || choice == 'y') {
-					if (tempEmployee.getAccessLevel() == 0)
-						admins.add((Admin)tempEmployee);
-					else
-						employees.add(tempEmployee);
-				}
-			}
-		}
-		System.out.println("There are no more applications in queue");
+		
 	}
 	
 	public boolean validateOption(User user, int option) {
@@ -620,12 +585,8 @@ public class Bank {
 	}
 	
 	public void printContents() {
-		System.out.println("Customers: " + customers
-							+"\nEmployees: " + employees
-							+"\nAdmins: " + admins
-							+"\nPending Customers: " + pendingApprovalCustomers
-							+"\nPending Staff " + pendingApprovalStaff
-							+"\n");
+		System.out.println("Customers:\n " + pendingApprovalCustomers
+							+"Admins/Employees:\n " + pendingApprovalStaff);
 	}
 }
 

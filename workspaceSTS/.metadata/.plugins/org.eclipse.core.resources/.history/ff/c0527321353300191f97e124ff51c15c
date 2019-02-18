@@ -397,7 +397,7 @@ public class Bank {
 							break;
 						case 2:							//Transfer
 							if (tempCustomer.jointAccounts.size() == 0) {
-								System.out.println("This account does not have any joint accounts.");
+								System.out.println("You do not have any accounts you are joint with");
 								break;
 							}
 							System.out.print("How much would you like to transfer? (Enter in the form $X.XX)\n> $");

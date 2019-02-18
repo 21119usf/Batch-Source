@@ -13,7 +13,8 @@ public class Driver {
 		
 			switch (option) {
 			case 1:
-				bank.login();
+				//bank.login();
+				bank.printContents();
 				break;
 			case 2:
 				bank.registerApplication();
@@ -21,7 +22,6 @@ public class Driver {
 			default:
 				restart = false;
 			}
-			bank.printContents();
 			if (!restart)
 				break;
 		}

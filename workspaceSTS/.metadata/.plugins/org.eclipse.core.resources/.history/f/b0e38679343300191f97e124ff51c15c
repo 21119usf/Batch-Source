@@ -392,12 +392,11 @@ public class Bank {
 						case 1:							//Withdrawal
 							System.out.print("How much would you like to withdraw? (Enter in the form $X.XX)\n> $");
 							amount = doubles.nextDouble();
-							withdraw(user, tempCustomer, amount);
-							System.out.println("Transaction complete");
+							deposit(user, tempCustomer, amount);
 							break;
 						case 2:							//Transfer
 							if (tempCustomer.jointAccounts.size() == 0) {
-								System.out.println("This account does not have any joint accounts.");
+								System.out.println("You do not have any accounts you are joint with");
 								break;
 							}
 							System.out.print("How much would you like to transfer? (Enter in the form $X.XX)\n> $");
@@ -413,8 +412,7 @@ public class Bank {
 								line = strings.nextLine();
 							}
 							Customer recipient = findCustomer(line);
-							transfer(user, tempCustomer, recipient, amount);
-							System.out.println("Transaction complete");
+							transfer(user, tempCustomer, recipient, amount);					
 							break;
 						case 3:							//Do nothing by choice
 							break;
