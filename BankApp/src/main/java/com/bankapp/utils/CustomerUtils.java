@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
 import com.bankapp.person.Customer;
 
 public class CustomerUtils {
+	final static Logger logger = Logger.getLogger(CustomerUtils.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static String customersFile = "Customers.ser";
 	private static ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -111,6 +114,8 @@ public class CustomerUtils {
 			if (currentCustomer != null) {
 				notValidLogin = false;
 				System.out.println("Credentials accepted. Logging in.");
+				logger.info("CUSTOMER " + currentCustomer.getId() +
+					" logged in");
 				displayLanding();
 			} else {
 				loginCount++;
@@ -323,6 +328,8 @@ public class CustomerUtils {
 				break;
 			default:
 				System.out.println("Logging out.");
+				logger.info("CUSTOMER " + currentCustomer.getId()
+					+ " logged out");
 				System.exit(0);
 			}
 		}
