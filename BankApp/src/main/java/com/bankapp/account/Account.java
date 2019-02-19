@@ -28,7 +28,7 @@ public class Account implements Serializable {
 		owners = new ArrayList<Customer>();
 		setOwners(c);
 	}
-	
+
 	// Round decimals
 	public static double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
@@ -124,5 +124,12 @@ public class Account implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", name=" + name + ", status=" + status
+				+ ", open=" + open + ", balance=" + balance + ", owners="
+				+ owners + "]";
 	}
 }
