@@ -1,0 +1,9 @@
+*   DATABASE - Data stored as entitites/tables with entries stored as rows
+*   Relational/non-relational
+*   RELATIONAL - there exists a relationship between A and B
+*   DIALECTS - Oracle, PostGreSQL, MySQL, MSSQL, etc
+*   DISTRIBUTED ARCHITECTURE - 
+*   RDBMS - Relational Database Management System
+*   TABLES - Contains columns and rows
+*   COLUMNS - Defines type (like parameters for an object)
+*   ROWS - Entries (like the object itself)
