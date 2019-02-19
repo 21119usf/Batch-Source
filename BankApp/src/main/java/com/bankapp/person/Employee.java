@@ -29,14 +29,6 @@ public class Employee extends Person {
 	public void denyAccount(Account a) {
 		a.setOpen(false);
 	}
-	// Retrieve customer information
-	//public Customer getCustomerInfo(int id) {
-		// Find customer by id
-	//}
-	// Retrieve account information
-	//public Account getAccountInfo(int id) {
-		// find account by id
-	//}
 
 	// Get/set methods
 	public int getId() {
@@ -56,5 +48,11 @@ public class Employee extends Person {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", username=" + username + ", password="
+				+ password + "]";
 	}
 }
