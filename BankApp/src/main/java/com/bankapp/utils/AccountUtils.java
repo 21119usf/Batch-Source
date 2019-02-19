@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
 import com.bankapp.person.Customer;
 
 public class AccountUtils {
+	final static Logger logger = Logger.getLogger(AccountUtils.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static String accountsFile = "Accounts.ser";
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
@@ -108,8 +111,9 @@ public class AccountUtils {
 			sc.nextLine();
 		}
 		
-		if (amount > 0.0) {
-			a.deposit(amount);
+		if (amount > 0.0 && a.deposit(amount)) {
+			logger.info("DEPOSIT " + "(" + a.getId() + "): $"
+				+ String.format("%.2f", amount));
 			saveAccounts();
 		} else if (amount == 0.0) {
 			return;
@@ -131,8 +135,9 @@ public class AccountUtils {
 		
 		if (amount == 0.0) {
 			return;
-		} else if (amount > 0.0) {
-			a.withdraw(amount);
+		} else if (amount > 0.0 && a.withdraw(amount)) {
+			logger.info("WITHDRAW " + "(" + a.getId() + "): $"
+					+ String.format("%.2f", amount));
 			AccountUtils.saveAccounts();
 		}
 	}
@@ -164,8 +169,9 @@ public class AccountUtils {
 		} else if (amount > 0.0) {
 			// Get account b
 			Account b = getAccount(bId);
-			if (b != null) {
-				a.transfer(b, amount);
+			if (b != null && a.transfer(b, amount)) {
+				logger.info("TRANSFER " + "(" + a.getId() + " to " + b.getId() + "): $"
+						+ String.format("%.2f", amount));
 				AccountUtils.saveAccounts();
 			} else {
 				System.out.println("Account not found");
