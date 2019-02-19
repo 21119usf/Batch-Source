@@ -316,6 +316,8 @@ public class CustomerUtils {
 			switch (option) {
 			case 0:
 				System.out.println("Logging out.");
+				logger.info("CUSTOMER " + currentCustomer.getId()
+				+ " logged out");
 				System.exit(0);
 			case 1:
 				displayAccounts();
