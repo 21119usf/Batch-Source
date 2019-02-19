@@ -1,9 +1,70 @@
-*   DATABASE - Data stored as entitites/tables with entries stored as rows
-*   Relational/non-relational
-*   RELATIONAL - there exists a relationship between A and B
-*   DIALECTS - Oracle, PostGreSQL, MySQL, MSSQL, etc
-*   DISTRIBUTED ARCHITECTURE - 
-*   RDBMS - Relational Database Management System
-*   TABLES - Contains columns and rows
-*   COLUMNS - Defines type (like parameters for an object)
-*   ROWS - Entries (like the object itself)
+* DATABASE - Data stored as entitites/tables with entries stored as rows
+* RELATIONAL - there exists a relationship between A and B
+* DIALECTS - Oracle, PostGreSQL, MySQL, MSSQL, etc
+* DISTRIBUTED ARCHITECTURE - 
+* RDBMS - Relational Database Management System
+* TABLES - Contains columns and rows
+* COLUMNS - Defines type (like parameters for an object)
+* ROWS - Entries (like the object itself)
+* PRIMARY KEY - Unique identifying column for a table
+* FOREIGN KEY - Key to reference a column in another table
+* COMPOSITE KEY - Type of PK; made up of multiple columns
+* SURROGATE KEY - Generated value for the purpose of being a PK
+* NATURAL KEY - Value naturally in the table used as a PK
+* MULTIPLICITY/CARDINALITY - Defines relationship between fields/tables
+    * 1-to-1
+    * 1-to-n
+    * n-to-n
+* REFERENTIAL INTEGRITY - Consistency between tables when entries are changed
+* NORMALIZATION - Removing redundencies in the database
+    * 1st Normal Form
+        * Data is stored in a relational table with PK
+        * Each column contains atomic values
+    * 2nd Normal Form
+        * Table is in 1st Normal Form
+        * Each column depends on the table's PK
+    * 3rd Normal Form
+        * Table is in 2nd Normal Form
+        * All of its columns are not transitively dependent on the PK
+* CRUD (Create Read Update Delete)
+* SUB-LANGUAGES
+    * DDL - Data Definition Languages
+        * CREATE
+            * CREATE TABLE A (int ID, VARCHAR(X) name);
+            * Each VARCHAR can hold up to X characters
+        * ALTER
+            * ALTER TABLE DROP Column ID;
+            * Dropped column ID, so only the name column is left
+        * DROP
+            * DROP TABLE A
+            * No more Table A
+        * TRUNCATE
+            * Deleting data without deleting the table, maintains structure
+            * Practical use - refreshing data daily
+            * Import tables
+    * DML - Data Manipulation Language
+        * Insert
+            * INSERT INTO A Values(14, 'Bob');
+            * INSERT INTO A (ID), Values (15);
+        * Update
+            * UPDATE A SET name = 'Dale' WHERE ID = 14;
+            * Modifies a row
+        * Delete
+            * DELETE FROM A WHERE name = 'Bob';
+            * Deletes all rows in table where name is Bob
+    * DQL - Data Query Language
+        * SELECT
+            * SELECT A FROM *
+            * Returns table A
+    * DCL - Data Control Language
+        * GRANT
+        * REVOKE
+        * VIEW
+            * Virtual table which can hide sensitive data
+    * TCL - Transaction Control Language
+        * COMMIT
+            * Permanently save
+        * SAVEPOINT
+            * Temporary save point
+        * ROLLBACK
+            * Roll DB back to last commit or save point
