@@ -170,8 +170,8 @@ public class AccountUtils {
 			// Get account b
 			Account b = getAccount(bId);
 			if (b != null && a.transfer(b, amount)) {
-				logger.info("TRANSFER " + "(" + a.getId() + " to " + b.getId() + "): $"
-						+ String.format("%.2f", amount));
+				logger.info("TRANSFER from " + a.getId() + " to " + b.getId() 
+					+ " $" + String.format("%.2f", amount));
 				AccountUtils.saveAccounts();
 			} else {
 				System.out.println("Account not found");
@@ -199,6 +199,8 @@ public class AccountUtils {
 				Customer c2 = CustomerUtils.getCustomer(id);
 				if (c2 != null) {
 					a.addOwner(c2);
+					logger.info("CUSTOMERS " + c.getId() + ", " + c2.getId() +
+						" opened ACCOUNT " + a.getId());
 					saveAccounts();
 				} else {
 					System.out.println("User ID not found");
@@ -214,6 +216,7 @@ public class AccountUtils {
 		saveAccounts();
 		c.getAccounts().add(a.getId());
 		CustomerUtils.saveCustomers();
+		logger.info("CUSTOMER " + c.getId() + " opened ACCOUNT " + a.getId());
 		displayAccountMenu(a);
 		
 		return a;
@@ -233,7 +236,7 @@ public class AccountUtils {
 		
 		if (option == 4) {
 			a.setOpen(false);
-			System.out.println("Account " + a.getId() + " closed.");
+			logger.info("ACCOUNT " + a.getId() + " closed");
 			saveAccounts();
 		}
 		return;
