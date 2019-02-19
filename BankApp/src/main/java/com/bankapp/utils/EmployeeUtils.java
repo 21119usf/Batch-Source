@@ -209,6 +209,8 @@ public class EmployeeUtils {
 			employees.add(e);
 		}
 		saveEmployees();
+		logger.info("EMPLOYEE " + currentEmployee.getId()
+		+ " created");
 		
 		// Redirect
 		displayLogin();
