@@ -250,6 +250,8 @@ public class CustomerUtils {
 		email, address, phoneNumber, ssNumber);
 		customers.add(c);
 		saveCustomers();
+		logger.info("CUSTOMER " + currentCustomer.getId()
+		+ " created");
 		
 		// Redirect
 		displayLogin();
