@@ -2,8 +2,8 @@ package com.revature.bap1;
 
 public class CustomerView {
 	
-	public void initialView(String username) {
-		String header = "User: " + username;
+	public void initialView(String firstName, String lastName) {
+		String header = "Customer: " + firstName + " " + lastName;
 		String dashes = "";
 		for (int i = 0; i < header.length(); i++) {
 			dashes += "-";

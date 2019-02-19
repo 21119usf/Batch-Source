@@ -20,6 +20,12 @@ public class UserManager {
 		userList = new ArrayList<User>();
 	}
 	
+	public void displayUserList() {
+		for (User u : userList) {
+			System.out.println(u);
+		}
+	}
+	
 	public void readFile() {
 		File file = new File(USER_FILE);
 		
@@ -54,19 +60,18 @@ public class UserManager {
 		userList.add(new Customer(1, firstName, lastName, username, password));
 	}
 	
+	public void createEmployee(String firstName, String lastName, String username, String password) {
+		userList.add(new Employee(1, firstName, lastName, username, password));
+	}
+	
+	public void createAdmin(String firstName, String lastName, String username, String password) {
+		userList.add(new Admin(1, firstName, lastName, username, password));
+	}
+	
 	public User login(String username, String password) {
 		for (User u : userList) {
 			if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
 				return u;
-			}
-		}
-		return null;
-	}
-	
-	public String getUsername(int id) {
-		for (User u : userList) {
-			if (u.getId() == id) {
-				return u.getUsername();
 			}
 		}
 		return null;

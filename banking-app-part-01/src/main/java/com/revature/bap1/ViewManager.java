@@ -23,18 +23,16 @@ public class ViewManager {
 	public void initial() {
 		InitialView iv = new InitialView();
 		
-		iv.initialMessage();
-		
-		while (ui.getIntNum() != 3) {
+		do {
 			iv.message();
 			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 3) {
 				iv.error();
 			} else if (ui.getIntNum() == 1) {
 				login();
 			} else if (ui.getIntNum() == 2) {
-				registerCustomer();
+				registerAccount();
 			}
-		}
+		} while (ui.getIntNum() != 3);
 	}
 	
 	public void login() {
@@ -48,12 +46,14 @@ public class ViewManager {
 		lv.password();
 		password = ui.scan();
 		
-		if (bank.login(username, password) == 1) {
+		int loginFlag = bank.login(username, password);
+		
+		if (loginFlag == 1) {
 			initialCustomer();
-		} else if (bank.login(username, password) == 2) {
-			
-		} else if (bank.login(username, password) == 3) {
-			
+		} else if (loginFlag == 2) {
+			initialEmployee();
+		} else if (loginFlag == 3) {
+			initialAdmin();
 		}
 	}
 	
@@ -62,7 +62,7 @@ public class ViewManager {
 		initial();
 	}
 	
-	public void registerCustomer() {
+	public void registerAccount() {
 		RegisterCustomer rc = new RegisterCustomer();
 		
 		String firstName;
@@ -70,23 +70,23 @@ public class ViewManager {
 		String username;
 		String password;
 		
-		rc.firstName();
-		firstName = ui.scan();
-		rc.lastName();
-		lastName = ui.scan();
 		rc.username();
 		username = ui.scan();
 		rc.password();
 		password = ui.scan();
+		rc.firstName();
+		firstName = ui.scan();
+		rc.lastName();
+		lastName = ui.scan();
 		
-		bank.registerCustomer(firstName, lastName, username, password);
+		bank.registerCustomer(username, password, firstName, lastName);
 	}
 	
 	public void initialCustomer() {
 		CustomerView cv = new CustomerView();
 		
-		while (ui.getIntNum() != 4) {
-			cv.initialView(bank.getUsernameFromSessionID());
+		do {
+			cv.initialView(bank.getFirstNameFromCurrentUser(), bank.getLastNameFromCurrentUser());
 			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 4) {
 				cv.error();
 			} else if (ui.getIntNum() == 1) {
@@ -96,7 +96,47 @@ public class ViewManager {
 			} else if (ui.getIntNum() == 3) {
 				
 			}
-		}
+		} while (ui.getIntNum() != 4);
+		
+		logout();
+	}
+	
+	public void initialEmployee() {
+		EmployeeView ev = new EmployeeView();
+		
+		do {
+			ev.initialView(bank.getFirstNameFromCurrentUser(), bank.getLastNameFromCurrentUser());
+			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 3) {
+				ev.error();
+			} else if (ui.getIntNum() == 1) {
+				
+			} else if (ui.getIntNum() == 2) {
+				
+			}
+		} while (ui.getIntNum() != 3);
+		
+		logout();
+	}
+	
+	public void initialAdmin() {
+		AdminView av = new AdminView();
+		
+		do {
+			av.initialView(bank.getFirstNameFromCurrentUser(), bank.getLastNameFromCurrentUser());
+			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 6) {
+				av.error();
+			} else if (ui.getIntNum() == 1) {
+				
+			} else if (ui.getIntNum() == 2) {
+				
+			} else if (ui.getIntNum() == 3) {
+				
+			} else if (ui.getIntNum() == 4) {
+				
+			} else if (ui.getIntNum() == 5) {
+				
+			}
+		} while (ui.getIntNum() != 6);
 		
 		logout();
 	}
