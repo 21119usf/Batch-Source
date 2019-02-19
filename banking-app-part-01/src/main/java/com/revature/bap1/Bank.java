@@ -4,17 +4,23 @@ public class Bank {
 	
 	private UserManager um;
 	private AccountManager am;
+	private ApplicationManager appMan;
+	private CounterManager cm;
 	
 	private User currentUser;
 	
 	public Bank() {
 		um = new UserManager();
 		am = new AccountManager();
+		appMan = new ApplicationManager();
+		cm = new CounterManager();
 	}
 	
 	public void readFiles() {
 		um.readFile();
 		am.readFile();
+		appMan.readFile();
+		cm.readFile();
 		
 //		um.createAdmin("admin", "password", "Master", "Admin");
 //		um.createEmployee("employee", "password", "Master", "Employee");
@@ -25,6 +31,8 @@ public class Bank {
 	public void writeFiles() {
 		um.writeFile();
 		am.writeFile();
+		appMan.writeFile();
+		cm.writeFile();
 	}
 	
 	public int instanceOf(User u) {

@@ -16,14 +16,8 @@ public class UserManager {
 	
 	private static final String USER_FILE = "user.ser";
 	
-	public UserManager () {
+	public UserManager() {
 		userList = new ArrayList<User>();
-	}
-	
-	public void displayUserList() {
-		for (User u : userList) {
-			System.out.println(u);
-		}
 	}
 	
 	public void readFile() {
@@ -53,6 +47,12 @@ public class UserManager {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void displayUserList() {
+		for (User u : userList) {
+			System.out.println(u);
 		}
 	}
 	
