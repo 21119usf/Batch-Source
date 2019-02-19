@@ -120,5 +120,77 @@ class BankAppTest {
 	
 	// Testing Customer Class
 	// =========================================================================
+	@SuppressWarnings("unchecked")
+	@Test
+	void customerFileIOTest() {
+		String testFile = "test.ser";
+		File file = new File(testFile);
+		ArrayList<Customer> alOut = new ArrayList<Customer>();
+		alOut.add(customer);
+		try {
+			FileOutputStream af = new FileOutputStream(testFile);
+			ObjectOutputStream oos = new ObjectOutputStream(af);
+			oos.writeObject(alOut);
+			oos.close();
+			af.close();
+		} catch (FileNotFoundException e) {
+			// e.printStackTrace();
+		} catch (IOException e) {
+			// e.printStackTrace();
+		}
+		ArrayList<Customer> alIn = new ArrayList<Customer>();
+		try {
+			FileInputStream af = new FileInputStream(testFile);
+			ObjectInputStream ois = new ObjectInputStream(af);
+			alIn = (ArrayList<Customer>)ois.readObject();
+			ois.close();
+			af.close();
+		} catch (FileNotFoundException e) {
+			// e.printStackTrace();
+		} catch (IOException e) {
+			// e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// e.printStackTrace();
+		}
+		assertEquals(alOut.get(0).toString(), alIn.get(0).toString());
+		file.delete();
+	}
 	
+	// Testing Employee Class
+	// =========================================================================
+	@SuppressWarnings("unchecked")
+	@Test
+	void employeeFileIOTest() {
+		String testFile = "test.ser";
+		File file = new File(testFile);
+		ArrayList<Employee> alOut = new ArrayList<Employee>();
+		alOut.add(employee);
+		try {
+			FileOutputStream af = new FileOutputStream(testFile);
+			ObjectOutputStream oos = new ObjectOutputStream(af);
+			oos.writeObject(alOut);
+			oos.close();
+			af.close();
+		} catch (FileNotFoundException e) {
+			// e.printStackTrace();
+		} catch (IOException e) {
+			// e.printStackTrace();
+		}
+		ArrayList<Employee> alIn = new ArrayList<Employee>();
+		try {
+			FileInputStream af = new FileInputStream(testFile);
+			ObjectInputStream ois = new ObjectInputStream(af);
+			alIn = (ArrayList<Employee>)ois.readObject();
+			ois.close();
+			af.close();
+		} catch (FileNotFoundException e) {
+			// e.printStackTrace();
+		} catch (IOException e) {
+			// e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// e.printStackTrace();
+		}
+		assertEquals(alOut.get(0).toString(), alIn.get(0).toString());
+		file.delete();
+	}
 }
