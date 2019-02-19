@@ -79,7 +79,6 @@ public class AccountUtils {
 		
 		// Redirect
 		if (option == 0) {
-			//CustomerUtils.displayAccounts();
 			return;
 		} else if (option == 1) {
 			AccountUtils.deposit(a);
@@ -92,7 +91,7 @@ public class AccountUtils {
 		} else if (option == 5) {
 			AccountUtils.closeAccount(a);
 		}
-		//displayAccountMenu(a);
+
 		return;
 	}
 	
