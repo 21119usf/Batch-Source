@@ -9,6 +9,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
 import com.bankapp.person.Admin;
@@ -16,6 +18,7 @@ import com.bankapp.person.Customer;
 import com.bankapp.person.Employee;
 
 public class EmployeeUtils {
+	final static Logger logger = Logger.getLogger(EmployeeUtils.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static String employeesFile = "Employees.ser";
 	private static ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -102,6 +105,8 @@ public class EmployeeUtils {
 			if (currentEmployee != null) {
 				notValidLogin = false;
 				System.out.println("Credentials accepted. Logging in.");
+				logger.info("EMPLOYEE " + currentEmployee.getId()
+					+ " logged in");
 				displayLanding();
 			} else {
 				loginCount++;
@@ -256,6 +261,8 @@ public class EmployeeUtils {
 			switch (option) {
 			case 0:
 				System.out.println("Logging out.");
+				logger.info("EMPLOYEE " + currentEmployee.getId()
+				+ " logged out");
 				System.exit(0);
 			case 1:
 				approveAccount();
@@ -275,6 +282,8 @@ public class EmployeeUtils {
 				break;
 			default:
 				System.out.println("Logging out.");
+				logger.info("EMPLOYEE " + currentEmployee.getId()
+				+ " logged out");
 				System.exit(0);
 			}
 		}
