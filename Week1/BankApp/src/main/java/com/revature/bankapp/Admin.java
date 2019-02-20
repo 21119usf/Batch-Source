@@ -8,15 +8,7 @@ public class Admin {
 		this.username = username;
 		this.password = password;
 	}
-	void manageAccounts() {
-		
-	}
-	void manageApplications() {
-		
-	}
-	void cancelAccount() {
-		
-	}
+
 	public String getUsername() {
 		return username;
 	}

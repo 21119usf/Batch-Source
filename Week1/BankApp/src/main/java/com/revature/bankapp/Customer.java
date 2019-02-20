@@ -9,8 +9,8 @@ public class Customer {
 	private String last;
 	private int id;
 	private ArrayList<Account> accounts;
-	private ArrayList<Application> applications;
-    static int counter = 0;
+	//private ArrayList<Application> applications;
+    static int counter;
 	
 	public Customer(String username, String password, String name, String last) {
 		super();
@@ -19,7 +19,6 @@ public class Customer {
 		this.name = name;
 		this.last = last;
 		accounts = new ArrayList<Account>();
-		applications = new ArrayList<Application>();
 		this.id = Customer.counter++;
 	}
 	public Customer(String username, String password, String name, String last, int id) {
@@ -29,7 +28,6 @@ public class Customer {
 		this.name = name;
 		this.last = last;
 		accounts = new ArrayList<Account>();
-		applications = new ArrayList<Application>();
 		this.id = id;
 		Customer.counter = id+1;
 	}
@@ -39,21 +37,18 @@ public class Customer {
 	}
 
 	public ArrayList<Account> getAccounts() {
-		System.out.println(accounts);
 		return accounts;
 	}
 
 	public void addAccounts(Account account) {
 		accounts.add(account);
 	}
-
-	public ArrayList<Application> getApplications() {
-		System.out.println(applications);
-		return applications;
-	}
-
-	public void addApplications(Application application) {
-		applications.add(application);
+	public void removeAccount(Account account) {
+		for(int i = 0 ; i < accounts.size(); i++) {
+			if (account.equals(accounts.get(i))){
+				accounts.remove(i);
+			}
+		}
 	}
 
 	public String getUsername() {
@@ -87,15 +82,18 @@ public class Customer {
 	public void setLast(String last) {
 		this.last = last;
 	}
-	public void apply(Application app) {
-		this.addApplications(app);
-	}
-
-
+	
 	@Override
 	public String toString() {
 		return "Customer [username=" + username + ", password=" + password + ", name=" + name + ", last=" + last
-				+ ", id=" + id + ", accounts=" + accounts + ", applications=" + applications + "]";
+				+ ", id=" + id + ", accounts=" + accounts + "]";
 	}
+	public void getApps() {
+		for(int i = 0; i<accounts.size(); i++) {
+			System.out.println("Account Id: " + accounts.get(i).getId()+ " Active Status: " + accounts.get(i).getActive());
+		}
+	}
+
+
 	
 }
