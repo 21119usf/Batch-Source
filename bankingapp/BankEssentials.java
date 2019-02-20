@@ -25,7 +25,7 @@ class Customer extends BankEssentials{
 // Save Customer information to a file, make it serializable 
 	//** read from stored data file 
 	static  Scanner input = new Scanner(System.in);
-	protected List<Customer>  accountOpen() throws IOException {
+	protected List<String>  accountOpen() throws IOException {
 		//asks user if they want to open an account if yes go through registration variables if no tell them to have a nice day
 		//Also ask if they have an account open already 
 		// good place for menu-- switch case 
