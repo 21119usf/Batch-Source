@@ -1,8 +1,12 @@
 package com.revature.bap1;
 
-public class Admin extends Employee {
+import java.io.Serializable;
 
-	public Admin(int id, String username, String password, String firstName, String lastName) {
-		super(id, username, password, firstName, lastName);
-	}
+public class Admin extends Employee implements Serializable {
+	
+	private static final long serialVersionUID = -3945665822999045035L;
+
+	public Admin(String username, String password, String firstName, String lastName) {
+		super(username, password, firstName, lastName);
+	}	
 }

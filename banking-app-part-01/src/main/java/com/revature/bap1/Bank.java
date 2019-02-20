@@ -1,91 +1,160 @@
 package com.revature.bap1;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Bank {
 	
-	private UserManager um;
-	private AccountManager am;
-	private ApplicationManager appMan;
-	private CounterManager cm;
+	private Map<Customer, Account> hashMap;
+	private List<String> applicationList;
+	private List<Employee> employeeList;
+	private List<Admin> adminList;
 	
-	private User currentUser;
+	private String currentUsername;
+	private String currentFirstNameAndLastName;
+	private int userRights;
+	
+	private static final String SER_FILE = "file.ser";
 	
 	public Bank() {
-		um = new UserManager();
-		am = new AccountManager();
-		appMan = new ApplicationManager();
-		cm = new CounterManager();
+		hashMap = new HashMap<Customer, Account>();
+		applicationList = new ArrayList<String>();
+		employeeList = new ArrayList<Employee>();
+		adminList = new ArrayList<Admin>();
 	}
 	
-	public void readFiles() {
-		um.readFile();
-		am.readFile();
-		appMan.readFile();
-		cm.readFile();
+	public void readFile() {
+		File file = new File(SER_FILE);
 		
-//		comment out the lines below
-		
-//		um.createAdmin(cm.getNewUserCount(), "admin", "password", "Master", "Admin");
-//		um.createEmployee(cm.getNewUserCount(), "employee", "password", "Master", "Employee");
-		
-//		um.displayUserList();
-		appMan.printAppList();
-	}
-	
-	public void writeFiles() {
-		um.writeFile();
-		am.writeFile();
-		appMan.writeFile();
-		cm.writeFile();
-	}
-	
-	public int instanceOf(User u) {
-		if (u instanceof Customer) {
-			return 1;
-		} else if (u instanceof Admin) {
-			return 3;
-		} else if (u instanceof Employee) {
-			return 2;
+		if (file.exists()) {
+			try {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SER_FILE));
+				
+				hashMap = (HashMap<Customer, Account>) ois.readObject();
+				applicationList = (ArrayList<String>) ois.readObject();
+				employeeList = (ArrayList<Employee>) ois.readObject();
+				adminList = (ArrayList<Admin>) ois.readObject();
+				
+				ois.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
-		return -1;
+		
+		displayCustomer();
+		adminList.add(new Admin("a", "a", "a", "a"));
+		adminList.add(new Admin("admin", "password", "Master", "Admin"));
+	}
+	
+	public void writeFile() {
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SER_FILE));
+			
+			oos.writeObject(hashMap);
+			oos.writeObject(applicationList);
+			oos.writeObject(employeeList);
+			oos.writeObject(adminList);
+			
+			oos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void displayCustomer() {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {
+			System.out.println(entry.getKey());
+		}
+	}
+	
+	public void displayEmployee() {
+		for (Employee e : employeeList) {
+			System.out.println(e);
+		}
+	}
+	
+	public void displayAdmin() {
+		for (Admin a : adminList) {
+			System.out.println(a);
+		}
+	}
+	
+	public void displayAccount() {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {
+			if (entry.getValue() != null) {
+				System.out.println(entry.getValue());
+			}
+		}
+	}
+	
+	public void displayApplication() {
+		for (String s : applicationList) {
+			System.out.println(applicationList);
+		}
+	}
+	
+	public String getCurrentFirstNameAndLastName() {
+		return this.currentFirstNameAndLastName;
+	}
+	
+	public int getUserRigts() {
+		return this.userRights;
 	}
 	
 	public void registerCustomer(String username, String password, String firstName, String lastName) {
-		um.registerCustomer(cm.getNewUserCount(), username, password, firstName, lastName);
-	}
-	
-	public void create(String username, String password, String firstName, String lastName) {
-		um.createEmployee(cm.getNewUserCount(), username, password, firstName, lastName);
-	}
-	
-	public void createAdmin(String username, String password, String firstName, String lastName) {
-		um.createAdmin(cm.getNewUserCount(), username, password, firstName, lastName);
+		Customer c = new Customer(username, password, firstName, lastName);
+		hashMap.put(c, null);
 	}
 	
 	public int login(String username, String password) {
-		currentUser = um.login(username, password);
-		if (currentUser == null) {
-			return -1;
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {
+			if (entry.getKey().getUsername().equals(username) && entry.getKey().getPassword().equals(password)) {
+				currentUsername = entry.getKey().getUsername();
+				currentFirstNameAndLastName = entry.getKey().getFirstName() + " " + entry.getKey().getLastName();
+				userRights = 1;
+				return userRights;
+			}
 		}
-		return instanceOf(currentUser);		
+		
+		for (Employee e : employeeList) {
+			if (e.getUsername().equals(username) && e.getPassword().equals(password)) {
+				currentUsername = e.getUsername();
+				currentFirstNameAndLastName = e.getFirstName() + " " + e.getLastName();
+				userRights = 2;
+				return userRights;
+			}
+		}
+		
+		for (Admin a : adminList) {
+			if (a.getUsername().equals(username) && a.getPassword().equals(password)) {
+				currentUsername = a.getUsername();
+				currentFirstNameAndLastName = a.getFirstName() + " " + a.getLastName();
+				userRights = 3;
+				return userRights;
+			}
+		}
+		
+		return -1;
 	}
 	
 	public void logout() {
-		currentUser = null;
-	}
-	
-	public void applySingleAccount() {
-		appMan.applySingleAccount(cm.getNewAccountCount(), currentUser.getId(), cm.getNewAppCount());
-	}
-	
-	public String getUsernameFromCurrentUser() {
-		return currentUser.getUsername();
-	}
-	
-	public String getFirstNameFromCurrentUser() {
-		return currentUser.getFirstName();
-	}
-	
-	public String getLastNameFromCurrentUser() {
-		return currentUser.getLastName();
+		currentUsername = "";
+		currentFirstNameAndLastName = "";
+		userRights = 0;
 	}
 }
