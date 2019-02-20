@@ -1,0 +1,2 @@
+userName password Name accountNumber accountValue jointAccount jointAccount2 etc.
+Customer Enter Juan 45698876 25 
