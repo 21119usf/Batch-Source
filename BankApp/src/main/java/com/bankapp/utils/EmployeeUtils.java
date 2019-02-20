@@ -92,6 +92,7 @@ public class EmployeeUtils {
 		String username;
 		String password;
 		do {
+			System.out.println();
 			System.out.println("Please Login");
 			System.out.println("Enter Username: ");
 			System.out.print(">>> ");
@@ -201,15 +202,16 @@ public class EmployeeUtils {
 		}
 		
 		// Create Employee/Admin object and store data
+		Employee e;
 		if (isAdmin) {
-			Admin e = new Admin(username, password, firstName, lastName);
+			e = new Admin(username, password, firstName, lastName);
 			employees.add(e);
 		} else {
-			Employee e = new Employee(username, password, firstName, lastName);
+			e = new Employee(username, password, firstName, lastName);
 			employees.add(e);
 		}
 		saveEmployees();
-		logger.info("EMPLOYEE " + currentEmployee.getId()
+		logger.info("EMPLOYEE " + e.getId()
 		+ " created");
 		
 		// Redirect
@@ -256,6 +258,7 @@ public class EmployeeUtils {
 			if (currentEmployee instanceof Admin) {
 				al.add("Edit Account");
 			}
+			System.out.println();
 			Menu m = new Menu(al);
 			option = m.display();
 			
@@ -296,6 +299,7 @@ public class EmployeeUtils {
 		int id = 0;
 		
 		// Get account ID
+		System.out.println();
 		System.out.println("Enter account ID:");
 		System.out.print(">>> ");
 		if (sc.hasNextInt()) {
@@ -324,6 +328,7 @@ public class EmployeeUtils {
 		int id = 0;
 		
 		// Get account ID
+		System.out.println();
 		System.out.println("Enter account ID:");
 		System.out.print(">>> ");
 		if (sc.hasNextInt()) {
@@ -337,10 +342,12 @@ public class EmployeeUtils {
 		// Search account
 		Account a = AccountUtils.getAccount(id);
 		if (a != null) {
+			System.out.println();
 			System.out.println("Account ID:\t" + a.getId());
 			System.out.println("Status:\t\t" + a.getStatus());
 			System.out.println("Open:\t\t" + a.isOpen());
-			System.out.println("Balance:\t$" + String.format("%.2f", a.getBalance()));
+			System.out.println("Balance:\t$" +
+				String.format("%.2f", a.getBalance()));
 			ArrayList<Customer> al = a.getOwners();
 			System.out.print("Owners:\t\t");
 			for (Customer c : al) {
@@ -417,7 +424,7 @@ public class EmployeeUtils {
 			
 			// Redirect
 			if (option == 0) {
-				CustomerUtils.displayAccounts();
+				displayLanding();
 			} else if (option == 1) {
 				AccountUtils.deposit(a);
 			} else if (option == 2) {

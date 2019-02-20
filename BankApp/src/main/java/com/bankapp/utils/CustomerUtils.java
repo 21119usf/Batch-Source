@@ -101,6 +101,7 @@ public class CustomerUtils {
 		String username;
 		String password;
 		do {
+			System.out.println();
 			System.out.println("Please Login");
 			System.out.println("Enter Username: ");
 			System.out.print(">>> ");
@@ -250,7 +251,7 @@ public class CustomerUtils {
 		email, address, phoneNumber, ssNumber);
 		customers.add(c);
 		saveCustomers();
-		logger.info("CUSTOMER " + currentCustomer.getId()
+		logger.info("CUSTOMER " + c.getId()
 		+ " created");
 		
 		// Redirect
@@ -368,6 +369,7 @@ public class CustomerUtils {
 	
 	// Display currentCustomer personal info
 	public static void printCustomerInfo(Customer c) {
+		System.out.println();
 		System.out.println("Your ID:\t\t\t" + c.getId());
 		System.out.println("Your username:\t\t" + c.getUsername());
 		System.out.println("Your password:\t\t" + c.getPassword());

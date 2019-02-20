@@ -77,6 +77,7 @@ public class AccountUtils {
 		al.add("View Details");
 		al.add(">>> Close Account <<<");
 		
+		System.out.println();
 		Menu m = new Menu(al);
 		option = m.display();
 		
@@ -102,6 +103,7 @@ public class AccountUtils {
 	public static void deposit(Account a) {
 		double amount = 0.0;
 		
+		System.out.println();
 		System.out.println("Enter amount to deposit (0 to cancel):");
 		System.out.print(">>> ");
 		try {
@@ -124,6 +126,7 @@ public class AccountUtils {
 	public static void withdraw(Account a) {
 		double amount = 0.0;
 		
+		System.out.println();
 		System.out.println("Enter amount to withdraw (0 to cancel):");
 		System.out.print(">>> ");
 		try {
@@ -147,6 +150,7 @@ public class AccountUtils {
 		int bId = 0;
 		double amount = 0.0;
 		
+		System.out.println();
 		System.out.println("Enter account id to transfer to (0 to cancel)");
 		System.out.print(">>> ");
 		try {
@@ -244,6 +248,7 @@ public class AccountUtils {
 	
 	// Print account details
 	public static void printAccountDetails(Account a) {
+		System.out.println();
 		System.out.println("Account ID:\t" + a.getId());
 		System.out.println("Status:\t\t" + a.getStatus());
 		System.out.println("Open:\t\t" + a.isOpen());
