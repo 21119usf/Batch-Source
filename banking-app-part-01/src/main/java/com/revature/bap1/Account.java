@@ -22,9 +22,21 @@ public class Account implements Serializable {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+	
+	public boolean withdraw(double withdraw) {
+		if (balance > withdraw) {
+			balance -= withdraw;
+			return true;
+		}
+		return false;
+	}
+	
+	public void deposit(double deposit) {
+		this.balance += deposit;
+	}
 
 	@Override
 	public String toString() {
-		return "Account [balance=" + balance + "]";
+		return "balance=" + balance;
 	}
 }

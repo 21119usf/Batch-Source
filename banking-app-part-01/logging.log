@@ -1,4 +1,74 @@
-[INFO ] 2019-02-17 10:54:59.148 [main] Logging - this is set to info: trial
-[WARN ] 2019-02-17 10:54:59.151 [main] Logging - this is set to warn: trial
-[ERROR] 2019-02-17 10:54:59.151 [main] Logging - This is set to error: trial
-[FATAL] 2019-02-17 10:54:59.151 [main] Logging - This is set to fatal: trial
+[INFO ] 2019-02-20 05:21:35.404 [main] Logging - this is set to info: a registered
+[INFO ] 2019-02-20 06:43:22.938 [main] Logging - this is set to info: a logged in
+[INFO ] 2019-02-20 06:43:27.532 [main] Logging - this is set to info: a logged out
+[INFO ] 2019-02-20 06:43:35.326 [main] Logging - this is set to info: g logged in
+[INFO ] 2019-02-20 06:43:38.201 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 06:43:46.909 [main] Logging - this is set to info: g logged out
+[INFO ] 2019-02-20 06:43:55.506 [main] Logging - this is set to info: h logged in
+[INFO ] 2019-02-20 06:43:56.925 [main] Logging - this is set to info: h checked his balance
+[INFO ] 2019-02-20 06:44:57.448 [main] Logging - this is set to info: h logged in
+[INFO ] 2019-02-20 06:54:08.904 [main] Logging - this is set to info: h logged out
+[INFO ] 2019-02-20 06:54:11.893 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 06:56:07.299 [main] Logging - this is set to info: h logged in
+[INFO ] 2019-02-20 06:57:00.827 [main] Logging - this is set to info: h logged in
+[INFO ] 2019-02-20 06:57:24.131 [main] Logging - this is set to info: h logged out
+[INFO ] 2019-02-20 06:57:58.496 [main] Logging - this is set to info: g logged in
+[INFO ] 2019-02-20 06:58:02.806 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 06:58:08.404 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 06:58:13.795 [main] Logging - this is set to info: g logged out
+[INFO ] 2019-02-20 06:58:17.720 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 06:58:21.489 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:05:17.004 [main] Logging - this is set to info: g logged in
+[INFO ] 2019-02-20 07:05:18.274 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:05:26.938 [main] Logging - this is set to info: g deposited 30.0
+[INFO ] 2019-02-20 07:05:26.939 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:05:40.492 [main] Logging - this is set to info: g withdrawed $15.0
+[INFO ] 2019-02-20 07:05:40.493 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:05:45.805 [main] Logging - this is set to info: g logged out
+[INFO ] 2019-02-20 07:05:47.806 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:07:36.763 [main] Logging - this is set to info: g logged in
+[INFO ] 2019-02-20 07:07:55.516 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:07:57.934 [main] Logging - this is set to info: g logged out
+[INFO ] 2019-02-20 07:07:59.440 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:09:33.623 [main] Logging - this is set to info: g logged in
+[INFO ] 2019-02-20 07:09:51.619 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:09:55.686 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:10:00.634 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:10:07.140 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:11:22.915 [main] Logging - this is set to info: g logged out
+[INFO ] 2019-02-20 07:11:25.015 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:11:34.540 [main] Logging - this is set to info: g logged in
+[INFO ] 2019-02-20 07:11:36.720 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:11:40.763 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:11:50.143 [main] Logging - this is set to info: g withdrawed $4.0
+[INFO ] 2019-02-20 07:11:50.144 [main] Logging - this is set to info: g checked his balance
+[INFO ] 2019-02-20 07:11:52.546 [main] Logging - this is set to info: g logged out
+[INFO ] 2019-02-20 07:11:53.809 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:15:11.638 [main] Logging - this is set to info: t registered
+[INFO ] 2019-02-20 07:15:18.431 [main] Logging - this is set to info: t logged in
+[INFO ] 2019-02-20 07:15:19.968 [main] Logging - this is set to info: t applied for an account
+[INFO ] 2019-02-20 07:15:28.111 [main] Logging - this is set to info: t applied for an account
+[INFO ] 2019-02-20 07:15:29.427 [main] Logging - this is set to info: t logged out
+[INFO ] 2019-02-20 07:15:37.333 [main] Logging - this is set to info: admin logged in
+[INFO ] 2019-02-20 07:15:48.271 [main] Logging - this is set to info: admin accpeted an application
+[INFO ] 2019-02-20 07:15:54.996 [main] Logging - this is set to info: admin logged out
+[INFO ] 2019-02-20 07:16:04.450 [main] Logging - this is set to info: p registered
+[INFO ] 2019-02-20 07:16:09.656 [main] Logging - this is set to info: p logged in
+[INFO ] 2019-02-20 07:16:12.852 [main] Logging - this is set to info: p applied for an account
+[INFO ] 2019-02-20 07:16:22.051 [main] Logging - this is set to info: p logged out
+[INFO ] 2019-02-20 07:16:27.031 [main] Logging - this is set to info: admin logged in
+[INFO ] 2019-02-20 07:16:32.111 [main] Logging - this is set to info: admin accpeted an application
+[INFO ] 2019-02-20 07:17:28.747 [main] Logging - this is set to info: admin logged out
+[INFO ] 2019-02-20 07:17:31.308 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:17:33.033 [main] Logging - this is set to info:  logged out
+[INFO ] 2019-02-20 07:20:38.419 [main] Logging - this is set to info: admin logged in
+[INFO ] 2019-02-20 07:23:07.675 [main] Logging - this is set to info: admin logged out
+[INFO ] 2019-02-20 07:24:56.595 [main] Logging - this is set to info: admin logged in
+[INFO ] 2019-02-20 07:25:02.388 [main] Logging - this is set to info: displaying customers info
+[INFO ] 2019-02-20 07:25:02.389 [main] Logging - this is set to info: displaying customers info
+[INFO ] 2019-02-20 07:25:02.389 [main] Logging - this is set to info: displaying customers info
+[INFO ] 2019-02-20 07:25:02.391 [main] Logging - this is set to info: displaying customers info
+[INFO ] 2019-02-20 07:25:02.392 [main] Logging - this is set to info: displaying customers info
+[INFO ] 2019-02-20 07:25:17.494 [main] Logging - this is set to info: admin logged out
+[INFO ] 2019-02-20 07:27:37.415 [main] Logging - this is set to info: employee logged in
+[INFO ] 2019-02-20 07:27:41.466 [main] Logging - this is set to info: employee logged out

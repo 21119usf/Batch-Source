@@ -10,8 +10,5 @@ public class Logging {
 	public void log(String message) {
 		
 		logger.info("this is set to info: " + message);
-		logger.warn("this is set to warn: " + message);
-		logger.error("This is set to error: " + message);
-		logger.fatal("This is set to fatal: " + message);
 	}
 }

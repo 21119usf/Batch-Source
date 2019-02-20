@@ -74,11 +74,12 @@ public class ViewManager {
 			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 4) {
 				errorMessage(1, 4);
 			} else if (ui.getIntNum() == 1) {
-				
+				bank.applyForAccount();
+				System.out.println("Your application has been sent!");
 			} else if (ui.getIntNum() == 2) {
 				
 			} else if (ui.getIntNum() == 3) {
-				
+				accountView();
 			}
 		} while (ui.getIntNum() != 4);
 		
@@ -105,6 +106,7 @@ public class ViewManager {
 	
 	public void employeeView() {
 		do {
+			header();
 			System.out.println("1. Approve/Deny open applications");
 			System.out.println("2. View customers information");
 			System.out.println("3. Log out");
@@ -112,13 +114,46 @@ public class ViewManager {
 			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 3) {
 				errorMessage(1, 3);
 			} else if (ui.getIntNum() == 1) {
-
+				employeeApplicationsView();
 			} else if (ui.getIntNum() == 2) {
-				
+				bank.displayAccount();
 			}
 		} while (ui.getIntNum() != 3);
 		
 		logout();
+	}
+	
+	public void accountView() {
+		do {
+			header();
+			System.out.println("Balance is " + bank.getBalance());
+			System.out.println("1. Withdraw");
+			System.out.println("2. Deposit");
+			System.out.println("3. Exit");
+			selectMessage(1, 3);
+			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 3) {
+				errorMessage(1, 3);
+			} else if (ui.getIntNum() == 1) {
+				System.out.print("Enter how much you want to withdraw: ");
+				if (!ui.isDouble() || ui.getDoubleNum() < 0) {
+					System.out.println("Please enter a positive number");
+				} else {
+					if (bank.withdraw(ui.getDoubleNum())) {
+						System.out.println("You withdrawed" + ui.getDoubleNum());
+					}
+					System.out.println("You can't withdraw more than you have on your balance");
+				}
+			} else if (ui.getIntNum() == 2) {
+				System.out.print("Enter how much you want to deposit: ");
+				if (!ui.isDouble() || ui.getDoubleNum() < 0) {
+					System.out.println("Please enter a positive number");
+				} else {
+					bank.deposit(ui.getDoubleNum());
+				}
+			}
+		} while (ui.getIntNum() != 3);
+		
+		customerView();
 	}
 	
 	public void adminView() {		
@@ -127,26 +162,66 @@ public class ViewManager {
 			System.out.println("1. Approve/Deny open applications");
 			System.out.println("2. Withdraw, deposit, or transfer from account to account");
 			System.out.println("3. Cancel accounts");
-			System.out.println("4. Add Employee");
+			System.out.println("4. View Customers");
 			System.out.println("5. Add Admin");
 			System.out.println("6. Log off");
 			selectMessage(1, 6);
 			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 6) {
 				errorMessage(1, 6);
 			} else if (ui.getIntNum() == 1) {
-				
+				employeeApplicationsView();
 			} else if (ui.getIntNum() == 2) {
 				
 			} else if (ui.getIntNum() == 3) {
 				
 			} else if (ui.getIntNum() == 4) {
-				
+				bank.displayCustomerInfo();
 			} else if (ui.getIntNum() == 5) {
 				
 			}
 		} while (ui.getIntNum() != 6);
 		
 		logout();
+	}
+	
+	public void employeeApplicationsView() {
+		String scan;
+		do {
+			bank.displayApplication();
+			System.out.print("Enter the application name you wish the accept/deny or enter -1 to exit: ");
+			scan = ui.scan();
+			if (!bank.isApplication(scan) && !scan.equals("-1")) {
+				System.out.println("Please enter a valid application name.");
+			} else if (!scan.equals("-1")) {
+				acceptOrDeny(scan);
+			}
+		} while (!scan.equals("-1"));
+		
+		if (bank.getUserRigts() == 2) {
+			employeeView();
+		} else if (bank.getUserRigts() == 3) {
+			adminView();
+		}
+	}
+	
+	public void acceptOrDeny(String username) {
+		do {
+			System.out.println("Approve or Deny application " + username);
+			System.out.println("1. Approve");
+			System.out.println("2. Deny");
+			System.out.println("3. Back");
+			selectMessage(1, 3);
+			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 3) {
+				errorMessage(1, 3);
+			} else if (ui.getIntNum() == 1) {
+				bank.accept(username);
+				bank.deny(username);
+				System.out.println("Application has been accepted");
+			} else if (ui.getIntNum() == 2) {
+				bank.deny(username);
+				System.out.println("Application has been denied");
+			}
+		} while (ui.getIntNum() < 1 || ui.getIntNum() > 3);
 	}
 	
 	public void displayHeader() {
@@ -158,11 +233,11 @@ public class ViewManager {
 		String str = "";
 		
 		if (bank.getUserRigts() == 1) {
-			str += "Customer: ";
+			str += "Customer: " + bank.getCurrentFirstNameAndLastName();
 		} else if (bank.getUserRigts() == 2) {
-			str += "Employee: ";
+			str += "Employee: " + bank.getCurrentFirstNameAndLastName();
 		} else if (bank.getUserRigts() == 3) {
-			str += "Admin: ";
+			str += "Admin: " + bank.getCurrentFirstNameAndLastName();
 		}
 		return str;
 	}

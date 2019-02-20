@@ -53,7 +53,7 @@ public abstract class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "username = " + username + ", password = " + password + ", firstName = " + firstName + ", lastName = "
+		return "username = " + username + ", firstName = " + firstName + ", lastName = "
 				+ lastName;
 	}
 }

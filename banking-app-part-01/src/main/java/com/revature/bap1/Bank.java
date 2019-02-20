@@ -18,6 +18,7 @@ public class Bank {
 	private List<String> applicationList;
 	private List<Employee> employeeList;
 	private List<Admin> adminList;
+	private Logging log;
 	
 	private String currentUsername;
 	private String currentFirstNameAndLastName;
@@ -30,6 +31,7 @@ public class Bank {
 		applicationList = new ArrayList<String>();
 		employeeList = new ArrayList<Employee>();
 		adminList = new ArrayList<Admin>();
+		log = new Logging();
 	}
 	
 	public void readFile() {
@@ -54,9 +56,15 @@ public class Bank {
 			}
 		}
 		
-		displayCustomer();
-		adminList.add(new Admin("a", "a", "a", "a"));
-		adminList.add(new Admin("admin", "password", "Master", "Admin"));
+//		displayCustomer();
+//		displayEmployee();
+//		displayAdmin();
+//		displayAccount();
+//		displayApplication();
+//		adminList.add(new Admin("a", "a", "a", "a"));
+//		adminList.add(new Admin("admin", "password", "Master", "Admin"));
+//		employeeList.add(new Employee("e", "e", "e", "e"));
+//		employeeList.add(new Employee("employee", "password", "Master", "Employee"));
 	}
 	
 	public void writeFile() {
@@ -104,7 +112,7 @@ public class Bank {
 	
 	public void displayApplication() {
 		for (String s : applicationList) {
-			System.out.println(applicationList);
+			System.out.println("application = " + s);
 		}
 	}
 	
@@ -116,9 +124,14 @@ public class Bank {
 		return this.userRights;
 	}
 	
+	public void log(String message) {
+		log.log(message);
+	}
+	
 	public void registerCustomer(String username, String password, String firstName, String lastName) {
 		Customer c = new Customer(username, password, firstName, lastName);
 		hashMap.put(c, null);
+		log(username + " registered");
 	}
 	
 	public int login(String username, String password) {
@@ -127,15 +140,17 @@ public class Bank {
 				currentUsername = entry.getKey().getUsername();
 				currentFirstNameAndLastName = entry.getKey().getFirstName() + " " + entry.getKey().getLastName();
 				userRights = 1;
+				log(username + " logged in");
 				return userRights;
 			}
-		}
+		}		
 		
 		for (Employee e : employeeList) {
 			if (e.getUsername().equals(username) && e.getPassword().equals(password)) {
 				currentUsername = e.getUsername();
 				currentFirstNameAndLastName = e.getFirstName() + " " + e.getLastName();
 				userRights = 2;
+				log(username + " logged in");
 				return userRights;
 			}
 		}
@@ -145,6 +160,7 @@ public class Bank {
 				currentUsername = a.getUsername();
 				currentFirstNameAndLastName = a.getFirstName() + " " + a.getLastName();
 				userRights = 3;
+				log(username + " logged in");
 				return userRights;
 			}
 		}
@@ -153,8 +169,88 @@ public class Bank {
 	}
 	
 	public void logout() {
+		log(currentUsername + " logged out");
 		currentUsername = "";
 		currentFirstNameAndLastName = "";
 		userRights = 0;
+	}
+	
+	public void applyForAccount() {
+		applicationList.add(currentUsername);
+		log(currentUsername + " applied for an account");
+	}
+	
+	public void accept(String username) {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {		
+			Customer c = entry.getKey();
+			if (c.getUsername().equals(username)) {
+				entry.setValue(new Account(0));
+				log(currentUsername + " accpeted an application");
+			}
+		}
+	}
+	
+	public void deny(String username) {
+		for (int i = 0; i < applicationList.size(); i++) {
+			if (applicationList.get(i).equals(username)) {
+				applicationList.remove(i);
+			}
+		}
+	}
+	
+	public boolean isApplication(String username) {
+		for (String s : applicationList) {
+			if (s.equals(username)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	
+	public boolean withdraw(double withdraw) {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {		
+			Customer c = entry.getKey();
+			Account a = entry.getValue();
+			if (c.getUsername().equals(currentUsername) && a != null && a.withdraw(withdraw)) {
+				log(currentUsername + " withdrawed $" + withdraw);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public double getBalance() {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {
+			Customer c = entry.getKey();
+			Account a = entry.getValue();
+			if (c.getUsername().equals(currentUsername) && a != null) {
+				log(currentUsername + " checked his balance");
+				return a.getBalance();
+			}
+		}
+		return 0;
+	}
+	
+	public void deposit(double deposit) {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {
+			Customer c = entry.getKey();
+			Account a = entry.getValue();
+			if (c.getUsername().equals(currentUsername) && a != null) {
+				log(currentUsername + " deposited " + deposit);
+				a.deposit(deposit);
+			}
+		}
+	}
+	
+	public void displayCustomerInfo() {
+		for (Map.Entry<Customer, Account> entry : hashMap.entrySet()) {
+			Customer c = entry.getKey();
+			Account a = entry.getValue();
+			System.out.println(c);
+			if (a != null) {
+				System.out.println("\t" + a);
+			}
+			log.log("displaying customers info");
+		}
 	}
 }
