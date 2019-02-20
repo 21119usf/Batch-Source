@@ -1,0 +1,34 @@
+2019-02-19 22:36:33 INFO  CustomerUtils:91 - Customer 51 logged in
+2019-02-19 22:37:18 INFO  CustomerUtils:259 - Customer 51 logged out
+2019-02-19 22:37:34 INFO  CustomerUtils:91 - Customer 51 logged in
+2019-02-19 22:38:23 INFO  CustomerUtils:259 - Customer 51 logged out
+2019-02-19 22:58:48 INFO  CustomerUtils:91 - Customer 63 logged in
+2019-02-19 22:58:55 INFO  CustomerUtils:259 - Customer 63 logged out
+2019-02-19 23:40:37 INFO  EmployeeUtils:169 - Employee 69 was created
+2019-02-19 23:40:55 INFO  EmployeeUtils:82 - Employee 69 logged in
+2019-02-19 23:48:43 INFO  AdminUtils:167 - Admin 57 was created
+2019-02-20 00:09:59 INFO  AdminUtils:168 - Admin 1 was created
+2019-02-20 00:23:01 INFO  AdminUtils:168 - Admin 88 was created
+2019-02-20 00:24:22 INFO  EmployeeUtils:170 - Employee 81 was created
+2019-02-20 00:24:31 INFO  EmployeeUtils:82 - Employee 81 logged in
+2019-02-20 08:15:43 INFO  CustomerOptions:90 - Customer 51 logged in
+2019-02-20 08:17:19 INFO  CustomerOptions:90 - Customer 51 logged in
+2019-02-20 08:25:04 INFO  CustomerOptions:266 - Customer 51 logged out
+2019-02-20 08:27:37 INFO  EmployeeOptions:78 - Employee 69 logged in
+2019-02-20 08:29:04 INFO  EmployeeOptions:78 - Employee 69 logged in
+2019-02-20 08:30:25 INFO  CustomerOptions:90 - Customer 51 logged in
+2019-02-20 08:30:46 INFO  AccountOptions:127 - Depsited 68: $100.00
+2019-02-20 08:33:28 INFO  CustomerOptions:90 - Customer 51 logged in
+2019-02-20 08:34:46 INFO  CustomerOptions:90 - Customer 51 logged in
+2019-02-20 08:36:01 INFO  EmployeeOptions:79 - Employee 69 logged in
+2019-02-20 08:38:44 INFO  EmployeeOptions:79 - Employee 69 logged in
+2019-02-20 08:39:26 INFO  EmployeeOptions:79 - Employee 69 logged in
+2019-02-20 08:41:17 INFO  EmployeeOptions:79 - Employee 69 logged in
+2019-02-20 08:41:52 INFO  CustomerOptions:91 - Customer 51 logged in
+2019-02-20 08:48:23 INFO  CustomerOptions:91 - Customer 51 logged in
+2019-02-20 08:48:40 INFO  AccountOptions:127 - Depsited 82: $100.00
+2019-02-20 08:50:25 INFO  CustomerOptions:91 - Customer 51 logged in
+2019-02-20 08:50:42 INFO  AccountOptions:127 - Depsited 84: $100.00
+2019-02-20 08:59:43 INFO  CustomerOptions:91 - Customer 52 logged in
+2019-02-20 09:00:25 INFO  AccountOptions:124 - Depsited 87: $100.00
+2019-02-20 09:00:42 INFO  AccountOptions:145 - Withdrew 87: $100.00
