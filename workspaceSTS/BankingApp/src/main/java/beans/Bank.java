@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -251,12 +252,29 @@ public class Bank {
 		newUser.setUserName(username);
 		System.out.print("Password: ");
 		newUser.setPassword(input.nextLine());
-		
-		
+		Customer jointAcc = null;
+		char c = 'y';
+		while (newUser.getAccessLevel() == 2 && jointAcc == null && (c == 'y' || c == 'Y')) {
+			System.out.print("Would you like to make a joint account with an already existing account? (y/n)\n> ");
+			c = input.nextLine().charAt(0);
+			if (c == 'y' || c == 'Y') {
+				System.out.print("Please enter the username of the account you wish to add as a joint account: ");
+				username = input.nextLine();
+				System.out.print("Password: ");
+				String password = input.nextLine();
+				jointAcc = (Customer)validateCredentials(username, password);
+				if (jointAcc == null || jointAcc.getAccessLevel() != 2)
+					System.out.println("Invalid username/password combination");
+				else
+					adjoin((Customer)newUser, jointAcc);
+			}
+		}	
 		System.out.print("\nYour application shows...\n" + newUser.toString()
 						+ "\nIs this what you would like to submit? (y/n)\n> ");
-		char c = input.nextLine().charAt(0);
+		c = input.nextLine().charAt(0);
 		if (c == 'y' || c == 'Y') {
+			int randomNum = ThreadLocalRandom.current().nextInt(1, 1000000);
+			newUser.setAccountNum(randomNum);
 			if (newUser.getAccessLevel() == 0 || newUser.getAccessLevel() == 1) {
 				pendingApprovalStaff.add((Employee)newUser);
 				writeInfo(4); //Update our queue for employee/admin applications
@@ -270,8 +288,11 @@ public class Bank {
 							+ "\nOnce approved you may log in to your account and manage it.");
 			logger.info(newUser.getUserName() + " submitted an application for an account.");
 		}
-		else if (c == 'n' || c == 'N')
+		else if (c == 'n' || c == 'N') {
+			if (newUser.getAccessLevel() == 2)
+				disjoin((Customer)newUser, jointAcc);
 			System.out.println("Your application was not submitted.");
+		}
 	}
 
 	public void adminMenu(Admin user) {
@@ -578,7 +599,8 @@ public class Bank {
 					+ "\nWhat would you like to do today?"
 					+ "\n(0) - View my information"
 					+ "\n(1) - Perform a transaction"
-					+ "\n(2) - Logout"
+					+ "\n(2) - Joint account information"
+					+ "\n(3) - Logout"
 					+ "\n> ");
 			option = input.nextInt();
 			switch (option) {
@@ -655,7 +677,53 @@ public class Bank {
 							break;
 					}
 					break;
-				case 2:										//logout, return to login screen
+				case 2:										//joint account information
+					System.out.print("\nWhat would you like to do?"
+							+ "\n(0) - See list of joint accounts"
+							+ "\n(1) - Add a joint account"
+							+ "\n(2) - Remove a joint account"
+							+ "\n(3) - Cancel"
+							+ "\n> ");
+					option = input.nextInt();
+					switch (option) {
+						case 0:								//print out list of joint accounts and balances
+							for (String s: user.jointAccounts) {
+								Customer c = findCustomer(s);
+								System.out.println("$" + c.getBalance() + "\t" + c.getUserName());
+							}
+							break;
+						case 1:								//add a joint account
+							System.out.print("Please enter the username of the account you wish to add as a joint account: ");
+							String username = strings.nextLine();
+							System.out.print("Password: ");
+							String password = input.nextLine();
+							Customer jointAcc = (Customer)validateCredentials(username, password);
+							if (jointAcc == null || jointAcc.getAccessLevel() != 2)
+								System.out.println("Invalid username/password combination");
+							else
+								adjoin(user, jointAcc);
+							break;
+						case 2:								//remove an existing join account
+							for (String s: user.jointAccounts) {
+								Customer c = findCustomer(s);
+								System.out.println("$" + c.getBalance() + "\t" + c.getUserName());
+							}
+							System.out.print("Please enter the username of the account you wish to remove from your joint accounts: ");
+							line = strings.nextLine();
+							Customer removedAcc = findCustomer(line);
+							if (removedAcc == null)
+								System.out.println("Sorry, no account with the username '" + line + "' was found.");
+							else
+								disjoin(user, removedAcc);
+							break;
+						case 3:								//do nothing by choice
+							break;
+						default:							//invalid choice
+							System.out.println("Invalid Option");
+							break;
+					}
+					break;
+				case 3:										//logout, return to login screen
 					return;
 				default:									//Invalid choice
 					System.out.println("Invalid Option");
@@ -677,8 +745,11 @@ public class Bank {
 				choice = input.nextLine().charAt(0);
 				if (choice == 'Y' || choice == 'y') {
 					customers.add(tempCustomer);
+					logger.info(tempCustomer.getUserName() + "'s application was approved.");
 					writeInfo(0); //Update the customers list
 				}
+				else
+					logger.info(tempCustomer.getUserName() + "'s application was denied.");
 			}
 		}
 		arraySize = pendingApprovalStaff.size();
@@ -690,6 +761,7 @@ public class Bank {
 				System.out.print("\n" + tempEmployee + "\nApprove? (y/n)\n> ");
 				choice = input.nextLine().charAt(0);
 				if (choice == 'Y' || choice == 'y') {
+					logger.info(tempEmployee.getUserName() + "'s application was approved.");
 					if (tempEmployee.getAccessLevel() == 0) {
 						admins.add((Admin)tempEmployee);
 						writeInfo(2); //Update the admins list
@@ -699,38 +771,59 @@ public class Bank {
 						writeInfo(1); //Update the employees list
 					}
 				}
+				else
+					logger.info(tempEmployee.getUserName() + "'s application was denied.");
 			}
 		}
 		System.out.println("There are no more applications in queue");
 	}
 	
+	//Create the adjoin method takes in the person to join to
+	//add option to customer menu
+	//add option to registration
+	//update customer data
+	public void adjoin(Customer user, Customer joinee) {
+		user.jointAccounts.add(joinee.getUserName());
+		joinee.jointAccounts.add(user.getUserName());
+		writeInfo(0);
+	}
+	
+	public void disjoin(Customer user, Customer removed) {
+		user.jointAccounts.remove(removed.getUserName());
+		removed.jointAccounts.remove(user.getUserName());
+		writeInfo(0);
+	}
+	
 	public boolean deposit(User depositor, Customer depositee, double amount) {
 		if (depositor.equals(depositee) || depositor.getAccessLevel() == 0) {//if the depositor is depositing to themselves
-			depositee.deposit(amount);										//	or if the depositor is an admin
-			logger.info(depositor.getUserName() + " depositted $" + amount + " into " + depositee.getUserName() + "'s account.");
-			writeInfo(0);
-			return true;
+			if (depositee.deposit(amount)) {									//	or if the depositor is an admin
+				logger.info(depositor.getUserName() + " depositted $" + amount + " into " + depositee.getUserName() + "'s account.");
+				writeInfo(0);
+				return true;
+			}
 		}
 		return false;			
 	}
 	
 	public boolean withdraw(User withdrawer, Customer withdrawee, double amount) {
 		if (withdrawer.equals(withdrawee) || withdrawer.getAccessLevel() == 0) {//if the withdrawer is withdrawing from themselves
-			withdrawee.withdraw(amount);										//	or if the withdrawer is an admin
-			logger.info(withdrawer.getUserName() + " withdrew $" + amount + " from " + withdrawee.getUserName() + "'s account.");
-			writeInfo(0);
-			return true;
+			if (withdrawee.withdraw(amount)) {										//	or if the withdrawer is an admin
+				logger.info(withdrawer.getUserName() + " withdrew $" + amount + " from " + withdrawee.getUserName() + "'s account.");
+				writeInfo(0);
+				return true;
+			}
 		}
 		return false;
 	}
 	
 	public boolean transfer(User user, Customer source, Customer destination, double amount) {
 		if (user.equals(source) || user.getAccessLevel() == 0) { 
-			source.transfer(destination, amount);
-			logger.info(user.getUserName() + " transferred $" + amount + " from " + source.getUserName() + "'s account to "
-						+ destination.getUserName() + "'s account.");
-			writeInfo(0);
-			return true;
+			if (source.transfer(destination, amount)) {
+				logger.info(user.getUserName() + " transferred $" + amount + " from " + source.getUserName() + "'s account to "
+							+ destination.getUserName() + "'s account.");
+				writeInfo(0);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -748,41 +841,29 @@ public class Bank {
 	}
 	
 	public boolean cancelAccount(String username) {
+		boolean wasRemoved = false;
 		for (User e: customers) {
 			if (e.userName.equals(username)) {
+				wasRemoved = customers.remove(e);
 				writeInfo(0);
-				return customers.remove(e);
+				return wasRemoved;
 			}
 		}
 		for (User e: employees) {
 			if (e.userName.equals(username)) {
+				wasRemoved = employees.remove(e);
 				writeInfo(1);
-				return employees.remove(e);
+				return wasRemoved;
 			}
 		}
 		for (User e: admins) {
 			if (e.userName.equals(username)) {
+				wasRemoved = admins.remove(e);
 				writeInfo(2);
-				return admins.remove(e);
+				return wasRemoved;
 			}
 		}
 		return false;
-	}
-	
-	public User findAccount(String username) {
-		for (User e: customers) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		for (User e: admins) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
 	}
 	
 	public Customer findCustomer(String username) {
@@ -795,14 +876,6 @@ public class Bank {
 	
 	public Employee findEmployee(String username) {
 		for (Employee e: employees) {
-			if (e.userName.equals(username))
-				return e;
-		}
-		return null;
-	}
-	
-	public Admin findAdmin(String username) {
-		for (Admin e: admins) {
 			if (e.userName.equals(username))
 				return e;
 		}

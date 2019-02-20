@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Customer extends User {
 	
 	protected double balance;
-	protected boolean isJointAccount;
 	protected ArrayList<String> jointAccounts;
 	
 	
@@ -13,16 +12,14 @@ public class Customer extends User {
 	public Customer() {
 		super();
 		this.balance = 0.0;
-		this.isJointAccount = false;
 		this.accessLevel = 2;
 		jointAccounts = new ArrayList<String>();
 	}
 	
 	public Customer(String name, String address, String email, String phoneNum, String userName, String password,
-			int accountNum, boolean isJointAccount) {
+			int accountNum) {
 		super(name, address, email, phoneNum, userName, password, accountNum, 2);
 		this.balance = 0.0;
-		this.isJointAccount = isJointAccount;
 		jointAccounts = new ArrayList<String>();
 	}
 
@@ -34,14 +31,6 @@ public class Customer extends User {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
-	}
-
-	public boolean isJointAccount() {
-		return isJointAccount;
-	}
-
-	public void setJointAccount(boolean isJointAccount) {
-		this.isJointAccount = isJointAccount;
 	}
 	
 	
@@ -55,33 +44,40 @@ public class Customer extends User {
 	}
 	
 	//Utility methods
-	public void deposit(double amount) {
+	public boolean deposit(double amount) {
 		if (amount < 0) {
 			System.out.println("Cannot deposit a negative amount");
 		}
-		else
+		else {
 			setBalance(getBalance() + amount);
+			return true;
+		}
+		return false;
 	}
 	
-	public void withdraw(double amount) {
+	public boolean withdraw(double amount) {
 		if (amount < 0)
 			System.out.println("Cannot withdraw a negative amount");
 		else if (amount > getBalance())
 			System.out.println("Insufficient Funds");
-		else
+		else {
 			setBalance(getBalance() - amount);
+			return true;
+		}
+		return false;
 	}
 	
-	public void transfer(Customer destination, double amount) {
+	public boolean transfer(Customer destination, double amount) {
 		if (amount < 0)
 			System.out.println("Cannot transfer a negative amount");
 		else if (amount > getBalance())
 			System.out.println("Insufficient Funds");
 		else {
-			this.setBalance(getBalance() - amount);
-			destination.setBalance(getBalance() + amount);
+			this.setBalance(this.getBalance() - amount);
+			destination.setBalance(destination.getBalance() + amount);
+			return true;
 		}
-			
+		return false;
 	}
 
 	
@@ -90,8 +86,7 @@ public class Customer extends User {
 	public String toString() {
 		return "Customer [\nName: " + name + "\nAddress: " + address + "\nE-mail: " + email + "\nPhone #: " + phoneNum
 				+ "\nUsername: " + userName + "\nPassword: " + password + "\nAccount #: " + accountNum + "\nAccess Level: "
-				+ accessLevel + "\nBalance: $" + balance + "\nJoint Account: "
-				+ isJointAccount + "\nJoint Accounts: " + jointAccounts.toString() + "\n]";
+				+ accessLevel + "\nBalance: $" + balance + "\nJoint Accounts: " + jointAccounts.toString() + "\n]";
 	}
 
 
@@ -100,7 +95,6 @@ public class Customer extends User {
 		System.out.println("Username: " + getUserName()
 						+ "\nPassword: " + getPassword()
 						+ "\nBalance: $" + getBalance()
-						+ "\nJoint Account: " + isJointAccount()
 						+ "\nJoint Accounts: " + jointAccounts.toString()
 						+ "\nAccount #: " + getAccountNum()
 						+ "\nAccess Level: " + getAccessLevel());

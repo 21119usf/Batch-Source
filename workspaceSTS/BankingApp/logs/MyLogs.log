@@ -20,3 +20,52 @@
 [INFO ] 2019-02-19 22:45:55.234 [main] Bank - Erix logged out.
 [INFO ] 2019-02-19 22:47:19.490 [main] Bank - Admin logged in.
 [INFO ] 2019-02-19 22:47:22.430 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:22:41.223 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:23:58.388 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:28:42.145 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:28:46.061 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:31:22.033 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:31:34.430 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:32:33.711 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:32:47.144 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:37:51.067 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:37:59.335 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:40:58.191 [main] Bank - Haxle submitted an application for an account.
+[INFO ] 2019-02-20 01:41:29.571 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:41:34.083 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:42:07.687 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:42:20.817 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:42:59.190 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:43:14.146 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 01:55:36.820 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 01:56:46.820 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 02:05:18.496 [main] Bank - Marx submitted an application for an account.
+[INFO ] 2019-02-20 02:15:19.566 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 02:17:19.970 [main] Bank - Marx submitted an application for an account.
+[INFO ] 2019-02-20 02:17:28.181 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 02:17:31.415 [main] Bank - Marx's application was approved.
+[INFO ] 2019-02-20 02:17:31.420 [main] Bank - Marx's application was denied.
+[INFO ] 2019-02-20 02:17:34.443 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 02:32:48.333 [main] Bank - OHaxle submitted an application for an account.
+[INFO ] 2019-02-20 02:34:21.813 [main] Bank - Erix submitted an application for an account.
+[INFO ] 2019-02-20 02:45:40.895 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 02:45:47.380 [main] Bank - OHaxle's application was approved.
+[INFO ] 2019-02-20 02:45:49.187 [main] Bank - Erix's application was approved.
+[INFO ] 2019-02-20 02:46:11.794 [main] Bank - Admin depositted $100.0 into Marx's account.
+[INFO ] 2019-02-20 02:47:52.128 [main] Bank - Admin transferred $50.0 from Marx's account to Erix's account.
+[INFO ] 2019-02-20 02:48:20.277 [main] Bank - Admin withdrew $100.0 from Erix's account.
+[INFO ] 2019-02-20 02:53:41.478 [main] Bank - Admin withdrew $100.0 from Erix's account.
+[INFO ] 2019-02-20 02:54:08.070 [main] Bank - Admin depositted $50.0 into Erix's account.
+[INFO ] 2019-02-20 02:54:29.707 [main] Bank - Admin withdrew $100.0 from Erix's account.
+[INFO ] 2019-02-20 02:54:46.054 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 02:55:21.875 [main] Bank - Marx logged in.
+[INFO ] 2019-02-20 02:56:01.326 [main] Bank - Marx transferred $25.0 from Marx's account to Erix's account.
+[INFO ] 2019-02-20 02:56:48.896 [main] Bank - Marx transferred $10.0 from Marx's account to Erix's account.
+[INFO ] 2019-02-20 02:57:32.750 [main] Bank - Marx withdrew $30.0 from Marx's account.
+[INFO ] 2019-02-20 03:06:44.849 [main] Bank - Marx logged out.
+[INFO ] 2019-02-20 03:12:46.892 [main] Bank - Marx submitted an application for an account.
+[INFO ] 2019-02-20 03:12:54.788 [main] Bank - Admin logged in.
+[INFO ] 2019-02-20 03:12:58.704 [main] Bank - Marx's application was approved.
+[INFO ] 2019-02-20 03:13:00.513 [main] Bank - Admin logged out.
+[INFO ] 2019-02-20 03:13:06.568 [main] Bank - Marx logged in.
+[INFO ] 2019-02-20 03:13:32.850 [main] Bank - Marx logged out.
