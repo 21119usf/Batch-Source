@@ -1,11 +1,20 @@
 package beans;
 
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Bank {
+
 	private ArrayList<Customer> customers;
 	private ArrayList<Employee> employees;
 	private ArrayList<Admin> admins;
@@ -30,6 +39,78 @@ public class Bank {
 	
 	
 	//Methods
+	
+	@SuppressWarnings("unchecked")
+	public void readInfo() {
+		ObjectInputStream objectIn;
+		try {
+			objectIn = new ObjectInputStream(new FileInputStream("customers.txt"));
+			customers = (ArrayList<Customer>) objectIn.readObject();
+			objectIn.close();
+			
+			objectIn = new ObjectInputStream(new FileInputStream("employees.txt"));
+			employees = (ArrayList<Employee>) objectIn.readObject();
+			objectIn.close();
+			
+			objectIn = new ObjectInputStream(new FileInputStream("admins.txt"));
+			admins = (ArrayList<Admin>) objectIn.readObject();
+			objectIn.close();
+			
+			objectIn = new ObjectInputStream(new FileInputStream("pendingApprovalCustomers.txt"));
+			pendingApprovalCustomers = (ArrayList<Customer>) objectIn.readObject();
+			objectIn.close();
+			
+			objectIn = new ObjectInputStream(new FileInputStream("pendingApprovalStaff.txt"));
+			pendingApprovalStaff = (ArrayList<Employee>) objectIn.readObject();
+			objectIn.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void writeInfo(int choice) {
+		ObjectOutputStream objectOut;
+		try {
+			switch (choice) {
+			case 0:
+				objectOut = new ObjectOutputStream (new FileOutputStream("customers.txt", false));
+				objectOut.writeObject(customers);
+				objectOut.close();
+				break;
+			case 1:
+				objectOut = new ObjectOutputStream (new FileOutputStream("employees.txt", false));
+				objectOut.writeObject(employees);
+				objectOut.close();
+				break;
+			case 2:
+				objectOut = new ObjectOutputStream (new FileOutputStream("admins.txt", false));
+				objectOut.writeObject(admins);
+				objectOut.close();
+				break;
+			case 3:
+				objectOut = new ObjectOutputStream (new FileOutputStream("pendingApprovalCustomers.txt", false));
+				objectOut.writeObject(pendingApprovalCustomers);
+				objectOut.close();
+				break;
+			case 4:
+				objectOut = new ObjectOutputStream (new FileOutputStream("pendingApprovalStaff.txt", false));
+				objectOut.writeObject(pendingApprovalStaff);
+				objectOut.close();
+			}
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public int start() {
 		System.out.print("Welcome to the Marx Bank"
@@ -178,9 +259,11 @@ public class Bank {
 		if (c == 'y' || c == 'Y') {
 			if (newUser.getAccessLevel() == 0 || newUser.getAccessLevel() == 1) {
 				pendingApprovalStaff.add((Employee)newUser);
+				writeInfo(4); //Update our queue for employee/admin applications
 			}
 			else {
 				pendingApprovalCustomers.add((Customer)newUser);
+				writeInfo(3); //Update our queue for customer applications
 			}
 			System.out.println("Your application was submitted successfully."
 							+ "\nPlease wait for a staff member to approve your application."
@@ -589,10 +672,13 @@ public class Bank {
 			Customer tempCustomer = null;
 			for (int i = 0; i < arraySize; i++) {
 				tempCustomer = pendingApprovalCustomers.remove(0);
+				writeInfo(3); //Update the customer applications queue
 				System.out.print("\n" + tempCustomer + "\nApprove? (y/n)\n> ");
 				choice = input.nextLine().charAt(0);
-				if (choice == 'Y' || choice == 'y')
+				if (choice == 'Y' || choice == 'y') {
 					customers.add(tempCustomer);
+					writeInfo(0); //Update the customers list
+				}
 			}
 		}
 		arraySize = pendingApprovalStaff.size();
@@ -600,13 +686,18 @@ public class Bank {
 			Employee tempEmployee = null;
 			for (int i = 0; i < arraySize; i++) {
 				tempEmployee = pendingApprovalStaff.remove(0);
+				writeInfo(4); //Update the employee/admin applications queue
 				System.out.print("\n" + tempEmployee + "\nApprove? (y/n)\n> ");
 				choice = input.nextLine().charAt(0);
 				if (choice == 'Y' || choice == 'y') {
-					if (tempEmployee.getAccessLevel() == 0)
+					if (tempEmployee.getAccessLevel() == 0) {
 						admins.add((Admin)tempEmployee);
-					else
+						writeInfo(2); //Update the admins list
+					}
+					else {
 						employees.add(tempEmployee);
+						writeInfo(1); //Update the employees list
+					}
 				}
 			}
 		}
@@ -617,6 +708,7 @@ public class Bank {
 		if (depositor.equals(depositee) || depositor.getAccessLevel() == 0) {//if the depositor is depositing to themselves
 			depositee.deposit(amount);										//	or if the depositor is an admin
 			logger.info(depositor.getUserName() + " depositted $" + amount + " into " + depositee.getUserName() + "'s account.");
+			writeInfo(0);
 			return true;
 		}
 		return false;			
@@ -626,6 +718,7 @@ public class Bank {
 		if (withdrawer.equals(withdrawee) || withdrawer.getAccessLevel() == 0) {//if the withdrawer is withdrawing from themselves
 			withdrawee.withdraw(amount);										//	or if the withdrawer is an admin
 			logger.info(withdrawer.getUserName() + " withdrew $" + amount + " from " + withdrawee.getUserName() + "'s account.");
+			writeInfo(0);
 			return true;
 		}
 		return false;
@@ -636,6 +729,7 @@ public class Bank {
 			source.transfer(destination, amount);
 			logger.info(user.getUserName() + " transferred $" + amount + " from " + source.getUserName() + "'s account to "
 						+ destination.getUserName() + "'s account.");
+			writeInfo(0);
 			return true;
 		}
 		return false;
@@ -655,16 +749,22 @@ public class Bank {
 	
 	public boolean cancelAccount(String username) {
 		for (User e: customers) {
-			if (e.userName.equals(username))
+			if (e.userName.equals(username)) {
+				writeInfo(0);
 				return customers.remove(e);
+			}
 		}
 		for (User e: employees) {
-			if (e.userName.equals(username))
+			if (e.userName.equals(username)) {
+				writeInfo(1);
 				return employees.remove(e);
+			}
 		}
 		for (User e: admins) {
-			if (e.userName.equals(username))
-				return employees.remove(e);
+			if (e.userName.equals(username)) {
+				writeInfo(2);
+				return admins.remove(e);
+			}
 		}
 		return false;
 	}
@@ -710,11 +810,11 @@ public class Bank {
 	}
 	
 	public void printContents() {
-		System.out.println("Customers: " + customers
-							+"\nEmployees: " + employees
-							+"\nAdmins: " + admins
-							+"\nPending Customers: " + pendingApprovalCustomers
-							+"\nPending Staff " + pendingApprovalStaff
+		System.out.println("\nCustomers:\n" + customers
+							+"\n\nEmployees:\n" + employees
+							+"\n\nAdmins:\n" + admins
+							+"\n\nPending Customers:\n" + pendingApprovalCustomers
+							+"\n\nPending Staff:\n" + pendingApprovalStaff
 							+"\n");
 	}
 }

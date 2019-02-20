@@ -1,6 +1,10 @@
 package beans;
 
-public abstract class User {
+import java.io.Serializable;
+
+public abstract class User implements Serializable{
+
+	private static final long serialVersionUID = 992152960986448270L;
 	protected String name;
 	protected String address;
 	protected String email;
