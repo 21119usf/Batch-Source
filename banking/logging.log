@@ -1,0 +1,4 @@
+[ERROR] 2019-02-15 16:50:44.240 [main] LoggingExample - This is to set to error:roll tide
+[FATAL] 2019-02-15 16:50:44.243 [main] LoggingExample - This is set to fatalroll tide
+[ERROR] 2019-02-15 16:52:39.383 [main] LoggingExample - This is to set to error:roll tide
+[FATAL] 2019-02-15 16:52:39.386 [main] LoggingExample - This is set to fatal: roll tide
