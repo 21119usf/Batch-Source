@@ -40,4 +40,10 @@ public class Application implements Serializable {
 	public void setApplicationID(int applicationID) {
 		this.applicationID = applicationID;
 	}
+
+	@Override
+	public String toString() {
+		return "Application [accountID=" + accountID + ", customerID=" + customerID + ", applicationID=" + applicationID
+				+ "]";
+	}
 }

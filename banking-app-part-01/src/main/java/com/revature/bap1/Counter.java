@@ -54,6 +54,6 @@ public class Counter implements Serializable {
 	}
 	
 	public void incrementAppCounter() {
-		this.accountCounter++;
+		this.appCounter++;
 	}
 }

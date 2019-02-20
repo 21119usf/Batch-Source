@@ -20,4 +20,10 @@ public class CustomerView {
 	public void error() {
 		System.out.println("\n***Enter a number between 1 and 4***");
 	}
+	
+	public void applyNewAccount() {
+		System.out.println("\nYou have applied for a new account.");
+		System.out.println("You have to wait for the new account to be ");
+		System.out.println("approved by an employee before you can use it.\n");
+	}
 }

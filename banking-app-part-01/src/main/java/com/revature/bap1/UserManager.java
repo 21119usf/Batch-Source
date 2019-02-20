@@ -56,16 +56,16 @@ public class UserManager {
 		}
 	}
 	
-	public void registerCustomer(String firstName, String lastName, String username, String password) {
-		userList.add(new Customer(1, firstName, lastName, username, password));
+	public void registerCustomer(int accountCount, String username, String password, String firstName, String lastName) {
+		userList.add(new Customer(accountCount, username, password, firstName, lastName));
 	}
 	
-	public void createEmployee(String firstName, String lastName, String username, String password) {
-		userList.add(new Employee(1, firstName, lastName, username, password));
+	public void createEmployee(int accountCount, String username, String password, String firstName, String lastName) {
+		userList.add(new Employee(accountCount, username, password, firstName, lastName));
 	}
 	
-	public void createAdmin(String firstName, String lastName, String username, String password) {
-		userList.add(new Admin(1, firstName, lastName, username, password));
+	public void createAdmin(int accountCount, String username, String password, String firstName, String lastName) {
+		userList.add(new Admin(accountCount, username, password, firstName, lastName));
 	}
 	
 	public User login(String username, String password) {

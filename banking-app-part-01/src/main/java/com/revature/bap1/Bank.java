@@ -22,10 +22,13 @@ public class Bank {
 		appMan.readFile();
 		cm.readFile();
 		
-//		um.createAdmin("admin", "password", "Master", "Admin");
-//		um.createEmployee("employee", "password", "Master", "Employee");
+//		comment out the lines below
+		
+//		um.createAdmin(cm.getNewUserCount(), "admin", "password", "Master", "Admin");
+//		um.createEmployee(cm.getNewUserCount(), "employee", "password", "Master", "Employee");
 		
 //		um.displayUserList();
+		appMan.printAppList();
 	}
 	
 	public void writeFiles() {
@@ -46,12 +49,16 @@ public class Bank {
 		return -1;
 	}
 	
-	public void registerCustomer(String firstName, String lastName, String username, String password) {
-		um.registerCustomer(firstName, lastName, username, password);
+	public void registerCustomer(String username, String password, String firstName, String lastName) {
+		um.registerCustomer(cm.getNewUserCount(), username, password, firstName, lastName);
 	}
 	
-	public void createAdmin(String firstName, String lastName, String username, String password) {
-		um.createAdmin(firstName, lastName, username, password);
+	public void create(String username, String password, String firstName, String lastName) {
+		um.createEmployee(cm.getNewUserCount(), username, password, firstName, lastName);
+	}
+	
+	public void createAdmin(String username, String password, String firstName, String lastName) {
+		um.createAdmin(cm.getNewUserCount(), username, password, firstName, lastName);
 	}
 	
 	public int login(String username, String password) {
@@ -64,6 +71,10 @@ public class Bank {
 	
 	public void logout() {
 		currentUser = null;
+	}
+	
+	public void applySingleAccount() {
+		appMan.applySingleAccount(cm.getNewAccountCount(), currentUser.getId(), cm.getNewAppCount());
 	}
 	
 	public String getUsernameFromCurrentUser() {

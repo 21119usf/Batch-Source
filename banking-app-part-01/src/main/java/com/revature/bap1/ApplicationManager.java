@@ -49,4 +49,14 @@ public class ApplicationManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public void printAppList() {
+		for (Application a : appList) {
+			System.out.println(a);
+		}
+	}
+	
+	public void applySingleAccount(int accountID, int customerID, int applicationID) {
+		appList.add(new Application(accountID, customerID, applicationID));
+	}
 }

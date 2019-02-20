@@ -59,16 +59,17 @@ public class ViewManager {
 	
 	public void logout() {
 		bank.logout();
+		System.out.println();
 		initial();
 	}
 	
 	public void registerAccount() {
 		RegisterCustomer rc = new RegisterCustomer();
 		
-		String firstName;
-		String lastName;
 		String username;
 		String password;
+		String firstName;
+		String lastName;
 		
 		rc.username();
 		username = ui.scan();
@@ -90,7 +91,8 @@ public class ViewManager {
 			if (!ui.isInt() || ui.getIntNum() < 1 || ui.getIntNum() > 4) {
 				cv.error();
 			} else if (ui.getIntNum() == 1) {
-				
+				bank.applySingleAccount();
+				cv.applyNewAccount();
 			} else if (ui.getIntNum() == 2) {
 				
 			} else if (ui.getIntNum() == 3) {

@@ -56,7 +56,7 @@ public class CounterManager {
 	
 	public int getNewAccountCount() {
 		c.incrementAccountCounter();
-		return c.getUserCounter();
+		return c.getAccountCounter();
 	}
 	
 	public int getNewAppCount() {
