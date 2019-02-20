@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="StringTest" project="J-Unit" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.revature.junit5.StringTest" time="0.0" displayname="StringTest" uniqueid="[engine:junit-jupiter]/[class:com.revature.junit5.StringTest]">
-    <testcase name="containsTest" classname="com.revature.junit5.StringTest" time="0.0" displayname="containsTest()" uniqueid="[engine:junit-jupiter]/[class:com.revature.junit5.StringTest]/[method:containsTest()]"/>
-    <testcase name="toUpperCaseTest" classname="com.revature.junit5.StringTest" time="0.0" displayname="toUpperCaseTest()" uniqueid="[engine:junit-jupiter]/[class:com.revature.junit5.StringTest]/[method:toUpperCaseTest()]"/>
-  </testsuite>
-</testrun>
