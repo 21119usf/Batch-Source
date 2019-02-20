@@ -33,7 +33,8 @@ public class EmployeeAccess {
 		testList = Fixer.fixingList(appList);
 		appList = testList;
 		//..and fixing it
-		
+		testList = Fixer.fixingList(userList);
+		userList = testList;
 		int custlength = custList.length;
 		int appLength = appList.length;
 		//boolean while loop
@@ -88,6 +89,7 @@ public class EmployeeAccess {
 								break;
 							case 3:
 								//just logout
+								loggedout = true;
 								break;
 							}
 							
@@ -145,16 +147,17 @@ public class EmployeeAccess {
 							//initializing the method
 							appReviewSequential(appLength, appList, userID);
 							break;
-						case 4: 
+						case 0: 
 							//logging out
 							success = true;
 							break;
 					}
 				}
 				break;
-			case 3:
+			case 0:
 				//logging out again
 				loggedout=true;
+				break;
 			}
 		}
 		

@@ -7,3 +7,8 @@
 [INFO ] 2019-02-20 01:41:57.130 [main] AdminAccess - 2's account balance changed by $-9000 by USER 3
 [INFO ] 2019-02-20 01:44:52.256 [main] LogonAttempt - Admin
 [INFO ] 2019-02-20 02:27:39.253 [main] LogonAttempt - DUMMY
+[INFO ] 2019-02-20 03:18:50.438 [main] LogonAttempt - Admin
+[INFO ] 2019-02-20 03:18:58.492 [main] LogonAttempt - Austin
+[INFO ] 2019-02-20 03:20:00.554 [main] LogonAttempt - Austin
+[INFO ] 2019-02-20 03:20:58.986 [main] LogonAttempt - Austin
+[INFO ] 2019-02-20 03:23:01.823 [main] LogonAttempt - Austin
