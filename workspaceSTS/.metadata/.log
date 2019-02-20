@@ -3755,3 +3755,768 @@ org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException
 
 !ENTRY org.eclipse.jface.text 2 0 2019-02-18 11:45:40.770
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2019-02-18 14:31:25.879
+!MESSAGE Connection to https://spring.io/blog.atom failed on spring.io. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: spring.io
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(Unknown Source)
+	at java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:263)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1084)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1075)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1071)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:74)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:47:16.544
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:47:16.555
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:48:52.162
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:48:52.170
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:48:54.007
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:48:54.016
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:49:04.994
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-18 14:49:05.000
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+!SESSION 2019-02-19 10:11:30.471 -----------------------------------------------
+eclipse.buildId=3.9.6.201809180749-RELEASE-e49
+java.version=1.8.0_201
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.e4.ui.css.swt.theme 4 0 2019-02-19 10:12:10.841
+!MESSAGE /resources/css/dark.css
+!STACK 0
+java.io.FileNotFoundException: /resources/css/dark.css
+	at org.eclipse.osgi.storage.url.bundleentry.Handler.findBundleEntry(Handler.java:54)
+	at org.eclipse.osgi.storage.url.BundleResourceHandler.openConnection(BundleResourceHandler.java:172)
+	at java.net.URL.openConnection(Unknown Source)
+	at org.eclipse.osgi.storage.url.BundleURLConverter.resolve(BundleURLConverter.java:53)
+	at org.eclipse.core.runtime.FileLocator.resolve(FileLocator.java:280)
+	at org.eclipse.core.internal.runtime.PlatformURLConverter.resolve(PlatformURLConverter.java:53)
+	at org.eclipse.core.runtime.FileLocator.resolve(FileLocator.java:280)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:451)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:419)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.restore(ThemeEngine.java:580)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.setCSSTheme(PartRenderingEngine.java:1442)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.initializeStyling(PartRenderingEngine.java:1349)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1066)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1062)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:628)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:563)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:151)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:155)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:199)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:391)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:246)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:595)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1501)
+
+!ENTRY org.eclipse.jface 2 0 2019-02-19 10:12:13.247
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-02-19 10:12:13.247
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@318a81a0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@f73a7cf,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-02-19 10:13:06.301
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\marka'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 12 2019-02-19 10:13:12.694
+!MESSAGE Unable to parse pattern: ‘*’. ; version: 2.0.7.v20180504-0806
+!STACK 0
+org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException
+	at org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException.newTrace(Logs.java:387)
+	at org.eclipse.epp.logging.aeri.core.util.Logs.log(Logs.java:134)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConfiguration.getIgnoredPluginMessagesPatterns(ServerConfiguration.java:333)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:168)
+	at com.google.common.util.concurrent.AbstractIdleService$DelegateService$1.run(AbstractIdleService.java:62)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:20:19.672
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:20:19.742
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:21:08.237
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:21:08.272
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:21:31.889
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:21:31.894
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:24:30.070
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:24:30.131
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:51:42.032
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:51:42.046
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:53:36.750
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:53:36.757
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jface.text 2 0 2019-02-19 10:55:01.679
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.recommenders.types.rcp 1 4 2019-02-19 10:57:37.253
+!MESSAGE Full project indexing required:
+  [+] C:\Users\marka\.m2\repository\org\apache\logging\log4j\log4j-api\2.8.2\log4j-api-2.8.2.jar
+  [+] C:\Users\marka\.m2\repository\org\apache\logging\log4j\log4j-core\2.8.2\log4j-core-2.8.2.jar
+
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.needsRebuild(ProjectTypesIndex.java:169)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.startUp(ProjectTypesIndex.java:122)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:59:08.142
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 10:59:08.149
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:02:04.683
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:02:04.717
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:06:58.298
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:06:58.304
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:11:40.476
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:11:40.482
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:16:14.867
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:16:14.872
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:16:57.534
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:16:57.540
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:17:28.482
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:17:28.489
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:23:15.636
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:23:15.666
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:26:52.030
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:26:52.055
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:29:54.554
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:29:54.577
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:31:07.027
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:31:07.033
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:32:25.166
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:32:25.176
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:36:21.703
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:36:21.710
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:36:32.707
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:36:32.714
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:37:02.078
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:37:02.087
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:37:54.533
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:37:54.541
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:42:11.439
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:42:11.445
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:42:21.066
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:42:21.076
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:44:26.358
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:44:26.366
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:44:45.110
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:44:45.127
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:47:55.050
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:47:55.058
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:47:58.101
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:47:58.123
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:48:26.020
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:48:26.034
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:52:29.916
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:52:29.926
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:53:17.231
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:53:17.248
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:56:48.153
+!MESSAGE The POM for log4j:log4j:jar:2.8.2 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:56:48.462
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:56:48.470
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.recommenders.types.rcp 1 4 2019-02-19 11:56:49.154
+!MESSAGE Full project indexing required:
+  [-] C:\Users\marka\.m2\repository\org\apache\logging\log4j\log4j-api\2.8.2\log4j-api-2.8.2.jar
+  [-] C:\Users\marka\.m2\repository\org\apache\logging\log4j\log4j-core\2.8.2\log4j-core-2.8.2.jar
+
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.needsRebuild(ProjectTypesIndex.java:169)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.suggestRebuild(ProjectTypesIndex.java:444)
+	at org.eclipse.recommenders.internal.types.rcp.TypesIndexService.rebuildIndex(TypesIndexService.java:120)
+	at org.eclipse.recommenders.internal.types.rcp.TypesIndexService.process(TypesIndexService.java:57)
+	at org.eclipse.recommenders.internal.types.rcp.TypesIndexService.process(TypesIndexService.java:63)
+	at org.eclipse.recommenders.internal.types.rcp.TypesIndexService.elementChanged(TypesIndexService.java:49)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1738)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1726)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1559)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1535)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2256)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2146)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:290)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:153)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:379)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:160)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:56:49.266
+!MESSAGE The POM for log4j:log4j:jar:2.8.2 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-02-19 11:56:49.496
+!MESSAGE Could not download sources for log4j:log4j:2.8.2
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact log4j:log4j:jar:sources:2.8.2
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$5.call(MavenImpl.java:776)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$5.call(MavenImpl.java:1)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:177)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:112)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:99)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:743)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:720)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:279)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:254)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:221)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob$1.call(DownloadSourcesJob.java:137)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob$1.call(DownloadSourcesJob.java:1)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:177)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:151)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:99)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1355)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:135)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing log4j:log4j:jar:sources:2.8.2
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2019-02-19 11:56:49.497
+!MESSAGE Could not resolve artifact log4j:log4j:jar:sources:2.8.2
+!SUBENTRY 2 org.eclipse.m2e.core 4 -1 2019-02-19 11:56:49.497
+!MESSAGE Missing log4j:log4j:jar:sources:2.8.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:57:16.438
+!MESSAGE The POM for log4j:log4j:jar:2.8.2 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:57:17.034
+!MESSAGE The POM for log4j:log4j:jar:2.8.2 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:57:17.070
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 11:57:17.087
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-02-19 11:57:17.688
+!MESSAGE Could not download javadoc for log4j:log4j:2.8.2
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact log4j:log4j:jar:javadoc:2.8.2
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$5.call(MavenImpl.java:776)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$5.call(MavenImpl.java:1)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:177)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:112)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:99)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:743)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:720)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:279)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:265)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:221)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob$1.call(DownloadSourcesJob.java:137)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob$1.call(DownloadSourcesJob.java:1)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:177)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:151)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:99)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1355)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:135)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing log4j:log4j:jar:javadoc:2.8.2
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2019-02-19 11:57:17.689
+!MESSAGE Could not resolve artifact log4j:log4j:jar:javadoc:2.8.2
+!SUBENTRY 2 org.eclipse.m2e.core 4 -1 2019-02-19 11:57:17.689
+!MESSAGE Missing log4j:log4j:jar:javadoc:2.8.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:31:54.367
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:31:54.367
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:31:56.032
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:31:56.048
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:32:52.516
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:32:52.516
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:35:40.313
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 14:35:40.313
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+!SESSION 2019-02-19 19:11:17.309 -----------------------------------------------
+eclipse.buildId=3.9.6.201809180749-RELEASE-e49
+java.version=1.8.0_201
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.e4.ui.css.swt.theme 4 0 2019-02-19 19:11:49.325
+!MESSAGE /resources/css/dark.css
+!STACK 0
+java.io.FileNotFoundException: /resources/css/dark.css
+	at org.eclipse.osgi.storage.url.bundleentry.Handler.findBundleEntry(Handler.java:54)
+	at org.eclipse.osgi.storage.url.BundleResourceHandler.openConnection(BundleResourceHandler.java:172)
+	at java.net.URL.openConnection(Unknown Source)
+	at org.eclipse.osgi.storage.url.BundleURLConverter.resolve(BundleURLConverter.java:53)
+	at org.eclipse.core.runtime.FileLocator.resolve(FileLocator.java:280)
+	at org.eclipse.core.internal.runtime.PlatformURLConverter.resolve(PlatformURLConverter.java:53)
+	at org.eclipse.core.runtime.FileLocator.resolve(FileLocator.java:280)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:451)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:419)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.restore(ThemeEngine.java:580)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.setCSSTheme(PartRenderingEngine.java:1442)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.initializeStyling(PartRenderingEngine.java:1349)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1066)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1062)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:628)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:563)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:151)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:155)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:199)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:391)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:246)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:595)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1501)
+
+!ENTRY org.eclipse.jface 2 0 2019-02-19 19:11:51.639
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-02-19 19:11:51.639
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@44181746,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@21fa19e4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-02-19 19:12:23.195
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\marka'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 12 2019-02-19 19:12:27.260
+!MESSAGE Unable to parse pattern: ‘*’. ; version: 2.0.7.v20180504-0806
+!STACK 0
+org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException
+	at org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException.newTrace(Logs.java:387)
+	at org.eclipse.epp.logging.aeri.core.util.Logs.log(Logs.java:134)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConfiguration.getIgnoredPluginMessagesPatterns(ServerConfiguration.java:333)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:168)
+	at com.google.common.util.concurrent.AbstractIdleService$DelegateService$1.run(AbstractIdleService.java:62)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.osgi 2 0 2019-02-19 19:12:34.435
+!MESSAGE While loading class "org.eclipse.m2e.jdt.internal.MavenClasspathContainerInitializer", thread "Thread[Worker-8: Update dynamic Java sources working sets,5,main]" timed out waiting (10002ms) for thread "Thread[Text Viewer Hover Presenter,1,main]" to finish starting bundle "org.eclipse.m2e.jdt_1.9.1.20180912-1601 [471]". To avoid deadlock, thread "Thread[Worker-8: Update dynamic Java sources working sets,5,main]" is proceeding but "org.eclipse.m2e.jdt.internal.MavenClasspathContainerInitializer" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: Unable to acquire the state change lock for the module: osgi.identity; type="osgi.bundle"; version:Version="1.9.1.20180912-1601"; osgi.identity="org.eclipse.m2e.jdt"; singleton:="true" [id=471] STARTED [STARTED]
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:340)
+	at org.eclipse.osgi.container.Module.start(Module.java:404)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:471)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:557)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:331)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:473)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:422)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:414)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:153)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:612)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:180)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:934)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.jdt.core.JavaCore.computeClasspathContainerInitializer(JavaCore.java:3669)
+	at org.eclipse.jdt.core.JavaCore.getClasspathContainerInitializer(JavaCore.java:3645)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeContainer(JavaModelManager.java:3192)
+	at org.eclipse.jdt.internal.core.JavaModelManager$10.run(JavaModelManager.java:3095)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2319)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeAllContainers(JavaModelManager.java:3157)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getClasspathContainer(JavaModelManager.java:2128)
+	at org.eclipse.jdt.core.JavaCore.getClasspathContainer(JavaCore.java:3622)
+	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:3147)
+	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:3311)
+	at org.eclipse.jdt.internal.core.JavaProject.getResolvedClasspath(JavaProject.java:2388)
+	at org.eclipse.jdt.internal.core.JavaProject.buildStructure(JavaProject.java:478)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:326)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:312)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:267)
+	at org.eclipse.jdt.internal.core.JavaProject.getPackageFragmentRoots(JavaProject.java:2264)
+	at org.eclipse.jdt.internal.ui.workingsets.DynamicSourcesWorkingSetUpdater.updateElements(DynamicSourcesWorkingSetUpdater.java:201)
+	at org.eclipse.jdt.internal.ui.workingsets.DynamicSourcesWorkingSetUpdater.updateElements(DynamicSourcesWorkingSetUpdater.java:182)
+	at org.eclipse.jdt.internal.ui.workingsets.DynamicSourcesWorkingSetUpdater$1.run(DynamicSourcesWorkingSetUpdater.java:169)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.util.concurrent.TimeoutException: Timeout after waiting 10 seconds to acquire the lock.
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:337)
+	... 39 more
+Root exception:
+java.util.concurrent.TimeoutException: Timeout after waiting 10 seconds to acquire the lock.
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:337)
+	at org.eclipse.osgi.container.Module.start(Module.java:404)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:471)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:557)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:331)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:473)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:422)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:414)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:153)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:612)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:180)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:934)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.jdt.core.JavaCore.computeClasspathContainerInitializer(JavaCore.java:3669)
+	at org.eclipse.jdt.core.JavaCore.getClasspathContainerInitializer(JavaCore.java:3645)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeContainer(JavaModelManager.java:3192)
+	at org.eclipse.jdt.internal.core.JavaModelManager$10.run(JavaModelManager.java:3095)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2319)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeAllContainers(JavaModelManager.java:3157)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getClasspathContainer(JavaModelManager.java:2128)
+	at org.eclipse.jdt.core.JavaCore.getClasspathContainer(JavaCore.java:3622)
+	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:3147)
+	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:3311)
+	at org.eclipse.jdt.internal.core.JavaProject.getResolvedClasspath(JavaProject.java:2388)
+	at org.eclipse.jdt.internal.core.JavaProject.buildStructure(JavaProject.java:478)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:326)
+	at org.eclipse.jdt.internal.core.JavaElement.getElementInfo(JavaElement.java:312)
+	at org.eclipse.jdt.internal.core.JavaElement.getChildren(JavaElement.java:267)
+	at org.eclipse.jdt.internal.core.JavaProject.getPackageFragmentRoots(JavaProject.java:2264)
+	at org.eclipse.jdt.internal.ui.workingsets.DynamicSourcesWorkingSetUpdater.updateElements(DynamicSourcesWorkingSetUpdater.java:201)
+	at org.eclipse.jdt.internal.ui.workingsets.DynamicSourcesWorkingSetUpdater.updateElements(DynamicSourcesWorkingSetUpdater.java:182)
+	at org.eclipse.jdt.internal.ui.workingsets.DynamicSourcesWorkingSetUpdater$1.run(DynamicSourcesWorkingSetUpdater.java:169)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:26:25.517
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:26:25.550
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:30:41.203
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:30:41.237
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:40:13.385
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:40:13.410
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:40:43.283
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:40:43.288
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:28.199
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.ws.consumption.ui.doc.user_1.0.700.v201802222200 [433]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:28.467
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.ws.axis2.ui.doc.user_1.0.200.v201309242118 [429]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:28.494
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.command.env.doc.user_1.5.400.v201802222200 [691]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:28.685
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.dtdeditor.doc.user_1.1.0.v201802171654 [714]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:28.735
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.j2ee.doc.user_1.1.400.v201008122207 [366]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.094
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.xmleditor.doc.user_1.1.0.v201802171654 [809]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.099
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.xsdeditor.doc.user_1.0.800.v201711201733 [812]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.124
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.ejb.doc.user_1.1.301.v201802082131 [361]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.137
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.ws.axis.ui.doc.user_1.1.200.v201802222200 [422]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.142
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.wsdl.ui.doc.user_1.0.850.v201802222200 [795]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.147
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.webtools.doc.user_1.0.500.v201711201733 [785]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.152
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.server.ui.doc.user_1.1.600.v201309182117 [772]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.300
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.ws.doc.user_1.0.700.v201802222200 [443]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.306
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.wsi.ui.doc.user_1.0.750.v201802222200 [799]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.319
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.jst.server.ui.doc.user_1.0.600.v201309182117 [411]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 2 0 2019-02-19 19:41:29.324
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.sse.doc.user_1.2.0.v201802171654 [775]'. The index should be rebuilt with Lucene 7.0.0
+
+!ENTRY org.eclipse.help.base 4 4 2019-02-19 19:41:39.579
+!MESSAGE Help documentation could not be indexed completely.
+!SUBENTRY 1 org.eclipse.help.base 4 4 2019-02-19 19:41:39.579
+!MESSAGE Help document /org.eclipse.wst.jsdt.doc/reference/extension-points/org_eclipse_wst_jsdt_core_codeFormatter.html cannot be opened.
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-02-19 19:41:50.347
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:41:50.353
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:41:50.360
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-02-19 19:42:11.844
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:42:11.849
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:42:11.896
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-02-19 19:42:56.045
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:42:56.052
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:42:56.061
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2019-02-19 19:43:32.688
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:43:32.693
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-19 19:43:32.700
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!

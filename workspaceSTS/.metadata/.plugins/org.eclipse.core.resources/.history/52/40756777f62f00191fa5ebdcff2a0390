@@ -1,6 +1,0 @@
-package homework1;
-
-public class Q3 {
-	//Reverse a string without using a temporary variable.
-	//Do NOT use reverse() in the StringBuffer or the StringBuilder APIs.
-}
