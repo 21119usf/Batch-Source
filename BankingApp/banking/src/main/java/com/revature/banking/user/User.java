@@ -2,7 +2,7 @@ package com.revature.banking.user;
 
 abstract class User {
 	private int ID;
-	private String username;
+	private static String username;
 	private int userStatus;
 	private int passEncrypt;
 	

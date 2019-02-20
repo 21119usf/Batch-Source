@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IO {
 	private static final String outfile = "Users.txt";
@@ -79,7 +81,8 @@ public class IO {
 		
 	}
 	@SuppressWarnings("null")
-	public static void overwriter(String filename, String newString, String oldString) {
+	//overwriter method
+	public static void overwriter(String filename, String newString, String oldString, int fileLength) {
 		File file = new File(filename);
 		String old = "";
 		BufferedReader reader = null;
@@ -88,16 +91,26 @@ public class IO {
 		try {
 			reader = new BufferedReader(new FileReader(file));
 			
+			//reads every line of an array
 			String line = reader.readLine();
+			for (int i = 0; i <fileLength; i++) {
 			while(line != null) {
+				if(i == fileLength-1) {
+					old = old + line;
+					line = reader.readLine();
+				}
+				else {
+					//and replaces until you get to the new line
 				old = old + line + System.lineSeparator();
 				line = reader.readLine();
+				}
 			}
+			
 			String newContent = old.replaceAll(oldString, newString);
 			writer = new FileWriter(file);
 			writer.write(newContent);
-			reader.close();
-			writer.close();
+			}
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -106,15 +119,37 @@ public class IO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		finally {
-//			try {
-//
-//				
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		
+		finally {
+			try {
+
+				reader.close();
+				writer.close();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
+	//fixer algorithm
+	public static class Fixer {
+		//as said in other places, all it does is ignore blank lines
+		   public static String[] fixingList(String[] array) {
+			   int length = array.length;
+			   for (int i = 0; i<length; i++) {
+		      if (array[i].equals("")) {
+		    	  array[i]=array[1];
+		    	  i=i+1;
+		    	  continue;
+		    	  
+		    	  
+
+		      }
+		   }//And returns array
+			return array;
+		   }
+		   
+		  
+		}
 }

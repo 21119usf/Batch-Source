@@ -1,0 +1,9 @@
+[DEBUG] 2019-02-20 01:28:58.393 [main] App - debug
+[INFO ] 2019-02-20 01:28:58.400 [main] App - info
+[WARN ] 2019-02-20 01:28:58.402 [main] App - warn
+[ERROR] 2019-02-20 01:28:58.402 [main] App - error
+[INFO ] 2019-02-20 01:30:29.553 [main] LogonAttempt - Admin
+[INFO ] 2019-02-20 01:41:32.372 [main] LogonAttempt - Admin
+[INFO ] 2019-02-20 01:41:57.130 [main] AdminAccess - 2's account balance changed by $-9000 by USER 3
+[INFO ] 2019-02-20 01:44:52.256 [main] LogonAttempt - Admin
+[INFO ] 2019-02-20 02:27:39.253 [main] LogonAttempt - DUMMY

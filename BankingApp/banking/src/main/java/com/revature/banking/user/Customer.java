@@ -1,15 +1,21 @@
 package com.revature.banking.user;
 
 public class Customer extends User{
-	private int ID;
+	private static int ID;
 	private double accountBalance;
-	private boolean joint;
+	private static boolean joint;
+	private static String fullName;
 	
 	
-	@Override
+	public static String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 	public String toString() {
-		return "Customer [ID=" + ID + ", accountBalance=" + accountBalance + ", joint=" + joint + ", getUsername()="
-				+ getUsername() + ", getUserStatus()=" + getUserStatus() + "]";
+		return getUsername() + ": [ID=" + ID + ", Full Name=" + getFullName() + ", joint=" + joint + ", username="
+				+ getUsername() + "]";
 	}
 	public int getID() {
 		return ID;
