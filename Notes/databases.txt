@@ -68,3 +68,5 @@
             * Temporary save point
         * ROLLBACK
             * Roll DB back to last commit or save point
+* Built-in Datatypes
+    * https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements001.htm#i54330
