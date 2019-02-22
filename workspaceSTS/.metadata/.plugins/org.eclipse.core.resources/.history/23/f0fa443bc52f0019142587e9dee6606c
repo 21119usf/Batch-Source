@@ -1,7 +1,0 @@
-package com.revature.example;
-
-public class NotUppercaseException extends RuntimeException{
-	public IncreasedByNegativeNumberException() {
-		System.out.println("nice job");
-	}
-}

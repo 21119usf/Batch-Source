@@ -21,7 +21,7 @@ public class Driver {
 			default:
 				restart = false;
 			}
-			bank.printContents();
+			//bank.printContents();
 			if (!restart)
 				break;
 		}
