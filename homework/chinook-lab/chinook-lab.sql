@@ -32,10 +32,29 @@ ORDER BY CITY;
 --2.3 INSERT INTO
 
 --Task – Insert two new records into Genre table
+INSERT INTO GENRE
+VALUES (26, 'Country');
+
+INSERT INTO GENRE
+VALUES (27, 'EDM');
 
 --Task – Insert two new records into Employee table
+INSERT INTO EMPLOYEE
+VALUES (9, 'Master', 'Chief', 'Sales Support Agent', 2, '09-JAN-54', '04-MAR-98', '123 Sample Dr', 'Tampa', 'FL', 
+'United States', 'T2P 5M5', '+1 (512) 555-5555', '+1 (681) 666-6666', 'masterchief@halo.com');
+
+INSERT INTO EMPLOYEE
+VALUES (10, 'Ricky', 'Bobby', 'Sales Support Agent', 2, '09-JAN-63', '04-MAR-01', '123 Address St', 'Columbia', 'SC', 
+'United States', 'T2P 5M5', '+1 (512) 111-1111', '+1 (681) 777-7777', 'rickybobby@racing.com');
 
 --Task – Insert two new records into Customer table
+INSERT INTO CUSTOMER
+VALUES (61, 'Bob', 'Smith', 'Google', '155 West Parkway', 'New York City', 'NY', 'USA', '78666', '+1 (512) 345-4343', 
+'+1 (512) 345-3444', 'bobsmith@google.com', 5);
+
+INSERT INTO CUSTOMER
+VALUES (62, 'Troy', 'Apple', 'Amazon', '321 Springs Rd', 'New York City', 'NY', 'USA', '12345', '+1 (512) 999-9999', 
+'+1 (512) 345-6544', 'troyapple@amazon.com', 5);
 
 --2.4 UPDATE
 
