@@ -70,3 +70,19 @@
             * Roll DB back to last commit or save point
 * Built-in Datatypes
     * https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements001.htm#i54330
+* Order of SQL queries: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+* JOINS must have same number of columns and same type of data
+* TRANSACTIONS - Units of work done on a database that may include many operations
+    * TCL
+        * Commit
+        * Rollback
+        * Savepoint
+    * ACID
+        * Atomicity - Smallest unit that can be run, all or nothing
+        * Consistency - Database is in a valid state according to existing structure
+        * Isolation - Concurrent transactions do not affect each other
+        * Durability - Mandatory backups
+    * Transactions Phenomenon
+        * Dirty Read
+        * Non-repeatable Read
+        * Phantom Read
