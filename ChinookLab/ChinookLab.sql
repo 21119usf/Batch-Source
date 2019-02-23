@@ -168,7 +168,6 @@ BEGIN
     CLOSE S;
 END;
 /
-<<<<<<< HEAD
 SELECT EMPLOYEES_AFTER_1968() FROM DUAL;
 
 -- 4.1 BASIC STORED PROCEDURE --------------------------------------------------
@@ -187,7 +186,6 @@ BEGIN
 END;
 /
 EXECUTE GET_NAMES();
-=======
 
 -- 4.2 STORED PROCEDURE INPUT PARAMETERS ---------------------------------------
 CREATE OR REPLACE PROCEDURE UPDATE_EMPLOYEE_INFO(
@@ -261,7 +259,6 @@ END;
 /
 
 -- 5.0 TRANSACTIONS ------------------------------------------------------------
-<<<<<<< HEAD
 CREATE OR REPLACE PROCEDURE DELETE_INVOICE(INVOICE_ID IN INVOICE.INVOICEID%TYPE)
 IS
 BEGIN
