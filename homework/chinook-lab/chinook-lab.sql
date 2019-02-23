@@ -71,6 +71,9 @@ WHERE NAME = 'Creedence Clearwater Revival';
 --2.5 LIKE
 
 --Task – Select all invoices with a billing address like “T%”
+SELECT *
+FROM INVOICE
+WHERE BILLINGADDRESS LIKE 'T%';
 
 --2.6 BETWEEN
 
