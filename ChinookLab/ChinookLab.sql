@@ -1,65 +1,76 @@
--- 2.1 SELECT ------------------------------------------------------------------
+-- 2.1 SELECT ==================================================================
+-- SELECT ALL EMPLOYEES
 SELECT * FROM EMPLOYEE;
 
+-- SELECT ALL EMPLOYEES WITH LAST NAME OF KING
 SELECT * FROM EMPLOYEE
 WHERE LASTNAME = 'King';
 
+-- SELECT ALL EMPLOYEES WITH FIRST NAME OF ANDREW AND HAS NO MANAGER
 SELECT * FROM EMPLOYEE
 WHERE FIRSTNAME = 'Andrew' AND REPORTSTO IS NULL;
 
--- 2.2 ORDER BY ----------------------------------------------------------------
+-- 2.2 ORDER BY ================================================================
+-- SELECT ALL ALBUMS AND SORT BY TITLE, DESCENDING
 SELECT * FROM ALBUM
 ORDER BY TITLE DESC;
 
+-- SELECT FIRST NAMES OF CUSTOMERS AND ORDER BY THEIR CITY
 SELECT FIRSTNAME FROM CUSTOMER
 ORDER BY CITY ASC;
 
--- 2.3 INSERT INTO -------------------------------------------------------------
+-- 2.3 INSERT INTO =============================================================
+-- INSERT A GENRE INTO GENRE
 INSERT INTO GENRE(GENREID, NAME)
 VALUES(26, 'House');
-
 INSERT INTO GENRE(GENREID, NAME)
 VALUES(27, 'Drum-and-Bass');
 
+-- INSERT EMPLOYEE INTO EMPLOYEE
 INSERT INTO EMPLOYEE
 VALUES(9, 'Smith', 'John', 'IT Staff', 6, '08-MAR-87', '20-AUG-04', 
 '284 Main St', 'Edmonton', 'AB', 'Canada', 'T5K 2N1', '+1 (780) 382-3842', 
 '+1 (780) 382-3892', 'smithj@chinookcorp.com');
-
 INSERT INTO EMPLOYEE
 VALUES(10, 'Johnson', 'Frank', 'IT Staff', 6, '10-JUL-89', '20-JUN-04', 
 '837 West St', 'Edmonton', 'AB', 'Canada', 'T5K 2N1', '+1 (780) 382-3342', 
 '+1 (780) 382-3332', 'johnsonf@chinookcorp.com');
 
+-- INSERT CUSTOMER INTO CUSTOMER
 INSERT INTO CUSTOMER
 VALUES(60, 'Smith', 'John', NULL, '284 Main St', 'Edmonton', 'Alberta', 
 'Canada', 'T5K 2N1', '+1 (780) 382-3842', NULL, 'smithj@chinookcorp.com', 5);
-
 INSERT INTO CUSTOMER
 VALUES(61, 'Johnson', 'Frank', NULL, '837 West St', 'Edmonton', 'Alberta', 
 'Canada', 'T5K 2N1', '+1 (780) 382-3342', NULL, 'johnsonf@chinookcorp.com', 5);
 
--- 2.4 UPDATE ------------------------------------------------------------------
+-- 2.4 UPDATE ==================================================================
+-- UPDATE CUSTOMER AARON MITCHEL TO ROBERT WALTER
 UPDATE CUSTOMER
 SET FIRSTNAME = 'Robert', LASTNAME = 'Walter'
 WHERE FIRSTNAME = 'Aaron' AND LASTNAME = 'Mitchell';
 
+-- UPDATE ARTIST CREEDENCE CLEARWATER REVIVAL TO CCR
 UPDATE ARTIST
 SET NAME = 'CCR'
 WHERE NAME = 'Creedence Clearwater Revival';
 
--- 2.5 LIKE --------------------------------------------------------------------
+-- 2.5 LIKE ====================================================================
+-- SELECT ALL BILLING ADDRESSES IN INVOICE THAT STARTS WITH T
 SELECT * FROM INVOICE
 WHERE BILLINGADDRESS LIKE 'T%';
 
--- 2.6 BETWEEN -----------------------------------------------------------------
+-- 2.6 BETWEEN =================================================================
+-- SELECT ALL INVOICES WITH TOTAL BETWEEN 15 AND 50
 SELECT * FROM INVOICE
 WHERE TOTAL BETWEEN 15 AND 50;
 
+-- SELECT ALL EMPLOYEES WITH HIRE DATE BETWEEN TWO DATES
 SELECT * FROM EMPLOYEE
 WHERE HIREDATE BETWEEN '01-JUN-2003' AND '01-MAR-2004';
 
--- 2.7 DELETE ------------------------------------------------------------------
+-- 2.7 DELETE ==================================================================
+-- DELETE CUSTOMER PARENT AND INVOICE CHILDREN
 DELETE FROM INVOICELINE -- REMOVE INVOICES IN INVOICELINE
 WHERE INVOICEID IN (
     SELECT INVOICEID FROM INVOICE
@@ -68,17 +79,16 @@ WHERE INVOICEID IN (
         WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter'
     )
 );
-
 DELETE FROM INVOICE     -- REMOVE CUSTOMER IN INVOICE
 WHERE CUSTOMERID IN (
     SELECT CUSTOMERID FROM CUSTOMER
     WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter'
 );
-
 DELETE FROM CUSTOMER    -- REMOVE CUSTOMER
 WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter';
 
--- 3.1 SYSTEM DEFINED FUNCTIONS ------------------------------------------------
+-- 3.1 SYSTEM DEFINED FUNCTIONS ================================================
+-- FUNCTION TO GET CURRENT SYSTEM TIME
 CREATE OR REPLACE FUNCTION GET_TIME
 RETURN TIMESTAMP IS
 T TIMESTAMP;
@@ -89,6 +99,7 @@ END;
 /
 SELECT GET_TIME() FROM DUAL;
 
+-- FUNCTION TO GET NUMBER OF CHARACTERS IN NAME OF MEDIATYPE
 CREATE OR REPLACE FUNCTION GET_NAME_LENGTH(IDENT IN NUMBER)
 RETURN NUMBER IS
 L NUMBER;
@@ -99,7 +110,8 @@ END;
 /
 SELECT GET_NAME_LENGTH(1) FROM DUAL;
 
--- 3.2 SYSTEM DEFINED AGGREGATE FUNCTIONS --------------------------------------
+-- 3.2 SYSTEM DEFINED AGGREGATE FUNCTIONS ======================================
+-- FUNCTION TO GET AVERAGE INVOICE TOTAL
 CREATE OR REPLACE FUNCTION GET_AVERAGE_INVOICE_TOTAL
 RETURN NUMBER IS
 TOTALAVG NUMBER;
@@ -110,6 +122,7 @@ END;
 /
 SELECT GET_AVERAGE_INVOICE_TOTAL() FROM DUAL;
 
+-- FUNCTION TO GET MOST EXPENSIVE TRACK IN TRACK
 CREATE OR REPLACE FUNCTION MOST_EXPENSIVE_TRACK
 RETURN NUMBER IS
 MAXTRACK NUMBER;
@@ -120,7 +133,8 @@ END;
 /
 SELECT MOST_EXPENSIVE_TRACK() FROM DUAL;
 
--- 3.3 USER-DEFINED SCALAR FUNCTIONS -------------------------------------------
+-- 3.3 USER-DEFINED SCALAR FUNCTIONS ===========================================
+-- FUNCTION TO GET AVERAGE INVOICELINE PRICE
 CREATE OR REPLACE FUNCTION AVG_INVOICELINE_PRICE
 RETURN NUMBER IS
 AVGPRICE NUMBER;
@@ -131,20 +145,22 @@ END;
 /
 SELECT AVG_INVOICELINE_PRICE() FROM DUAL;
 
--- 3.4 USER-DEFINED TABLE VALUED FUNCTIONS -------------------------------------
+-- 3.4 USER-DEFINED TABLE VALUED FUNCTIONS =====================================
+-- FUNCTION TO GET ALL EMPLOYEES BORN AFTER 1968
 CREATE OR REPLACE FUNCTION EMPLOYEES_AFTER_1968
 RETURN SYS_REFCURSOR IS
 C_RESULT SYS_REFCURSOR;
 BEGIN
     OPEN C_RESULT FOR
-    SELECT EMPLOYEEID FROM EMPLOYEE
+    SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE
     WHERE BIRTHDATE > '01-JAN-1968';
     RETURN C_RESULT;
 END;
 /
-SELECT EMPLOYEES_AFTER_1968() FROM DUAL;
+SELECT EMPLOYEES_AFTER_1968 FROM DUAL;
 
--- 4.1 BASIC STORED PROCEDURE --------------------------------------------------
+-- 4.1 BASIC STORED PROCEDURE ==================================================
+-- PROCEDURE TO GET NAMES OF ALL EMPLOYEES
 CREATE OR REPLACE PROCEDURE GET_NAMES(S OUT SYS_REFCURSOR)
 IS
 BEGIN
@@ -152,7 +168,7 @@ BEGIN
     SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE;
 END;
 /
-SET SERVEROUTPUT ON SIZE 1000000
+SET SERVEROUTPUT ON
 DECLARE
     S SYS_REFCURSOR;
     FIRST_NAME EMPLOYEE.FIRSTNAME%TYPE;
@@ -168,26 +184,9 @@ BEGIN
     CLOSE S;
 END;
 /
-SELECT EMPLOYEES_AFTER_1968() FROM DUAL;
 
--- 4.1 BASIC STORED PROCEDURE --------------------------------------------------
-CREATE OR REPLACE PROCEDURE GET_NAMES
-AS CURSOR S IS 
-SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE;
-
-BEGIN
-    GET_NAMES(S);
-    LOOP
-        FETCH S INTO FIRST_NAME, LAST_NAME;
-        EXIT WHEN S%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(FIRST_NAME || ' ' || LAST_NAME);
-    END LOOP;
-    CLOSE S;
-END;
-/
-EXECUTE GET_NAMES();
-
--- 4.2 STORED PROCEDURE INPUT PARAMETERS ---------------------------------------
+-- 4.2 STORED PROCEDURE INPUT PARAMETERS =======================================
+-- PROCEDURE TO UPDATE EMPLOYEE
 CREATE OR REPLACE PROCEDURE UPDATE_EMPLOYEE_INFO(
     E_EMPLOYEEID IN EMPLOYEE.EMPLOYEEID%TYPE,
     E_LASTNAME IN EMPLOYEE.LASTNAME%TYPE,
@@ -215,6 +214,7 @@ END;
 /
 EXECUTE UPDATE_EMPLOYEE_INFO(10, 'Jones', 'Erik', '666 Satan St', 'Tampa', 'US', '33612', '+1 813-510-0152', '+1 813-510-0153', 'jonese@gmail.com');
 
+-- PROCEDURE TO GET MANAGER OF EMPLOYEE
 CREATE OR REPLACE PROCEDURE RETURN_MANAGER(
     E_EMPLOYEEID IN EMPLOYEE.EMPLOYEEID%TYPE,
     E_MANAGERID OUT EMPLOYEE.REPORTSTO%TYPE)
@@ -234,7 +234,8 @@ BEGIN
 END;
 /
 
--- 4.3 STORED PROCEDURE OUTPUT PARAMETERS --------------------------------------
+-- 4.3 STORED PROCEDURE OUTPUT PARAMETERS ======================================
+-- PROCEDURE TO GET COMPANY OF CUSTOMER
 CREATE OR REPLACE PROCEDURE GET_NAME_COMPANY(
     CUSTOMER_ID IN CUSTOMER.CUSTOMERID%TYPE,
     C_FN OUT CUSTOMER.FIRSTNAME%TYPE,
@@ -258,7 +259,8 @@ BEGIN
 END;
 /
 
--- 5.0 TRANSACTIONS ------------------------------------------------------------
+-- 5.0 TRANSACTIONS ============================================================
+-- PROCEDURE TO DELETE AN INVOICE AND ITS CHILDREN
 CREATE OR REPLACE PROCEDURE DELETE_INVOICE(INVOICE_ID IN INVOICE.INVOICEID%TYPE)
 IS
 BEGIN
@@ -273,6 +275,7 @@ END;
 /
 EXECUTE DELETE_INVOICE(216);
 
+-- PROCEDURE TO INSERT A CUSTOMER
 CREATE OR REPLACE PROCEDURE CREATE_CUSTOMER(
     C_CUSTOMERID IN CUSTOMER.CUSTOMERID%TYPE,
     C_FIRSTNAME IN CUSTOMER.FIRSTNAME%TYPE,
@@ -297,7 +300,8 @@ END;
 /
 EXECUTE CREATE_CUSTOMER(666, 'Erik', 'Jones', 'Hell Inc.', '666 Satan St', 'Tampa', 'Florida', 'US', '33612', '+1 813-510-0152', '+1 813-510-0153', 'jonese@gmail.com', 5);
 
--- 6.1 AFTER/FOR ---------------------------------------------------------------
+-- 6.1 AFTER/FOR ===============================================================
+-- TRIGGER TO RUN AFTER INSERTING EMPLOYEE
 CREATE OR REPLACE TRIGGER AFTER_CREATE_EMPLOYEE
 AFTER INSERT ON EMPLOYEE FOR EACH ROW
 BEGIN
@@ -310,6 +314,7 @@ VALUES(11, 'Smith', 'John', 'IT Staff', 6, '08-MAR-87', '20-AUG-04',
 '284 Main St', 'Edmonton', 'AB', 'Canada', 'T5K 2N1', '+1 (780) 382-3842', 
 '+1 (780) 382-3892', 'smithj@chinookcorp.com');
 
+-- TRIGGER TO RUN AFTER UPDATING OR INSERTING INTO ALBUM
 CREATE OR REPLACE TRIGGER AFTER_UPDATE_ALBUM
 AFTER UPDATE OR INSERT ON ALBUM FOR EACH ROW
 BEGIN
@@ -329,27 +334,32 @@ END;
 SET SERVEROUTPUT ON
 DELETE FROM CUSTOMER WHERE CUSTOMERID = 666;
 
--- 7.1 INNER -------------------------------------------------------------------
+-- 7.1 INNER ===================================================================
+-- INNER JOIN CUSTOMER TO INVOICE
 SELECT FIRSTNAME, LASTNAME, INVOICEID FROM CUSTOMER C
 JOIN INVOICE I ON C.CUSTOMERID = I.CUSTOMERID
 ORDER BY C.LASTNAME;
 
--- 7.2 OUTER -------------------------------------------------------------------
+-- 7.2 OUTER ===================================================================
+-- OUTER JOIN CUSTOMER TO INVOICE
 SELECT FIRSTNAME, LASTNAME, INVOICEID, TOTAL FROM CUSTOMER C
 FULL JOIN INVOICE I ON C.CUSTOMERID = I.CUSTOMERID
 ORDER BY C.LASTNAME;
 
--- 7.3 RIGHT -------------------------------------------------------------------
+-- 7.3 RIGHT ===================================================================
+-- RIGHT JOIN ALBUM TO ARTIST
 SELECT NAME, TITLE FROM ALBUM AL
 RIGHT JOIN ARTIST AR ON AL.ARTISTID = AR.ARTISTID
 ORDER BY NAME;
 
--- 7.4 CROSS -------------------------------------------------------------------
+-- 7.4 CROSS ===================================================================
+-- CROSS JOIN ALBUM TO ARTIST
 SELECT NAME, TITLE FROM ALBUM AL
 CROSS JOIN ARTIST AR
 ORDER BY NAME ASC;
 
--- 7.5 SELF --------------------------------------------------------------------
+-- 7.5 SELF ====================================================================
+-- SELF JOIN EMPLOYEE TO MANAGER
 SELECT
     (E.FIRSTNAME || ' ' || E.LASTNAME) EMPLOYEE,
     (M.FIRSTNAME || ' ' || M.LASTNAME) MANAGER
