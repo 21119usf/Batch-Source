@@ -59,8 +59,14 @@ VALUES (62, 'Troy', 'Apple', 'Amazon', '321 Springs Rd', 'New York City', 'NY', 
 --2.4 UPDATE
 
 --Task – Update Aaron Mitchell in Customer table to Robert Walter
+UPDATE CUSTOMER
+SET FIRSTNAME = 'Robert', LASTNAME = 'Walter'
+WHERE FIRSTNAME = 'Aaron' AND LASTNAME = 'Mitchell';
 
 --Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
+UPDATE ARTIST
+SET NAME = 'CCR'
+WHERE NAME = 'Creedence Clearwater Revival';
 
 --2.5 LIKE
 
