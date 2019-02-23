@@ -78,8 +78,14 @@ WHERE BILLINGADDRESS LIKE 'T%';
 --2.6 BETWEEN
 
 --Task – Select all invoices that have a total between 15 and 50
+SELECT *
+FROM INVOICE
+WHERE TOTAL BETWEEN 15 AND 50;
 
 --Task – Select all employees hired between 1 st of June 2003 and 1 st of March 2004
+SELECT *
+FROM EMPLOYEE
+WHERE HIREDATE BETWEEN '01-JAN-03' AND '01-MAR-04';
 
 --2.7 DELETE
 
