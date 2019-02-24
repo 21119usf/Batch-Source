@@ -6,7 +6,7 @@ import com.bankapp.utils.CustomerUtils;
 import com.bankapp.utils.EmployeeUtils;
 
 // Driver class for BankApp
-public class Driver {
+public class Main {
 	public static void main(String[] args) {
 		// Load data from files
 		CustomerUtils.loadCustomers();
