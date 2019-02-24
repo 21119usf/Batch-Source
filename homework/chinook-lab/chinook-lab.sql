@@ -220,14 +220,6 @@ SELECT GET_EMPLOYEES_BORN_AFTER_1968() FROM DUAL;
 --4.1 Basic Stored Procedure
 
 --Task – Create a stored procedure that selects the first and last names of all the employees.
---CREATE OR REPLACE PROCEDURE GET_FIRST_LAST_NAME_EMP
---AS
---BEGIN
---SELECT FIRSTNAME, LASTNAME
---FROM EMPLOYEE
---END;
---/
---EXECUTE GET_FIRST_LAST_NAME_EMP();
 
 --4.2 Stored Procedure Input Parameters
 
@@ -254,3 +246,24 @@ EXECUTE UPDATE_PERSONAL_INFO_EMPLOYEE(10, 'Bob', 'Sam', 'Sales Support Agent', 2
 --4.3 Stored Procedure Output Parameters
 
 --Task – Create a stored procedure that returns the name and company of a customer.
+
+--5.0 Transactions
+--In this section you will be working with transactions. Transactions are usually nested within a stored
+--procedure.
+
+--Task – Create a transaction that given a invoiceId will delete that invoice (There may be constraints that
+--rely on this, find out how to resolve them).
+CREATE OR REPLACE PROCEDURE DELETE_INVOICEID
+(I_INVOICEID IN INVOICE.INVOICEID%TYPE)
+AS
+BEGIN
+DELETE FROM INVOICELINE
+WHERE INVOICEID = I_INVOICEID;
+DELETE FROM INVOICE
+WHERE INVOICEID = I_INVOICEID;
+END;
+/
+EXECUTE DELETE_INVOICEID(180);
+
+--Task – Create a transaction nested within a stored procedure that inserts a new record in the Customer
+--table
