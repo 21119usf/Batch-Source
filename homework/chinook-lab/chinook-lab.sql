@@ -92,6 +92,33 @@ WHERE HIREDATE BETWEEN '01-JAN-03' AND '01-MAR-04';
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints
 --that rely on this, find out how to resolve them).
 
+--Constraints: INVOICELINEINVOICEID(FK) -> INVOICEID(PK), INVOICECUSTOMERID(FK) -> CUSTOMERID(PK), CUSTOMERID(PK)
+--So we must delete from INVOICELINE table first, then INVOICE table second, then CUSTOMER table third.
+
+--Delete from INVOICELINE table
+DELETE FROM INVOICELINE
+WHERE INVOICEID IN (
+    SELECT INVOICEID
+    FROM INVOICE
+    WHERE CUSTOMERID = (
+        SELECT CUSTOMERID
+        FROM CUSTOMER
+        WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter'
+    )
+);
+
+--Delete from INVOICE table
+DELETE FROM INVOICE
+WHERE CUSTOMERID IN (
+    SELECT CUSTOMERID
+    FROM CUSTOMER
+    WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter'
+);
+
+--Delete from CUSTOMER table
+DELETE FROM CUSTOMER
+WHERE FIRSTNAME = 'Robert' AND LASTNAME = 'Walter';
+
 --3. SQL Functions
 --In this section you will be using the Oracle system functions, as well as your own functions, to perform
 --various actions against the database
@@ -185,3 +212,21 @@ RETURN EMPLOYEES;
 END;
 /
 SELECT GET_EMPLOYEES_BORN_AFTER_1968() FROM DUAL;
+
+--4.0 Stored Procedures
+--In this section you will be creating and executing stored procedures. You will be creating various types
+--of stored procedures that take input and output parameters.
+
+--4.1 Basic Stored Procedure
+
+--Task – Create a stored procedure that selects the first and last names of all the employees.
+
+--4.2 Stored Procedure Input Parameters
+
+--Task – Create a stored procedure that updates the personal information of an employee.
+
+--Task – Create a stored procedure that returns the managers of an employee .
+
+--4.3 Stored Procedure Output Parameters
+
+--Task – Create a stored procedure that returns the name and company of a customer.
