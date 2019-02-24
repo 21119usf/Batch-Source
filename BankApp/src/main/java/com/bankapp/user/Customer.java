@@ -1,10 +1,10 @@
-package com.bankapp.person;
+package com.bankapp.user;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 // Customer class
-public class Customer extends Person {
+public class Customer extends User {
 	private static final long serialVersionUID = 4473186511868357784L;
 	private int id;
 	private String username;
@@ -16,8 +16,8 @@ public class Customer extends Person {
 	// Constructor
 	public Customer(String un, String pw, String fn, String ln, 
 	String em, String ad, long pn, long ss) {
-		Random rnd = new Random();
-		id = 100000 + rnd.nextInt(900000);
+		Random r = new Random();
+		id = 100000000 + r.nextInt(900000000);
 		setUsername(un);
 		setPassword(pw);
 		setFirstName(fn);

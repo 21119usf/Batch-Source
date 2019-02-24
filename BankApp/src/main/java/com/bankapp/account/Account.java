@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.bankapp.person.Customer;
+import com.bankapp.user.Customer;
 
 // Account class
 public class Account implements Serializable {
@@ -20,8 +20,8 @@ public class Account implements Serializable {
 	
 	// Constructor
 	public Account(Customer c) {
-		Random rnd = new Random();
-		id = 100000 + rnd.nextInt(900000);
+		Random r = new Random();
+		id = 100000000 + r.nextInt(900000000);
 		setName("Account " + id);
 		setOpen(false);
 		setBalance(0.00);

@@ -13,9 +13,9 @@ import org.apache.log4j.Logger;
 
 import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
-import com.bankapp.person.Admin;
-import com.bankapp.person.Customer;
-import com.bankapp.person.Employee;
+import com.bankapp.user.Admin;
+import com.bankapp.user.Customer;
+import com.bankapp.user.Employee;
 
 public class EmployeeController {
 	final static Logger logger = Logger.getLogger(EmployeeController.class);

@@ -70,3 +70,12 @@
 2019-02-24 13:36:32 INFO  CustomerController:338 - CUSTOMER 816559 logged out
 2019-02-24 13:36:40 INFO  EmployeeController:124 - EMPLOYEE 686079 logged in
 2019-02-24 13:37:09 INFO  EmployeeController:284 - EMPLOYEE 686079 logged out
+2019-02-24 16:50:58 INFO  CustomerController:269 - CUSTOMER 201111068 created
+2019-02-24 16:51:31 INFO  CustomerController:133 - CUSTOMER 201111068 logged in
+2019-02-24 16:51:48 INFO  AccountController:237 - CUSTOMER 201111068 opened ACCOUNT 739455960
+2019-02-24 16:52:01 INFO  CustomerController:338 - CUSTOMER 201111068 logged out
+2019-02-24 16:52:15 INFO  CustomerController:133 - CUSTOMER 201111068 logged in
+2019-02-24 16:52:19 INFO  CustomerController:338 - CUSTOMER 201111068 logged out
+2019-02-24 16:53:42 INFO  EmployeeController:229 - EMPLOYEE 230743611 created
+2019-02-24 16:53:49 INFO  EmployeeController:124 - EMPLOYEE 230743611 logged in
+2019-02-24 16:54:58 INFO  EmployeeController:284 - EMPLOYEE 230743611 logged out

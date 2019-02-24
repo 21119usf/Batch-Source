@@ -15,8 +15,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.bankapp.account.Account;
-import com.bankapp.person.Customer;
-import com.bankapp.person.Employee;
+import com.bankapp.user.Customer;
+import com.bankapp.user.Employee;
 
 class BankAppTest {
 	private static Account account;

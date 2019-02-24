@@ -1,4 +1,4 @@
-package com.bankapp.person;
+package com.bankapp.user;
 
 // Admin class
 public class Admin extends Employee {

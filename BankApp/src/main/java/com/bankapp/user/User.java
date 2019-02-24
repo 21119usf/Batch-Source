@@ -1,9 +1,9 @@
-package com.bankapp.person;
+package com.bankapp.user;
 
 import java.io.Serializable;
 
 // Abstract Person class
-public abstract class Person implements Serializable {
+public abstract class User implements Serializable {
 	private static final long serialVersionUID = 2873971097414980959L;
 	private String firstName;
 	private String lastName;
