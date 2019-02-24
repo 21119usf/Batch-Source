@@ -18,10 +18,24 @@ import com.bankapp.person.Customer;
 
 public class CustomerController {
 	final static Logger logger = Logger.getLogger(CustomerController.class);
+	private static CustomerController instance;
 	private static Scanner sc = new Scanner(System.in);
 	private static String customersFile = "Customers.ser";
 	private static ArrayList<Customer> customers = new ArrayList<Customer>();
 	private static Customer currentCustomer;
+	
+	// Constructor
+	private CustomerController() {
+		loadCustomers();
+	}
+	
+	// Return singleton instance
+	public static synchronized CustomerController getInstance() {
+		if (instance == null) {
+			instance = new CustomerController();
+		}
+		return instance;
+	}
 	
 	// Load customers from file
 	@SuppressWarnings("unchecked")

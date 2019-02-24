@@ -8,10 +8,10 @@ import com.bankapp.controllers.MenuController;
 // Driver class for BankApp
 public class Main {
 	public static void main(String[] args) {
-		// Load data from files
-		CustomerController.loadCustomers();
-		EmployeeController.loadEmployees();
-		AccountController.loadAccounts();
+		// Initialize singleton controllers
+		CustomerController cc = CustomerController.getInstance();
+		EmployeeController ec = EmployeeController.getInstance();
+		AccountController ac = AccountController.getInstance();
 		
 		// Landing page
 		int option = 0;

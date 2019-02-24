@@ -18,9 +18,23 @@ import com.bankapp.person.Customer;
 
 public class AccountController {
 	final static Logger logger = Logger.getLogger(AccountController.class);
+	private static AccountController instance;
 	private static Scanner sc = new Scanner(System.in);
 	private static String accountsFile = "Accounts.ser";
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
+	
+	// Constructor
+	private AccountController() {
+		loadAccounts();
+	}
+	
+	// Return instance
+	public static synchronized AccountController getInstance() {
+		if (instance == null) {
+			instance = new AccountController();
+		}
+		return instance;
+	}
 	
 	// Load accounts from file
 	@SuppressWarnings("unchecked")

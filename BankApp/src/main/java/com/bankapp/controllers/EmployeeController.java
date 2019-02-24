@@ -19,10 +19,24 @@ import com.bankapp.person.Employee;
 
 public class EmployeeController {
 	final static Logger logger = Logger.getLogger(EmployeeController.class);
+	private static EmployeeController instance;
 	private static Scanner sc = new Scanner(System.in);
 	private static String employeesFile = "Employees.ser";
 	private static ArrayList<Employee> employees = new ArrayList<Employee>();
 	private static Employee currentEmployee;
+	
+	// Constructor
+	private EmployeeController() {
+		loadEmployees();
+	}
+	
+	// Return singleton instance
+	public static synchronized EmployeeController getInstance() {
+		if (instance == null) {
+			instance = new EmployeeController();
+		}
+		return instance;
+	}
 	
 	// Load employees from file
 	@SuppressWarnings("unchecked")
