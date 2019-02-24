@@ -261,9 +261,69 @@ DELETE FROM INVOICELINE
 WHERE INVOICEID = I_INVOICEID;
 DELETE FROM INVOICE
 WHERE INVOICEID = I_INVOICEID;
+COMMIT;
 END;
 /
-EXECUTE DELETE_INVOICEID(180);
+EXECUTE DELETE_INVOICEID(179);
 
 --Task – Create a transaction nested within a stored procedure that inserts a new record in the Customer
 --table
+
+--6.0 Triggers
+--In this section you will create various kinds of triggers that work when certain DML statements are
+--executed on a table.
+
+--6.1 AFTER/FOR
+
+--Task - Create an after insert trigger on the employee table fired after a new record is inserted into the
+--table.
+
+--Task – Create an after update trigger on the album table that fires after a row is inserted in the table
+
+--Task – Create an after delete trigger on the customer table that fires after a row is deleted from the
+--table.
+
+--7.0 JOINS
+--In this section you will be working with combining various tables through the use of joins. You will work
+--with outer, inner, right, left, cross, and self joins.
+
+--7.1 INNER
+
+--Task – Create an inner join that joins customers and orders and specifies the name of the customer and
+--the invoiceId.
+SELECT FIRSTNAME, LASTNAME, INVOICEID
+FROM CUSTOMER
+INNER JOIN INVOICE
+ON CUSTOMER.CUSTOMERID = INVOICE.CUSTOMERID;
+
+--7.2 OUTER
+
+--Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId,
+--firstname, lastname, invoiceId, and total.
+SELECT CUSTOMER.CUSTOMERID, FIRSTNAME, LASTNAME, INVOICE.INVOICEID, INVOICE.TOTAL
+FROM CUSTOMER
+FULL OUTER JOIN INVOICE
+ON CUSTOMER.CUSTOMERID = INVOICE.CUSTOMERID;
+
+--7.3 RIGHT
+
+--Task – Create a right join that joins album and artist specifying artist name and title.
+SELECT NAME, TITLE
+FROM ALBUM
+RIGHT JOIN ARTIST
+ON ALBUM.ARTISTID = ARTIST.ARTISTID;
+
+--7.4 CROSS
+
+--Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT NAME, TITLE
+FROM ALBUM
+CROSS JOIN ARTIST
+ORDER BY NAME;
+
+--7.5 SELF
+
+--Task – Perform a self-join on the employee table, joining on the reportsto column.
+SELECT *
+FROM EMPLOYEE A, EMPLOYEE B
+WHERE A.REPORTSTO <> B.REPORTSTO;
