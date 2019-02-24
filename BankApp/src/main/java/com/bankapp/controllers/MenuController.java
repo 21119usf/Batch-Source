@@ -1,10 +1,10 @@
-package com.bankapp.utils;
+package com.bankapp.controllers;
 
 import java.util.ArrayList;
 
 import com.bankapp.menu.Menu;
 
-public class MenuUtils {
+public class MenuController {
 	// Display landing page and get desired option
 	public static int displayLanding() {
 		ArrayList<String> al = new ArrayList<String>();

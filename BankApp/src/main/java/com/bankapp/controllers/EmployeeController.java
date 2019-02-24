@@ -1,4 +1,4 @@
-package com.bankapp.utils;
+package com.bankapp.controllers;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,8 +17,8 @@ import com.bankapp.person.Admin;
 import com.bankapp.person.Customer;
 import com.bankapp.person.Employee;
 
-public class EmployeeUtils {
-	final static Logger logger = Logger.getLogger(EmployeeUtils.class);
+public class EmployeeController {
+	final static Logger logger = Logger.getLogger(EmployeeController.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static String employeesFile = "Employees.ser";
 	private static ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -72,10 +72,10 @@ public class EmployeeUtils {
 			displayLanding();
 			break;
 		case 1:
-			EmployeeUtils.displayLogin();
+			EmployeeController.displayLogin();
 			break;
 		case 2:
-			EmployeeUtils.displayRegistration();
+			EmployeeController.displayRegistration();
 			break;
 		default:
 			displayLanding();
@@ -311,11 +311,11 @@ public class EmployeeUtils {
 		}
 		
 		// Search account
-		Account a = AccountUtils.getAccount(id);
+		Account a = AccountController.getAccount(id);
 		if (a != null) {
 			a.setOpen(true);
 			System.out.println("Account opened!");
-			AccountUtils.saveAccounts();
+			AccountController.saveAccounts();
 		} else {
 			System.out.println("Account not found");
 		}
@@ -340,7 +340,7 @@ public class EmployeeUtils {
 		}
 		
 		// Search account
-		Account a = AccountUtils.getAccount(id);
+		Account a = AccountController.getAccount(id);
 		if (a != null) {
 			System.out.println();
 			System.out.println("Account ID:\t" + a.getId());
@@ -376,7 +376,7 @@ public class EmployeeUtils {
 		}
 		
 		// Search customer
-		Customer c = CustomerUtils.getCustomer(id);
+		Customer c = CustomerController.getCustomer(id);
 		if (c != null) {
 			System.out.println("Your ID:\t\t\t" + c.getId());
 			System.out.println("Your username:\t\t" + c.getUsername());
@@ -407,7 +407,7 @@ public class EmployeeUtils {
 		}
 		
 		// Search account
-		Account a = AccountUtils.getAccount(id);
+		Account a = AccountController.getAccount(id);
 		if (a != null) {
 			int option = 0;
 			
@@ -426,15 +426,15 @@ public class EmployeeUtils {
 			if (option == 0) {
 				displayLanding();
 			} else if (option == 1) {
-				AccountUtils.deposit(a);
+				AccountController.deposit(a);
 			} else if (option == 2) {
-				AccountUtils.withdraw(a);
+				AccountController.withdraw(a);
 			} else if (option == 3) {
-				AccountUtils.transfer(a);
+				AccountController.transfer(a);
 			} else if (option == 4) {
-				AccountUtils.printAccountDetails(a);
+				AccountController.printAccountDetails(a);
 			} else if (option == 5) {
-				AccountUtils.closeAccount(a);
+				AccountController.closeAccount(a);
 			}
 		} else {
 			System.out.println("Account not found");

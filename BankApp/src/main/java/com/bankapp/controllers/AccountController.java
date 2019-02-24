@@ -1,4 +1,4 @@
-package com.bankapp.utils;
+package com.bankapp.controllers;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,8 +16,8 @@ import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
 import com.bankapp.person.Customer;
 
-public class AccountUtils {
-	final static Logger logger = Logger.getLogger(AccountUtils.class);
+public class AccountController {
+	final static Logger logger = Logger.getLogger(AccountController.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static String accountsFile = "Accounts.ser";
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
@@ -85,15 +85,15 @@ public class AccountUtils {
 		if (option == 0) {
 			return;
 		} else if (option == 1) {
-			AccountUtils.deposit(a);
+			AccountController.deposit(a);
 		} else if (option == 2) {
-			AccountUtils.withdraw(a);
+			AccountController.withdraw(a);
 		} else if (option == 3) {
-			AccountUtils.transfer(a);
+			AccountController.transfer(a);
 		} else if (option == 4) {
-			AccountUtils.printAccountDetails(a);
+			AccountController.printAccountDetails(a);
 		} else if (option == 5) {
-			AccountUtils.closeAccount(a);
+			AccountController.closeAccount(a);
 		}
 
 		return;
@@ -141,7 +141,7 @@ public class AccountUtils {
 		} else if (amount > 0.0 && a.withdraw(amount)) {
 			logger.info("WITHDRAW " + "(" + a.getId() + "): $"
 					+ String.format("%.2f", amount));
-			AccountUtils.saveAccounts();
+			AccountController.saveAccounts();
 		}
 	}
 	
@@ -176,7 +176,7 @@ public class AccountUtils {
 			if (b != null && a.transfer(b, amount)) {
 				logger.info("TRANSFER from " + a.getId() + " to " + b.getId() 
 					+ " $" + String.format("%.2f", amount));
-				AccountUtils.saveAccounts();
+				AccountController.saveAccounts();
 			} else {
 				System.out.println("Account not found");
 			}
@@ -200,7 +200,7 @@ public class AccountUtils {
 			System.out.print(">>> ");
 			try {
 				int id = sc.nextInt();
-				Customer c2 = CustomerUtils.getCustomer(id);
+				Customer c2 = CustomerController.getCustomer(id);
 				if (c2 != null) {
 					a.addOwner(c2);
 					logger.info("CUSTOMERS " + c.getId() + ", " + c2.getId() +
@@ -219,7 +219,7 @@ public class AccountUtils {
 		accounts.add(a);
 		saveAccounts();
 		c.getAccounts().add(a.getId());
-		CustomerUtils.saveCustomers();
+		CustomerController.saveCustomers();
 		logger.info("CUSTOMER " + c.getId() + " opened ACCOUNT " + a.getId());
 		displayAccountMenu(a);
 		

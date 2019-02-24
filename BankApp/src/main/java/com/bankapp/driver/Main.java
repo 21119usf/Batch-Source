@@ -1,29 +1,29 @@
 package com.bankapp.driver;
 
-import com.bankapp.utils.MenuUtils;
-import com.bankapp.utils.AccountUtils;
-import com.bankapp.utils.CustomerUtils;
-import com.bankapp.utils.EmployeeUtils;
+import com.bankapp.controllers.AccountController;
+import com.bankapp.controllers.CustomerController;
+import com.bankapp.controllers.EmployeeController;
+import com.bankapp.controllers.MenuController;
 
 // Driver class for BankApp
 public class Main {
 	public static void main(String[] args) {
 		// Load data from files
-		CustomerUtils.loadCustomers();
-		EmployeeUtils.loadEmployees();
-		AccountUtils.loadAccounts();
+		CustomerController.loadCustomers();
+		EmployeeController.loadEmployees();
+		AccountController.loadAccounts();
 		
 		// Landing page
 		int option = 0;
-		option = MenuUtils.displayLanding();
+		option = MenuController.displayLanding();
 		
 		// Redirect
 		switch (option) {
 		case 1:		// Customer
-			CustomerUtils.displayCustomerEntry();
+			CustomerController.displayCustomerEntry();
 			break;
 		case 2:		// Employee
-			EmployeeUtils.displayEmployeeEntry();
+			EmployeeController.displayEmployeeEntry();
 			break;
 		case 0:		// Exit
 			System.out.println("Goodbye");

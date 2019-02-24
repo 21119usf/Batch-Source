@@ -1,4 +1,4 @@
-package com.bankapp.utils;
+package com.bankapp.controllers;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,8 +16,8 @@ import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
 import com.bankapp.person.Customer;
 
-public class CustomerUtils {
-	final static Logger logger = Logger.getLogger(CustomerUtils.class);
+public class CustomerController {
+	final static Logger logger = Logger.getLogger(CustomerController.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static String customersFile = "Customers.ser";
 	private static ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -81,10 +81,10 @@ public class CustomerUtils {
 			displayLanding();
 			break;
 		case 1:
-			CustomerUtils.displayLogin();
+			CustomerController.displayLogin();
 			break;
 		case 2:
-			CustomerUtils.displayRegistration();
+			CustomerController.displayRegistration();
 			break;
 		default:
 			displayLanding();
@@ -360,10 +360,10 @@ public class CustomerUtils {
 			//displayLanding();
 			return;
 		} else if (option == 1) {
-			AccountUtils.displayOpenAccount(currentCustomer);
+			AccountController.displayOpenAccount(currentCustomer);
 		} else {
-			Account a = AccountUtils.getAccount(acctIds.get(option-2));
-			AccountUtils.displayAccountMenu(a);
+			Account a = AccountController.getAccount(acctIds.get(option-2));
+			AccountController.displayAccountMenu(a);
 		}
 	}
 	
