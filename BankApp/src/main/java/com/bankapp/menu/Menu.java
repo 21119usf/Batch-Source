@@ -17,7 +17,7 @@ public class Menu {
 		int option = 0;
 		boolean notValidOption = true;
 
-		do {
+		while (notValidOption) {
 			// Display menu
 			int count = 0;
 			System.out.println();
@@ -31,7 +31,7 @@ public class Menu {
 			if (sc.hasNextInt()) {
 				option = sc.nextInt();
 				sc.nextLine();    // Clear buffer
-				if (option < 0 || option > items.size()) {
+				if (option < 0 || option >= items.size()) {
 					System.out.println("Invalid option");
 					continue;
 				}
@@ -40,7 +40,7 @@ public class Menu {
 				System.out.println("Invalid option");
 				sc.nextLine();
 			}
-		} while (notValidOption);
+		}
 		
 		return option;
 	}

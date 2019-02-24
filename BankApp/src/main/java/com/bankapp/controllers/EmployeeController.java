@@ -19,6 +19,8 @@ import com.bankapp.person.Employee;
 
 public class EmployeeController {
 	final static Logger logger = Logger.getLogger(EmployeeController.class);
+	@SuppressWarnings("unused")
+	private static AccountController ac = AccountController.getInstance();
 	private static EmployeeController instance;
 	private static Scanner sc = new Scanner(System.in);
 	private static String employeesFile = "Employees.ser";
@@ -72,7 +74,7 @@ public class EmployeeController {
 	}
 	
 	// Display employee entry page
-	public static void displayEmployeeEntry() {
+	public void displayEmployeeEntry() {
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Back");
 		al.add("Employee Login");
@@ -83,8 +85,7 @@ public class EmployeeController {
 		// Redirect
 		switch (option) {
 		case 0:
-			displayLanding();
-			break;
+			return;
 		case 1:
 			EmployeeController.displayLogin();
 			break;
@@ -272,17 +273,18 @@ public class EmployeeController {
 			if (currentEmployee instanceof Admin) {
 				al.add("Edit Account");
 			}
-			System.out.println();
 			Menu m = new Menu(al);
 			option = m.display();
 			
 			// Redirect
 			switch (option) {
 			case 0:
-				System.out.println("Logging out.");
-				logger.info("EMPLOYEE " + currentEmployee.getId()
-				+ " logged out");
-				System.exit(0);
+				if (currentEmployee != null) {
+					System.out.println("Logging out.");
+					logger.info("EMPLOYEE " + currentEmployee.getId()
+						+ " logged out");
+				}
+				return;
 			case 1:
 				approveAccount();
 				break;

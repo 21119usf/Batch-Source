@@ -18,6 +18,8 @@ import com.bankapp.person.Customer;
 
 public class CustomerController {
 	final static Logger logger = Logger.getLogger(CustomerController.class);
+	@SuppressWarnings("unused")
+	private static AccountController ac = AccountController.getInstance();
 	private static CustomerController instance;
 	private static Scanner sc = new Scanner(System.in);
 	private static String customersFile = "Customers.ser";
@@ -81,7 +83,7 @@ public class CustomerController {
 	}
 	
 	// Display customer entry page
-	public static void displayCustomerEntry() {
+	public void displayCustomerEntry() {
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Back");
 		al.add("Customer Login");
@@ -92,8 +94,7 @@ public class CustomerController {
 		// Redirect
 		switch (option) {
 		case 0:
-			displayLanding();
-			break;
+			return;
 		case 1:
 			CustomerController.displayLogin();
 			break;
@@ -114,7 +115,7 @@ public class CustomerController {
 		// Three tries to login
 		String username;
 		String password;
-		do {
+		while (notValidLogin && loginCount < 3) {
 			System.out.println();
 			System.out.println("Please Login");
 			System.out.println("Enter Username: ");
@@ -135,7 +136,7 @@ public class CustomerController {
 			} else {
 				loginCount++;
 			}
-		} while (notValidLogin && loginCount < 3);
+		}
 		
 		// Exit application if login fails 3 times
 		if (loginCount == 3) {
@@ -176,7 +177,7 @@ public class CustomerController {
 		
 		// Username
 		boolean notValidUsername = true;
-		do {
+		while (notValidUsername) {
 			System.out.println("Enter a username");
 			System.out.print(">>> ");
 			username = sc.nextLine();
@@ -185,12 +186,12 @@ public class CustomerController {
 			} else {
 				System.out.println("Username invalid or taken.");
 			}
-		} while (notValidUsername);
+		}
 		
 		// Password
 		boolean notValidPassword = true;
 		String p0, p1;
-		do {
+		while (notValidPassword) {
 			System.out.println("Enter a password");
 			System.out.print(">>> ");
 			p0 = sc.nextLine();
@@ -205,7 +206,7 @@ public class CustomerController {
 					System.out.println("Mismatched passwords.");
 				}
 			}
-		} while (notValidPassword);
+		}
 		
 		// First and last names, email and address
 		System.out.println("Enter your first name: ");
@@ -223,7 +224,7 @@ public class CustomerController {
 		
 		// Phone number
 		boolean notValidPhoneNumber = true;
-		do {
+		while (notValidPhoneNumber) {
 			System.out.println("Enter your phone number: ");
 			System.out.print(">>> ");
 			try {
@@ -238,7 +239,7 @@ public class CustomerController {
 				System.out.println("Numerals only, no hyphens.");
 				sc.nextLine();		// Clear buffer
 			}
-		} while (notValidPhoneNumber);
+		}
 		
 		// Social security number
 		boolean notValidSsNumber = true;
@@ -332,10 +333,12 @@ public class CustomerController {
 			// Redirect
 			switch (option) {
 			case 0:
-				System.out.println("Logging out.");
-				logger.info("CUSTOMER " + currentCustomer.getId()
-				+ " logged out");
-				System.exit(0);
+				if (currentCustomer != null) {
+					System.out.println("Logging out.");
+					logger.info("CUSTOMER " + currentCustomer.getId()
+						+ " logged out");
+				}
+				return;
 			case 1:
 				displayAccounts();
 				break;
@@ -345,11 +348,6 @@ public class CustomerController {
 			case 3:
 				editCustomerInfo();
 				break;
-			default:
-				System.out.println("Logging out.");
-				logger.info("CUSTOMER " + currentCustomer.getId()
-					+ " logged out");
-				System.exit(0);
 			}
 		}
 	}
