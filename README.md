@@ -1,4 +1,6 @@
 # Batch-Source
+### Chinook Lab
+Listed below are instructions on how to run the chinook lab SQL file.
 ### Banking App Part 01
 Listed below are instructions on how to run the banking app part 01.
 * Open Spring tool Suite
