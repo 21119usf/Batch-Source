@@ -91,3 +91,51 @@ WHERE HIREDATE BETWEEN '01-JAN-03' AND '01-MAR-04';
 
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints
 --that rely on this, find out how to resolve them).
+
+--3. SQL Functions
+--In this section you will be using the Oracle system functions, as well as your own functions, to perform
+--various actions against the database
+
+--3.1 System Defined Functions
+
+--Task – Create a function that returns the current time.
+CREATE OR REPLACE FUNCTION GET_CURRENT_TIME
+RETURN TIMESTAMP IS
+CURRENT_TIME TIMESTAMP;
+BEGIN
+CURRENT_TIME := CURRENT_TIMESTAMP;
+RETURN(CURRENT_TIME);
+END;
+/
+SELECT GET_CURRENT_TIME() 
+FROM DUAL;
+
+--Task – create a function that returns the length of name in MEDIATYPE table
+CREATE OR REPLACE FUNCTION GET_LENGTH_OF_NAME
+(M_ID IN NUMBER)
+RETURN NUMBER IS
+LENGTH NUMBER;
+BEGIN
+SELECT LENGTH(NAME)
+INTO LENGTH
+FROM MEDIATYPE
+WHERE MEDIATYPEID = M_ID;
+RETURN(LENGTH);
+END;
+/
+SELECT GET_LENGTH_OF_NAME(5)
+FROM DUAL;
+
+--3.2 System Defined Aggregate Functions
+
+--Task – Create a function that returns the average total of all invoices
+
+--Task – Create a function that returns the most expensive track
+
+--3.3 User Defined Scalar Functions
+
+--Task – Create a function that returns the average price of invoiceline items in the invoiceline table
+
+--3.4 User Defined Table Valued Functions
+
+--Task – Create a function that returns all employees who are born after 1968.
