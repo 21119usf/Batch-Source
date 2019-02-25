@@ -220,8 +220,6 @@ SELECT GET_EMPLOYEES_BORN_AFTER_1968() FROM DUAL;
 --4.1 Basic Stored Procedure
 
 --Task – Create a stored procedure that selects the first and last names of all the employees.
-
---4.2 Stored Procedure Input Parameters
 CREATE OR REPLACE PROCEDURE GET_FIRST_LAST_NAMES
 (SR OUT SYS_REFCURSOR)
 AS
@@ -245,6 +243,8 @@ END LOOP;
 CLOSE SR;
 END;
 /
+
+--4.2 Stored Procedure Input Parameters
 
 --Task – Create a stored procedure that updates the personal information of an employee.
 CREATE OR REPLACE PROCEDURE UPDATE_PERSONAL_INFO_EMPLOYEE
