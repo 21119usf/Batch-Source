@@ -9,11 +9,12 @@ import com.bankapp.controllers.ConnectionController;
 import com.bankapp.user.Customer;
 
 public class CustomerDaoImp implements CustomerDao {
-	public static ConnectionController cc = ConnectionController.getInstance();
+	private static ConnectionController cc = ConnectionController.getInstance();
+	private Connection connection = cc.getConnection();
 	
 	// Add customer to database
 	public void addCustomer(Customer c) throws SQLException {
-		Connection connection = cc.getConnection();
+		
 		Statement statement = connection.createStatement();
 		String sql = "INSERT INTO CUSTOMER VALUES(" +
 			c.getId() + ", '" + c.getUsername() + "', '" + c.getPassword() + 
@@ -24,7 +25,6 @@ public class CustomerDaoImp implements CustomerDao {
 
 	// Retrieve customer by id
 	public Customer getCustomer(int id) throws SQLException {
-		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
 		String sql = "SELECT * FROM CUSTOMER " + "WHERE C_ID = " + id;
 		
@@ -55,7 +55,6 @@ public class CustomerDaoImp implements CustomerDao {
 	
 	// Retrieve customer by username
 	public Customer getCustomer(String username) throws SQLException {
-		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
 		String sql = "SELECT * FROM CUSTOMER " + 
 			"WHERE C_USERNAME = '" + username + "'";
@@ -87,7 +86,6 @@ public class CustomerDaoImp implements CustomerDao {
 
 	// Update customer in database
 	public void updateCustomer(Customer c) throws SQLException {
-		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
 		String sql = "UPDATE CUSTOMER SET " +
 			"C_PASSWORD = '" + c.getPassword() + "', " +
@@ -101,7 +99,6 @@ public class CustomerDaoImp implements CustomerDao {
 
 	// Remove customer from database
 	public void deleteCustomer(Customer c) throws SQLException {
-		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
 		String sql = "DELETE FROM CUSTOMER WHERE C_ID = " + c.getId();
 		statement.execute(sql);
