@@ -79,3 +79,5 @@
 2019-02-24 16:53:42 INFO  EmployeeController:229 - EMPLOYEE 230743611 created
 2019-02-24 16:53:49 INFO  EmployeeController:124 - EMPLOYEE 230743611 logged in
 2019-02-24 16:54:58 INFO  EmployeeController:284 - EMPLOYEE 230743611 logged out
+2019-02-24 19:27:31 INFO  CustomerController:133 - CUSTOMER 201111068 logged in
+2019-02-24 19:28:27 INFO  CustomerController:338 - CUSTOMER 201111068 logged out
