@@ -29,8 +29,12 @@ public class CustomerDaoImp implements CustomerDao {
 		
 		String username = ""; String password = ""; String firstName = "";
 		String lastName = ""; String email = "";
-		long phone = 0; long social = 0;
+		long phone = 0;
+		
 		ResultSet rs = statement.executeQuery(sql);
+		if (!rs.isBeforeFirst()) {
+			return null;	// No data
+		}
 		while (rs.next()) {
 			username = rs.getString("C_USERNAME");
 			password = rs.getString("C_PASSWORD");
@@ -38,12 +42,6 @@ public class CustomerDaoImp implements CustomerDao {
 			lastName = rs.getString("C_LASTNAME");
 			email = rs.getString("C_EMAIL");
 			phone = rs.getInt("C_PHONE");
-		}
-		
-		// Check returned data
-		if (username.isEmpty() || password.isEmpty() || firstName.isEmpty() ||
-			lastName.isEmpty() || email.isEmpty() || phone == 0 || social == 0) {
-			return null;
 		}
 		
 		Customer c = new Customer(username, password, firstName, lastName,
@@ -61,7 +59,11 @@ public class CustomerDaoImp implements CustomerDao {
 		String password = ""; String firstName = "";
 		String lastName = ""; String email = "";
 		long id = 0; long phone = 0;
+		
 		ResultSet rs = statement.executeQuery(sql);
+		if (!rs.isBeforeFirst()) {
+			return null;	// No data
+		}
 		while (rs.next()) {
 			id = rs.getLong("C_ID");
 			password = rs.getString("C_PASSWORD");
@@ -69,12 +71,6 @@ public class CustomerDaoImp implements CustomerDao {
 			lastName = rs.getString("C_LASTNAME");
 			email = rs.getString("C_EMAIL");
 			phone = rs.getLong("C_PHONE");
-		}
-		
-		// Check returned data
-		if (password.isEmpty() || firstName.isEmpty() ||
-			lastName.isEmpty() || email.isEmpty() || phone == 0 || id == 0) {
-			return null;
 		}
 		
 		Customer c = new Customer(username, password, firstName, lastName,
