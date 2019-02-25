@@ -12,3 +12,9 @@
 [INFO ] 2019-02-20 03:20:00.554 [main] LogonAttempt - Austin
 [INFO ] 2019-02-20 03:20:58.986 [main] LogonAttempt - Austin
 [INFO ] 2019-02-20 03:23:01.823 [main] LogonAttempt - Austin
+[INFO ] 2019-02-20 09:35:37.978 [main] newCustomer - Application for account made by nullname nullname
+[INFO ] 2019-02-20 09:36:20.483 [main] LogonAttempt - Austin
+[INFO ] 2019-02-20 09:37:25.278 [main] EmployeeAccess - 45's application approved by USER 1
+[INFO ] 2019-02-20 09:37:56.554 [main] LogonAttempt - Admin
+[INFO ] 2019-02-20 09:38:43.565 [main] AdminAccess - 13 password changed by 3
+[INFO ] 2019-02-20 09:39:00.968 [main] LogonAttempt - JavaJoe

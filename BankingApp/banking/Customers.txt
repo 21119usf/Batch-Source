@@ -14,3 +14,5 @@ Customer#:AccountBalance1:Joint2:FullName3
 38:25:false:Pencil pencil
 
 42:100000:true:Johnathan Doberman
+
+45:100:false:nullname nullname
