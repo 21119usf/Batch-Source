@@ -14,7 +14,6 @@ public class CustomerDaoImp implements CustomerDao {
 	
 	// Add customer to database
 	public void addCustomer(Customer c) throws SQLException {
-		
 		Statement statement = connection.createStatement();
 		String sql = "INSERT INTO CUSTOMER VALUES(" +
 			c.getId() + ", '" + c.getUsername() + "', '" + c.getPassword() + 
