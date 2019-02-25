@@ -222,6 +222,29 @@ SELECT GET_EMPLOYEES_BORN_AFTER_1968() FROM DUAL;
 --Task – Create a stored procedure that selects the first and last names of all the employees.
 
 --4.2 Stored Procedure Input Parameters
+CREATE OR REPLACE PROCEDURE GET_FIRST_LAST_NAMES
+(SR OUT SYS_REFCURSOR)
+AS
+BEGIN
+OPEN SR
+FOR SELECT FIRSTNAME, LASTNAME 
+FROM EMPLOYEE;
+END;
+/
+
+DECLARE SR SYS_REFCURSOR;
+FIRSTNAME EMPLOYEE.FIRSTNAME%TYPE;
+LASTNAME EMPLOYEE.LASTNAME%TYPE;
+BEGIN
+GET_FIRST_LAST_NAMES(SR);
+LOOP
+FETCH SR INTO FIRSTNAME, LASTNAME;
+EXIT WHEN SR%NOTFOUND;
+DBMS_OUTPUT.PUT_LINE(FIRSTNAME || '  ' || LASTNAME);
+END LOOP;
+CLOSE SR;
+END;
+/
 
 --Task – Create a stored procedure that updates the personal information of an employee.
 CREATE OR REPLACE PROCEDURE UPDATE_PERSONAL_INFO_EMPLOYEE
@@ -242,10 +265,46 @@ END;
 EXECUTE UPDATE_PERSONAL_INFO_EMPLOYEE(10, 'Bob', 'Sam', 'Sales Support Agent', 2, '09-JAN-68', '04-MAR-06', '555 Address St', 'Columbia', 'NC', 'United States', 'T2P 5M5', '+1 (512) 111-1111', '+1 (681) 777-7777', 'bobsam@racing.com');
 
 --Task – Create a stored procedure that returns the managers of an employee .
+CREATE OR REPLACE PROCEDURE MANAGERS_OF_EMPLOYEES
+AS
+CURSOR EMP_CUR
+IS
+SELECT FIRSTNAME, REPORTSTO
+FROM EMPLOYEE;
+EMP_ROW EMP_CUR%ROWTYPE;
+BEGIN
+FOR EMP_ROW
+IN EMP_CUR
+LOOP
+DBMS_OUTPUT.PUT_LINE(EMP_ROW.FIRSTNAME || ' MANAGER IS: ' || EMP_ROW.REPORTSTO);
+END LOOP;
+END;
+/
+SET SERVEROUTPUT ON;
+BEGIN
+MANAGERS_OF_EMPLOYEES;
+END;
+/
 
 --4.3 Stored Procedure Output Parameters
 
 --Task – Create a stored procedure that returns the name and company of a customer.
+CREATE OR REPLACE PROCEDURE NAME_COMPANY_CUSTOMER
+IS
+CURSOR CUR
+IS
+SELECT FIRSTNAME, LASTNAME, COMPANY
+FROM CUSTOMER;
+CURROW CUR%ROWTYPE;
+BEGIN
+FOR CURROW IN CUR
+LOOP
+DBMS_OUTPUT.PUT_LINE(CURROW.FIRSTNAME || ' ' || CURROW.LASTNAME || ' ' || CURROW.COMPANY);
+END LOOP;
+END;
+/
+SET SERVEROUTPUT ON;
+EXECUTE NAME_COMPANY_CUSTOMER();
 
 --5.0 Transactions
 --In this section you will be working with transactions. Transactions are usually nested within a stored
@@ -268,6 +327,16 @@ EXECUTE DELETE_INVOICEID(179);
 
 --Task – Create a transaction nested within a stored procedure that inserts a new record in the Customer
 --table
+CREATE OR REPLACE PROCEDURE INSERT_CUSTOMER
+IS
+BEGIN
+INSERT INTO CUSTOMER
+VALUES (62, 'Bo', 'Smith', 'Google', '155 West Parkway', 'New York City', 'NY', 'USA', '78666', '+1 (512) 345-4343', 
+'+1 (512) 345-3444', 'bobsmith@google.com', 5);
+COMMIT;
+END;
+/
+EXECUTE INSERT_CUSTOMER();
 
 --6.0 Triggers
 --In this section you will create various kinds of triggers that work when certain DML statements are
@@ -277,11 +346,29 @@ EXECUTE DELETE_INVOICEID(179);
 
 --Task - Create an after insert trigger on the employee table fired after a new record is inserted into the
 --table.
+CREATE OR REPLACE TRIGGER INSERT_EMPLOYEE
+AFTER INSERT ON EMPLOYEE
+BEGIN
+DBMS_OUTPUT.PUT_LINE('INSERT EMPLOYEE');
+END;
+/
 
 --Task – Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER UPDATE_ALBUM
+AFTER UPDATE ON ALBUM
+BEGIN 
+DBMS_OUTPUT.PUT_LINE('UPDATE ALBUM');
+END;
+/
 
 --Task – Create an after delete trigger on the customer table that fires after a row is deleted from the
 --table.
+CREATE OR REPLACE TRIGGER DELETE_CUSTOMER
+AFTER DELETE ON CUSTOMER
+BEGIN
+DBMS_OUTPUT.PUT_LINE('DELETE CUSTOMER');
+END;
+/
 
 --7.0 JOINS
 --In this section you will be working with combining various tables through the use of joins. You will work
