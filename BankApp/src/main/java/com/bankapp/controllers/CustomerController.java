@@ -379,8 +379,6 @@ public class CustomerController {
 	
 	// Edit currentCustomer personal info
 	private static void editCustomerInfo() {
-		int option = 0;
-		
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Back");
 		al.add("Edit Password");
@@ -389,8 +387,7 @@ public class CustomerController {
 		al.add("Edit Email");
 		al.add("Edit Phone Number");
 		Menu m = new Menu(al);
-		option = m.display();
-		
+		int option = m.display();
 		if (option == 0) {
 			return;
 		} else if (option == 1) {
@@ -431,6 +428,13 @@ public class CustomerController {
 			}
 			currentCustomer.setPhoneNumber(phoneNumber);
 		}
-		saveCustomers();
+		
+		// Update database
+		CustomerDaoImp cdi = new CustomerDaoImp();
+		try {
+			cdi.updateCustomer(currentCustomer);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
