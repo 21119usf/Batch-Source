@@ -29,7 +29,7 @@ class BankAppTest {
 	static void beforeAll() {
 		customer = new Customer(
 			"username", "password", "first", "last", "email", 
-			8135555555L, 938763232L);
+			8135555555L);
 		employee = new Employee("username", "password", "first", "last");
 		account = new Account(customer);
 		account.setOpen(true);
@@ -100,7 +100,7 @@ class BankAppTest {
 		Customer customer2;
 		customer2 = new Customer(
 				"username", "password", "first", "last", "email", 
-				8135555555L, 938763232L);
+				8135555555L);
 		Account account2 = new Account(customer2);
 		account2.setOpen(true);
 		double amount = 10.00;

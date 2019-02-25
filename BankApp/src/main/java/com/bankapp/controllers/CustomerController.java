@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ import org.apache.log4j.Logger;
 import com.bankapp.account.Account;
 import com.bankapp.menu.Menu;
 import com.bankapp.user.Customer;
+import com.bankapp.dao.CustomerDaoImp;
 
 public class CustomerController {
 	final static Logger logger = Logger.getLogger(CustomerController.class);
@@ -74,10 +76,23 @@ public class CustomerController {
 	
 	// Return customer by id
 	public static Customer getCustomer(int id) {
-		for (Customer c : customers) {
-			if (c.getId() == id) {
-				return c;
-			}
+		CustomerDaoImp cdi = new CustomerDaoImp();
+		try {
+			Customer c = cdi.getCustomer(id);
+			return c;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	// Return customer by username
+	public static Customer getCustomer(String un) {
+		CustomerDaoImp cdi = new CustomerDaoImp();
+		try {
+			Customer c = cdi.getCustomer(un);
+			return c;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -148,14 +163,13 @@ public class CustomerController {
 	// Validate login
 	private static Customer validateLogin(String un, String pw) {
 		// Customer login
-		for (Customer c : customers) {
-			if (c.getUsername().equals(un)) {
-				if (c.getPassword().equals(pw)) {
-					return c;
-				} else {
-					System.out.println("Invalid credentials.");
-					return null;
-				}
+		Customer c = getCustomer(un);
+		if (c.getUsername().equals(un)) {
+			if (c.getPassword().equals(pw)) {
+				return c;
+			} else {
+				System.out.println("Invalid credentials.");
+				return null;
 			}
 		}
 		System.out.println("No user \"" + un + "\" found.");
@@ -170,7 +184,6 @@ public class CustomerController {
 		String lastName = "";
 		long phoneNumber = 0L;
 		String email = "";
-		long ssNumber = 0L;
 		
 		System.out.println("Enter some personal account information:");
 		
@@ -236,34 +249,20 @@ public class CustomerController {
 				sc.nextLine();		// Clear buffer
 			}
 		}
-		
-		// Social security number
-		boolean notValidSsNumber = true;
-		do {
-			System.out.println("Enter your social security number: ");
-			System.out.print(">>> ");
-			try {
-				ssNumber = sc.nextLong();
-				if (validSsNumber(ssNumber)) {
-					notValidSsNumber = false;
-				} else {
-					System.out.println("Invalid social security number.");
-					sc.nextLine();
-				}
-			} catch (InputMismatchException e) {
-				System.out.println("Numerals only, no hyphens.");
-				sc.nextLine();		// Clear buffer
-			}
-		} while (notValidSsNumber);
 		sc.nextLine();
 		
 		// Create Customer object and store data
 		Customer c = new Customer(username, password, firstName, lastName, 
-		email, phoneNumber, ssNumber);
-		customers.add(c);
-		saveCustomers();
-		logger.info("CUSTOMER " + c.getId()
-		+ " created");
+		email, phoneNumber);
+		//customers.add(c);
+		//saveCustomers();
+		CustomerDaoImp cdi = new CustomerDaoImp();
+		try {
+			cdi.addCustomer(c);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		logger.info("CUSTOMER " + c.getId() + " created");
 		
 		// Redirect
 		displayLogin();
@@ -303,14 +302,6 @@ public class CustomerController {
 		} else {
 			return true;
 		}
-	}
-	
-	// Validate social security number
-	private static boolean validSsNumber(long ss) {
-		if (String.valueOf(ss).length() != 9) {
-			return false;
-		}
-		return true;
 	}
 	
 	// Display customer landing page

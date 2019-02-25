@@ -13,14 +13,13 @@ public class ConnectionController {
 	private String propertiesFile = "database.properties";
 	
 	// Constructor
-	private ConnectionController() {
-		if (instance == null) {
-			instance = new ConnectionController();
-		}
-	}
+	private ConnectionController() {}
 	
 	// Return instance
 	public static synchronized ConnectionController getInstance() {
+		if (instance == null) {
+			instance = new ConnectionController();
+		}
 		return instance;
 	}
 	

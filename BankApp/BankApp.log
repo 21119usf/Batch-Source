@@ -11,3 +11,19 @@
 2019-02-25 11:45:15 INFO  EmployeeController:284 - EMPLOYEE 299961836 logged out
 2019-02-25 11:45:25 INFO  CustomerController:133 - CUSTOMER 681059278 logged in
 2019-02-25 11:47:08 INFO  CustomerController:334 - CUSTOMER 681059278 logged out
+2019-02-25 14:47:20 INFO  CustomerController:273 - CUSTOMER 590685723 created
+2019-02-25 14:47:58 INFO  CustomerController:135 - CUSTOMER 681059278 logged in
+2019-02-25 14:48:00 INFO  CustomerController:341 - CUSTOMER 681059278 logged out
+2019-02-25 14:48:35 INFO  CustomerController:273 - CUSTOMER 802560095 created
+2019-02-25 14:49:10 INFO  CustomerController:273 - CUSTOMER 277720457 created
+2019-02-25 14:54:40 INFO  CustomerController:273 - CUSTOMER 575551472 created
+2019-02-25 14:56:43 INFO  CustomerController:273 - CUSTOMER 481087817 created
+2019-02-25 15:04:55 INFO  CustomerController:273 - CUSTOMER 597600750 created
+2019-02-25 15:06:08 INFO  CustomerController:273 - CUSTOMER 910646104 created
+2019-02-25 15:07:21 INFO  CustomerController:273 - CUSTOMER 690057455 created
+2019-02-25 15:13:00 INFO  CustomerController:273 - CUSTOMER 819174508 created
+2019-02-25 15:21:26 INFO  CustomerController:254 - CUSTOMER 240506153 created
+2019-02-25 15:23:54 INFO  CustomerController:254 - CUSTOMER 248040383 created
+2019-02-25 15:30:23 INFO  CustomerController:254 - CUSTOMER 986978176 created
+2019-02-25 15:48:25 INFO  CustomerController:254 - CUSTOMER 841627494 created
+2019-02-25 16:07:43 INFO  CustomerController:148 - CUSTOMER 841627494 logged in
