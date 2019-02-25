@@ -85,12 +85,12 @@ public class CustomerDaoImp implements CustomerDao {
 	public void updateCustomer(Customer c) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
-		String sql = "UPDATE CUSTOMER SET" +
-			"C_PASSWORD = " + c.getPassword() + ", " +
-			"C_FIRSTNAME = " + c.getFirstName() + ", " +
-			"C_LASTNAME = " + c.getLastName() + ", " +
-			"C_EMAIL = " + c.getEmail() + ", " +
-			"C_PHONE = " + c.getPhoneNumber() + ", " +
+		String sql = "UPDATE CUSTOMER SET " +
+			"C_PASSWORD = '" + c.getPassword() + "', " +
+			"C_FIRSTNAME = '" + c.getFirstName() + "', " +
+			"C_LASTNAME = '" + c.getLastName() + "', " +
+			"C_EMAIL = '" + c.getEmail() + "', " +
+			"C_PHONE = " + c.getPhoneNumber() +
 			" WHERE C_ID = " + c.getId();
 		statement.executeUpdate(sql);
 	}
@@ -98,5 +98,7 @@ public class CustomerDaoImp implements CustomerDao {
 	public void deleteCustomer(Customer c) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
+		String sql = "DELETE FROM CUSTOMER WHERE C_ID = " + c.getId();
+		statement.execute(sql);
 	}
 }
