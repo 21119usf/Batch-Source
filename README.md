@@ -1,4 +1,6 @@
 # Batch-Source
+### JDBC Bank Assignment
+Listed below are instructions on how to run the chinook lab SQL file.
 ### Chinook Lab
 Listed below are instructions on how to run the chinook lab SQL file.
 ### Banking App Part 01
