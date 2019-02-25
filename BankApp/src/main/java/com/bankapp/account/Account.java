@@ -25,6 +25,12 @@ public class Account implements Serializable {
 		owners = new ArrayList<Customer>();
 		setOwners(c);
 	}
+	public Account(boolean o, double b) {
+		Random r = new Random();
+		id = 100000000 + r.nextInt(900000000);
+		open = o;
+		balance = b;
+	}
 
 	// Round decimals
 	public static double round(double value, int places) {
