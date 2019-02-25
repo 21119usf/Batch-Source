@@ -1,14 +1,13 @@
-package com.bankapp.account.daoImplementation;
+package com.bankapp.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.bankapp.controllers.ConnectionController;
-import com.bankapp.dao.CustomerDao;
 import com.bankapp.user.Customer;
 
-public class CustomerDaoImplementation implements CustomerDao {
+public class CustomerDaoImp implements CustomerDao {
 	public static ConnectionController cc = ConnectionController.getInstance();
 	
 	@Override
