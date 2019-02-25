@@ -11,6 +11,7 @@ import com.bankapp.user.Customer;
 public class CustomerDaoImp implements CustomerDao {
 	public static ConnectionController cc = ConnectionController.getInstance();
 	
+	// Add customer to database
 	public void addCustomer(Customer c) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
@@ -21,6 +22,7 @@ public class CustomerDaoImp implements CustomerDao {
 		statement.executeUpdate(sql);
 	}
 
+	// Retrieve customer by id
 	public Customer getCustomer(int id) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
@@ -51,6 +53,7 @@ public class CustomerDaoImp implements CustomerDao {
 		return c;
 	}
 	
+	// Retrieve customer by username
 	public Customer getCustomer(String username) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
@@ -82,6 +85,7 @@ public class CustomerDaoImp implements CustomerDao {
 		return c;
 	}
 
+	// Update customer in database
 	public void updateCustomer(Customer c) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
@@ -95,6 +99,7 @@ public class CustomerDaoImp implements CustomerDao {
 		statement.executeUpdate(sql);
 	}
 
+	// Remove customer from database
 	public void deleteCustomer(Customer c) throws SQLException {
 		Connection connection = cc.getConnection();
 		Statement statement = connection.createStatement();
