@@ -11,6 +11,14 @@ public class Customer {
 	public Customer() {
 		super();
 	}
+	
+	public Customer(int customerID, String username, String firstName, String lastName) {
+		super();
+		this.customerID = customerID;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public Customer(int customerID, String username, String password, String firstName, String lastName) {
 		super();
