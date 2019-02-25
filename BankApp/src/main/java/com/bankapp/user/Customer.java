@@ -15,7 +15,7 @@ public class Customer extends User {
 	
 	// Constructor
 	public Customer(String un, String pw, String fn, String ln, 
-	String em, String ad, long pn, long ss) {
+	String em, long pn, long ss) {
 		Random r = new Random();
 		id = 100000000 + r.nextInt(900000000);
 		setUsername(un);
@@ -23,7 +23,6 @@ public class Customer extends User {
 		setFirstName(fn);
 		setLastName(ln);
 		setEmail(em);
-		setAddress(ad);
 		setPhoneNumber(pn);
 		setSsNumber(ss);
 		accountIds = new ArrayList<Integer>();

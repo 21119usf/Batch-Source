@@ -264,7 +264,6 @@ public class AccountController {
 	public static void printAccountDetails(Account a) {
 		System.out.println();
 		System.out.println("Account ID:\t" + a.getId());
-		System.out.println("Status:\t\t" + a.getStatus());
 		System.out.println("Open:\t\t" + a.isOpen());
 		System.out.println("Balance:\t$" + String.format("%.2f", a.getBalance()));
 		ArrayList<Customer> al = a.getOwners();

@@ -12,8 +12,6 @@ import com.bankapp.user.Customer;
 public class Account implements Serializable {
 	private static final long serialVersionUID = 8320272473826438040L;
 	private int id;
-	private String name;
-	private String status;
 	private boolean open;
 	private double balance;
 	private ArrayList<Customer> owners;
@@ -22,9 +20,8 @@ public class Account implements Serializable {
 	public Account(Customer c) {
 		Random r = new Random();
 		id = 100000000 + r.nextInt(900000000);
-		setName("Account " + id);
 		setOpen(false);
-		setBalance(0.00);
+		setBalance(0);
 		owners = new ArrayList<Customer>();
 		setOwners(c);
 	}
@@ -87,12 +84,6 @@ public class Account implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	public double getBalance() {
 		return round(balance, 2);
 	}
@@ -111,25 +102,15 @@ public class Account implements Serializable {
 	public void setOpen(boolean open) {
 		if (open) {
 			this.open = true;
-			this.status = "Open";
 		} else {
 			this.open = false;
-			this.status = "Closed";
 		}
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", name=" + name + ", status=" + status
-				+ ", open=" + open + ", balance=" + balance + ", owners="
-				+ owners + "]";
+		return "Account [id=" + id + ", open=" + open + ", balance=" + 
+			balance + ", owners="
+			+ owners + "]";
 	}
 }

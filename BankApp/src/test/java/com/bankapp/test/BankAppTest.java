@@ -28,7 +28,7 @@ class BankAppTest {
 	@BeforeAll
 	static void beforeAll() {
 		customer = new Customer(
-			"username", "password", "first", "last", "email", "address", 
+			"username", "password", "first", "last", "email", 
 			8135555555L, 938763232L);
 		employee = new Employee("username", "password", "first", "last");
 		account = new Account(customer);
@@ -99,7 +99,7 @@ class BankAppTest {
 		account.setBalance(100.00);
 		Customer customer2;
 		customer2 = new Customer(
-				"username", "password", "first", "last", "email", "address", 
+				"username", "password", "first", "last", "email", 
 				8135555555L, 938763232L);
 		Account account2 = new Account(customer2);
 		account2.setOpen(true);

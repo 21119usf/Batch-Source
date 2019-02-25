@@ -171,7 +171,6 @@ public class CustomerController {
 		long phoneNumber = 0L;
 		String email = "";
 		long ssNumber = 0L;
-		String address = "";
 		
 		System.out.println("Enter some personal account information:");
 		
@@ -218,9 +217,6 @@ public class CustomerController {
 		System.out.println("Enter your email address: ");
 		System.out.print(">>> ");
 		email = sc.nextLine();
-		System.out.println("Enter your full address: ");
-		System.out.print(">>> ");
-		address = sc.nextLine();
 		
 		// Phone number
 		boolean notValidPhoneNumber = true;
@@ -263,7 +259,7 @@ public class CustomerController {
 		
 		// Create Customer object and store data
 		Customer c = new Customer(username, password, firstName, lastName, 
-		email, address, phoneNumber, ssNumber);
+		email, phoneNumber, ssNumber);
 		customers.add(c);
 		saveCustomers();
 		logger.info("CUSTOMER " + c.getId()
@@ -400,7 +396,6 @@ public class CustomerController {
 		al.add("Edit First Name");
 		al.add("Edit Last Name");
 		al.add("Edit Email");
-		al.add("Edit Address");
 		al.add("Edit Phone Number");
 		Menu m = new Menu(al);
 		option = m.display();
@@ -425,14 +420,9 @@ public class CustomerController {
 			String s = sc.nextLine();
 			currentCustomer.setEmail(s);
 		} else if (option == 5) {
-			System.out.println("Enter Address:");
-			System.out.print(">>> ");
-			String s = sc.nextLine();
-			currentCustomer.setAddress(s);
-		} else if (option == 6) {
 			boolean notValidPhoneNumber = true;
 			long phoneNumber = currentCustomer.getPhoneNumber();
-			do {
+			while (notValidPhoneNumber) {
 				System.out.println("Enter your phone number: ");
 				System.out.print(">>> ");
 				try {
@@ -447,7 +437,7 @@ public class CustomerController {
 					System.out.println("Numerals only, no hyphens.");
 					sc.nextLine();		// Clear buffer
 				}
-			} while (notValidPhoneNumber);
+			}
 			currentCustomer.setPhoneNumber(phoneNumber);
 		}
 		saveCustomers();
