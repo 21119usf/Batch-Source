@@ -3,7 +3,7 @@ package com.revature.driver;
 import java.sql.SQLException;
 
 import com.revature.daoimpl.CustomerDaoImpl;
-import com.revature.views.LoginView;
+import com.revature.views.FrontPageView;
 
 public class Driver {
 
@@ -27,6 +27,6 @@ public class Driver {
 			e.printStackTrace();
 		}
 		
-		new LoginView().login();		
+		new FrontPageView().frontPage();		
 	}
 }
