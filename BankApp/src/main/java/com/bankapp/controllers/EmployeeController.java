@@ -155,9 +155,8 @@ public class EmployeeController {
 	private static Employee validateLogin(String un, String pw) {
 		// Employee login
 		Employee e = getEmployee(un);
-		if (e.getUsername().equals(un)) {
+		if (e != null && e.getUsername().equals(un)) {
 			if (e.getPassword().equals(pw)) {
-				System.out.println("Logged in!");
 				return e;
 			} else {
 				System.out.println("Invalid credentials.");

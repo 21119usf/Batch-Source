@@ -164,7 +164,7 @@ public class CustomerController {
 	private static Customer validateLogin(String un, String pw) {
 		// Customer login
 		Customer c = getCustomer(un);
-		if (c.getUsername().equals(un)) {
+		if (c != null && c.getUsername().equals(un)) {
 			if (c.getPassword().equals(pw)) {
 				return c;
 			} else {
