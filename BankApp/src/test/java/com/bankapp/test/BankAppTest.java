@@ -30,8 +30,8 @@ class BankAppTest {
 		customer = new Customer(
 			"username", "password", "first", "last", "email", 
 			8135555555L);
-		employee = new Employee("username", "password", "first", "last");
-		account = new Account(customer);
+		employee = new Employee("username", "password");
+		account = new Account();
 		account.setOpen(true);
 	}
 	
@@ -97,11 +97,7 @@ class BankAppTest {
 	@Test
 	void transferTest() {
 		account.setBalance(100.00);
-		Customer customer2;
-		customer2 = new Customer(
-				"username", "password", "first", "last", "email", 
-				8135555555L);
-		Account account2 = new Account(customer2);
+		Account account2 = new Account();
 		account2.setOpen(true);
 		double amount = 10.00;
 		double expected = 10.00;
