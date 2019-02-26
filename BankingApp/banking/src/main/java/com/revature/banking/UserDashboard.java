@@ -3,6 +3,7 @@ package com.revature.banking;
 import java.util.Scanner;
 
 import com.revature.banking.user.Customer;
+import com.revature.unsused.EmployeeAccess;
 
 public class UserDashboard{
 	//I love clean Classes. userType and userID are obtained from earlier, and checked for this switch statement

@@ -1,13 +1,12 @@
-package com.revature.banking;
+package com.revature.unsused;
 
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.revature.banking.IO;
 import com.revature.banking.IO.Fixer;
-import com.revature.banking.user.Applicants;
-
 public class newCustomer {
 	//doing a lot of reading/writing, so instantiating the 'Applicants' and 'Users' files, and separating them into their individual rows for evaluation
 	static IO io = new IO();
@@ -85,7 +84,7 @@ public class newCustomer {
 				boolean denied = false;
 				//to ensure each user has a unique ID, the lengths of both files are added together and used as the user ID
 				int appID = appNum + userNum;
-				Applicants a = new Applicants(appID,appAttempt,joint, encryption,approved);
+//				Applicants a = new Applicants(appID,appAttempt,joint, encryption,approved);
 				//logging the creation of the new account
 				logger.info("Application for account made by " + fullname);
 				//adding the new applicant to the end of the applicants text file
