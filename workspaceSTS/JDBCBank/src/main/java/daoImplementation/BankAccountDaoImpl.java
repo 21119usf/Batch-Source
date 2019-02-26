@@ -1,7 +1,6 @@
 package daoImplementation;
 
 import beans.BankAccount;
-import beans.LoginAccount;
 import dataAccessObject.BankAccountDao;
 import util.ConnFactory;
 
@@ -65,7 +64,6 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setDouble(1, newBalance);
 		ps.setInt(2, bankAccountID);
-		
 		ps.executeUpdate();
 	}
 
