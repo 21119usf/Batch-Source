@@ -148,3 +148,12 @@
 2019-02-26 15:35:53 INFO  EmployeeController:292 - EMPLOYEE 370631907 logged out
 2019-02-26 15:36:03 INFO  CustomerController:148 - CUSTOMER 266447998 logged in
 2019-02-26 15:36:44 INFO  CustomerController:323 - CUSTOMER 266447998 logged out
+2019-02-26 18:35:27 INFO  CustomerController:148 - CUSTOMER 123930748 logged in
+2019-02-26 18:35:58 INFO  AccountController:165 - WITHDRAW (340227497): $50.00
+2019-02-26 18:36:05 INFO  CustomerController:323 - CUSTOMER 123930748 logged out
+2019-02-26 18:36:21 INFO  EmployeeController:139 - EMPLOYEE 370631907 logged in
+2019-02-26 18:36:54 INFO  EmployeeController:292 - EMPLOYEE 370631907 logged out
+2019-02-26 18:37:06 INFO  EmployeeController:139 - EMPLOYEE 475465734 logged in
+2019-02-26 18:37:26 INFO  EmployeeController:292 - EMPLOYEE 475465734 logged out
+2019-02-26 18:37:36 INFO  CustomerController:148 - CUSTOMER 858915460 logged in
+2019-02-26 18:38:17 INFO  CustomerController:323 - CUSTOMER 858915460 logged out

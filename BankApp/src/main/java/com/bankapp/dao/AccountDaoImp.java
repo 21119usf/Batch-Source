@@ -61,7 +61,7 @@ public class AccountDaoImp implements AccountDao {
 	// Delete account from database
 	public void deleteAccount(Account a) throws SQLException {
 		Statement statement = connection.createStatement();
-		String sql = "DELETE FROM ACCOUNT WHERE C_ID = " + a.getId();
+		String sql = "DELETE FROM ACCOUNT WHERE A_ID = " + a.getId();
 		statement.execute(sql);
 	}
 
