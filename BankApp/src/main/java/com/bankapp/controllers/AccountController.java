@@ -135,10 +135,16 @@ public class AccountController {
 		if (amount > 0.0 && a.deposit(amount)) {
 			logger.info("DEPOSIT " + "(" + a.getId() + "): $"
 				+ String.format("%.2f", amount));
-			saveAccounts();
+			AccountDaoImp adi = new AccountDaoImp();
+			try {
+				adi.updateAccount(a);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		} else if (amount == 0.0) {
 			return;
 		}
+		displayAccountMenu(a);
 	}
 	
 	// Withdraw
@@ -160,8 +166,14 @@ public class AccountController {
 		} else if (amount > 0.0 && a.withdraw(amount)) {
 			logger.info("WITHDRAW " + "(" + a.getId() + "): $"
 					+ String.format("%.2f", amount));
-			AccountController.saveAccounts();
+			AccountDaoImp adi = new AccountDaoImp();
+			try {
+				adi.updateAccount(a);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		displayAccountMenu(a);
 	}
 	
 	// Transfer from account a
@@ -195,11 +207,19 @@ public class AccountController {
 			if (b != null && a.transfer(b, amount)) {
 				logger.info("TRANSFER from " + a.getId() + " to " + b.getId() 
 					+ " $" + String.format("%.2f", amount));
-				AccountController.saveAccounts();
-			} else {
+				AccountDaoImp adi = new AccountDaoImp();
+				try {
+					adi.updateAccount(a);
+					adi.updateAccount(b);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (b == null) {
 				System.out.println("Account not found");
 			}
 		}
+		displayAccountMenu(a);
 	}
 	
 	// Menu to open account
@@ -280,12 +300,24 @@ public class AccountController {
 	
 	// Print account details
 	public static void printAccountDetails(Account a) {
+		AccountDaoImp adi = new AccountDaoImp();
+		ArrayList<Integer> al = null;
+		try {
+			al = adi.getCustomers(a);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println();
 		System.out.println("Account ID:\t" + a.getId());
 		System.out.println("Open:\t\t" + a.isOpen());
 		System.out.println("Balance:\t$" + String.format("%.2f", a.getBalance()));
 		System.out.print("Owners:\t\t");
-		// TODO: Get owners from CUSTOMER_ACCOUNT JOIN
+		for (Integer i : al) {
+			System.out.print(CustomerController.getCustomer(i).getUsername());
+			System.out.print(" ");
+		}
+		System.out.println();
 		
 		displayAccountMenu(a);
 	}

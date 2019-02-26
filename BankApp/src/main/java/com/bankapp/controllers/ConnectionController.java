@@ -11,9 +11,12 @@ import java.util.Properties;
 public class ConnectionController {
 	private static ConnectionController instance;
 	private String propertiesFile = "database.properties";
+	private static Connection connection = null;
 	
 	// Constructor
-	private ConnectionController() {}
+	private ConnectionController() {
+		connection = makeConnection();
+	}
 	
 	// Return instance
 	public static synchronized ConnectionController getInstance() {
@@ -23,8 +26,8 @@ public class ConnectionController {
 		return instance;
 	}
 	
-	// Return connection
-	public Connection getConnection() {
+	// Initialize connection
+	private Connection makeConnection() {
 		Connection c = null;
 		Properties p = new Properties();
 		try {
@@ -42,5 +45,10 @@ public class ConnectionController {
 			e.printStackTrace();
 		}
 		return c;
+	}
+
+	// Return connection
+	public Connection getConnection() {
+		return connection;
 	}
 }

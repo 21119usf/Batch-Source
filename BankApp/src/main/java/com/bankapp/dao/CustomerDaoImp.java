@@ -42,7 +42,7 @@ public class CustomerDaoImp implements CustomerDao {
 			firstName = rs.getString("C_FIRSTNAME");
 			lastName = rs.getString("C_LASTNAME");
 			email = rs.getString("C_EMAIL");
-			phone = rs.getInt("C_PHONE");
+			phone = rs.getLong("C_PHONE");
 		}
 		
 		Customer c = new Customer(username, password, firstName, lastName,

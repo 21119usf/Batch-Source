@@ -16,15 +16,7 @@ public class Account implements Serializable {
 	private double balance;
 	private ArrayList<Customer> owners;
 	
-	// Constructor
-	/*public Account(Customer c) {
-		Random r = new Random();
-		id = 100000000 + r.nextInt(900000000);
-		setOpen(false);
-		setBalance(0);
-		owners = new ArrayList<Customer>();
-		setOwners(c);
-	}*/
+	// Constructors
 	public Account() {
 		Random r = new Random();
 		id = 100000000 + r.nextInt(900000000);

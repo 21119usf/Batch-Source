@@ -13,6 +13,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.bankapp.account.Account;
+import com.bankapp.dao.AccountDaoImp;
 import com.bankapp.dao.EmployeeDaoImp;
 import com.bankapp.menu.Menu;
 import com.bankapp.user.Admin;
@@ -339,7 +340,12 @@ public class EmployeeController {
 		if (a != null) {
 			a.setOpen(true);
 			System.out.println("Account opened!");
-			AccountController.saveAccounts();
+			AccountDaoImp adi = new AccountDaoImp();
+			try {
+				adi.updateAccount(a);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		} else {
 			System.out.println("Account not found");
 		}
@@ -363,22 +369,26 @@ public class EmployeeController {
 			sc.nextLine();
 		}
 		
-		// Search account
+		// Print account details
 		Account a = AccountController.getAccount(id);
-		if (a != null) {
-			System.out.println();
-			System.out.println("Account ID:\t" + a.getId());
-			System.out.println("Open:\t\t" + a.isOpen());
-			System.out.println("Balance:\t$" +
-				String.format("%.2f", a.getBalance()));
-			ArrayList<Customer> al = a.getOwners();
-			System.out.print("Owners:\t\t");
-			for (Customer c : al) {
-				System.out.print(c.getUsername() + " ");
-			}
-		} else {
-			System.out.println("Account not found");
+		AccountDaoImp adi = new AccountDaoImp();
+		ArrayList<Integer> al = null;
+		try {
+			al = adi.getCustomers(a);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		System.out.println();
+		System.out.println("Account ID:\t" + a.getId());
+		System.out.println("Open:\t\t" + a.isOpen());
+		System.out.println("Balance:\t$" + String.format("%.2f", a.getBalance()));
+		System.out.print("Owners:\t\t");
+		for (Integer i : al) {
+			System.out.print(CustomerController.getCustomer(i).getUsername());
+			System.out.print(" ");
+		}
+		System.out.println();
 		
 		return;
 	}
