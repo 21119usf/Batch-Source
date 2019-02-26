@@ -73,5 +73,21 @@ public class CustomerDaoImpl implements CustomerDao {
 		} else {
 			return false;
 		}	
+	}
+
+	@Override
+	public boolean login(String username, String password) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT COUNT(*) FROM CUSTOMER_BANK_APP WHERE Username = ? AND Password = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, username);
+		ps.setString(2, password);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		if (rs.getInt(1) == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}	
 }

@@ -11,4 +11,5 @@ public interface CustomerDao {
 	List<Customer> getCustomerListNoPassword() throws SQLException;
 	boolean doesCustomerIDExist(int customerID) throws SQLException;
 	boolean doesCustomerUsernameExist(String username) throws SQLException;
+	boolean login(String username, String password) throws SQLException;
 }
