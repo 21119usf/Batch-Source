@@ -1,28 +1,31 @@
 package com.revature.bankapp;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+
+import com.revature.imp.LoadIMP;
+import com.revature.imp.ReadIMP;
+import com.revature.util.LoggerUtil;
 
 public class Menu {
 	static Scanner sc = new Scanner(System.in);
 	static ArrayList<Employee> employees = new ArrayList<Employee>();
 	static ArrayList<Customer> customers = new ArrayList<Customer>();
 	static ArrayList<Admin> admins = new ArrayList<Admin>();
-	//static ArrayList<Application> applications = new ArrayList<Application>();
 	static ArrayList<Account> accounts = new ArrayList<Account>();
-
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Banking App");
 		Menu menu = new Menu();
-		menu.LoadFromFile();
+		menu.LoadFromDB();
 		menu.MainMenu();
 	}
 	void MainMenu() {
+		//System.out.println(customers);
+		//System.out.println(employees);
+		//System.out.println(admins);
+		//System.out.println(accounts);
 		String userName,passWord;
 		System.out.println("Menu Options: (Enter Number)");
 		System.out.println("1: Register");
@@ -45,6 +48,7 @@ public class Menu {
 				last = sc.nextLine();
 				Customer customer = new Customer(userName, passWord, name, last);
 				customers.add(customer);
+				LoggerUtil.LOGGER.info("Customer " + name + " " + last + " registered");
 				CustomerMenu(customer);
 				break;
 			case 2:
@@ -56,6 +60,7 @@ public class Menu {
 				//Check Login
 				for (int i=0; i<customers.size();i++) {
 					if(userName.equals(customers.get(i).getUsername()) && passWord.equals(customers.get(i).getPassword())) {
+						LoggerUtil.LOGGER.info("Customer " + userName + " logged in");
 						CustomerMenu(customers.get(i));
 						break;
 					}	
@@ -72,6 +77,7 @@ public class Menu {
 				//Check Login
 				for (int i=0; i<employees.size();i++) {
 					if(userName.equals(employees.get(i).getUsername()) && passWord.equals(employees.get(i).getPassword())) {
+						LoggerUtil.LOGGER.info("Employee " + userName + " logged in");
 						EmployeeMenu(employees.get(i));
 						break;
 					}
@@ -88,6 +94,7 @@ public class Menu {
 				//Check Login
 				for (int i=0; i<admins.size();i++) {
 					if(userName.equals(admins.get(i).getUsername()) && passWord.equals(admins.get(i).getPassword())) {
+						LoggerUtil.LOGGER.info("Admin " + userName + " logged in");
 						AdminMenu();
 						break;
 					}
@@ -96,8 +103,8 @@ public class Menu {
 				MainMenu();
 				break;
 			case 0: 
-				LoadToFile();
-				System.out.println("Loaded to text files exiting program");
+				LoadToDB();
+				System.out.println("Loaded to Database exiting program");
 				System.exit(0);
 				break;
 		}
@@ -111,7 +118,6 @@ public class Menu {
 		int choice = Integer.parseInt(sc.nextLine());
 		switch(choice) {
 			case 1:
-				Account newAcc = new Account();
 				System.out.println("Joint Account? yes/no");
 				String joint = sc.nextLine();
 				if (joint.equals("yes")){
@@ -119,22 +125,29 @@ public class Menu {
 					int jAcc = Integer.parseInt(sc.nextLine());
 					for(int i = 0; i < customers.size(); i++) {
 						if(customers.get(i).getId() == jAcc) {
+							Account newAcc = new Account();
+							c.addAccounts(newAcc);
 							customers.get(i).addAccounts(newAcc);
+							System.out.println("Applied for an account");
+							LoggerUtil.LOGGER.info("Customer: " + c.getUsername()+ " applied for account with: "+ customers.get(i).getUsername());
+							CustomerMenu(c);
+							break;
 						}
 					}
+					System.out.println("Account : "+ jAcc +" Not found");
+					CustomerMenu(c);
+					break;
 				}
-				for (int i = 0; i<customers.size(); i++) {
-					if(customers.get(i).equals(c)) {
-						customers.get(i).addAccounts(newAcc);
+				else {
+					Account newAcc = new Account();
+					c.addAccounts(newAcc);
 						//c.addAccounts(newAcc);
-						accounts.add(newAcc);
-						System.out.println("Applied for an account");
-						CustomerMenu(c);
-						break;
-					}
+					accounts.add(newAcc);
+					System.out.println("Applied for an account");
+					LoggerUtil.LOGGER.info("Customer: " + c.getUsername()+ " applied for an account");
+					CustomerMenu(c);
+					break;
 				}
-				CustomerMenu(c);
-				break;
 			case 2:
 				c.getApps();
 				CustomerMenu(c);
@@ -201,7 +214,8 @@ public class Menu {
 								for(int k = 0; k<customers.get(j).getAccounts().size(); k++) {
 									if(customers.get(j).getAccounts().get(k).equals(accounts.get(i))) {
 										customers.get(j).getAccounts().get(k).Activate();
-									}
+										LoggerUtil.LOGGER.info("Account: "+ appId + " Activated");									
+										}
 								}
 							}
 							accounts.get(i).Activate();
@@ -211,6 +225,8 @@ public class Menu {
 								for(int k = 0; k<customers.get(j).getAccounts().size(); k++) {
 									if(customers.get(j).getAccounts().get(k).equals(accounts.get(i))) {
 										customers.get(j).removeAccount(accounts.get(i));
+										LoggerUtil.LOGGER.info("Account: "+ appId + " Activated");									
+										
 									}
 								}
 							}
@@ -270,7 +286,7 @@ public class Menu {
 				System.out.println("Enter Ammount to deposit: ");
 				double deposit = Double.parseDouble(sc.nextLine());
 				for (int i = 0; i < accounts.size(); i++) {
-					if(accounts.get(i) == a) {
+					if(accounts.get(i).equals(a)) {
 						accounts.get(i).deposit(deposit);
 						AccountChoice(a);
 						break;
@@ -281,7 +297,7 @@ public class Menu {
 				System.out.println("Enter Ammount to withdraw: ");
 				double withdraw = Double.parseDouble(sc.nextLine());
 				for (int i = 0; i < accounts.size(); i++) {
-					if(accounts.get(i) == a) {
+					if(accounts.get(i).equals(a)) {
 						accounts.get(i).withdraw(withdraw);
 						AccountChoice(a);
 						break;
@@ -310,108 +326,35 @@ public class Menu {
 				break;
 		}
 	}
-	void LoadFromFile() {
+	void LoadFromDB() {
+		System.out.println("Loading values from database");
+		LoggerUtil.LOGGER.info("Loading values from database");
+		ReadIMP ri = new ReadIMP();
 		try {
-			BufferedReader eb = new BufferedReader(new FileReader("Employee.txt"));
-			String es = "";
-				while((es=eb.readLine())!=null) {
-					String lines[] = new String[2];
-					lines = es.split(" ");
-					Employee emp = new Employee(lines[0],lines[1]);
-					employees.add(emp);
-				}
-			eb.close();
-			BufferedReader ab = new BufferedReader(new FileReader("Admin.txt"));
-			String as = "";
-				while((as=ab.readLine())!=null) {
-					String lines[] = new String[2];
-					lines = as.split(" ");
-					Admin adm = new Admin(lines[0],lines[1]);
-					admins.add(adm);
-				}
-			ab.close();
-			BufferedReader accb = new BufferedReader(new FileReader("Account.txt"));
-			String accs = "";
-				while((accs=accb.readLine())!=null) {
-					String lines[] = new String[2];
-					lines = accs.split(" ");
-					Account acc = new Account(Integer.parseInt(lines[0]),Boolean.parseBoolean(lines[1]), Double.parseDouble(lines[2]));
-					accounts.add(acc);
-				}
-			accb.close();
-			
-			BufferedReader cb = new BufferedReader(new FileReader("Customer.txt"));
-				String cs = "";
-					while((cs=cb.readLine())!=null) {
-						ArrayList<String> lines = new ArrayList<String>(Arrays.asList(cs.split(" ")));
-						Customer cus = new Customer(lines.get(0),lines.get(1), lines.get(2), lines.get(3), Integer.parseInt(lines.get(4)));
-						int accNum = Integer.parseInt(lines.get(5));
-						for (int i = 0; i< accNum;i++) {
-							for (int j = 0; j<accounts.size(); j++) {
-								if(accounts.get(j).getId() == Integer.parseInt(lines.get(6+i)))
-									cus.addAccounts(accounts.get(j));
-							}
-						}
-						customers.add(cus);
-					}
-			cb.close();
-		} 
-		catch (Exception e) {}
+			customers = ri.getCustomerList();
+			employees = ri.getEmployeeList();
+			accounts = ri.getAccountList();
+			admins = ri.getAdminList();
+			ri.getAccountHolders(customers, accounts);
+			LoggerUtil.LOGGER.info("Succesully loaded from database");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
-	void LoadToFile() {
+	void LoadToDB() {
+		LoadIMP li = new LoadIMP();
 		try {
-			BufferedWriter cr = new BufferedWriter(new FileWriter("Customer.txt", false));
-			String cs = "";
-			for (int i= 0; i< customers.size(); i++) {
-				cs = cs+customers.get(i).getUsername()+ " "+ customers.get(i).getPassword() + " "+ customers.get(i).getName()+" "+customers.get(i).getLast()+ " "+customers.get(i).getId()+ " "+ customers.get(i).getAccounts().size()+ " ";
-				for (int j = 0; j < customers.get(i).getAccounts().size(); j++) {
-					cs = cs + customers.get(i).getAccounts().get(j).getId();
-				}
-					if (i != customers.size()-1) {
-						cs = cs + "\n";
-					}
+			LoggerUtil.LOGGER.info("Commiting changes to database");
+			li.clearTables();
+			for(int i = 0; i<accounts.size(); i++) {
+				li.createAccount(accounts.get(i));
 			}
-			//System.out.println(cs);
-			cr.write(cs);
-			cr.close();
-			
-			BufferedWriter accr = new BufferedWriter(new FileWriter("Account.txt", false));
-			String accs = "";
-			for (int i= 0; i< accounts.size(); i++) {
-				accs = accs+accounts.get(i).getId()+ " "+ accounts.get(i).getActive() + " "+ accounts.get(i).getBalance();
-					if (i != accounts.size()-1) {
-						accs = accs + "\n";
-					}
+			for(int i = 0; i<customers.size(); i++) {
+				li.createCustomer(customers.get(i));
+				li.createAccountHolders(customers.get(i));
 			}
-			//System.out.println(accs);
-			accr.write(accs);
-			accr.close();
-
-			BufferedWriter er = new BufferedWriter(new FileWriter("Employee.txt", false));
-			String es = "";
-			for (int i= 0; i< admins.size(); i++) {
-				es = es+employees.get(i).getUsername()+ " "+ employees.get(i).getPassword();
-					if (i != employees.size()-1) {
-						es = es + "\n";
-					}
-			}
-			//System.out.println(es);
-			er.write(es);
-			er.close();
-			
-			BufferedWriter admr = new BufferedWriter(new FileWriter("Admin.txt", false));
-			String adms = "";
-			for (int i= 0; i< admins.size(); i++) {
-				adms = adms+admins.get(i).getUsername()+ " "+ admins.get(i).getPassword();
-					if (i != admins.size()-1) {
-						adms = adms + "\n";
-					}
-			}
-			//System.out.println(adms);
-			admr.write(adms);
-			admr.close();
-			
-			
-		} catch (Exception e) {}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

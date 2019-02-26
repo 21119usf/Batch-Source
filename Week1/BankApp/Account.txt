@@ -1,4 +1,4 @@
-0 true 15.44
+0 true 35.44
 1 true 12.33
 2 true 100.0
 3 false 0.0
@@ -8,3 +8,4 @@
 7 false 0.0
 8 true 0.0
 9 false 0.0
+10 true 30.0
