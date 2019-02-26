@@ -1,10 +1,11 @@
 package com.revature.views;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class FrontPageView {
 
-	public void frontPage() {
+	public void frontPage() throws SQLException {
 		Scanner scanner = new Scanner(System.in);
 		String input;
 		

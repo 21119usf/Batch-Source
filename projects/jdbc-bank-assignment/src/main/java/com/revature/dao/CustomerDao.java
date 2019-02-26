@@ -12,4 +12,6 @@ public interface CustomerDao {
 	boolean doesCustomerIDExist(int customerID) throws SQLException;
 	boolean doesCustomerUsernameExist(String username) throws SQLException;
 	boolean login(String username, String password) throws SQLException;
+	void updateCustomer(String firstName, String lastName, int customerID) throws SQLException;
+	void deleteCustomer(int customerID) throws SQLException;
 }

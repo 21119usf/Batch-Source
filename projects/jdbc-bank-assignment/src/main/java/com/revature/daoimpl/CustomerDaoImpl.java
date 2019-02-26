@@ -89,5 +89,39 @@ public class CustomerDaoImpl implements CustomerDao {
 		} else {
 			return false;
 		}
+	}
+
+//	@Override
+//	public void updateCustomer(String firstName, String lastName, int customerID) throws SQLException {
+//		Connection conn = cf.getConnection();
+//
+//		String sql = "UPDATE CUSTOMER_BANK_APP SET FIRSTNAME = ?, LASTNAME = ? WHERE CustomerID = ?";
+//		PreparedStatement ps = conn.prepareStatement(sql);
+//		ps.setString(1, firstName);
+//		ps.setString(2, lastName);
+//		ps.setInt(3, customerID);
+//		ps.executeUpdate();
+//	}
+	
+	@Override
+	public void updateCustomer(String firstName, String lastName, int customerID) throws SQLException {
+		Connection conn = cf.getConnection();
+
+		String sql = "UPDATE CUSTOMER_BANK_APP SET FIRSTNAME = ?, LASTNAME = ? WHERE CustomerID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, firstName);
+		ps.setString(2, lastName);
+		ps.setInt(3, customerID);
+		ps.executeUpdate();
 	}	
+
+	@Override
+	public void deleteCustomer(int customerID) throws SQLException {
+		Connection conn = cf.getConnection();
+
+		String sql = "DELETE FROM CUSTOMER_BANK_APP WHERE CustomerID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, customerID);
+		ps.executeUpdate();
+	}
 }

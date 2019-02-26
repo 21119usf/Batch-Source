@@ -3,16 +3,15 @@ package com.revature.driver;
 import java.sql.SQLException;
 
 import com.revature.daoimpl.CustomerDaoImpl;
-import com.revature.views.FrontPageView;
 
 public class Driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 		
 		try {
 //			new AccountDaoImpl().createAccount(1);
-//			new CustomerDaoImpl().createCustomer("username", "password", "firstname", "lastname");
+//			new CustomerDaoImpl().createCustomer("username3", "password", "firstname", "lastname");
 //			new ApplicationDaoImpl().createApplication(1);
 //			System.out.println(new CustomerDaoImpl().getCustomerListNoPassword());
 //			System.out.println(new AccountDaoImpl().getAccountList());
@@ -21,12 +20,14 @@ public class Driver {
 //			System.out.println(new CustomerDaoImpl().doesCustomerUsernameExist("a"));
 //			System.out.println(new AccountDaoImpl().doesAccountIDExist(100));
 //			System.out.println(new ApplicationDaoImpl().doesApplicatoinIDExist(100));
-			System.out.println(new CustomerDaoImpl().login("a", "z"));
+//			System.out.println(new CustomerDaoImpl().login("a", "z"));
+			new CustomerDaoImpl().updateCustomer("gar", "pol", 1);
+//			new CustomerDaoImpl().deleteCustomer(6);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		new FrontPageView().frontPage();		
+//		new FrontPageView().frontPage();		
 	}
 }
