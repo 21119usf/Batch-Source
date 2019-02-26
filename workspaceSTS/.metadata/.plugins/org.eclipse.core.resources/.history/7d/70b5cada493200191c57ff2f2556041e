@@ -1,9 +1,0 @@
-package driver;
-
-import beans.Bank;
-
-public class Driver {
-	public Bank bank = new Bank();
-	
-	
-}

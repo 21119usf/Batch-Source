@@ -2,6 +2,7 @@ package com.revature.daoimpl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,5 +37,15 @@ public class SuperHeroDaoImpl implements SuperHeroDao{
 			superHeroList.add(s);												//second arg is the 2nd column
 		}
 		return superHeroList;
+	}
+	
+	public void updateSuperHeroName(String oldName, String newName) throws SQLException {
+		Connection conn = cf.getConnection(); //establish connection to the database
+		String sql = "UPDATE SUPERHERO SET HERONAME = ? "
+						+ "WHERE HERONAME = ?";	//prepare a statement to send to the database
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, oldName);
+		ps.setString(2, newName);
+		ps.executeUpdate();
 	}
 }

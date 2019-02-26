@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="JDBCBank"/>
 			<item value="com.revature"/>
 			<item value="com.revature.JDBC"/>
 			<item value="com.revature.jdbc"/>
@@ -11,6 +12,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="JDBCBank"/>
 			<item value="HeroJDBC1"/>
 			<item value="HeroJDBC"/>
 			<item value="JUnitExtra"/>

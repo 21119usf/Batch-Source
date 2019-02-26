@@ -19,7 +19,8 @@ public class Driver {
 		
 		try {
 			//pdi.createPower("FLIGHT");
-			shdi.createSuperHero("OnePunchman");
+			//shdi.createSuperHero("OnePunchman");
+			shdi.updateSuperHeroName("Spiderman", "SPOODERMAN");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
