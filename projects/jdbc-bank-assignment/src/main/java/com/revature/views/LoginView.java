@@ -1,14 +1,13 @@
 package com.revature.views;
 
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import com.revature.daoimpl.CustomerDaoImpl;
+import com.revature.utilities.ScannerInstance;
 
 public class LoginView {
 
 	public void login() throws SQLException {
-		Scanner scanner = new Scanner(System.in);
 		String input;
 		
 		do {
@@ -17,22 +16,19 @@ public class LoginView {
 			System.out.println("Login");
 			System.out.println("-----");
 			System.out.print("Username: ");
-			username = scanner.nextLine();
+			username = ScannerInstance.scanner.nextLine();
 			System.out.print("Password: ");
-			password = scanner.nextLine();
+			password = ScannerInstance.scanner.nextLine();
 			
 			if (new CustomerDaoImpl().login(username, password)) {
-//				System.out.println("login");
+				new CustomerView(username).frontPage();
 			} else {
-//				System.out.println("\nInvalid username/password\n");
+				System.out.println("\nInvalid username/password\n");
 			}
 			
-			System.out.print("Enter \"EXIT\" to exit the login page: ");
-			input = scanner.nextLine();
-			System.out.println(input);
+			System.out.print("Enter \"EXIT\" to exit the login page or enter any other input to continue: ");
+			input = ScannerInstance.scanner.nextLine();
 			
 		} while (!input.equals("EXIT"));
-		
-		scanner.close();		
 	}
 }

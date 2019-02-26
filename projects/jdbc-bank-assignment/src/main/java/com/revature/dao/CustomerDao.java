@@ -14,4 +14,5 @@ public interface CustomerDao {
 	boolean login(String username, String password) throws SQLException;
 	void updateCustomer(String firstName, String lastName, int customerID) throws SQLException;
 	void deleteCustomer(int customerID) throws SQLException;
+	int getCustomerIDFromUsername(String username) throws SQLException;
 }
