@@ -25,7 +25,8 @@ public class Driver {
 //			new CustomerDaoImpl().updateCustomer("gar", "pol", 1);
 //			new CustomerDaoImpl().deleteCustomer(6);
 //			System.out.println(new CustomerDaoImpl().getCustomerIDFromUsername("a"));
-			System.out.println(new AccountDaoImpl().getAccountListFromCustomerID(1));
+//			System.out.println(new AccountDaoImpl().getAccountListFromCustomerID(1));
+			System.out.println(new AccountDaoImpl().doesAccountIDExistAccountIDCustomerID(1, 2));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

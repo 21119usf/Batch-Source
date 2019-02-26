@@ -67,7 +67,7 @@ public class CustomerView {
 		if (ParseString.parseI(input) == Integer.MIN_VALUE) {
 			return;
 		}
+
 		
-		System.out.println("test");
 	}
 }

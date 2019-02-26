@@ -75,5 +75,21 @@ public class AccountDaoImpl implements AccountDao {
 		}
 		
 		return accountList;
+	}
+
+	@Override
+	public boolean doesAccountIDExistAccountIDCustomerID(int accountID, int customerID) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT COUNT(*) FROM ACCOUNT_BANK_APP WHERE AccountID = ? AND CustomerID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, accountID);
+		ps.setInt(2, customerID);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		if (rs.getInt(1) == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}	
 }
