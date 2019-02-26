@@ -46,15 +46,32 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public boolean doesCustomerIDExist(int customerID) throws SQLException {
+	public boolean doesCustomerIDExist(int customerID) throws SQLException {		
 		Connection conn = cf.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM CUSTOMER_BANK_APP WHERE CustomerID = " + customerID);
+		String sql = "SELECT COUNT(*) FROM CUSTOMER_BANK_APP WHERE CustomerID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, customerID);
+		ResultSet rs = ps.executeQuery();
 		rs.next();
 		if (rs.getInt(1) == 1) {
 			return true;
 		} else {
 			return false;
-		}
+		}		
+	}
+
+	@Override
+	public boolean doesCustomerUsernameExist(String username) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT COUNT(*) FROM CUSTOMER_BANK_APP WHERE Username = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, username);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		if (rs.getInt(1) == 1) {
+			return true;
+		} else {
+			return false;
+		}	
 	}	
 }

@@ -18,7 +18,8 @@ public class Driver {
 //			System.out.println(new CustomerDaoImpl().getCustomerListNoPassword());
 //			System.out.println(new AccountDaoImpl().getAccountList());
 //			System.out.println(new ApplicationDaoImpl().getApplicationList());
-			System.out.println(new CustomerDaoImpl().doesCustomerIDExist(10));
+//			System.out.println(new CustomerDaoImpl().doesCustomerIDExist(10));
+			System.out.println(new CustomerDaoImpl().doesCustomerUsernameExist("a"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
