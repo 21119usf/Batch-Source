@@ -1,5 +1,8 @@
 package com.reavature.validate;
 
+/*
+ * Class that is used to validate a users login credentials
+ */
 public class LoginValidator implements CanValidate {
 	String username;
 	String password;

@@ -8,6 +8,7 @@ import com.revature.input.CustomerPortalHomeInput;
 import com.revature.service.UserAccountService;
 import com.revature.utilities.OutputUtility;
 
+// Initial View for Customer Portal View
 public class CustomerPortalHomeView implements IsViewable {
 	
 	User c;

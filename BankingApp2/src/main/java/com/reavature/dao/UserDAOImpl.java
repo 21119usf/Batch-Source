@@ -19,9 +19,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean createUser(User u) throws SQLException {
+		// get DB connection
 		conn = DAOUtilities.getConnection();
+		// SQL string to run in DB
 		String sql = "INSERT INTO U5ER VALUES(U5ER_ID_SEQUENCE.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		stmt = conn.prepareStatement(sql);
+		// setting of placeholder (?)
 		stmt.setString(1, u.getFirstName());
 		stmt.setString(2, u.getLastName());
 		stmt.setString(3, u.getSSN());
@@ -29,6 +32,7 @@ public class UserDAOImpl implements UserDAO {
 		stmt.setString(5, u.getUsername());
 		stmt.setString(6, u.getHash());
 		stmt.setString(7, u.getEmail());
+		// run SQL update
 		stmt.executeUpdate();
 		return true;
 	}
@@ -58,11 +62,6 @@ public class UserDAOImpl implements UserDAO {
 		return u;
 	}
 
-	public boolean editUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	public User getUser(int userId) throws SQLException {
 		User u = new User();
@@ -85,5 +84,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return u;
 	}
+	
+	public void deleteUser() throws SQLException {}
 
 }

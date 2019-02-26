@@ -4,6 +4,9 @@ import com.reavture.beans.User;
 import com.revature.input.AccountCreationInput;
 import com.revature.utilities.OutputUtility;
 
+/*
+ * Initial View for Account Application
+ */
 public class AccountApplicationView implements IsViewable {
 
 	User u;

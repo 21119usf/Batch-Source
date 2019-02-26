@@ -1,5 +1,8 @@
 package com.reavture.beans;
 
+/*
+ * Class that defines the logic of what an Account is
+ */
 public class Account {
 	private double balance;
 	private int accountId;

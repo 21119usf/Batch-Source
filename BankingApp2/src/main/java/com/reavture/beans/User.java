@@ -1,5 +1,7 @@
 package com.reavture.beans;
-
+/*
+ * Class that defines the logic of what a User is
+ */
 public class User {
 	private int id;
 	private String firstName;

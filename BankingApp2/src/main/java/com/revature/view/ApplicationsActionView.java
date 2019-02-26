@@ -8,6 +8,7 @@ import com.revature.input.ApplicationActionInput;
 import com.revature.service.UserAccountService;
 import com.revature.service.UserService;
 
+// Initial View for Account Actions View
 public class ApplicationsActionView implements IsViewable {
 
 	public ApplicationsActionView() {

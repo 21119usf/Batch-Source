@@ -6,7 +6,7 @@ import com.reavture.beans.Account;
 import com.reavture.beans.User;
 import com.revature.input.CustomerAccountPageInput;
 import com.revature.utilities.OutputUtility;
-
+// Initial View for Customer Account Page
 public class CustomerAccountPage implements IsViewable {
 
 	Account a;
