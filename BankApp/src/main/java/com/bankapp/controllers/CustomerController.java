@@ -350,17 +350,15 @@ public class CustomerController {
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Back");
 		al.add(">>> Open Account <<<");
-		if (al != null) {
+		if (accountIds != null) {
 			for (Integer id : accountIds) {
 				al.add(Integer.toString(id));
 			}
 		}
 		
-		
+		// Redirect
 		Menu m = new Menu(al);
 		int option = m.display();
-		
-		// Redirect
 		if (option == 0) {
 			return;
 		} else if (option == 1) {

@@ -27,9 +27,7 @@ public class AccountController {
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
 	
 	// Constructor
-	private AccountController() {
-		loadAccounts();
-	}
+	private AccountController() {}
 	
 	// Return instance
 	public static synchronized AccountController getInstance() {
@@ -251,7 +249,7 @@ public class AccountController {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-					displayAccountMenu(a);
+					return;
 				} else {
 					System.out.println("User ID not found");
 					displayOpenAccount(c);
@@ -260,17 +258,17 @@ public class AccountController {
 				System.out.println("Invalid ID.");
 				sc.nextLine();
 			}
+		} else {
+			Account a = new Account();
+			try {
+				adi.addAccount(a);
+				cadi.addCustomerAccount(c.getId(), a.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			logger.info("CUSTOMER " + c.getId() + " opened ACCOUNT " + a.getId());
+			displayAccountMenu(a);
 		}
-		
-		Account a = new Account();
-		try {
-			adi.addAccount(a);
-			cadi.addCustomerAccount(c.getId(), a.getId());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		logger.info("CUSTOMER " + c.getId() + " opened ACCOUNT " + a.getId());
-		displayAccountMenu(a);
 	}
 	
 	// Close account
