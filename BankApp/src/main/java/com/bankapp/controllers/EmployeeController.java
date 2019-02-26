@@ -370,6 +370,10 @@ public class EmployeeController {
 		
 		// Print account details
 		Account a = AccountController.getAccount(id);
+		if (a == null) {
+			System.out.println("Account " + id + " doesn't exist");
+			return;
+		}
 		AccountDaoImp adi = new AccountDaoImp();
 		ArrayList<Integer> al = null;
 		try {
@@ -410,6 +414,7 @@ public class EmployeeController {
 		// Search customer
 		Customer c = CustomerController.getCustomer(id);
 		if (c != null) {
+			System.out.println();
 			System.out.println("Your ID:\t\t\t" + c.getId());
 			System.out.println("Your username:\t\t" + c.getUsername());
 			System.out.println("Your password:\t\t" + c.getPassword());

@@ -9,12 +9,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.bankapp.account.Account;
+import com.bankapp.dao.AccountDaoImp;
+import com.bankapp.dao.CustomerAccountDaoImp;
+import com.bankapp.dao.CustomerDaoImp;
+import com.bankapp.dao.EmployeeDaoImp;
 import com.bankapp.user.Customer;
 import com.bankapp.user.Employee;
 
@@ -22,56 +28,73 @@ class BankAppTest {
 	private static Account account;
 	private static Customer customer;
 	private static Employee employee;
+	private static AccountDaoImp adi;
+	private static CustomerAccountDaoImp cadi;
+	private static CustomerDaoImp cdi;
+	private static EmployeeDaoImp edi;
 	
 	// Initialize objects
 	// =========================================================================
 	@BeforeAll
 	static void beforeAll() {
+		adi = new AccountDaoImp();
+		cadi = new CustomerAccountDaoImp();
+		cdi = new CustomerDaoImp();
+		edi = new EmployeeDaoImp();
+		
 		customer = new Customer(
-			"username", "password", "first", "last", "email", 
-			8135555555L);
-		employee = new Employee("username", "password");
+			"testUser", "testPass", "Test", "Test", "test@test.com", 
+			8135555555L
+		);
+		employee = new Employee("testEmployee", "testPass");
 		account = new Account();
 		account.setOpen(true);
 	}
 	
+	// Testing Employee Class
+	// =========================================================================
+	@Test
+	void insertEmployeeTest() {
+		try {
+			edi.addEmployee(employee);
+			Employee e = edi.getEmployee(employee.getUsername());
+			assertEquals(employee.getId(), e.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	@After
+	void afterInsertEmployeeTest() {
+		try {
+			edi.deleteEmployee(employee);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// Testing Customer Class
+	// =========================================================================
+	@Test
+	void insertCustomerTest() {
+		try {
+			cdi.addCustomer(customer);
+			Customer c = cdi.getCustomer(customer.getUsername());
+			assertEquals(customer.getId(), c.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	@After
+	void afterInsertCustomerTest() {
+		try {
+			cdi.deleteCustomer(customer);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// Testing Account Class
 	// =========================================================================
-	@SuppressWarnings("unchecked")
-	@Test
-	void accountFileIOTest() {
-		String testFile = "test.ser";
-		File file = new File(testFile);
-		ArrayList<Account> alOut = new ArrayList<Account>();
-		alOut.add(account);
-		try {
-			FileOutputStream af = new FileOutputStream(testFile);
-			ObjectOutputStream oos = new ObjectOutputStream(af);
-			oos.writeObject(alOut);
-			oos.close();
-			af.close();
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		} catch (IOException e) {
-			// e.printStackTrace();
-		}
-		ArrayList<Account> alIn = new ArrayList<Account>();
-		try {
-			FileInputStream af = new FileInputStream(testFile);
-			ObjectInputStream ois = new ObjectInputStream(af);
-			alIn = (ArrayList<Account>)ois.readObject();
-			ois.close();
-			af.close();
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		} catch (IOException e) {
-			// e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// e.printStackTrace();
-		}
-		assertEquals(alOut.get(0).toString(), alIn.get(0).toString());
-		file.delete();
-	}
 	@Test
 	void depositTest() {
 		account.setBalance(0.00);
@@ -106,87 +129,5 @@ class BankAppTest {
 		} else {
 			assertEquals(0.00, account2.getBalance());
 		}
-	}
-	@Test
-	void willOverdrawTest() {
-		account.setBalance(0.00);
-		double amount = 10.00;
-		assertEquals(true, account.willOverdraw(amount));
-	}
-	
-	// Testing Customer Class
-	// =========================================================================
-	@SuppressWarnings("unchecked")
-	@Test
-	void customerFileIOTest() {
-		String testFile = "test.ser";
-		File file = new File(testFile);
-		ArrayList<Customer> alOut = new ArrayList<Customer>();
-		alOut.add(customer);
-		try {
-			FileOutputStream af = new FileOutputStream(testFile);
-			ObjectOutputStream oos = new ObjectOutputStream(af);
-			oos.writeObject(alOut);
-			oos.close();
-			af.close();
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		} catch (IOException e) {
-			// e.printStackTrace();
-		}
-		ArrayList<Customer> alIn = new ArrayList<Customer>();
-		try {
-			FileInputStream af = new FileInputStream(testFile);
-			ObjectInputStream ois = new ObjectInputStream(af);
-			alIn = (ArrayList<Customer>)ois.readObject();
-			ois.close();
-			af.close();
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		} catch (IOException e) {
-			// e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// e.printStackTrace();
-		}
-		assertEquals(alOut.get(0).toString(), alIn.get(0).toString());
-		file.delete();
-	}
-	
-	// Testing Employee Class
-	// =========================================================================
-	@SuppressWarnings("unchecked")
-	@Test
-	void employeeFileIOTest() {
-		String testFile = "test.ser";
-		File file = new File(testFile);
-		ArrayList<Employee> alOut = new ArrayList<Employee>();
-		alOut.add(employee);
-		try {
-			FileOutputStream af = new FileOutputStream(testFile);
-			ObjectOutputStream oos = new ObjectOutputStream(af);
-			oos.writeObject(alOut);
-			oos.close();
-			af.close();
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		} catch (IOException e) {
-			// e.printStackTrace();
-		}
-		ArrayList<Employee> alIn = new ArrayList<Employee>();
-		try {
-			FileInputStream af = new FileInputStream(testFile);
-			ObjectInputStream ois = new ObjectInputStream(af);
-			alIn = (ArrayList<Employee>)ois.readObject();
-			ois.close();
-			af.close();
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		} catch (IOException e) {
-			// e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// e.printStackTrace();
-		}
-		assertEquals(alOut.get(0).toString(), alIn.get(0).toString());
-		file.delete();
 	}
 }

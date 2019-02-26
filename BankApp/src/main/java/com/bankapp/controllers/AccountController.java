@@ -315,7 +315,6 @@ public class AccountController {
 			System.out.print(CustomerController.getCustomer(i).getUsername());
 			System.out.print(" ");
 		}
-		System.out.println();
 		
 		displayAccountMenu(a);
 	}
