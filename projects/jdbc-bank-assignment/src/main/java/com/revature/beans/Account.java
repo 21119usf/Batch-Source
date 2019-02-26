@@ -9,6 +9,12 @@ public class Account {
 	public Account() {
 		super();
 	}
+	
+	public Account(int accountID, double balance) {
+		super();
+		this.accountID = accountID;
+		this.balance = balance;
+	}
 
 	public Account(int accountID, int customerID, double balance) {
 		super();
@@ -43,6 +49,10 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountID=" + accountID + ", customerID=" + customerID + ", balance=" + balance + "]";
+		return "accountID = " + accountID + ", customerID = " + customerID + ", balance = " + balance;
+	}
+	
+	public String displayNoCustomerID() {
+		return "accountID = " + accountID + ", balance = " + balance;
 	}
 }

@@ -10,4 +10,5 @@ public interface AccountDao {
 	void createAccount(int customerID) throws SQLException;
 	List<Account> getAccountList() throws SQLException;
 	boolean doesAccountIDExist(int accountID) throws SQLException;
+	List<Account> getAccountListFromCustomerID(int customerID) throws SQLException;
 }

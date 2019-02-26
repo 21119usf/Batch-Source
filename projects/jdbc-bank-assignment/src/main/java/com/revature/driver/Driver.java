@@ -2,7 +2,7 @@ package com.revature.driver;
 
 import java.sql.SQLException;
 
-import com.revature.daoimpl.CustomerDaoImpl;
+import com.revature.daoimpl.AccountDaoImpl;
 import com.revature.views.FrontPageView;
 
 public class Driver {
@@ -24,7 +24,8 @@ public class Driver {
 //			System.out.println(new CustomerDaoImpl().login("a", "z"));
 //			new CustomerDaoImpl().updateCustomer("gar", "pol", 1);
 //			new CustomerDaoImpl().deleteCustomer(6);
-			System.out.println(new CustomerDaoImpl().getCustomerIDFromUsername("a"));
+//			System.out.println(new CustomerDaoImpl().getCustomerIDFromUsername("a"));
+			System.out.println(new AccountDaoImpl().getAccountListFromCustomerID(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
