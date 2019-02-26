@@ -15,4 +15,5 @@ public interface CustomerDao {
 	void updateCustomer(String firstName, String lastName, int customerID) throws SQLException;
 	void deleteCustomer(int customerID) throws SQLException;
 	int getCustomerIDFromUsername(String username) throws SQLException;
+	String getFirstLastNameFromCustomerID(int customerID) throws SQLException;
 }

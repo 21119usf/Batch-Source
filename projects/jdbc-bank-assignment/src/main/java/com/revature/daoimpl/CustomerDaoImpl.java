@@ -123,4 +123,15 @@ public class CustomerDaoImpl implements CustomerDao {
 		rs.next();
 		return rs.getInt(1);
 	}
+
+	@Override
+	public String getFirstLastNameFromCustomerID(int customerID) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT FIRSTNAME, LASTNAME FROM CUSTOMER_BANK_APP WHERE CustomerID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, customerID);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		return rs.getString(1) + " " + rs.getString(2);
+	}
 }
