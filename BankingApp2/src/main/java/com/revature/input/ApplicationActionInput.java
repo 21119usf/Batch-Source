@@ -2,6 +2,7 @@ package com.revature.input;
 
 import com.reavature.validate.ValidatorException;
 import com.reavture.beans.Account;
+import com.revature.service.ApplicationActionService;
 import com.revature.utilities.ScannerInstance;
 
 public class ApplicationActionInput implements CanTakeInput {
@@ -18,9 +19,9 @@ public class ApplicationActionInput implements CanTakeInput {
 		try {
 			validate();
 			if (input.equals("Y")) {
-				System.out.println("APPROVE APPLICATION");
+				new ApplicationActionService(a).approveApplication();
 			} else if (input.equals("N")) {
-				System.out.println("DENY APPLICATION");
+				new ApplicationActionService(a).denyApplication();
 			} else {
 				// DO NOTHING
 			}

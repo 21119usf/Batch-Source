@@ -9,8 +9,7 @@ public class AdminPortalView implements IsViewable {
 	public void display() {
 		OutputUtility.printHeader("Welcome To The Revature Banking Admin Portal");
 		System.out.println("1) Applications");
-		System.out.println("2) View/Users");
-		System.out.println("3) Create Users");
+		System.out.println("2) Log Out");
 		new AdminPortalInput().getInput();
 	}
 

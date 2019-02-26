@@ -73,4 +73,46 @@ public class UserAccountsDAOImpl implements UserAccountsDAO {
 		return queue;
 	}
 
+	@Override
+	public void approveAccounts(int accountId) throws SQLException {
+		conn = DAOUtilities.getConnection();
+		String sql = "UPDATE ACCOUNTS SET STATUS='open' WHERE ACCOUNT_ID=?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, accountId);
+		stmt.executeUpdate();
+	}
+
+	@Override
+	public void denyAccount(int accountId) throws SQLException {
+		conn = DAOUtilities.getConnection();
+		String sql = "UPDATE ACCOUNTS SET STATUS='closed' WHERE ACCOUNT_ID=?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, accountId);
+		stmt.executeUpdate();
+	}
+
+	@Override
+	public void transfer(Account a, int accountId, double ammount) throws SQLException {
+		conn = DAOUtilities.getConnection();
+		String sql = "UPDATE ACCOUNTS SET BALANCE= BALANCE + ? WHERE ACCOUNT_ID=?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setDouble(1, ammount * -1);
+		stmt.setInt(2, a.getAccountId());
+		stmt.executeUpdate();
+		stmt = conn.prepareStatement(sql);
+		stmt.setDouble(1, ammount);
+		stmt.setInt(2, accountId);
+		stmt.executeUpdate();
+		return;
+	}
+
+	@Override
+	public void closeAccount(int accountId) throws SQLException {
+		conn = DAOUtilities.getConnection();
+		String sql = "UPDATE ACCOUNTS SET STATUS = 'closed' WHERE ACCOUNT_ID=?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, accountId);
+		stmt.executeUpdate();
+		return;
+	}
 }

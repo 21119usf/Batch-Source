@@ -27,8 +27,8 @@ public class CustomerPortalHomeView implements IsViewable {
 			System.out.println(spacer + "Balance: " + x.getBalance());
 			System.out.println(spacer + "Status: " + x.getStatus().toString());
 		}
-		System.out.println("Please Select An Account Number Or Type \" Apply \" to apply");
-		new CustomerPortalHomeInput(c).getInput();
+		System.out.println("Please Select An Account Number, Type \" Apply \" to apply, or out to logout");
+		new CustomerPortalHomeInput(c, accounts).getInput();
 	}
 
 }

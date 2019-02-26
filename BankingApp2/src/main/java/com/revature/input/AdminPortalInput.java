@@ -2,7 +2,9 @@ package com.revature.input;
 
 import com.reavature.validate.ValidatorException;
 import com.revature.utilities.ScannerInstance;
+import com.revature.view.AdminPortalView;
 import com.revature.view.ApplicationsActionView;
+import com.revature.view.HomeView;
 
 public class AdminPortalInput implements CanTakeInput {
 
@@ -10,7 +12,7 @@ public class AdminPortalInput implements CanTakeInput {
 	@Override
 	public int getInput() {
 		System.out.println("Please Select An Option");
-		input = ScannerInstance.scan.nextLine();
+		input = ScannerInstance.scan.next();
 		try {
 			validate();
 		} catch (ValidatorException e) {
@@ -24,13 +26,10 @@ public class AdminPortalInput implements CanTakeInput {
 		switch (input) {
 			case "1":
 				new ApplicationsActionView().display();
+				new AdminPortalView().display();
 				break;
 			case "2":
-				System.out.println("View/Edit Users");
-				break;
-			case "3":
-				System.out.println("Create User");
-				break;
+				new HomeView().display();
 			default:
 				throw new ValidatorException("Invalid Input");
 		}
