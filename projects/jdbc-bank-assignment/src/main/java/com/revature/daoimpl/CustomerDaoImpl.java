@@ -43,5 +43,18 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		
 		return customerList;
+	}
+
+	@Override
+	public boolean doesCustomerIDExist(int customerID) throws SQLException {
+		Connection conn = cf.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM CUSTOMER_BANK_APP WHERE CustomerID = " + customerID);
+		rs.next();
+		if (rs.getInt(1) == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}	
 }
