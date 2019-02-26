@@ -1,12 +1,12 @@
 package com.revature.banking;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.revature.banking.IO.Fixer;
-import com.revature.banking.user.Customer;
+import com.revature.daoimpl.UserDaoImpl;
 import com.revature.util.ExceptionCatcher;
 
 public class AdminAccess {
@@ -55,7 +55,13 @@ public class AdminAccess {
 			case 3:
 				System.out.println("Please input the username of the User you wish to delete:");
 				String username = input.nextLine();
-				
+				UserDaoImpl udi = new UserDaoImpl();
+				try {
+					udi.deleteUser(username);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			}
 			

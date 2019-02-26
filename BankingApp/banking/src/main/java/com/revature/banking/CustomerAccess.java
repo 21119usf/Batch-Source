@@ -112,6 +112,7 @@ public class CustomerAccess {
 						Double startBal =ec.parseDoubCheck(optionStr);
 						Double rounded = (double) Math.round(startBal*100d)/100d;
 						System.out.println("You have deposited " + rounded);
+						System.out.println("=================================================================");
 						try {
 							adi.createAccount(startBal, userID);
 						} catch (SQLException e) {

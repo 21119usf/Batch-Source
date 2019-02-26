@@ -271,11 +271,11 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public void deleteUser(String response) throws SQLException {
+		Scanner input = new Scanner(System.in);
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM USERTABLE WHERE USERNAME = '" + 
-				 response;        
+				 response + "'";        
 		    PreparedStatement ps = conn.prepareStatement(sql);
-
 		    	ResultSet rs = ps.executeQuery();
 		    	if (rs.next()) {
 		    		int userID = rs.getInt(1);
@@ -285,6 +285,18 @@ public class UserDaoImpl implements UserDao {
 		    			for (int i=0;i<numAcc;i++) {
 		    				int iAccID=accID.get(i);
 		    				adi.deleteAccount(iAccID, 10000);
+		    			}
+		    			System.out.println("Are you sure you want to delete " + response + "? (Y or N)");
+		    			String choice = input.nextLine();
+		    			if (choice.equals("Y")) {
+		    			conn = cf.getConnection();
+		    			sql = "{ call DELETE_USER(?)";
+		    			CallableStatement call=conn.prepareCall(sql);
+		    			call.setInt(1, userID);
+		    			call.execute();
+		    			System.out.println("User " + userID + " deleted!");
+		    			System.out.println("=================================================================");
+		    			logger.info("User 10000 deleted " + userID);
 		    			}
 		    			
 		    			

@@ -88,6 +88,7 @@ public class AccountDaoImpl implements AccountDao {
 			call.setDouble(2, newBalance);
 			call.execute();
 			System.out.println("Withdrawal of $" + withdraw + " successful. New balance is $" + newBalance);
+			System.out.println("=================================================================");
 			logger.info("User " + userID + " withdrew $" + withdraw + " from account " + accID);
 		}
 		
@@ -111,6 +112,7 @@ public class AccountDaoImpl implements AccountDao {
 		call.setDouble(2, newBalance);
 		call.execute();
 		System.out.println("Deposit of $" + deposit + " successful. New balance is $" + newBalance);
+		System.out.println("=================================================================");
 		logger.info("User " + userID + " deposited $" + deposit + " to account " + accID);
 		}
 		
@@ -151,12 +153,14 @@ public class AccountDaoImpl implements AccountDao {
 			
 			System.out.println("Transfer of $" + transfer + " to account " + targAccID + 
 					" successful. \nNew balance in account " + accID + " is $" + fromNewBalance);
+			System.out.println("=================================================================");
 			logger.info("User " + userID + " transferred $" + transfer + " from account " + accID + " to account " + targAccID);
 		}
 		}
 	}
 		else {
 			System.out.println("There is no account with the number " + targAccID + ". Please try again.");
+			System.out.println("=================================================================");
 		}
 	}
 
@@ -185,10 +189,12 @@ public class AccountDaoImpl implements AccountDao {
 			balance = rounded;
 		}
 		if (balance>0) {
+			System.out.println("=================================================================");
 			System.out.println("This account still has a balance of $" + balance + "! What would you like to do?");
 			System.out.println("1 - Withdraw $" + balance);
 			System.out.println("2 - Transfer $" + balance + " to another account");
 			System.out.println("0 - Cancel");
+			System.out.println("=================================================================");
 			input = new Scanner(System.in);
 			String choiceStr = input.nextLine();
 			Integer choice =ec.parseIntCheck(choiceStr);
@@ -244,6 +250,7 @@ public class AccountDaoImpl implements AccountDao {
 		call.setDouble(1, accID);
 		call.execute();
 		System.out.println("Account " + accID + " deleted!");
+		System.out.println("=================================================================");
 		logger.info("User " + userID + " deleted " + accID);
 		}
 

@@ -14,14 +14,23 @@ public class NewUser {
 	static void createAccount() {
 		boolean success = false;
 		while (!success) {
-	System.out.println("Please choose a Username.");
+	System.out.println("Please choose a Username, or type \"esc\" to go back.");
 	String nameAttempt = input.nextLine();
 	UserDaoImpl udi = new UserDaoImpl();
 	
 	try {
-		if(udi.checkUser(nameAttempt)) {
-			System.out.println("Username already exists. ");
+		if (nameAttempt.equals("esc")) {
 			break;
+		}
+		else if(udi.checkUser(nameAttempt)) {
+			System.out.println("Username already exists. ");
+			System.out.println("=================================================================");
+			
+		}
+		else if (nameAttempt.length()<6){
+			System.out.println("Please choose a username with 6 or more characters");
+			System.out.println("=================================================================");
+			
 		}
 		else {
 			String password = passCheck();
@@ -44,6 +53,10 @@ public class NewUser {
 			String email = input.nextLine();
 			udi.createUser(nameAttempt, encryption, firstName, lastName, address, city, state, phone, email);
 			logger.info("User " + nameAttempt + " created.");
+			System.out.println("Thank you for registering. \n"
+	    			+ "To begin using your account, please re-enter your information and log in below.\n"
+	    			+ "=================================================================\n"
+	    			+ "Have a Great Day!");
 			success = true;
 		}
 	} catch (SQLException e) {

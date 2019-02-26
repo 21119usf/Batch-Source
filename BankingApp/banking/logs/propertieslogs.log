@@ -1,2 +1,10 @@
 [INFO ] 2019-02-26 16:08:22.063 [main] AdminAccess - User 10003 deposited $357.52 from account 103
 [INFO ] 2019-02-26 16:10:56.762 [main] AdminAccess - User 10000 logged in
+[INFO ] 2019-02-26 17:29:58.804 [main] AdminAccess - User Tester created.
+[INFO ] 2019-02-26 17:30:16.159 [main] AdminAccess - User 10000 logged in
+[INFO ] 2019-02-26 17:31:00.338 [main] AdminAccess - User 10006 logged in
+[INFO ] 2019-02-26 17:35:48.630 [main] AdminAccess - User 10000 deleted 10006
+[INFO ] 2019-02-26 17:35:57.535 [main] AdminAccess - User 10000 logged in
+[INFO ] 2019-02-26 17:39:23.296 [main] AdminAccess - User 10000 logged in
+[INFO ] 2019-02-26 17:43:51.605 [main] AdminAccess - User 10000 deleted 10001
+[INFO ] 2019-02-26 17:45:34.439 [main] AdminAccess - User 10003 logged in

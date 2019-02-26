@@ -13,14 +13,6 @@ public class App
 	//Such a beautifully simple main makes me happy :D
     public static void main( String[] args )
     {
-    	UserDaoImpl udi = new UserDaoImpl();
-    	try {
-    		
-			udi.getUserInfo(10000);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	startup();
     }
     
@@ -66,13 +58,6 @@ public class App
     else if (response.equals("new")) {
     	NewUser nuser = new NewUser();
     	nuser.createAccount();
-//    	newCustomer cust = new newCustomer();
-//    	cust.usernameChoose();
-    	//After applying, the applicant will need to wait for approval to access their account
-    	System.out.println("Thank you for registering. \n"
-    			+ "To begin using your account, please re-enter your information and log in below.\n"
-    			+ "=================================================================\n"
-    			+ "Have a Great Day!");
     }
     else {
     	//if not a new user, we construct the LogonAttempt Class, importing the 'response' input variable
