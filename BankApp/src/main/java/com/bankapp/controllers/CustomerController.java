@@ -30,7 +30,7 @@ public class CustomerController {
 	
 	// Constructor
 	private CustomerController() {
-		loadCustomers();
+		// loadCustomers();
 	}
 	
 	// Return singleton instance
@@ -254,8 +254,6 @@ public class CustomerController {
 		// Create Customer object and store data
 		Customer c = new Customer(username, password, firstName, lastName, 
 		email, phoneNumber);
-		//customers.add(c);
-		//saveCustomers();
 		CustomerDaoImp cdi = new CustomerDaoImp();
 		try {
 			cdi.addCustomer(c);
@@ -341,28 +339,38 @@ public class CustomerController {
 	
 	// Display currentCustomer accounts
 	public static void displayAccounts() {
-		int option = 0;
-		ArrayList<Integer> acctIds = currentCustomer.getAccounts();
+		CustomerDaoImp cdi = new CustomerDaoImp();
+		ArrayList<Integer> accountIds = null;
+		try {
+			accountIds = cdi.getAccounts(currentCustomer);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		ArrayList<String> al = new ArrayList<String>();
 		al.add("Back");
 		al.add(">>> Open Account <<<");
-		for (Integer id : acctIds) {
-			al.add(Integer.toString(id));
+		if (al != null) {
+			for (Integer id : accountIds) {
+				al.add(Integer.toString(id));
+			}
 		}
 		
+		
 		Menu m = new Menu(al);
-		option = m.display();
+		int option = m.display();
 		
 		// Redirect
 		if (option == 0) {
-			//displayLanding();
 			return;
 		} else if (option == 1) {
 			AccountController.displayOpenAccount(currentCustomer);
 		} else {
-			Account a = AccountController.getAccount(acctIds.get(option-2));
-			AccountController.displayAccountMenu(a);
+			Account a = null;
+			if (al != null) {
+				a = AccountController.getAccount(accountIds.get(option-2));
+				AccountController.displayAccountMenu(a);
+			}	
 		}
 	}
 	

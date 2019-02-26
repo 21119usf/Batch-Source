@@ -6,12 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
 import com.bankapp.account.Account;
+import com.bankapp.dao.EmployeeDaoImp;
 import com.bankapp.menu.Menu;
 import com.bankapp.user.Admin;
 import com.bankapp.user.Customer;
@@ -29,7 +31,7 @@ public class EmployeeController {
 	
 	// Constructor
 	private EmployeeController() {
-		loadEmployees();
+		// loadEmployees();
 	}
 	
 	// Return singleton instance
@@ -71,6 +73,18 @@ public class EmployeeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// Get employee by username
+	public static Employee getEmployee(String un) {
+		EmployeeDaoImp edi = new EmployeeDaoImp();
+		try {
+			Employee e = edi.getEmployee(un);
+			return e;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	// Display employee entry page
@@ -139,15 +153,14 @@ public class EmployeeController {
 	// Validate login
 	private static Employee validateLogin(String un, String pw) {
 		// Employee login
-		for (Employee e : employees) {
-			if (e.getUsername().equals(un)) {
-				if (e.getPassword().equals(pw)) {
-					System.out.println("Logged in!");
-					return e;
-				} else {
-					System.out.println("Invalid credentials.");
-					return null;
-				}
+		Employee e = getEmployee(un);
+		if (e.getUsername().equals(un)) {
+			if (e.getPassword().equals(pw)) {
+				System.out.println("Logged in!");
+				return e;
+			} else {
+				System.out.println("Invalid credentials.");
+				return null;
 			}
 		}
 		System.out.println("No user \"" + un + "\" found.");
@@ -158,8 +171,6 @@ public class EmployeeController {
 	public static void displayRegistration() {
 		String username = "";
 		String password = "";
-		String firstName = "";
-		String lastName = "";
 		
 		System.out.println("Enter some personal account information:");
 		
@@ -179,7 +190,7 @@ public class EmployeeController {
 		// Password
 		boolean notValidPassword = true;
 		String p0, p1;
-		do {
+		while (notValidPassword) {
 			System.out.println("Enter a password");
 			System.out.print(">>> ");
 			p0 = sc.nextLine();
@@ -194,15 +205,7 @@ public class EmployeeController {
 					System.out.println("Mismatched passwords.");
 				}
 			}
-		} while (notValidPassword);
-		
-		// First and last names
-		System.out.println("Enter your first name: ");
-		System.out.print(">>> ");
-		firstName = sc.nextLine();
-		System.out.println("Enter your last name: ");
-		System.out.print(">>> ");
-		lastName = sc.nextLine();
+		}
 		
 		// Admin?
 		System.out.println("Is this an Admin account?");
@@ -219,13 +222,18 @@ public class EmployeeController {
 		// Create Employee/Admin object and store data
 		Employee e;
 		if (isAdmin) {
-			e = new Admin(username, password, firstName, lastName);
+			e = new Admin(username, password);
 			employees.add(e);
 		} else {
-			e = new Employee(username, password, firstName, lastName);
+			e = new Employee(username, password);
 			employees.add(e);
 		}
-		saveEmployees();
+		EmployeeDaoImp edi = new EmployeeDaoImp();
+		try {
+			edi.addEmployee(e);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		logger.info("EMPLOYEE " + e.getId()
 		+ " created");
 		

@@ -17,13 +17,19 @@ public class Account implements Serializable {
 	private ArrayList<Customer> owners;
 	
 	// Constructor
-	public Account(Customer c) {
+	/*public Account(Customer c) {
 		Random r = new Random();
 		id = 100000000 + r.nextInt(900000000);
 		setOpen(false);
 		setBalance(0);
 		owners = new ArrayList<Customer>();
 		setOwners(c);
+	}*/
+	public Account() {
+		Random r = new Random();
+		id = 100000000 + r.nextInt(900000000);
+		setOpen(false);
+		setBalance(0.0);
 	}
 	public Account(boolean o, double b) {
 		Random r = new Random();

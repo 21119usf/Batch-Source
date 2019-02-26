@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,6 +14,8 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.bankapp.account.Account;
+import com.bankapp.dao.AccountDaoImp;
+import com.bankapp.dao.CustomerAccountDaoImp;
 import com.bankapp.menu.Menu;
 import com.bankapp.user.Customer;
 
@@ -71,10 +74,12 @@ public class AccountController {
 	
 	// Return account by id
 	public static Account getAccount(int id) {
-		for (Account a : accounts) {
-			if (a.getId() == id) {
-				return a;
-			}
+		AccountDaoImp adi = new AccountDaoImp();
+		try {
+			Account a = adi.getAccount(id);
+			return a;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -198,9 +203,9 @@ public class AccountController {
 	}
 	
 	// Menu to open account
-	public static Account displayOpenAccount(Customer c) {
-		Account a = new Account(c);
-		int option = 0;
+	public static void displayOpenAccount(Customer c) {
+		AccountDaoImp adi = new AccountDaoImp();
+		CustomerAccountDaoImp cadi = new CustomerAccountDaoImp();
 		
 		// Ask for joint account
 		ArrayList<String> al = new ArrayList<String>();
@@ -208,7 +213,7 @@ public class AccountController {
 		al.add("No");
 		Menu m = new Menu(al);
 		System.out.println("Should this be a joint account?");
-		option = m.display();
+		int option = m.display();
 		if (option == 0) {
 			System.out.println("Enter other user's ID number:");
 			System.out.print(">>> ");
@@ -216,10 +221,17 @@ public class AccountController {
 				int id = sc.nextInt();
 				Customer c2 = CustomerController.getCustomer(id);
 				if (c2 != null) {
-					a.addOwner(c2);
+					Account a = new Account();
 					logger.info("CUSTOMERS " + c.getId() + ", " + c2.getId() +
 						" opened ACCOUNT " + a.getId());
-					saveAccounts();
+					try {
+						adi.addAccount(a);
+						cadi.addCustomerAccount(c.getId(), a.getId());
+						cadi.addCustomerAccount(c2.getId(), a.getId());
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					displayAccountMenu(a);
 				} else {
 					System.out.println("User ID not found");
 					displayOpenAccount(c);
@@ -230,14 +242,15 @@ public class AccountController {
 			}
 		}
 		
-		accounts.add(a);
-		saveAccounts();
-		c.getAccounts().add(a.getId());
-		CustomerController.saveCustomers();
+		Account a = new Account();
+		try {
+			adi.addAccount(a);
+			cadi.addCustomerAccount(c.getId(), a.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		logger.info("CUSTOMER " + c.getId() + " opened ACCOUNT " + a.getId());
 		displayAccountMenu(a);
-		
-		return a;
 	}
 	
 	// Close account
@@ -253,9 +266,14 @@ public class AccountController {
 		int option = m.display();
 		
 		if (option == 4) {
+			AccountDaoImp adi = new AccountDaoImp();
 			a.setOpen(false);
 			logger.info("ACCOUNT " + a.getId() + " closed");
-			saveAccounts();
+			try {
+				adi.updateAccount(a);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return;
 	}
@@ -266,11 +284,8 @@ public class AccountController {
 		System.out.println("Account ID:\t" + a.getId());
 		System.out.println("Open:\t\t" + a.isOpen());
 		System.out.println("Balance:\t$" + String.format("%.2f", a.getBalance()));
-		ArrayList<Customer> al = a.getOwners();
 		System.out.print("Owners:\t\t");
-		for (Customer c : al) {
-			System.out.print(c.getUsername() + " ");
-		}
+		// TODO: Get owners from CUSTOMER_ACCOUNT JOIN
 		
 		displayAccountMenu(a);
 	}

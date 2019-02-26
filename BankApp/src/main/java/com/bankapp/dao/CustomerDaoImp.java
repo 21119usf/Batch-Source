@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.bankapp.controllers.ConnectionController;
 import com.bankapp.user.Customer;
@@ -97,5 +98,26 @@ public class CustomerDaoImp implements CustomerDao {
 		Statement statement = connection.createStatement();
 		String sql = "DELETE FROM CUSTOMER WHERE C_ID = " + c.getId();
 		statement.execute(sql);
+	}
+
+	// Get customer accounts
+	public ArrayList<Integer> getAccounts(Customer c) throws SQLException {
+		Statement statement = connection.createStatement();
+		String sql = "SELECT A_ID FROM CUSTOMER_ACCOUNT " + 
+			"INNER JOIN CUSTOMER " + 
+			"ON CUSTOMER.C_ID = CUSTOMER_ACCOUNT.C_ID " + 
+			"WHERE CUSTOMER_ACCOUNT.C_ID = " + c.getId();
+		
+		ArrayList<Integer> al = new ArrayList<Integer>();
+		
+		ResultSet rs = statement.executeQuery(sql);
+		if (!rs.isBeforeFirst()) {
+			return null;	// No data
+		}
+		while (rs.next()) {
+			al.add((int)rs.getLong("A_ID"));
+		}
+		
+		return al;
 	}
 }

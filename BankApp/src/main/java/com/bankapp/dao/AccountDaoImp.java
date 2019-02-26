@@ -9,7 +9,7 @@ import com.bankapp.account.Account;
 import com.bankapp.controllers.ConnectionController;
 
 public class AccountDaoImp implements AccountDao {
-	public static ConnectionController cc = ConnectionController.getInstance();
+	private static ConnectionController cc = ConnectionController.getInstance();
 	private Connection connection = cc.getConnection();
 
 	// Add account to database
@@ -19,8 +19,8 @@ public class AccountDaoImp implements AccountDao {
 		
 		Statement statement = connection.createStatement();
 		String sql = "INSERT INTO ACCOUNT VALUES(" +
-				a.getId() + ", " + isOpen + ", " + a.getBalance() + ")";
-			statement.executeUpdate(sql);
+			a.getId() + ", " + isOpen + ", " + a.getBalance() + ")";
+		statement.executeUpdate(sql);
 	}
 
 	// Retrieve account from database by id

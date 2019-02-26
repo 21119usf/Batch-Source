@@ -1,6 +1,7 @@
 package com.bankapp.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.bankapp.user.Customer;
 
@@ -10,4 +11,5 @@ public interface CustomerDao {
 	public abstract Customer getCustomer(String username) throws SQLException;
 	public abstract void updateCustomer(Customer c) throws SQLException;
 	public abstract void deleteCustomer(Customer c) throws SQLException;
+	public abstract ArrayList<Integer> getAccounts(Customer c) throws SQLException;
 }
