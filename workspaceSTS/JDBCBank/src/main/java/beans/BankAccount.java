@@ -55,6 +55,12 @@ public class BankAccount {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+
+	@Override
+	public String toString() {
+		return "BankAccount [bankAccountID=" + bankAccountID + ", userID=" + userID + ", balance=" + balance
+				+ ", accountType=" + accountType + "]";
+	}
 	
 	
 }

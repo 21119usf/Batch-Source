@@ -101,4 +101,14 @@ public class UserAccount {
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+
+	@Override
+	public String toString() {
+		return "UserAccount [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", streetAddress=" + streetAddress + ", email=" + email + ", phoneNum=" + phoneNum + ", approval="
+				+ approval + ", isAdmin=" + isAdmin + "]";
+	}
+	
+	
+	
 }

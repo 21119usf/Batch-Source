@@ -44,6 +44,11 @@ public class LoginAccount {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
+
+	@Override
+	public String toString() {
+		return "LoginAccount [userName=" + userName + ", password=" + password + ", userID=" + userID + "]";
+	}
 	
 	
 
