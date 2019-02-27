@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public interface UserAccountDao {
 
 	//Create
-	public void createUserAccount(String firstName, String lastName, String streetAddress,
+	public void createUserAccount(int userID, String firstName, String lastName, String streetAddress,
 									String email, String phoneNum, int approval, int isAdmin) throws SQLException;
 	
 	//Read

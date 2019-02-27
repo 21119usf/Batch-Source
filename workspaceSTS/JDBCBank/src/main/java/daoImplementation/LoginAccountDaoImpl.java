@@ -17,13 +17,12 @@ public class LoginAccountDaoImpl implements LoginAccountsDao{
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
 	@Override
-	public void createLoginAccount(String username, String password, int userID) throws SQLException {
+	public void createLoginAccount(String username, String password) throws SQLException {
 		Connection con = cf.getConnection();
-		String sql = "INSERT INTO LOGIN_TABLE VALUES(?, ?, ?)";
+		String sql = "INSERT INTO LOGIN_TABLE VALUES(?, ?, 1)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, username);
 		ps.setString(2, password);
-		ps.setInt(3, userID);
 		ps.executeUpdate();
 	}
 

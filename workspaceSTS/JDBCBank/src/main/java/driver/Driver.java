@@ -16,8 +16,8 @@ public class Driver {
 		BankAccountDaoImpl badi = new BankAccountDaoImpl();
 		UserAccountDaoImpl uadi = new UserAccountDaoImpl();
 		//TESTS FOR LOGINACCOUNT
-//		try {
-//			ladi.createLoginAccount("Marky", "Seraph", 15);
+		try {
+			ladi.createLoginAccount("Marky", "Seraph", 15);
 //			for (LoginAccount log: ladi.getAllLogins()) {
 //				System.out.println(log);
 //			}
@@ -33,9 +33,9 @@ public class Driver {
 //				System.out.println("unique");
 //			else
 //				System.out.println("not unique");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//TESTS FOR BANKACCOUNTS
 //		try {

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public interface LoginAccountsDao {
 	
 	//Create
-	public void createLoginAccount(String username, String password, int userID) throws SQLException;
+	public void createLoginAccount(String username, String password) throws SQLException;
 	
 	//Read
 	public ArrayList<LoginAccount> getAllLogins() throws SQLException;

@@ -15,18 +15,19 @@ public class UserAccountDaoImpl implements UserAccountDao{
 	public static ConnFactory cf = ConnFactory.getInstance();
 
 	@Override
-	public void createUserAccount(String firstName, String lastName, String streetAddress, String email,
-			String phoneNum, int approval, int isAdmin) throws SQLException {
+	public void createUserAccount(int userID, String firstName, String lastName, String streetAddress,
+			String email, String phoneNum, int approval, int isAdmin) throws SQLException {
 		Connection con = cf.getConnection();
-		String sql = "INSERT INTO USERS_TABLE VALUES(100,?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO USERS_TABLE VALUES(? ,?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, firstName);
-		ps.setString(2, lastName);
-		ps.setString(3, streetAddress);
-		ps.setString(4, email);
-		ps.setString(5, phoneNum);
-		ps.setInt(6, approval);
-		ps.setInt(7, isAdmin);
+		ps.setInt(1, userID);
+		ps.setString(2, firstName);
+		ps.setString(3, lastName);
+		ps.setString(4, streetAddress);
+		ps.setString(5, email);
+		ps.setString(6, phoneNum);
+		ps.setInt(7, approval);
+		ps.setInt(8, isAdmin);
 		ps.executeUpdate();
 	}
 

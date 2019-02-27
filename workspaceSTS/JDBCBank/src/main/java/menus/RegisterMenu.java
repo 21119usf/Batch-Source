@@ -2,14 +2,14 @@ package menus;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+
 import beans.*;
-import daoImplementation.LoginAccountDaoImpl;
-import daoImplementation.UserAccountDaoImpl;
+import daoImplementation.*;
 
 
 public class RegisterMenu {
-	static LoginAccountDaoImpl ladi = new LoginAccountDaoImpl();
-	static UserAccountDaoImpl uadi = new UserAccountDaoImpl();
+	public static LoginAccountDaoImpl ladi = new LoginAccountDaoImpl();
+	public static UserAccountDaoImpl uadi = new UserAccountDaoImpl();
 
 	public static void start() {
 		Scanner input = new Scanner(System.in);
@@ -58,8 +58,11 @@ public class RegisterMenu {
 		c = input.nextLine().charAt(0);
 		if (c == 'y' || c == 'Y') {
 			try {
-				uadi.createUserAccount(newUser.getFirstName(), newUser.getLastName(), newUser.getStreetAddress(),
-										newUser.getEmail(), newUser.getPhoneNum(), newUser.getApproval(), newUser.getIsAdmin());
+				ladi.createLoginAccount(newLogin.getUserName(), newLogin.getPassword());
+				newLogin = ladi.getLogin(newLogin.getUserName());
+				uadi.createUserAccount(newLogin.getUserID(), newUser.getFirstName(), newUser.getLastName(),
+										newUser.getStreetAddress(), newUser.getEmail(), newUser.getPhoneNum(),
+										newUser.getApproval(), newUser.getIsAdmin());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

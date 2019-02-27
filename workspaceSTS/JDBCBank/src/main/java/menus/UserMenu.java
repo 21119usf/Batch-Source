@@ -1,12 +1,292 @@
 package menus;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import beans.BankAccount;
 import beans.LoginAccount;
 import beans.UserAccount;
+import daoImplementation.BankAccountDaoImpl;
 
 public class UserMenu {
+	public static BankAccountDaoImpl badi = new BankAccountDaoImpl();
 
 	public static void start(LoginAccount login, UserAccount user) {
+		Scanner input = new Scanner(System.in);
+		Scanner strings = new Scanner(System.in);
+		Scanner doubles = new Scanner(System.in);
+		int option;
+		String line;
+		double amount;
 		
+		while (true) {
+			System.out.print("\nWelcome " + login.getUserName() + "."
+					+ "\nWhat would you like to do today?"
+					+ "\n(0) - View my information"		//DONE
+					+ "\n(1) - Perform a transaction"	//DONE
+					+ "\n(2) - Create a bank account"	//DONE
+					+ "\n(3) - Close a bank account"	//DONE
+					+ "\n(4) - Logout"					//DONE
+					+ "\n> ");
+			option = input.nextInt();
+			switch (option) {
+				case 0:									//View information pertaining to me(Customer)
+					printUserInfo(login, user);
+					break;	
+				case 1:										//Perform a transaction
+					initiateTransaction(login.getUserID());
+					break;
+				case 2:										//Create a bank account
+					createBankAccount(login.getUserID());
+					break;
+				case 3:										//Close a bank account
+					closeBankAccount(login.getUserID());
+					break;
+				case 4:										//logout, return to login screen
+					return;
+				default:									//Invalid choice
+					System.out.println("Invalid Option");
+					break;
+			}//outermost switch statement
+		}//while loop
+	}
+	
+	public static void printUserInfo(LoginAccount login, UserAccount user) {
+		ArrayList<BankAccount> banks = new ArrayList<BankAccount>();
+		try {
+			banks = badi.getBankAccountsOfUser(login.getUserID());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("User ID: " + user.getUserID()
+						  +"\nFirst Name: " + user.getFirstName()
+						  +"\nLast Name: " + user.getLastName()
+						  +"\nStreet Address: " + user.getStreetAddress()
+						  +"\nE-mail: " + user.getEmail()
+						  +"\nPhone #: " + user.getPhoneNum()
+						  +"\nUsername: " + login.getUserName());
+		System.out.println("\nBank ID\t\tBalance\t\tType");
+		for (BankAccount b: banks)
+			System.out.println(b.getBankAccountID() + "\t\t" + b.getBalance() + "\t\t"
+								+ b.getAccountType());
+		System.out.println();
+	}
+	
+	public static void createBankAccount(int userID) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("Which type of account would you like to make?"
+						  +"\n(0) - Savings"
+						  +"\n(1) - Checking"
+						  +"\n(2) - Cancel"
+						  +"\n> ");
+		int choice = in.nextInt();
+		try {
+			switch (choice) {
+				case 0:
+					badi.createBankAccount(userID, 0, "Savings");
+					break;
+				case 1:
+					badi.createBankAccount(userID, 0, "Checking");
+					break;
+				default:
+					break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void closeBankAccount(int userID) {
+		ArrayList<BankAccount> banks = new ArrayList<BankAccount>();
+		try {
+			banks = badi.getBankAccountsOfUser(userID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Scanner in = new Scanner(System.in);
+		System.out.println("\nBank ID\t\tBalance\t\tType");
+		for (BankAccount b: banks)
+			System.out.println(b.getBankAccountID() + "\t\t" + b.getBalance() + "\t\t"
+								+ b.getAccountType());
+		System.out.print("\nEnter the Bank ID of the account you wish to close: ");
+		int choice = in.nextInt();
+		boolean found = false;
+		double currBalance = 0;
+		for (BankAccount b: banks) {
+			if (b.getBankAccountID() == choice) {
+				currBalance = b.getBalance();
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			try {
+				if (currBalance == 0)
+					System.out.println("Only an account with a balance of $0.00 can be removed.");
+				else {
+					badi.removeBankAccount(choice);
+					System.out.println("Bank account with the ID " + choice + " was removed.");	
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else
+			System.out.println("Invalid choice");
+	}
+	
+	public static void initiateTransaction(int userID) {
+		ArrayList<BankAccount> banks = new ArrayList<BankAccount>();
+		try {
+			banks = badi.getBankAccountsOfUser(userID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Scanner input = new Scanner(System.in);
+		int option;
+		while (true) {
+			System.out.print("\nWhat type of transaction would you like to perform?"
+						+ "\n(0) - Deposit"
+						+ "\n(1) - Withdrawal"
+						+ "\n(2) - Transfer"
+						+ "\n(3) - Cancel"
+						+ "\n> ");
+			option = input.nextInt();
+			System.out.println("\nBank ID\t\tBalance\t\tType");
+			for (BankAccount b: banks)
+				System.out.println(b.getBankAccountID() + "\t\t" + b.getBalance() + "\t\t"
+									+ b.getAccountType());
+			switch (option) {
+				case 0:
+					deposit(banks);
+					break;
+				case 1:
+					withdraw(banks);
+					break;
+				case 2:
+					transfer(banks);
+					break;
+				default:
+					return;
+			}
+		}
 		
+	}
+	
+	public static void deposit(ArrayList<BankAccount> banks) {
+		Scanner in = new Scanner(System.in);
+		double amount = 0;
+		System.out.print("Enter the Bank ID of the account you wish to deposit into: ");
+		int choice = in.nextInt();
+		boolean found = false;
+		double currBalance = 0;
+		for (BankAccount b: banks) {
+			if (b.getBankAccountID() == choice) {
+				currBalance = b.getBalance();
+				found = true;
+				break;
+			}
+		}
+		in.nextLine();
+		if (found) {
+			try {
+				System.out.print("How much would you like to deposit?: ");
+				amount = in.nextDouble();
+				if (amount < 0)
+					System.out.println("Cannot deposit a negative amount.");
+				else
+					badi.changeBalance(choice, currBalance + amount);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			System.out.println("New balance for Bank Account " + choice
+								+ " is $" + (currBalance + amount));	
+		}
+		else
+			System.out.println("Invalid choice");
+	}
+	
+	public static void withdraw(ArrayList<BankAccount> banks) {
+		Scanner in = new Scanner(System.in);
+		double amount = 0;
+		System.out.print("Enter the Bank ID of the account you wish to withdraw from: ");
+		int choice = in.nextInt();
+		boolean found = false;
+		double currBalance = 0;
+		for (BankAccount b: banks) {
+			if (b.getBankAccountID() == choice) {
+				currBalance = b.getBalance();
+				found = true;
+				break;
+			}
+		}
+		in.nextLine();
+		if (found) {
+			try {
+				System.out.print("How much would you like to withdraw?: ");
+				amount = in.nextDouble();
+				if (amount < 0)
+					System.out.println("Cannot withdraw a negative amount.");
+				else if (amount > currBalance)
+					System.out.println("Insufficient Funds.");
+				else
+					badi.changeBalance(choice, currBalance - amount);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			System.out.println("New balance for Bank Account " + choice
+								+ " is $" + (currBalance - amount));
+		}
+		else
+			System.out.println("Invalid choice");
+	}
+
+	public static void transfer(ArrayList<BankAccount> banks) {
+		Scanner in = new Scanner(System.in);
+		double amount = 0;
+		System.out.print("Enter the Bank ID of the account you wish to transfer from: ");
+		int choice1 = in.nextInt();
+		System.out.print("Enter the Bank ID of the account you wish to transfer to: ");
+		int choice2 = in.nextInt();
+		boolean found1 = false;
+		boolean found2 = false;
+		double currBalance1 = 0;
+		double currBalance2 = 0;
+		for (BankAccount b: banks) {
+			if (b.getBankAccountID() == choice1) {
+				currBalance1 = b.getBalance();
+				found1 = true;
+				break;
+			}
+			if (b.getBankAccountID() == choice2) {
+				currBalance2 = b.getBalance();
+				found2 = true;
+				break;
+			}
+		}
+		in.nextLine();
+		if (found1 && found2) {
+			try {
+				System.out.print("How much would you like to transfer?: ");
+				amount = in.nextDouble();
+				if (amount < 0)
+					System.out.println("Cannot transfer a negative amount.");
+				else if (amount > currBalance1)
+					System.out.println("Insufficient Funds.");
+				else {
+					badi.changeBalance(choice1, currBalance1 - amount);
+					badi.changeBalance(choice2, currBalance2 + amount);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			System.out.println("New balance for Bank Account " + choice1
+								+ " is $" + (currBalance1 - amount)
+								+ "\nNew balance for Bank Account " + choice2
+								+ " is $" + (currBalance2 + amount));	
+		}
+		else
+			System.out.println("Invalid choices");
 	}
 }

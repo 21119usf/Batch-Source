@@ -16,8 +16,11 @@ public class MainMenu {
 		do {
 			System.out.print("Welcome to the Marx Bank"
 					+ "\nTo select options, please type the number next to your choice and hit enter"
-					+ "\n\nWould you like to login, register, or exit?" + "\n(1) - Login" + "\n(2) - Register"
-					+ "\n(3) - Exit" + "\n> ");
+					+ "\n\nWould you like to login, register, or exit?"
+					+ "\n(1) - Login"
+					+ "\n(2) - Register"
+					+ "\n(3) - Exit"
+					+ "\n> ");
 			Scanner input = new Scanner(System.in);
 			int option = input.nextInt();
 			switch (option) {
@@ -25,7 +28,7 @@ public class MainMenu {
 				login();
 				break;
 			case 2:
-				// REGISTER
+				RegisterMenu.start();
 				break;
 			default:
 				restart = false;
