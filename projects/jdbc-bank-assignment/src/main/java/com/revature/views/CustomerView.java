@@ -108,6 +108,20 @@ public class CustomerView {
 				System.out.println();
 				
 			} else if (input.equals("B")) {
+				System.out.print("Enter the amount you like to deposit: ");
+				input = ScannerInstance.scanner.nextLine();
+				amount = ParseString.parseD(input);
+				if (amount == Double.NEGATIVE_INFINITY) {
+					break;
+				}
+				if (Validation.isLessThanZero(amount)) {
+					break;
+				}
+				double newBalance = (new AccountDaoImpl().getBalanceFromAccountID(accountID) + amount);
+				new AccountDaoImpl().setBalanceFromAccountID(accountID, newBalance);
+				System.out.println("You have deposited " + amount);
+				System.out.printf("Your new balance is %.2f", newBalance);
+				System.out.println();
 
 			} else if (input.equals("C")) {
 
