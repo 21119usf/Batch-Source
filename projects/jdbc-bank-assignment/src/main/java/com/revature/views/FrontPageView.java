@@ -23,7 +23,7 @@ public class FrontPageView {
 			if (input.equals("A")) {
 				new LoginView().login();
 			} else if (input.equals("B")) {
-				
+				new Register().register();
 			} else if (input.equals("C")) {
 				
 			} else {
