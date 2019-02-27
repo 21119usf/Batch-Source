@@ -1,0 +1,74 @@
+drop table BANKCUSTOMER;
+drop table BANKACCOUNT;
+
+create table BANKCUSTOMER(
+custid number(16) primary key,
+username varchar2(20),
+usrpassword varchar2(20),
+firstname varchar2(20),
+lastname varchar2(20)
+);
+
+create table BANKACCOUNT(
+custid number(16),
+accountNumber number(20) primary key,
+balance number(20,2)
+);
+
+alter table BANKACCOUNT add constraint fk_custid foreign key (custid) references bankcustomer (custid);
+
+drop  SEQUENCE CUSTOMERSEQ;
+
+CREATE SEQUENCE  CUSTOMERSEQ
+start with 1
+increment by 1
+minvalue 1
+maxvalue 100;
+
+CREATE OR REPLACE PROCEDURE INSERTUSER(username IN VARCHAR2, usrpassword IN VARCHAR2, firstname IN VARCHAR2, lastname IN VARCHAR2)
+AS
+BEGIN
+    INSERT INTO BANKCUSTOMER VALUES(CUSTOMERSEQ.NEXTVAL, username, usrpassword, firstname, lastname);
+    COMMIT;
+END;
+/
+
+
+CREATE SEQUENCE  ACCOUNTSEQ
+start with 1
+increment by 1
+minvalue 1
+maxvalue 100;
+
+CREATE OR REPLACE PROCEDURE INSERTACCOUNT(custid IN NUMBER, balance IN NUMBER)
+AS
+BEGIN
+    INSERT INTO BANKACCOUNT VALUES(custid, ACCOUNTSEQ.NEXTVAL, balance);
+    COMMIT;
+END;
+/
+
+
+
+--select custid, username, usrpassword, firstname, lastname from bankcustomer where custid = 7;
+--select bankaccount.custid,firstname,lastname, bankaccount.accountnumber, bankaccount.balance from bankcustomer inner join bankaccount on bankaccount.custid = bankcustomer.custid where username = 'frankusr' and usrpassword = 'frankpswd';
+
+select balance from bankaccount where custid = 4;
+update bankaccount set balance = 40 where custid = 3;
+
+CREATE OR REPLACE PROCEDURE DEPOSIT(DEPOSITTARGETACCOUNT IN NUMBER, DEPOSITVALUE IN NUMBER)
+AS
+BEGIN
+    UPDATE BANKACCOUNT SET BALANCE = BALANCE + DEPOSITVALUE WHERE ACCOUNTNUMBER = DEPOSITTARGETACCOUNT;
+COMMIT;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE WITHDRAW(WITHDRAWTARGETACCOUNT IN NUMBER, WITHDRAWVALUE IN NUMBER)
+AS
+BEGIN
+    UPDATE BANKACCOUNT SET BALANCE = BALANCE - WITHDRAWVALUE WHERE ACCOUNTNUMBER = WITHDRAWTARGETACCOUNT;
+COMMIT;
+END;
+/
+
