@@ -1,0 +1,11 @@
+[INFO ] 2019-02-26 21:56:15.478 [main] Logging - New account request => Username:cookies
+[INFO ] 2019-02-26 21:56:27.247 [main] Logging - Admin Eployee => Username:ANT
+[INFO ] 2019-02-26 21:56:54.231 [main] Logging - Admin Login=> Username:Captain
+[INFO ] 2019-02-26 21:57:24.175 [main] Logging - Customer Login=> Username:user1
+[INFO ] 2019-02-26 21:57:30.504 [main] Logging - Employee made withdraw => Customer ID:23$20.0
+[INFO ] 2019-02-26 21:57:40.611 [main] Logging - Customer Login attempted failed => Username:asd
+[INFO ] 2019-02-26 21:57:43.567 [main] Logging - Customer Login attempted failed => Username:user
+[INFO ] 2019-02-26 21:57:47.351 [main] Logging - Customer Login=> Username:user1
+[INFO ] 2019-02-26 21:58:16.352 [main] Logging - Employee viewed account balance => Customer ID:23
+[INFO ] 2019-02-26 21:59:13.361 [main] Logging - Customer Login=> Username:user1
+[INFO ] 2019-02-26 21:59:17.131 [main] Logging - Employee made deposit => Customer ID:23$120.0
