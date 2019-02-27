@@ -1,9 +1,8 @@
 function bubble(event){
-    event.stopPropagation();
     let element=event.currentTarget;
     element.style.backgroundColor= "green";
     alert(element.id);
-    event.stopPropagation();
+
 }
 
 window.onload= function(){
