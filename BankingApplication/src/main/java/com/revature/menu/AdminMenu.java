@@ -12,9 +12,10 @@ import com.revature.views.WelcomeScreen;
 
 public class AdminMenu {
 
-	public Scanner in = new Scanner(System.in);
+	Scanner in = new Scanner(System.in);
 	static float transactionAmount;
 	public void adminMenu(String user) {
+		
 		System.out.println("\n\nWelcome "+ user+". Administrator Menu. Choose an option: ");
 		System.out.println("==============================================================================================");
         System.out.println("1. View Customer Info");
@@ -26,7 +27,9 @@ public class AdminMenu {
         System.out.println("Please enter an option:");
         System.out.println("==============================================================================================");
 		
-        int choice = in.nextInt();
+        int choice = -1;
+        choice= in.nextInt();
+        System.out.println("This is choice: "+choice);
         switch(choice) {
         	case 1:
         		viewCustomerInfo();
@@ -55,7 +58,7 @@ public class AdminMenu {
 	}
 	
 	public void viewCustomerInfo() {
-		Scanner in = new Scanner(System.in);
+		//Scanner in = new Scanner(System.in);
 		int uid;
 		System.out.println("Enter User ID of Customer you wish to view: ");
 		uid = in.nextInt();
@@ -80,7 +83,7 @@ public class AdminMenu {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		in.close();
+		//in.close();
 	}
 	
 	public void createCustomer(String user) {
