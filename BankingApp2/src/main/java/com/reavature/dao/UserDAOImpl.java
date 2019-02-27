@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.reavature.validate.ValidatorException;
 import com.reavture.beans.User;
 import com.reavture.beans.UserRole;
 import com.revature.utilities.DAOUtilities;

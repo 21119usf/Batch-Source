@@ -22,7 +22,7 @@ public class UserAccountService implements CanServiceAccoutns {
 	public ArrayList<Account> getAccounts() {
 		try {
 			ArrayList<Account> accounts = DAOUtilities.getUserAccountDAO().getUserAccounts(u.getId());
-			LoggerUtil.LOGGER.info("Got Accounts");
+			new LoggerUtil().log("Got Accounts");
 			return accounts;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -36,7 +36,7 @@ public class UserAccountService implements CanServiceAccoutns {
 		UserAccountsDAO dao = DAOUtilities.getUserAccountDAO();
 		try {
 			dao.createAccount(a);
-			LoggerUtil.LOGGER.info("Created Account: " + a.toString());
+			new LoggerUtil().log("Created Account: " + a.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -47,7 +47,7 @@ public class UserAccountService implements CanServiceAccoutns {
 		PriorityQueue<Account> queue = new PriorityQueue<Account>();
 		try {
 			queue = DAOUtilities.getUserAccountDAO().getPendingAccounts();
-			LoggerUtil.LOGGER.info("Got Pending Accounts");
+			new LoggerUtil().log("Got Pending Accounts");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

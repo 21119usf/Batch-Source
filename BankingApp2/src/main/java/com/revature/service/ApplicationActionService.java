@@ -16,7 +16,7 @@ public class ApplicationActionService {
 	public void approveApplication() {
 		try {
 			DAOUtilities.getUserAccountDAO().approveAccounts(a.getAccountId());
-			LoggerUtil.LOGGER.info("Account Application Approved. Id: " + a.getAccountId());
+			new LoggerUtil().log("Account Application Approved. Id: " + a.getAccountId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,7 +26,7 @@ public class ApplicationActionService {
 	public void denyApplication() {
 		try {
 			DAOUtilities.getUserAccountDAO().denyAccount(a.getAccountId());
-			LoggerUtil.LOGGER.info("Account Application Denined. Id: " + a.getAccountId());
+			new LoggerUtil().log("Account Application Denined. Id: " + a.getAccountId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -8,7 +8,7 @@ public class RegisterView implements IsViewable {
 	@Override
 	public void display() {
 		OutputUtility.printHeader("Registration Form");
-		int input = new RegisterInput().getInput();
+		new RegisterInput().getInput();
 		
 	}
 

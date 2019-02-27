@@ -79,8 +79,8 @@ public class CustomerAccountPageInput implements CanTakeInput {
 				System.out.println("Ammount To Deposit");
 				double depositAmmount = Double.parseDouble(ScannerInstance.scan.next());
 				try {
-					DAOUtilities.getUserAccountDAO().transfer(a, z.getAccountId(), depositAmmount);
-					LoggerUtil.LOGGER.info("Money Transfered: " + input + "$ " + "From: " + a.getAccountId() + "To: " );
+					DAOUtilities.getUserAccountDAO().transfer(z, a.getAccountId(), depositAmmount);
+					new LoggerUtil().log("Money Transfered: " + input + "$ " + "From: " + a.getAccountId() + "To: " );
 					new CustomerPortalHomeView(u).display();
 				} catch (NumberFormatException | SQLException e) {
 					// TODO Auto-generated catch block
@@ -103,10 +103,10 @@ public class CustomerAccountPageInput implements CanTakeInput {
 		input = ScannerInstance.scan.next();
 		for (Account z : accounts) {
 			if (z.getAccountId() == Integer.parseInt(input)) {
-				System.out.println("Ammount To Deposit");
+				System.out.println("Ammount To Withdraw");
 				double depositAmmount = Double.parseDouble(ScannerInstance.scan.next());
 				try {
-					DAOUtilities.getUserAccountDAO().transfer(z, a.getAccountId(), depositAmmount);
+					DAOUtilities.getUserAccountDAO().transfer(a, z.getAccountId(),  depositAmmount);
 					new CustomerPortalHomeView(u).display();
 				} catch (NumberFormatException | SQLException e) {
 					// TODO Auto-generated catch block

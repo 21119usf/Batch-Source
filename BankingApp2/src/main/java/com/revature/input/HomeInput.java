@@ -9,7 +9,7 @@ public class HomeInput implements CanTakeInput {
 
 	public int getInput() {
 		int choice = 0;
-		input = ScannerInstance.scan.nextLine();
+		input = ScannerInstance.scan.next();
 		try {
 			validate();
 		} catch (ValidatorException e) {
@@ -27,6 +27,8 @@ public class HomeInput implements CanTakeInput {
 		if (input.equals("1")) {
 			// Do Nothing
 		} else if (input.equals("2")) {
+			// Do Nothing
+		} else if (input.equals("3")) {
 			// Do Nothing
 		} else {
 			throw new ValidatorException("Invalid Input");

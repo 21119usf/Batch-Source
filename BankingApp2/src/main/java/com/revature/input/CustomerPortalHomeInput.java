@@ -28,7 +28,9 @@ public class CustomerPortalHomeInput implements CanTakeInput {
 		try {
 			validate();
 		} catch (ValidatorException e) {
-			
+			System.out.println("Invalid Input");
+			System.out.println("Please Try Again");
+			getInput();
 		}
 		return 0;
 	}

@@ -3,7 +3,7 @@ package com.reavture.beans;
 /*
  * Class that defines the logic of what an Account is
  */
-public class Account {
+public class Account implements Comparable<Account> {
 	private double balance;
 	private int accountId;
 	private int primaryOwner;
@@ -44,6 +44,14 @@ public class Account {
 			return "No";
 		} else {
 			return "Yes";
+		}
+	}
+	@Override
+	public int compareTo(Account acc1) {
+		if (acc1.getAccountId() > accountId) {
+			return -1;
+		} else {
+			return 1;
 		}
 	}
 	

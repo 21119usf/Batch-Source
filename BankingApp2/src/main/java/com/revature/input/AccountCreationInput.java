@@ -5,6 +5,7 @@ import com.reavture.beans.Account;
 import com.reavture.beans.User;
 import com.revature.service.UserAccountService;
 import com.revature.utilities.ScannerInstance;
+import com.revature.view.CustomerPortalHomeView;
 
 public class AccountCreationInput implements CanTakeInput {
 	
@@ -27,6 +28,7 @@ public class AccountCreationInput implements CanTakeInput {
 		try {
 			validate();
 			new UserAccountService(u).createAccount(a);
+			new CustomerPortalHomeView(u).display();
 		} catch (ValidatorException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

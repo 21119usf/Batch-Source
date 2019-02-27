@@ -15,26 +15,26 @@ public class ApplicationActionInput implements CanTakeInput {
 
 	@Override
 	public int getInput() {
-		input = ScannerInstance.scan.nextLine();
+		input = ScannerInstance.scan.next();
 		try {
 			validate();
-			if (input.equals("Y")) {
+			if (input.equalsIgnoreCase("Y")) {
 				new ApplicationActionService(a).approveApplication();
-			} else if (input.equals("N")) {
+			} else if (input.equalsIgnoreCase("N")) {
 				new ApplicationActionService(a).denyApplication();
 			} else {
 				// DO NOTHING
 			}
 		} catch (ValidatorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Invalid Input");
+			getInput();
 		}
 		return 0;
 	}
 
 	@Override
 	public void validate() throws ValidatorException {
-		if (input.equals("Y") || input.equals("N") || input.equals("X")) {
+		if (input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("N") || input.equalsIgnoreCase("X")) {
 			
 		} else {
 			throw new ValidatorException("Invalid Input");

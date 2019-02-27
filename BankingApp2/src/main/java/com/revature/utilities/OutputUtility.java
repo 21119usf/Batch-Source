@@ -1,6 +1,5 @@
 package com.revature.utilities;
 
-import java.io.IOException;
 
 public class OutputUtility {
 	public static String printBorder(int length) {

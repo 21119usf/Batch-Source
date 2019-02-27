@@ -1,5 +1,6 @@
 package com.revature.input;
 
+import com.reavature.dao.UsernameException;
 import com.reavature.validate.LoginValidator;
 import com.reavature.validate.ValidatorException;
 import com.revature.service.UserEntryService;
@@ -22,10 +23,10 @@ public class LoginInput implements CanTakeInput {
 			validate();
 			if (username.equals(Props.getProps().getProperty("admin_username")) &&
 					password.equals(Props.getProps().getProperty("admin_password"))) {
-				LoggerUtil.LOGGER.info("Admin Log In Attempt");
+				new LoggerUtil().log("Admin Log In Attempt");
 				new AdminPortalView().display();
 			} else {
-				LoggerUtil.LOGGER.info(username + ": " +"Log In Attempt");
+				new LoggerUtil().log(username + ": " +"Log In Attempt");
 				new UserEntryService().login(username, password);
 			}
 		} catch (ValidatorException e) {
