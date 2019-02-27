@@ -28,7 +28,8 @@ public class CustomerView {
 			System.out.println("A. Apply to open a new account");
 			System.out.println("B. Look at accounts");
 			System.out.println("C. Deposit/withdraw/transfer from an account");
-			System.out.println("D. Log out");
+			System.out.println("D. Remove account");
+			System.out.println("E. Log out");
 			System.out.print("\nEnter an option: ");
 			
 			input = ScannerInstance.scanner.nextLine();
@@ -40,11 +41,13 @@ public class CustomerView {
 			} else if (input.equals("C")) {
 				depositWithdrawTransfer();
 			} else if (input.equals("D")) {
+				removeAccount();
+			} else if (input.equals("E")) {
 				
 			} else {
 				System.out.println("\nInvalid option\n");
 			}
-		} while (!input.equals("D"));
+		} while (!input.equals("E"));
 	}
 	
 	public void applyAccount() throws SQLException {
@@ -124,12 +127,68 @@ public class CustomerView {
 				System.out.println();
 
 			} else if (input.equals("C")) {
+				System.out.print("Enter the account you would like to transfer to: ");
+				
+				int transferAccountID = ParseString.parseI(ScannerInstance.scanner.nextLine());
+				
+				if (transferAccountID == Integer.MIN_VALUE) {
+					return;
+				}
 
+				if (!new AccountDaoImpl().doesAccountIDExist(transferAccountID)) {
+					System.out.println("You do not have access to this account");
+					return;
+				}
+				
+				System.out.print("Enter the amount you would like to transfer: ");
+				amount = ParseString.parseD(ScannerInstance.scanner.nextLine());
+				if (amount == Double.NEGATIVE_INFINITY) {
+					break;
+				}
+				if (Validation.isLessThanZero(amount)) {
+					break;
+				}
+				if ((new AccountDaoImpl().getBalanceFromAccountID(accountID) - amount) < 0) {
+					System.out.println("You can not overdraft your account");
+					break;
+				}
+				double newBalance = (new AccountDaoImpl().getBalanceFromAccountID(accountID) - amount);
+				double transferNewBalancedouble = (new AccountDaoImpl().getBalanceFromAccountID(transferAccountID) + amount);
+				
+				new AccountDaoImpl().setBalanceFromAccountID(accountID, newBalance);
+				new AccountDaoImpl().setBalanceFromAccountID(transferAccountID, transferNewBalancedouble);
+				
+				System.out.println("You have transferred " + amount);
+				System.out.printf("Your new balance is %.2f", newBalance);
+				System.out.println();
 			} else if (input.equals("D")) {
 				
 			} else {
 				System.out.println("\nInvalid option\n");
 			}
 		} while (!input.equals("D"));
+	}
+	
+	public void removeAccount() throws SQLException {
+		System.out.print("Enter the account you would like to remove: ");
+		
+		int accountID = ParseString.parseI(ScannerInstance.scanner.nextLine());
+		
+		if (accountID == Integer.MIN_VALUE) {
+			return;
+		}
+
+		if (!new AccountDaoImpl().doesAccountIDExistAccountIDCustomerID(accountID, customerID)) {
+			System.out.println("You do not have access to this account");
+			return;
+		}
+		
+		if (new AccountDaoImpl().getBalanceFromAccountID(accountID) != 0) {
+			System.out.println("You need to withdraw all your money before you can cancel your account");
+			return;
+		}
+		
+		new AccountDaoImpl().deleteAccountFromAccountID(accountID);
+		System.out.println("Account removed");
 	}
 }

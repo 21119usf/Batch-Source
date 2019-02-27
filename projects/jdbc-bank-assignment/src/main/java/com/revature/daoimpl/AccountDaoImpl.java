@@ -113,5 +113,15 @@ public class AccountDaoImpl implements AccountDao {
 		ps.setDouble(1, balance);
 		ps.setInt(2, accountID);
 		ps.executeUpdate();
+	}
+
+	@Override
+	public void deleteAccountFromAccountID(int accountID) throws SQLException {
+		Connection conn = cf.getConnection();
+
+		String sql = "DELETE FROM ACCOUNT_BANK_APP WHERE AccountID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, accountID);
+		ps.executeUpdate();
 	}	
 }

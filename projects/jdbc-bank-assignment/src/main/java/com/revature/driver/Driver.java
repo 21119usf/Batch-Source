@@ -28,6 +28,7 @@ public class Driver {
 //			System.out.println(new AccountDaoImpl().getAccountListFromCustomerID(1));
 			System.out.println(new AccountDaoImpl().doesAccountIDExistAccountIDCustomerID(1, 2));
 //			new AccountDaoImpl().setBalanceFromAccountID(1, 100);
+//			new AccountDaoImpl().deleteAccountFromAccountID(6);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
