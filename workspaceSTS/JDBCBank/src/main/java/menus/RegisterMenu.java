@@ -13,11 +13,9 @@ public class RegisterMenu {
 
 	public static void start() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("Please enter the following information for your account"
-							+ "\nFirst Name: ");
-		input.nextLine();	//this is to clear the newline character after the integer
-
 		UserAccount newUser = new UserAccount();
+		System.out.print("Please enter the following information for your account"
+					+ "\nFirst Name: ");
 		newUser.setFirstName(input.nextLine());
 		System.out.print("Last Name: ");
 		newUser.setLastName(input.nextLine());
@@ -53,7 +51,7 @@ public class RegisterMenu {
 		System.out.print("Password: ");
 		newLogin.setPassword(input.nextLine());
 		
-		System.out.print("\nYour application shows...\n" + newUser.toString()
+		System.out.print("\nYour application shows...\n" + newUser.toString() + "\n"
 						+ newLogin.toString() + "\nIs this what you would like to submit? (y/n)\n> ");
 		c = input.nextLine().charAt(0);
 		if (c == 'y' || c == 'Y') {
@@ -66,12 +64,12 @@ public class RegisterMenu {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			System.out.println("Your application was submitted successfully."
+			System.out.println("\nYour application was submitted successfully."
 							+ "\nPlease wait for a staff member to approve your application."
-							+ "\nOnce approved you may log in to your account and manage it.");
+							+ "\nOnce approved you may log in to your account and manage it.\n\n");
 //			logger.info(newUser.getUserName() + " submitted an application for an account.");
 		}
 		else
-			System.out.println("Your application was not submitted.");
+			System.out.println("\nYour application was not submitted.\n\n");
 	}
 }

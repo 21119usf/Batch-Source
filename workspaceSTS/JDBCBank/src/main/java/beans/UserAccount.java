@@ -105,8 +105,8 @@ public class UserAccount {
 	@Override
 	public String toString() {
 		return "UserAccount [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", streetAddress=" + streetAddress + ", email=" + email + ", phoneNum=" + phoneNum + ", approval="
-				+ approval + ", isAdmin=" + isAdmin + "]";
+				+ ",\nstreetAddress=" + streetAddress + ", email=" + email + ", phoneNum=" + phoneNum
+				+ ",\napproval=" + approval + ", isAdmin=" + isAdmin + "]";
 	}
 	
 	
