@@ -46,7 +46,7 @@ public class ApplicationDaoImpl implements ApplicationDAO {
 	@Override
 	public boolean doesApplicatoinIDExist(int applicationID) throws SQLException {
 		Connection conn = cf.getConnection();
-		String sql = "SELECT COUNT(*) FROM ACCOUNT_BANK_APP WHERE AccountID = ?";
+		String sql = "SELECT COUNT(*) FROM APPLICATION_BANK_APP WHERE ApplicationID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, applicationID);
 		ResultSet rs = ps.executeQuery();
@@ -56,5 +56,26 @@ public class ApplicationDaoImpl implements ApplicationDAO {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public void deleteApplication(int applicationID) throws SQLException {
+		Connection conn = cf.getConnection();
+
+		String sql = "DELETE FROM APPLICATION_BANK_APP WHERE ApplicationID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, applicationID);
+		ps.executeUpdate();
+	}
+
+	@Override
+	public int getCustomerIDFromApplication(int applicationID) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT CustomerID FROM APPLICATION_BANK_APP WHERE ApplicationID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, applicationID);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		return rs.getInt(1);
 	}	
 }

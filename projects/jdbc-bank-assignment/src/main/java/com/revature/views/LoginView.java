@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import com.revature.daoimpl.CustomerDaoImpl;
 import com.revature.utilities.Admin;
+import com.revature.utilities.Employee;
 import com.revature.utilities.ScannerInstance;
 
 public class LoginView {
@@ -12,6 +13,7 @@ public class LoginView {
 	public void login() throws SQLException, FileNotFoundException {
 		String input;
 		Admin a = new Admin();
+		Employee e = new Employee();
 		
 		do {
 			String username, password;
@@ -23,7 +25,11 @@ public class LoginView {
 			System.out.print("Password: ");
 			password = ScannerInstance.scanner.nextLine();
 			
-			if (new CustomerDaoImpl().login(username, password)) {
+			if (username.equals(a.getUsername()) && password.equals(a.getPassword())) {
+				new AdminView().frontPage();
+			} else if (username.equals(e.getUsername()) && password.equals(e.getPassword())) {
+				new EmployeeView().frontPage();
+			} else if (new CustomerDaoImpl().login(username, password)) {
 				new CustomerView(username).frontPage();
 			} else {
 				System.out.println("\nInvalid username/password\n");

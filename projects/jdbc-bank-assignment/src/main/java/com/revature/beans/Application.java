@@ -33,6 +33,6 @@ public class Application {
 
 	@Override
 	public String toString() {
-		return "Application [applicationID=" + applicationID + ", customerID=" + customerID + "]";
+		return "applicationID = " + applicationID + ", customerID = " + customerID;
 	}
 }

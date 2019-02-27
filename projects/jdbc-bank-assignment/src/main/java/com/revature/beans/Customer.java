@@ -74,4 +74,8 @@ public class Customer {
 		return "Customer [customerID=" + customerID + ", username=" + username + ", password=" + password
 				+ ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
+	
+	public String displayNoPassword() {
+		return "customerID = " + customerID + ", username = " + username + ", firstName = " + firstName + ", lastName = " + lastName;
+	}
 }

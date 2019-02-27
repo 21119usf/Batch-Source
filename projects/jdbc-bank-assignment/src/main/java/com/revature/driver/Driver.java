@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import com.revature.daoimpl.AccountDaoImpl;
+import com.revature.daoimpl.ApplicationDaoImpl;
 import com.revature.views.FrontPageView;
 
 public class Driver {
@@ -27,9 +28,12 @@ public class Driver {
 //			new CustomerDaoImpl().deleteCustomer(6);
 //			System.out.println(new CustomerDaoImpl().getCustomerIDFromUsername("a"));
 //			System.out.println(new AccountDaoImpl().getAccountListFromCustomerID(1));
-			System.out.println(new AccountDaoImpl().doesAccountIDExistAccountIDCustomerID(1, 2));
+//			System.out.println(new AccountDaoImpl().doesAccountIDExistAccountIDCustomerID(1, 2));
 //			new AccountDaoImpl().setBalanceFromAccountID(1, 100);
 //			new AccountDaoImpl().deleteAccountFromAccountID(6);
+			new ApplicationDaoImpl().deleteApplication(6);
+			System.out.println(new ApplicationDaoImpl().getCustomerIDFromApplication(21));
+			System.out.println(new ApplicationDaoImpl().doesApplicatoinIDExist(6));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
