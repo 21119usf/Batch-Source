@@ -24,9 +24,10 @@ public class AdminAccess {
 		boolean loggedout = false;
 		while (!loggedout) {
 			System.out.println("What would you like to do?");
-			System.out.println(	"1 - View/Modify Account Information\n"
-					+ 			"2 - Create New User\n"
-					+ 			"3 - Delete User\n"
+			System.out.println(	"1 - View User Information\n"
+					+ 			"2 - View/Modify Account Information\n"
+					+ 			"3 - Create New User\n"
+					+ 			"4 - Delete User\n"
 					+ 			"0 - Log Out\n"
 					+ "=================================================================");
 			Scanner input = new Scanner(System.in);
@@ -39,6 +40,20 @@ public class AdminAccess {
 			}
 			switch (option) {
 			case 1:
+				System.out.println("Please input the username of the User you wish to view:");
+				String username = input.nextLine();
+				UserDaoImpl udi = new UserDaoImpl();
+				int targetUserID;
+				try {
+					targetUserID = udi.findUserID(username);
+					udi.getUserInfo(targetUserID);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("=================================================================");
+				break;
+			case 2:
 				//to modify an account, you have to input the username first
 				System.out.println("Please enter the account number of the Account you wish to look up:");
 				String targAccStr = input.nextLine();
@@ -47,15 +62,15 @@ public class AdminAccess {
 					logger.info(userID + " accessed " + accountID);
 					
 				break;
-			case 2:
+			case 3:
 				NewUser nu = new NewUser();
 				nu.createAccount();
 				logger.info(userID + " created new User");
 				break;
-			case 3:
+			case 4:
 				System.out.println("Please input the username of the User you wish to delete:");
-				String username = input.nextLine();
-				UserDaoImpl udi = new UserDaoImpl();
+				username = input.nextLine();
+				udi = new UserDaoImpl();
 				try {
 					udi.deleteUser(username);
 				} catch (SQLException e) {

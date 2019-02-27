@@ -75,8 +75,12 @@ public class UserInfo {
 	}
 	@Override
 	public String toString() {
-		return "UserInfo [ID=" + ID + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", city=" + city + ", state=" + state + ", phone=" + phone + ", email=" + email + "]";
+		return "User ID: " + ID + 
+				"\nFull Name: " + firstName + " " + lastName + 
+				"\nFull Address: " + address
+				+ ", " + city + ", " + state + 
+				"\nPhone Number: " + phone + 
+				"\nEmail Address: " + email;
 	}
 	
 }

@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.revature.banking.IO;
 import com.revature.banking.IO.Fixer;
-import com.revature.banking.user.Customer;
 
 public class EmployeeAccess {
 	//initializing IO
@@ -78,15 +77,15 @@ public class EmployeeAccess {
 								break;
 							case 2:
 								//creating a customer 
-								Customer cust = new Customer();
-								cust.setAccountBalance(Double.parseDouble(custSplit[1]));
-								cust.setFullName(custSplit[3]);
-								boolean joint = Boolean.parseBoolean(custSplit[2]);
-								cust.setJoint(joint);
-								int custID = Integer.parseInt(custSplit[0]);
-								cust.setID(custID);
-								cust.setUsername(userSplit[1]);
-								System.out.println(cust.toString());
+//								Customer cust = new Customer();
+//								cust.setAccountBalance(Double.parseDouble(custSplit[1]));
+//								cust.setFullName(custSplit[3]);
+//								boolean joint = Boolean.parseBoolean(custSplit[2]);
+//								cust.setJoint(joint);
+//								int custID = Integer.parseInt(custSplit[0]);
+//								cust.setID(custID);
+//								cust.setUsername(userSplit[1]);
+//								System.out.println(cust.toString());
 								break;
 							case 3:
 								//just logout
