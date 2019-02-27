@@ -28,5 +28,15 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="com.revature.util.ConnFactory"/>
+<fullyQualifiedTypeName name="dataAccessObject.LoginAccountsDao"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="util.ConnFactory"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="daoImplementation.BankAccountDaoImpl"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="dataAccessObject.BankAccountDao"/>
+<fullyQualifiedTypeName name="beans.BankAccount"/>
+<fullyQualifiedTypeName name="beans.LoginAccount"/>
+<fullyQualifiedTypeName name="beans.UserAccount"/>
+<fullyQualifiedTypeName name="daoImplementation.UserAccountDaoImpl"/>
 </qualifiedTypeNameHistroy>

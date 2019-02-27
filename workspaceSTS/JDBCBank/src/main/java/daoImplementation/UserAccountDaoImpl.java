@@ -1,6 +1,5 @@
 package daoImplementation;
 
-import beans.BankAccount;
 import beans.UserAccount;
 import dataAccessObject.UserAccountDao;
 import util.ConnFactory;

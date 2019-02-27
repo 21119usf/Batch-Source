@@ -1,7 +1,0 @@
-log4j2.rootLogger=INFO, file
-
-log4j2.appender.file=org.apache.log4j2.RollingFileAppender
-
-log4j2.appender.file.File=C:\\Users\\marka\\Revature\\sts-bundle\\workspaceSTS/BankingApp/logging.log
-log4j2.appender.file.layout=org.apache.log4j2.PatternLayout
-log4j2.appender.file.ConversionPattern=[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
