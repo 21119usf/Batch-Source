@@ -1,14 +1,17 @@
 package com.revature.views;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import com.revature.daoimpl.CustomerDaoImpl;
+import com.revature.utilities.Admin;
 import com.revature.utilities.ScannerInstance;
 
 public class LoginView {
 
-	public void login() throws SQLException {
+	public void login() throws SQLException, FileNotFoundException {
 		String input;
+		Admin a = new Admin();
 		
 		do {
 			String username, password;

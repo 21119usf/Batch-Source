@@ -1,12 +1,13 @@
 package com.revature.views;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import com.revature.utilities.ScannerInstance;
 
 public class FrontPageView {
 
-	public void frontPage() throws SQLException {
+	public void frontPage() throws SQLException, FileNotFoundException {
 		String input;
 		
 		do {
