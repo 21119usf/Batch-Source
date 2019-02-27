@@ -1,15 +1,18 @@
 package daoImplementation;
 
-import beans.UserAccount;
-import dataAccessObject.UserAccountDao;
-import util.ConnFactory;
-
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.SQLException;
+
+import beans.UserAccount;
+import dataAccessObject.UserAccountDao;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
+import util.ConnFactory;
 
 public class UserAccountDaoImpl implements UserAccountDao{
 	public static ConnFactory cf = ConnFactory.getInstance();
@@ -38,6 +41,63 @@ public class UserAccountDaoImpl implements UserAccountDao{
 		String sql = "SELECT * FROM USERS_TABLE";
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
+		UserAccount user = null;
+		while (rs.next()) {
+			user = new UserAccount(rs.getInt(1), rs.getString(2), rs.getString(3),
+									rs.getString(4), rs.getString(5), rs.getString(6),
+									rs.getInt(7), rs.getInt(8));
+			users.add(user);
+		}
+		return users;
+	}
+	
+	@Override
+	public ArrayList<UserAccount> getPendingUsers() throws SQLException {
+		ArrayList<UserAccount> users = new ArrayList<UserAccount>();
+		Connection con = cf.getConnection();
+		String sql = "{call GET_ALL_PENDING_ACCOUNTS(?)}";
+		CallableStatement stmt = con.prepareCall(sql);
+		stmt.registerOutParameter(1, OracleTypes.CURSOR);
+		stmt.execute();
+		ResultSet rs = ((OracleCallableStatement)stmt).getCursor(1);
+		UserAccount user = null;
+		while (rs.next()) {
+			user = new UserAccount(rs.getInt(1), rs.getString(2), rs.getString(3),
+									rs.getString(4), rs.getString(5), rs.getString(6),
+									rs.getInt(7), rs.getInt(8));
+			users.add(user);
+		}
+		return users;
+	}
+	
+	@Override
+	public ArrayList<UserAccount> getAllRegularUsers() throws SQLException {
+		ArrayList<UserAccount> users = new ArrayList<UserAccount>();
+		Connection con = cf.getConnection();
+		String sql = "{call GET_ALL_USER_ACCOUNTS(?)}";
+		CallableStatement stmt = con.prepareCall(sql);
+		stmt.registerOutParameter(1, OracleTypes.CURSOR);
+		stmt.execute();
+		ResultSet rs = ((OracleCallableStatement)stmt).getCursor(1);
+		UserAccount user = null;
+		while (rs.next()) {
+			user = new UserAccount(rs.getInt(1), rs.getString(2), rs.getString(3),
+									rs.getString(4), rs.getString(5), rs.getString(6),
+									rs.getInt(7), rs.getInt(8));
+			users.add(user);
+		}
+		return users;
+	}
+	
+	@Override
+	public ArrayList<UserAccount> getAllAdmins() throws SQLException {
+		ArrayList<UserAccount> users = new ArrayList<UserAccount>();
+		Connection con = cf.getConnection();
+		String sql = "{call GET_ALL_ADMIN_ACCOUNTS(?)}";
+		CallableStatement stmt = con.prepareCall(sql);
+		stmt.registerOutParameter(1, OracleTypes.CURSOR);
+		stmt.execute();
+		ResultSet rs = ((OracleCallableStatement)stmt).getCursor(1);
 		UserAccount user = null;
 		while (rs.next()) {
 			user = new UserAccount(rs.getInt(1), rs.getString(2), rs.getString(3),

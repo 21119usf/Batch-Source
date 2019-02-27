@@ -13,6 +13,9 @@ public interface UserAccountDao {
 	
 	//Read
 	public ArrayList<UserAccount> getAllUsers() throws SQLException;
+	public ArrayList<UserAccount> getPendingUsers() throws SQLException;
+	public ArrayList<UserAccount> getAllRegularUsers() throws SQLException;
+	public ArrayList<UserAccount> getAllAdmins() throws SQLException;
 	public UserAccount getUser(int userID) throws SQLException;
 	
 	//Update
