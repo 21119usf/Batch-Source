@@ -1,0 +1,50 @@
+2019-02-26 21:27:47 INFO  Login:28 - Customer Login
+2019-02-26 21:28:24 INFO  Login:25 - Admin Login
+2019-02-26 22:59:03 INFO  Login:29 - Customer Login
+2019-02-26 22:59:30 INFO  Login:24 - Admin Login
+2019-02-26 22:59:59 INFO  CustomersDaoImpl:48 - User Created
+2019-02-26 23:01:11 INFO  Login:24 - Admin Login
+2019-02-26 23:01:39 INFO  CustomersDaoImpl:48 - User Created
+2019-02-26 23:02:37 INFO  Login:24 - Admin Login
+2019-02-26 23:03:35 INFO  CustomersDaoImpl:48 - User Created
+2019-02-26 23:16:47 INFO  Login:24 - Admin Login
+2019-02-26 23:17:06 INFO  CustomersDaoImpl:43 - User:4 deleted
+2019-02-26 23:20:30 INFO  Login:24 - Admin Login
+2019-02-26 23:22:55 INFO  Login:24 - Admin Login
+2019-02-26 23:35:24 INFO  Login:24 - Admin Login
+2019-02-26 23:38:56 INFO  Login:24 - Admin Login
+2019-02-26 23:39:05 INFO  Admin:81 - Admin logged out
+2019-02-26 23:54:34 INFO  Login:24 - Admin Login
+2019-02-26 23:54:54 INFO  Admin:83 - Admin logged out
+2019-02-27 00:19:59 INFO  Login:21 - Admin Login
+2019-02-27 00:20:21 INFO  AdminDaoImpl:55 - Admin has checked User: 2 informaion
+2019-02-27 00:22:09 INFO  Login:21 - Admin Login
+2019-02-27 00:22:14 INFO  AdminDaoImpl:54 - Admin has checked User: 2's informaion
+2019-02-27 00:22:47 INFO  Login:21 - Admin Login
+2019-02-27 00:22:53 INFO  AdminDaoImpl:54 - Admin has checked User: 2's informaion
+2019-02-27 00:49:50 INFO  Login:21 - Admin Login
+2019-02-27 00:49:59 INFO  Admin:84 - Admin logged out
+2019-02-27 00:55:04 INFO  Login:21 - Admin Login
+2019-02-27 00:56:22 INFO  Login:21 - Admin Login
+2019-02-27 00:56:26 INFO  AdminDaoImpl:57 - Admin has checked User: 2's informaion
+2019-02-27 01:02:23 INFO  CustomersDaoImpl:48 - User Created
+2019-02-27 01:16:03 INFO  Login:26 - Customer Login
+2019-02-27 01:17:08 INFO  Login:26 - Customer Login
+2019-02-27 01:17:29 INFO  CustomersDaoImpl:30 - Account Created
+2019-02-27 01:17:29 INFO  Admin:49 - User: 2 has created an account!
+2019-02-27 01:17:56 INFO  CustomersDaoImpl:58 - Account Deleted
+2019-02-27 01:17:56 INFO  Admin:61 - Account: 4 has been deleted!
+2019-02-27 01:18:26 INFO  CustomersDaoImpl:30 - Account Created
+2019-02-27 01:18:26 INFO  Admin:49 - User: 2 has created an account!
+2019-02-27 01:18:29 INFO  Admin:77 - Customer logged out
+2019-02-27 01:46:38 INFO  Login:26 - Customer Login
+2019-02-27 01:49:32 INFO  Login:26 - Customer Login
+2019-02-27 01:51:31 INFO  Login:26 - Customer Login
+2019-02-27 01:52:23 INFO  Login:26 - Customer Login
+2019-02-27 01:52:35 INFO  CustomersDaoImpl:73 - User has depositted money
+2019-02-27 01:57:12 INFO  Admin:87 - Customer logged out
+2019-02-27 08:25:35 INFO  Login:21 - Admin Login
+2019-02-27 08:30:59 INFO  Login:21 - Admin Login
+2019-02-27 08:34:21 INFO  Login:21 - Admin Login
+2019-02-27 08:43:00 INFO  Admin:83 - Admin logged out
+2019-02-27 08:57:33 INFO  Login:26 - Customer Login
