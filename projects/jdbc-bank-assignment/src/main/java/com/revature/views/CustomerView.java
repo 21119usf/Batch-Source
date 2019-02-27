@@ -9,6 +9,7 @@ import com.revature.daoimpl.ApplicationDaoImpl;
 import com.revature.daoimpl.CustomerDaoImpl;
 import com.revature.utilities.ParseString;
 import com.revature.utilities.ScannerInstance;
+import com.revature.utilities.Validation;
 
 public class CustomerView {
 	
@@ -60,14 +61,61 @@ public class CustomerView {
 		System.out.println();
 	}
 	
-	public void depositWithdrawTransfer() {
+	public void depositWithdrawTransfer() throws SQLException {
 		System.out.print("Enter your account you would like to withdraw, deposit, or transfer from: ");
-		String input = ScannerInstance.scanner.nextLine();
 		
-		if (ParseString.parseI(input) == Integer.MIN_VALUE) {
+		String input = ScannerInstance.scanner.nextLine();
+		int accountID = ParseString.parseI(input);
+		
+		if (accountID == Integer.MIN_VALUE) {
 			return;
 		}
 
+		if (!new AccountDaoImpl().doesAccountIDExistAccountIDCustomerID(accountID, customerID)) {
+			System.out.println("You do not have access to this account");
+			return;
+		}
 		
+		do {
+			double amount;
+			
+			System.out.println("A. Withdraw");
+			System.out.println("B. Deposit");
+			System.out.println("C. Transfer");
+			System.out.println("D. Exit");
+			System.out.print("\nEnter an option: ");
+			
+			input = ScannerInstance.scanner.nextLine();
+			
+			if (input.equals("A")) {
+				System.out.print("Enter the amount you like to withdraw: ");
+				input = ScannerInstance.scanner.nextLine();
+				amount = ParseString.parseD(input);
+				if (amount == Double.NEGATIVE_INFINITY) {
+					break;
+				}
+				if (Validation.isLessThanZero(amount)) {
+					break;
+				}
+				if ((new AccountDaoImpl().getBalanceFromAccountID(accountID) - amount) < 0) {
+					System.out.println("You can not overdraft your account");
+					break;
+				}
+				double newBalance = (new AccountDaoImpl().getBalanceFromAccountID(accountID) - amount);
+				new AccountDaoImpl().setBalanceFromAccountID(accountID, newBalance);
+				System.out.println("You have withdrawed " + amount);
+				System.out.printf("Your new balance is %.2f", newBalance);
+				System.out.println();
+				
+			} else if (input.equals("B")) {
+
+			} else if (input.equals("C")) {
+
+			} else if (input.equals("D")) {
+				
+			} else {
+				System.out.println("\nInvalid option\n");
+			}
+		} while (!input.equals("D"));
 	}
 }

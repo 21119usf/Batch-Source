@@ -91,5 +91,27 @@ public class AccountDaoImpl implements AccountDao {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public double getBalanceFromAccountID(int accountID) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT Balance FROM ACCOUNT_BANK_APP WHERE AccountID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, accountID);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		return rs.getDouble(1);
+	}
+
+	@Override
+	public void setBalanceFromAccountID(int accountID, double balance) throws SQLException {
+		Connection conn = cf.getConnection();
+
+		String sql = "UPDATE ACCOUNT_BANK_APP SET Balance = ? WHERE AccountID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setDouble(1, balance);
+		ps.setInt(2, accountID);
+		ps.executeUpdate();
 	}	
 }

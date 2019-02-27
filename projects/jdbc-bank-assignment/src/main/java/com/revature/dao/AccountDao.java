@@ -12,4 +12,6 @@ public interface AccountDao {
 	boolean doesAccountIDExist(int accountID) throws SQLException;
 	List<Account> getAccountListFromCustomerID(int customerID) throws SQLException;
 	boolean doesAccountIDExistAccountIDCustomerID(int accountID, int customerID) throws SQLException;
+	double getBalanceFromAccountID(int accountID) throws SQLException;
+	void setBalanceFromAccountID(int accountID, double balance) throws SQLException;
 }
