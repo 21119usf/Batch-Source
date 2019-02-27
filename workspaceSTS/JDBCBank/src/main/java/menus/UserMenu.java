@@ -8,18 +8,18 @@ import beans.BankAccount;
 import beans.LoginAccount;
 import beans.UserAccount;
 import daoImplementation.BankAccountDaoImpl;
+import daoImplementation.LoginAccountDaoImpl;
+import daoImplementation.UserAccountDaoImpl;
 
 public class UserMenu {
 	public static BankAccountDaoImpl badi = new BankAccountDaoImpl();
+	public static UserAccountDaoImpl uadi = new UserAccountDaoImpl();
+	public static LoginAccountDaoImpl ladi = new LoginAccountDaoImpl();
 
 	public static void start(LoginAccount login, UserAccount user) {
 		Scanner input = new Scanner(System.in);
-		Scanner strings = new Scanner(System.in);
-		Scanner doubles = new Scanner(System.in);
 		int option;
-		String line;
-		double amount;
-		
+	
 		while (true) {
 			System.out.print("\nWelcome " + login.getUserName() + "."
 					+ "\nWhat would you like to do today?"
@@ -27,7 +27,8 @@ public class UserMenu {
 					+ "\n(1) - Perform a transaction"	//DONE
 					+ "\n(2) - Create a bank account"	//DONE
 					+ "\n(3) - Close a bank account"	//DONE
-					+ "\n(4) - Logout"					//DONE
+					+ "\n(4) - Edit my personal details"//DONE
+					+ "\n(5) - Logout"
 					+ "\n> ");
 			option = input.nextInt();
 			switch (option) {
@@ -43,7 +44,10 @@ public class UserMenu {
 				case 3:										//Close a bank account
 					closeBankAccount(login.getUserID());
 					break;
-				case 4:										//logout, return to login screen
+				case 4:
+					editUser(login, user);
+					break;
+				case 5:										//logout, return to login screen
 					return;
 				default:									//Invalid choice
 					System.out.println("Invalid Option");
@@ -303,5 +307,82 @@ public class UserMenu {
 		}
 		else
 			System.out.println("Invalid choices");
+	}
+	
+	public static void editUser(LoginAccount login, UserAccount user) {
+		Scanner input = new Scanner(System.in);
+		while (true) {
+			System.out.print("\nWhich field would you like to change?"
+				+ "\n(0) - First Name"		//DONE
+				+ "\n(1) - Last Name"	//DONE
+				+ "\n(2) - Street Address"	//DONE
+				+ "\n(3) - E-mail"	//DONE
+				+ "\n(4) - Phone #"					//DONE
+				+ "\n(5) - Username"
+				+ "\n(6) - Password"
+				+ "\n(7) - Cancel"
+				+ "\n> ");
+			int option = input.nextInt();
+			try {
+				switch (option) {
+					case 0:
+						System.out.print("First Name: ");
+						user.setFirstName(input.nextLine());
+						uadi.changeFirstName(user.getUserID(), user.getFirstName());
+						break;
+					case 1:
+						System.out.print("Last Name: ");
+						user.setLastName(input.nextLine());
+						uadi.changeLastName(user.getUserID(), user.getLastName());
+						break;
+					case 2:
+						System.out.print("Street Address: ");
+						user.setStreetAddress(input.nextLine());
+						uadi.changeStreetAddress(user.getUserID(), user.getStreetAddress());
+						break;
+					case 3:
+						System.out.print("E-mail: ");
+						user.setEmail(input.nextLine());
+						uadi.changeEmail(user.getUserID(), user.getEmail());
+						break;
+					case 4:
+						System.out.print("Phone #: ");
+						user.setPhoneNum(input.nextLine());
+						uadi.changePhoneNum(user.getUserID(), user.getPhoneNum());
+						break;
+					case 5:
+						boolean uniqueLogin = false;
+						String username = "";
+						while (!uniqueLogin || username.equals("")) {
+							System.out.print("Username: ");
+							username = input.nextLine();
+							try {
+								uniqueLogin = ladi.verifyUniqueName(username);
+							} catch (SQLException e) {
+								e.printStackTrace();
+							}
+							if (username.equals(""))
+								System.out.println("You must enter a username.");
+							else if (!uniqueLogin)
+								System.out.println("Sorry, that username is already taken.");
+							
+						}
+						ladi.changeUsername(login.getUserName(), username);
+						login.setUserName(username);
+						break;
+					case 6:
+						System.out.print("Password: ");
+						login.setPassword(input.nextLine());
+						ladi.changePassword(login.getUserName(), login.getPassword());
+						break;
+					case 7:
+						return;
+					default:
+						System.out.println("Invalid Option");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

@@ -53,6 +53,19 @@ public class LoginAccountDaoImpl implements LoginAccountsDao{
 			login = new LoginAccount(rs.getString(1), rs.getString(2), rs.getInt(3));
 		return login;
 	}
+	
+	@Override
+	public LoginAccount getLogin(int userID) throws SQLException {
+		LoginAccount login = null;
+		Connection con = cf.getConnection();
+		String sql = "SELECT * FROM LOGIN_TABLE WHERE USER_ID = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, userID);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next())
+			login = new LoginAccount(rs.getString(1), rs.getString(2), rs.getInt(3));
+		return login;
+	}
 
 	@Override
 	public void changeUsername(String username, String newUsername) throws SQLException{
@@ -77,11 +90,11 @@ public class LoginAccountDaoImpl implements LoginAccountsDao{
 	}
 
 	@Override
-	public void removeLoginAccount(String username) throws SQLException{
+	public void removeLoginAccount(int userID) throws SQLException{
 		Connection con = cf.getConnection();
-		String sql = "DELETE FROM LOGIN_TABLE WHERE USERNAME = ?";
+		String sql = "DELETE FROM LOGIN_TABLE WHERE USER_ID = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, username);
+		ps.setInt(1, userID);
 		ps.executeUpdate();
 	}
 

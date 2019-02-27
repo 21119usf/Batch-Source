@@ -13,13 +13,14 @@ public interface LoginAccountsDao {
 	//Read
 	public ArrayList<LoginAccount> getAllLogins() throws SQLException;
 	public LoginAccount getLogin(String username) throws SQLException;
+	public LoginAccount getLogin(int userID) throws SQLException;
 	
 	//Update
 	public void changeUsername(String username, String newUsername) throws SQLException;
 	public void changePassword(String username, String newPassword) throws SQLException;
 	
 	//Delete
-	public void removeLoginAccount(String username) throws SQLException;
+	public void removeLoginAccount(int userID) throws SQLException;
 	
 	//Misc
 	public boolean authenticateLogin(String username, String password) throws SQLException;
