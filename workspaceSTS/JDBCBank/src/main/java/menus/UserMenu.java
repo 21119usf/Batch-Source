@@ -152,18 +152,18 @@ public class UserMenu {
 	
 	public static void initiateTransaction(int userID) {
 		ArrayList<BankAccount> banks = new ArrayList<BankAccount>();
-		try {
-			banks = badi.getBankAccountsOfUser(userID);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		if (banks.size() == 0) {
-			System.out.println("You do not have any accounts to perform a transaction on.");
-			return;
-		}
 		Scanner input = new Scanner(System.in);
 		int option;
 		while (true) {
+			try {
+				banks = badi.getBankAccountsOfUser(userID);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (banks.size() == 0) {
+				System.out.println("You do not have any accounts to perform a transaction on.");
+				return;
+			}
 			System.out.print("\nWhat type of transaction would you like to perform?"
 						+ "\n(0) - Deposit"
 						+ "\n(1) - Withdrawal"
@@ -323,38 +323,44 @@ public class UserMenu {
 				+ "\n(7) - Cancel"
 				+ "\n> ");
 			int option = input.nextInt();
+			input.nextLine();
 			try {
 				switch (option) {
 					case 0:
-						System.out.print("First Name: ");
+						System.out.print("New First Name: ");
 						user.setFirstName(input.nextLine());
 						uadi.changeFirstName(user.getUserID(), user.getFirstName());
+						System.out.println("First Name' updated to: " + user.getFirstName());
 						break;
 					case 1:
-						System.out.print("Last Name: ");
+						System.out.print("New Last Name: ");
 						user.setLastName(input.nextLine());
 						uadi.changeLastName(user.getUserID(), user.getLastName());
+						System.out.println("'Last Name' updated to: " + user.getLastName());
 						break;
 					case 2:
-						System.out.print("Street Address: ");
+						System.out.print("New Street Address: ");
 						user.setStreetAddress(input.nextLine());
 						uadi.changeStreetAddress(user.getUserID(), user.getStreetAddress());
+						System.out.println("'Street Address' updated to: " + user.getStreetAddress());
 						break;
 					case 3:
-						System.out.print("E-mail: ");
+						System.out.print("New E-mail: ");
 						user.setEmail(input.nextLine());
 						uadi.changeEmail(user.getUserID(), user.getEmail());
+						System.out.println("'E-mail' updated to: " + user.getEmail());
 						break;
 					case 4:
-						System.out.print("Phone #: ");
+						System.out.print("New Phone #: ");
 						user.setPhoneNum(input.nextLine());
 						uadi.changePhoneNum(user.getUserID(), user.getPhoneNum());
+						System.out.println("'Phone #' updated to: " + user.getPhoneNum());
 						break;
 					case 5:
 						boolean uniqueLogin = false;
 						String username = "";
 						while (!uniqueLogin || username.equals("")) {
-							System.out.print("Username: ");
+							System.out.print("New Username: ");
 							username = input.nextLine();
 							try {
 								uniqueLogin = ladi.verifyUniqueName(username);
@@ -369,11 +375,13 @@ public class UserMenu {
 						}
 						ladi.changeUsername(login.getUserName(), username);
 						login.setUserName(username);
+						System.out.println("'Username' updated to: " + login.getUserName());
 						break;
 					case 6:
-						System.out.print("Password: ");
+						System.out.print("New Password: ");
 						login.setPassword(input.nextLine());
 						ladi.changePassword(login.getUserName(), login.getPassword());
+						System.out.println("'Password' updated to: " + login.getPassword());
 						break;
 					case 7:
 						return;

@@ -9,6 +9,7 @@ import beans.LoginAccount;
 import beans.UserAccount;
 import daoImplementation.LoginAccountDaoImpl;
 import daoImplementation.UserAccountDaoImpl;
+import menus.UserMenu;
 
 public class AdminMenu {
 	public static UserAccountDaoImpl uadi = new UserAccountDaoImpl();
@@ -27,6 +28,7 @@ public class AdminMenu {
 					+ "\n(3) - Logout"							//
 					+ "\n> ");
 			option = input.nextInt();
+			System.out.println();
 			switch (option) {
 				case 0:									//View information pertaining to me(Customer)
 					viewPendingList();
@@ -57,7 +59,7 @@ public class AdminMenu {
 		}
 		if (users.size() != 0) {
 			for (UserAccount u: users) {
-				System.out.println("\n" + u + "\nApprove? (y/n)\n> ");
+				System.out.print("\n" + u + "\nApprove? (y/n)\n> ");
 				choice = input.nextLine().charAt(0);
 				if (choice == 'Y' || choice == 'y') {
 					try {
@@ -92,7 +94,7 @@ public class AdminMenu {
 			e.printStackTrace();
 		}
 		
-		System.out.println("List of Normal Users\n\tUser ID\t\tFull Name");
+		System.out.println("List of Normal Users\nUser ID\t\tFull Name");
 		for (UserAccount u: users) {
 			System.out.println(u.getUserID() + "\t\t" + u.getFirstName() + " " + u.getLastName());
 		}
@@ -110,7 +112,7 @@ public class AdminMenu {
 		if (found) {
 			try {
 				
-				UserMenu.start(ladi.getLogin(userID), user);
+				UserMenu.start(ladi.getLogin(choice), user);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -128,7 +130,7 @@ public class AdminMenu {
 			e.printStackTrace();
 		}
 		
-		System.out.println("List of Admins\n\tUser ID\t\tFull Name");
+		System.out.println("List of Admins\nUser ID\t\tFull Name");
 		for (UserAccount u: users) {
 			System.out.println(u.getUserID() + "\t\t" + u.getFirstName() + " " + u.getLastName());
 		}
@@ -145,92 +147,15 @@ public class AdminMenu {
 			}
 		}
 		try {
-			login = ladi.getLogin(userID);
+			login = ladi.getLogin(choice);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		if (found) {
-			editAdmin(login, user);
+			UserMenu.editUser(login, user);
 		}
 		else
 			System.out.println("Invalid choice");
-	}
-	
-	public static void editAdmin(LoginAccount login, UserAccount user) {
-		Scanner input = new Scanner(System.in);
-		while (true) {
-			System.out.print("\nWhich field would you like to change?"
-				+ "\n(0) - First Name"		//DONE
-				+ "\n(1) - Last Name"	//DONE
-				+ "\n(2) - Street Address"	//DONE
-				+ "\n(3) - E-mail"	//DONE
-				+ "\n(4) - Phone #"					//DONE
-				+ "\n(5) - Username"
-				+ "\n(6) - Password"
-				+ "\n(7) - Cancel"
-				+ "\n> ");
-			int option = input.nextInt();
-			try {
-				switch (option) {
-					case 0:
-						System.out.print("First Name: ");
-						user.setFirstName(input.nextLine());
-						uadi.changeFirstName(user.getUserID(), user.getFirstName());
-						break;
-					case 1:
-						System.out.print("Last Name: ");
-						user.setLastName(input.nextLine());
-						uadi.changeLastName(user.getUserID(), user.getLastName());
-						break;
-					case 2:
-						System.out.print("Street Address: ");
-						user.setStreetAddress(input.nextLine());
-						uadi.changeStreetAddress(user.getUserID(), user.getStreetAddress());
-						break;
-					case 3:
-						System.out.print("E-mail: ");
-						user.setEmail(input.nextLine());
-						uadi.changeEmail(user.getUserID(), user.getEmail());
-						break;
-					case 4:
-						System.out.print("Phone #: ");
-						user.setPhoneNum(input.nextLine());
-						uadi.changePhoneNum(user.getUserID(), user.getPhoneNum());
-						break;
-					case 5:
-						boolean uniqueLogin = false;
-						String username = "";
-						while (!uniqueLogin || username.equals("")) {
-							System.out.print("Username: ");
-							username = input.nextLine();
-							try {
-								uniqueLogin = ladi.verifyUniqueName(username);
-							} catch (SQLException e) {
-								e.printStackTrace();
-							}
-							if (username.equals(""))
-								System.out.println("You must enter a username.");
-							else if (!uniqueLogin)
-								System.out.println("Sorry, that username is already taken.");
-							
-						}
-						ladi.changeUsername(login.getUserName(), username);
-						login.setUserName(username);
-						break;
-					case 6:
-						System.out.print("Password: ");
-						login.setPassword(input.nextLine());
-						ladi.changePassword(login.getUserName(), login.getPassword());
-						break;
-					case 7:
-						return;
-					default:
-						System.out.println("Invalid Option");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 }
 

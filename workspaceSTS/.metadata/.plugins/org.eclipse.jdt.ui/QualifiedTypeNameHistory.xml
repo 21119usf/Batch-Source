@@ -33,10 +33,15 @@
 <fullyQualifiedTypeName name="util.ConnFactory"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="daoImplementation.BankAccountDaoImpl"/>
-<fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="dataAccessObject.BankAccountDao"/>
 <fullyQualifiedTypeName name="beans.BankAccount"/>
 <fullyQualifiedTypeName name="beans.LoginAccount"/>
-<fullyQualifiedTypeName name="beans.UserAccount"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="menus.MainMenu"/>
+<fullyQualifiedTypeName name="oracle.jdbc.OracleTypes"/>
+<fullyQualifiedTypeName name="oracle.jdbc.OracleCallableStatement"/>
 <fullyQualifiedTypeName name="daoImplementation.UserAccountDaoImpl"/>
+<fullyQualifiedTypeName name="beans.UserAccount"/>
+<fullyQualifiedTypeName name="menus.AdminMenu"/>
+<fullyQualifiedTypeName name="menus.UserMenu"/>
 </qualifiedTypeNameHistroy>
