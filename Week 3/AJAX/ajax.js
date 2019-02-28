@@ -4,6 +4,7 @@ function loadCharacter(character){
 function getCharacter(){
     console.log("in getCharacter");
     var characterID = document.getElementById("swID").value;
+    
     //Step 1
     var xhr= new XMLHttpRequest();
     //Step 2
