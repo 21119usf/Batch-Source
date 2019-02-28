@@ -137,41 +137,6 @@ class BankAppTest {
 	
 	// Testing Account Class
 	// =========================================================================
-	/*@Test
-	void depositTest() {
-		account.setBalance(0.00);
-		double amount = 20.00;
-		double expected = 20.00;
-		if (account.deposit(amount)) {
-			assertEquals(expected, account.getBalance());
-		} else {
-			assertEquals(0.0, account.getBalance());
-		}
-	}
-	@Test
-	void withdrawTest() {
-		account.setBalance(100.00);
-		double amount = 10.00;
-		double expected = 90.00;
-		if (account.withdraw(amount)) {
-			assertEquals(expected, account.getBalance());
-		} else {
-			assertEquals(100.00, account.getBalance());
-		}
-	}
-	@Test
-	void transferTest() {
-		account.setBalance(100.00);
-		Account account2 = new Account();
-		account2.setOpen(true);
-		double amount = 10.00;
-		double expected = 10.00;
-		if (account.transfer(account2, amount)) {
-			assertEquals(account2.getBalance(), expected);
-		} else {
-			assertEquals(0.00, account2.getBalance());
-		}
-	}*/
 	@Test
 	void insertAccountTest() {
 		try {
