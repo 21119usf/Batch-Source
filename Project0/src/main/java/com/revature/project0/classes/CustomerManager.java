@@ -1,8 +1,11 @@
 package com.revature.project0.classes;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.revature.project0.jdbc.ApprovedCustomerDAOImp;
 
 public class CustomerManager implements Serializable
 {
@@ -16,16 +19,36 @@ public class CustomerManager implements Serializable
 	private static Map<Customer, Account> accountOwnershipMap 
 		= new HashMap<Customer, Account>(); 
 	
+	private static ApprovedCustomerDAOImp customerDAO = new ApprovedCustomerDAOImp();
+	
 	public void deposit(Customer user, double amount)
 	{
 		accountOwnershipMap.get(user).deposit(amount);
 		logger.logDeposit(user.getUsername(), amount);
+		
+		try 
+		{
+			customerDAO.updateCustomerBalance(user);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void withdraw(Customer user, double amount)
 	{
 		accountOwnershipMap.get(user).withdraw(amount);
 		logger.logWithdrawl(user.getUsername(), amount);
+		
+		try 
+		{
+			customerDAO.updateCustomerBalance(user);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void transfer(Customer user1, Customer user2, double amount)
@@ -33,6 +56,16 @@ public class CustomerManager implements Serializable
 		accountOwnershipMap.get(user1).withdraw(amount);
 		accountOwnershipMap.get(user2).deposit(amount);
 		logger.logTransfer(user1.getUsername(), user2.getUsername(), amount);
+		
+		try 
+		{
+			customerDAO.updateCustomerBalance(user1);
+			customerDAO.updateCustomerBalance(user2);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void addNewUser(Customer newUser, Account account)

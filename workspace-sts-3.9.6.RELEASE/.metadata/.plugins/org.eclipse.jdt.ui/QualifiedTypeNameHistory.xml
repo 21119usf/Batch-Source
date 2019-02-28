@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.revature.project0.classes.CustomerManager"/>
+<fullyQualifiedTypeName name="java.sql.CallableStatement"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="com.revature.project0.jdbc.ApplicationDAO"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.revature.project0.jdbc.ConnectionFactory"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="com.revature.project0.jdbc.UserDAOImp"/>
+<fullyQualifiedTypeName name="com.revature.project0.classes.Account"/>
+<fullyQualifiedTypeName name="com.revature.project0.jdbc.UnApprovedCustomerDAOImp"/>
+<fullyQualifiedTypeName name="com.revature.project0.jdbc.ApprovedCustomerDAOImp"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeEach"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
+<fullyQualifiedTypeName name="com.revature.project0.classes.Employee"/>
+<fullyQualifiedTypeName name="com.revature.project0.classes.ApplicationManager"/>
+<fullyQualifiedTypeName name="com.revature.project0.classes.AccountApplication"/>
+<fullyQualifiedTypeName name="com.revature.project0.classes.Customer"/>
+<fullyQualifiedTypeName name="com.revature.project0.classes.AccountManager"/>
+</qualifiedTypeNameHistroy>

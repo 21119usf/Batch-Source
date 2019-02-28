@@ -8,6 +8,8 @@ public class AccountApplication implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = -6471022586696891991L;
+	
+	private int applicationID;
 
 	private boolean applicationStatus;
 	
@@ -22,8 +24,10 @@ public class AccountApplication implements Serializable
 		this.initialBalance = 0;
 		
 		this.applicationStatus = false;
+		
+		this.applicationID = 0;
 	}
-	
+
 	public AccountApplication(Customer customer, double initialBalance)
 	{
 		this.customer = customer;
@@ -31,6 +35,16 @@ public class AccountApplication implements Serializable
 		this.initialBalance = initialBalance;
 		
 		this.applicationStatus = false;
+	}
+	
+	public int getApplicationID() 
+	{
+		return applicationID;
+	}
+
+	public void setApplicationID(int accountID) 
+	{
+		this.applicationID = accountID;
 	}
 
 	public boolean isApplicationStatus() 

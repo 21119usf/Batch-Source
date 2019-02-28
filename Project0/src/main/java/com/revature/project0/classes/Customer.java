@@ -1,11 +1,19 @@
 package com.revature.project0.classes;
 
+import java.sql.SQLException;
+
+import com.revature.project0.jdbc.ApprovedCustomerDAOImp;
+
 public class Customer extends User 
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 346129078310983645L;
+	
+	private static ApprovedCustomerDAOImp customerDAO = new ApprovedCustomerDAOImp();
+	
+	private int customerID;
 
 	private String address;
 	
@@ -22,6 +30,18 @@ public class Customer extends User
 		firstName = "";
 		
 		lastName = "";
+		
+		customerID = 0;
+	}
+
+	public int getCustomerID() 
+	{
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) 
+	{
+		this.customerID = customerID;
 	}
 
 	public String getAddress() 
@@ -32,6 +52,15 @@ public class Customer extends User
 	public void setAddress(String address) 
 	{
 		this.address = address;
+		
+		try 
+		{
+			customerDAO.updateCustomerAddress(address, customerID);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public String getFirstName() 
@@ -42,6 +71,15 @@ public class Customer extends User
 	public void setFirstName(String firstName) 
 	{
 		this.firstName = firstName;
+		
+		try 
+		{
+			customerDAO.updateCustomerFirstname(firstName, customerID);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public String getLastName() 
@@ -52,6 +90,15 @@ public class Customer extends User
 	public void setLastName(String lastName) 
 	{
 		this.lastName = lastName;
+		
+		try 
+		{
+			customerDAO.updateCustomerLastname(lastName, customerID);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	

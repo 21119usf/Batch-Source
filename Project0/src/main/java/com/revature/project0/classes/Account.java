@@ -12,7 +12,7 @@ public class Account implements Serializable
 
 	private double balance;
 	
-	private final int accountNumber;
+	private int accountNumber;
 	
 	public Account(int accountNumber)
 	{
@@ -51,9 +51,19 @@ public class Account implements Serializable
 		
 		return this.balance;
 	}
+	
+	public void setBalance(double newBalance)
+	{
+		this.balance = newBalance;
+	}
 
 	public int getAccountNumber() 
 	{
 		return accountNumber;
+	}
+	
+	public void setAccountNumber(int number)
+	{
+		this.accountNumber = number;
 	}
 }

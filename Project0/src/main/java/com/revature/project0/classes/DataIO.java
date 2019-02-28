@@ -6,59 +6,173 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.revature.project0.jdbc.ApprovedCustomerDAOImp;
+import com.revature.project0.jdbc.ConnectionFactory;
+import com.revature.project0.jdbc.UnApprovedCustomerDAOImp;
+import com.revature.project0.jdbc.UserDAOImp;
+
 public class DataIO 
 {	
-	private static final String DATA_FILE_NAME = "Data.ser";
+	private static ApprovedCustomerDAOImp aPCustomer = new ApprovedCustomerDAOImp();
+	
+	private static UnApprovedCustomerDAOImp uACustomer = new UnApprovedCustomerDAOImp();
+	
+	private static UserDAOImp userDAO = new UserDAOImp();
+	
+	public static ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
 	
 	public void importData()
 	{
-		File file = new File(DATA_FILE_NAME);
+		Connection connection = connectionFactory.getConnection();
 		
-		if(file.exists())
-		{
-			try 
-			{
-				ObjectInputStream objectInputStream = new ObjectInputStream(new 
-						FileInputStream(DATA_FILE_NAME));
-				CustomerManager.setAccountOwnershipMap(((Map<Customer, Account>) objectInputStream.readObject()));
-				AccountManager.setAccountOwnershipMap(((Map<Account, Customer>) objectInputStream.readObject()));
-				ApplicationManager.setApplicationOwnershipMap(((Map<AccountApplication, Customer>) objectInputStream.readObject()));
-				EmployeeManager.setEmployeeList(((ArrayList<Employee>) objectInputStream.readObject()));
-				AdminManager.setAdminList(((ArrayList<Administrator>) objectInputStream.readObject()));
-				
-				objectInputStream.close();
-			} 
-			catch (IOException e) 
-			{
-				e.printStackTrace();
-			} 
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void exportData()
-	{
+		
 		try 
-		{
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new 
-					FileOutputStream(DATA_FILE_NAME));
-			objectOutputStream.writeObject(CustomerManager.getAccountOwnershipMap());
-			objectOutputStream.writeObject(AccountManager.getAccountOwnershipMap());
-			objectOutputStream.writeObject(ApplicationManager.getApplicationOwnershipMap());
-			objectOutputStream.writeObject(EmployeeManager.getEmployeelist());
-			objectOutputStream.writeObject(AdminManager.getAdminList());
+		{	
+			ResultSet resultSet = aPCustomer.getAllApprovedCustomers();
 			
-			objectOutputStream.close();
+			while(resultSet.next())
+			{
+				String username = resultSet.getString("USERNAME");
+				
+				String password = "";
+
+				int accountNumber = resultSet.getInt("ACCOUNT_NUMBER");
+				
+				int balance = 0;
+				
+				int customerID = resultSet.getInt("CUSTOMERID");
+				
+				String address = resultSet.getString("ADDRESS");
+				
+				String firstname = resultSet.getString("FIRSTNAME");
+				
+				String lastname = resultSet.getString("LASTNAME");
+				
+				Statement statement = connection.createStatement();
+				
+				ResultSet rs = statement.executeQuery("SELECT PASSWORD FROM BANK_USERS WHERE USERNAME=" 
+						+ "'" + username + "'");
+				
+				while(rs.next())
+				{
+					password = rs.getString("PASSWORD");
+				}
+				
+				rs = statement.executeQuery("SELECT BALANCE FROM BANK_ACCOUNT WHERE ACCOUNT_NUMBER=" 
+						+ "'" + accountNumber + "'");
+				
+				while(rs.next())
+				{
+					balance = rs.getInt("BALANCE");
+				}
+				
+				Customer customer = new Customer(username, password);
+				customer.setAddress(address);
+				customer.setCustomerID(customerID);
+				customer.setFirstName(firstname);
+				customer.setLastName(lastname);
+				
+				Account account = new Account(balance, accountNumber);
+				
+				CustomerManager.getAccountOwnershipMap().put(customer, account);
+				
+				AccountManager.getAccountOwnershipMap().put(account, customer);
+			}
 		} 
-		catch (IOException e) 
+		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
+		
+		try
+		{
+			ResultSet resultSet2 = uACustomer.getAllUnApprovedCustomers();
+			
+			while(resultSet2.next())
+			{
+				String username = resultSet2.getString("USERNAME");
+				
+				String password = "";
+				
+				int applicationNumber = resultSet2.getInt("APPLICATIONID");
+				
+				int customerID = resultSet2.getInt("CUSTOMERID");
+				
+				String address = resultSet2.getString("ADDRESS");
+				
+				String firstname = resultSet2.getString("FIRSTNAME");
+				
+				String lastname = resultSet2.getString("LASTNAME");
+				
+				Statement statement = connection.createStatement();
+				
+				ResultSet rs = statement.executeQuery("SELECT PASSWORD FROM BANK_USERS WHERE USERNAME=" 
+						+ "'" + username + "'");
+				
+				while(rs.next())
+				{
+					password = rs.getString("PASSWORD");
+				}
+				
+				Customer customer = new Customer(username, password);
+				customer.setAddress(address);
+				customer.setCustomerID(customerID);
+				customer.setFirstName(firstname);
+				customer.setLastName(lastname);
+				
+				AccountApplication application = new AccountApplication(customer);
+				application.setApplicationID(applicationNumber);
+				
+				ApplicationManager.getApplicationOwnershipMap().put(application, customer);
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		try
+		{
+			ResultSet resultSet3 = userDAO.getAllEmployees();
+			
+			while(resultSet3.next())
+			{
+				String username = resultSet3.getString("USERNAME");
+				
+				String password = resultSet3.getString("PASSWORD");
+				
+				Employee employee = new Employee(username, password);
+				
+				EmployeeManager.getEmployeelist().add(employee);
+			}
+			
+			resultSet3 = userDAO.getAllAdmins();
+			
+			while(resultSet3.next())
+			{
+				String username = resultSet3.getString("USERNAME");
+				
+				String password = resultSet3.getString("PASSWORD");
+				
+				Administrator admin = new Administrator(username, password);
+				
+				AdminManager.getAdminList().add(admin);
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
+	
+	
 
 }

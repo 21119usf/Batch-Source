@@ -1,21 +1,33 @@
 package com.revature.project0.classes;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import com.revature.project0.jdbc.ApprovedCustomerDAOImp;
 
 public class AccountManager 
 {
 	private static Map<Account, Customer> accountOwnershipMap
 		= new HashMap<Account, Customer>();
 	
+	private static ApprovedCustomerDAOImp customerDAO = new ApprovedCustomerDAOImp();
+	
 	public void addNewAccount(Customer customer, double initialBalance)
 	{
-		CustomerManager manager = new CustomerManager();
-		Account account = new Account(initialBalance, this.generateAccountNumber());
-		manager.getAccountOwnershipMap().put(customer, account);
+		Account account = new Account(initialBalance,0);
+		CustomerManager.getAccountOwnershipMap().put(customer, account);
 		accountOwnershipMap.put(account, customer);
+		try 
+		{
+			customerDAO.insertNewCustomer(customer,account);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 //	public void addCustomerToExistingAccount(Account account, Customer customer)

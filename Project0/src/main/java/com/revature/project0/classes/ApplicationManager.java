@@ -1,8 +1,11 @@
 package com.revature.project0.classes;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.revature.project0.jdbc.UnApprovedCustomerDAOImp;
 
 public class ApplicationManager implements Serializable
 {
@@ -14,6 +17,8 @@ public class ApplicationManager implements Serializable
 	private static Map<AccountApplication, Customer> applicationOwnershipMap 
 		= new HashMap<AccountApplication, Customer>();
 	
+	private static UnApprovedCustomerDAOImp customerDAO = new UnApprovedCustomerDAOImp();
+	
 	public void createNewApplication(Customer user)
 	{
 		this.createNewApplication(user, 0);
@@ -23,6 +28,14 @@ public class ApplicationManager implements Serializable
 	{
 		AccountApplication application = new AccountApplication(user, intitialBalance);
 		applicationOwnershipMap.put(application, user);
+		try 
+		{
+			customerDAO.addNewUnApprovedCustomer(user, application);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void approveApplication(AccountApplication application)
@@ -34,22 +47,31 @@ public class ApplicationManager implements Serializable
 		accountManager.addNewAccount(application.getCustomer(), application.getInitialBalance());
 		
 		applicationOwnershipMap.remove(application);
+		
+		try 
+		{
+			customerDAO.deleteUnApprovedCustomer(application.getCustomer());
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void denyApplication(AccountApplication application)
 	{
 		application.setApplicationStatus(false);
 		
-		this.applicationOwnershipMap.remove(application);
+		ApplicationManager.applicationOwnershipMap.remove(application);
 	}
 	
 	public AccountApplication findApplicationByUsername(String username)
 	{
 		AccountApplication foundApplication = null;
 		
-		for(AccountApplication application : this.applicationOwnershipMap.keySet())
+		for(AccountApplication application : ApplicationManager.applicationOwnershipMap.keySet())
 		{
-			if(this.applicationOwnershipMap.get(application).getUsername().equals(username))
+			if(ApplicationManager.applicationOwnershipMap.get(application).getUsername().equals(username))
 			{
 				foundApplication = application;
 				break;
@@ -64,7 +86,8 @@ public class ApplicationManager implements Serializable
 		return applicationOwnershipMap;
 	}
 
-	public static void setApplicationOwnershipMap(Map<AccountApplication, Customer> applicationOwnershipMap) {
+	public static void setApplicationOwnershipMap(Map<AccountApplication, Customer> applicationOwnershipMap) 
+	{
 		ApplicationManager.applicationOwnershipMap = applicationOwnershipMap;
 	}
 	

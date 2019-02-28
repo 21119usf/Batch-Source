@@ -1,14 +1,18 @@
 package com.revature.project0.views;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.project0.classes.Account;
 import com.revature.project0.classes.AccountManager;
 import com.revature.project0.classes.Customer;
 import com.revature.project0.classes.CustomerManager;
+import com.revature.project0.jdbc.ApprovedCustomerDAOImp;
 
 public class CustomerDeleteView implements View
 {
+	private static ApprovedCustomerDAOImp customerDAO =  new ApprovedCustomerDAOImp();
+	
 	@Override
 	public void show(ViewController controller) 
 	{
@@ -76,6 +80,14 @@ public class CustomerDeleteView implements View
 					accountManager.getAccountOwnershipMap().remove(account);
 					break;
 				}
+			}
+			try 
+			{
+				customerDAO.deleteCustomer(customer);
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
 			}
 			System.out.println("Account deleted.");
 			controller.getLastView();

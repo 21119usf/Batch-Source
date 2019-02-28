@@ -83,6 +83,7 @@ public class AdminActionsView implements View
 				{
 					System.out.println("How much would you like to withdraw?");
 					amount = scanner.nextDouble();
+					scanner.nextLine();
 					
 					if(amount < 0)
 					{
@@ -108,6 +109,7 @@ public class AdminActionsView implements View
 				{
 					System.out.println("How much would you like to deposit?");
 					amount = scanner.nextDouble();
+					scanner.nextLine();
 					
 					if(amount < 0)
 					{
@@ -158,6 +160,7 @@ public class AdminActionsView implements View
 				{
 					System.out.println("Enter the amount to transfer to " + username);
 					amount = scanner.nextDouble();
+					scanner.nextLine();
 					
 					if(amount < 0)
 					{
