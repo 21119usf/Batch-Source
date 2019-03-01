@@ -1,0 +1,276 @@
+[TRACE] 2019-02-28 17:34:14.485 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 17:44:30.650 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 17:53:47.516 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 17:59:49.771 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 18:00:17.207 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 18:00:51.254 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 18:06:00.454 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:25:49.997 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 19:28:38.045 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 19:34:57.344 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 19:35:49.591 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 19:36:36.507 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:37:08.244 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:37:14.130 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:37:45.412 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:37:50.405 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:47:04.492 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:47:08.444 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:47:40.110 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:47:52.902 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:49:54.736 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:50:05.002 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:53:17.729 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:53:25.125 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:53:35.087 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:53:38.010 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:57:27.079 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:57:42.988 [main] Bank - logged In: true
+[TRACE] 2019-02-28 19:58:56.382 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 19:59:22.469 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 19:59:27.499 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:00:22.829 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:00:25.779 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:00:53.605 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:01:07.453 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:01:10.739 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:05:06.465 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 20:07:40.218 [main] Bank - Option entered: 22
+[TRACE] 2019-02-28 20:07:42.307 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:08:06.202 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:08:16.017 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:08:34.533 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:17:51.453 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:17:59.224 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:18:49.475 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:18:54.425 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:19:44.789 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:20:12.430 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:22:09.284 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:25:24.976 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:26:31.199 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:27:55.527 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:30:24.075 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:31:52.029 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:33:41.155 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:35:15.957 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:42:30.176 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:42:46.185 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:44:35.259 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:44:44.818 [main] Bank - Option entered: 0
+[TRACE] 2019-02-28 20:44:54.343 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:48:00.532 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:49:16.404 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:49:22.548 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:49:30.625 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:49:38.813 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:51:58.688 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:52:28.914 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 20:53:46.903 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:53:57.031 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 20:54:50.649 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:55:19.216 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:55:40.699 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 20:57:07.457 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 20:57:21.860 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 20:59:00.498 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 20:59:04.615 [main] Bank - logged In: true
+[TRACE] 2019-02-28 20:59:42.892 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 21:00:08.491 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 21:01:18.094 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 21:01:22.281 [main] Bank - logged In: true
+[TRACE] 2019-02-28 21:02:41.600 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 21:02:48.412 [main] Bank - logged In: true
+[TRACE] 2019-02-28 21:09:14.496 [main] Bank - Option entered: 2
+[TRACE] 2019-02-28 21:09:45.019 [main] Bank - Option entered: 3
+[TRACE] 2019-02-28 21:10:44.998 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 21:10:51.066 [main] Bank - logged In: true
+[TRACE] 2019-02-28 21:12:13.612 [main] Bank - Option entered: 1
+[TRACE] 2019-02-28 21:12:18.573 [main] Bank - logged In: true
+[TRACE] 2019-02-28 22:18:06.592 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 22:18:15.746 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 22:23:04.154 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 22:23:10.136 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 22:23:17.156 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 22:23:26.686 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 22:23:44.707 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 22:23:49.518 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 22:24:07.743 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 22:25:18.703 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 22:25:23.440 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 22:25:36.918 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 22:28:10.468 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:00:24.622 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:00:36.417 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:00:58.087 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:02:18.099 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:02:26.869 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:03:47.901 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:05:02.743 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:05:11.818 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:09:58.972 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:10:10.373 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:15:57.450 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:16:12.328 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:16:26.789 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:16:34.977 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:17:13.310 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:17:15.873 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:17:18.867 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:18:42.432 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:18:44.443 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:18:47.742 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:22:13.747 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:23:21.614 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:23:44.630 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:23:58.182 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:24:03.574 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:25:11.010 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:25:29.745 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:25:38.955 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:25:44.006 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:25:53.866 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:26:06.870 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:26:13.702 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:26:32.905 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:26:37.357 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:26:40.553 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:27:21.527 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:27:38.867 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:27:42.488 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:29:38.036 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:29:46.487 [main] Bank - [OPTION ENTERED]: 0
+[TRACE] 2019-02-28 23:38:30.344 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:38:49.206 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:39:05.454 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:39:08.711 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-02-28 23:39:18.678 [main] Bank - [USER CREATED]
+[TRACE] 2019-02-28 23:39:36.261 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:39:38.959 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:40:23.677 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:40:25.504 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:40:31.429 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:41:37.826 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:41:39.792 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-02-28 23:41:42.820 [main] Bank - [LOGGED IN]
+[TRACE] 2019-02-28 23:43:29.989 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-02-28 23:49:35.309 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-02-28 23:50:04.933 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 00:21:43.836 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 00:22:04.240 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 00:23:45.331 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 00:24:01.687 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 00:24:14.646 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 00:24:21.873 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 00:24:55.784 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 00:24:58.043 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 00:25:05.622 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 00:26:32.548 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 00:26:36.047 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 00:26:41.143 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 00:28:22.499 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 00:30:03.627 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 00:30:28.477 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 00:30:39.547 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 00:30:48.605 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 00:31:06.713 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 00:31:17.949 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 00:31:21.686 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 00:32:33.155 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 00:32:39.512 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 00:32:43.794 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 00:34:28.343 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:14:03.871 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 01:14:18.688 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:14:31.806 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:14:34.416 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:14:52.369 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:14:58.427 [main] Bank - [OPTION ENTERED]: 0
+[TRACE] 2019-03-01 01:15:09.985 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:16:34.508 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:16:41.877 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:16:55.232 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 01:17:01.205 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:18:35.414 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:19:39.296 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:19:56.789 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:20:09.023 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 01:20:26.529 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:21:01.928 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:21:05.145 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:21:14.424 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:22:22.550 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:22:26.577 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:22:49.160 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:24:15.229 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:26:12.295 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:26:20.057 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:26:29.734 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:26:51.466 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:27:27.941 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:27:37.832 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:28:07.396 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:28:12.607 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:28:48.191 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:28:53.670 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:33:19.404 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:33:24.323 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:34:34.667 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:34:38.834 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:35:21.250 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:35:27.200 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:37:04.734 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:37:20.304 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:37:32.376 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 01:37:39.633 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:38:13.655 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:38:15.092 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:38:21.866 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:39:45.092 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:40:01.941 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:40:09.871 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:41:31.077 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:43:20.598 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:43:26.917 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:43:39.868 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 01:44:01.178 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:44:12.486 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:44:14.011 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:44:21.250 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:44:24.394 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:44:34.868 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:44:37.097 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:44:40.001 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:45:52.033 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:45:53.516 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:45:57.944 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:47:02.312 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:47:08.083 [main] Bank - [OPTION ENTERED]: 0
+[TRACE] 2019-03-01 01:52:16.618 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 01:52:24.039 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:52:39.298 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 01:52:47.389 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 01:53:21.895 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:53:25.067 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:53:31.193 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:55:04.776 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:55:19.590 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:55:26.354 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:55:44.225 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 01:55:50.183 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 01:56:28.248 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 01:56:32.128 [main] Bank - [OPTION ENTERED]: 0
+[TRACE] 2019-03-01 08:53:33.895 [main] Bank - [OPTION ENTERED]: 2
+[TRACE] 2019-03-01 08:53:39.047 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 08:53:41.646 [main] Bank - [OPTION ENTERED]: 3
+[TRACE] 2019-03-01 08:53:45.958 [main] Bank - [USER CREATED]
+[TRACE] 2019-03-01 08:53:59.615 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 08:54:03.156 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 08:54:09.527 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 08:54:31.201 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 08:54:49.244 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 08:54:52.809 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 08:55:11.636 [main] Bank - [LOGGED OUT]
+[TRACE] 2019-03-01 08:55:14.207 [main] Bank - [OPTION ENTERED]: 1
+[TRACE] 2019-03-01 08:55:24.432 [main] Bank - [LOGGED IN]
+[TRACE] 2019-03-01 08:56:41.214 [main] Bank - [LOGGED OUT]
