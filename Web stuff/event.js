@@ -9,6 +9,8 @@ function loadCharacter(character)
 	document.getElementById("gender").innerHTML = character.gender;
 	document.getElementById("homeworld").innerHTML = character.homeworld;
 	document.getElementById("birthyear").innerHTML = character.birth_year;
+	document.getElementById("haircolor").innerHTML = character.hair_color;
+	document.getElementById("eyecolor").innerHTML = character.eye_color;
 }
 
 function getCharacter()
