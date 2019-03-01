@@ -188,7 +188,51 @@
             });
 
             // 9
-            
+            let names = Array.from(document.getElementsByClassName("empName"));
+            function toggleName(e) {
+                if (e.target.style.color == "white") {
+                    e.target.style.color = "black";
+                } else {
+                    e.target.style.color = "white";
+                }
+            };
+            names.forEach((name) => {
+                name.addEventListener("mouseover", (e) => {toggleName(e)});
+            });
+
+            // 10
+            function setTime() {
+                let time = new Date();
+                let timeStr = time.toLocaleTimeString();
+                document.getElementById("currentTime").innerHTML = timeStr;
+            };
+            window.setInterval(() => setTime(), 1000);
+
+            // 11
+            function randomColor() {
+                let r = Math.floor(Math.random() * 256);
+                let g = Math.floor(Math.random() * 256);
+                let b = Math.floor(Math.random() * 256);
+                document.getElementById("helloWorld").style.color = 
+                "rgb("+r+","+g+","+b+")";
+            };
+            document.getElementById("helloWorld").addEventListener("click",
+            () => setTimeout(() => {randomColor()}, 3000));
+
+            // 12
+            walkTheDOM(document);
+            function walkTheDOM(node) {
+                console.log(node);
+                let nodes = Array.from(node.childNodes);
+                nodes.forEach((n) => {
+                    if (!n) {
+                        return;
+                    }
+                    if (n.childNodes.length > 0) {
+                        walkTheDOM(n);
+                    }
+                });
+            };
         </script>
     </body>
 </html>
