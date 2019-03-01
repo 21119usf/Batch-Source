@@ -5,6 +5,7 @@ function bubble (event){
     event.stopPropagation();
 }
 
+
 window.onload=function(){
     document.getElementById("pixelid1").addEventListener("click",bubble,true);
     document.getElementById("pixelid2").addEventListener("click",bubble,true);
