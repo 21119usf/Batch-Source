@@ -28,10 +28,10 @@ public class VGServlet extends HttpServlet {
 		VideoGame vg=null;
 		ObjectMapper mapper= new ObjectMapper();
 		VGDaoImpl vgdi= new VGDaoImpl();
-		String query= request.getQueryString();
-		System.out.println(query);
-		int id = Integer.parseInt(mapper.readValue(request.getParameter("vgid"), String.class));
-		System.out.println(id);
+		//String query= request.getQueryString();
+		//System.out.println(query);
+		int id = mapper.readValue(request.getParameter("vgid"), Integer.class);
+		//System.out.println(id);
 		PrintWriter out = response.getWriter();
 		String vgJSON;
 		try {
@@ -58,8 +58,9 @@ public class VGServlet extends HttpServlet {
 		System.out.println("in doPost");
 		VideoGame vg=null;
 		ObjectMapper mapper= new ObjectMapper();
+		//convert JSON to Java Object
 		vg= mapper.readValue(request.getInputStream(),VideoGame.class);
-		System.out.println(vg);
+		//System.out.println(vg);
 		VGDaoImpl vgdi= new VGDaoImpl();
 		try {
 			vgdi.insertVG(vg);
