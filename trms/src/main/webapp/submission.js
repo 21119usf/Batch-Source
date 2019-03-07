@@ -1,23 +1,41 @@
-function submitForm(){
-    var submission = {
-        fullName : document.getElementById("name").innerHTML,
-        date : document.getElementById("startDate").innerHTML,
-        startTime : document.getElementById("startTime").innerHTML,
-        endTime : document.getElementById("endTime").innerHTML,
-        location : document.getElementById("location").innerHTML,
-        description : document.getElementById("description").innerHTML,
-        cost : document.getElementById("cost").innerHTML,
-        gradingFormat : document.getElementById("format").innerHTML,
-        eventType : document.getElementById("type").innerHTML,
-        supervisor : document.getElementById("supervisor").innerHTML,
-        benCo : document.getElementById("benCo").innerHTML
-    };
-    
-   // var myJSON = JSON.stringify(submission);
-    //xmlhttp.open("GET", "form.html", true);
-    alert("The form was submitted");
-}
+(function() {
+	function toJSONString( form ) {
+		var obj = {};
+		var elements = form.querySelectorAll( "input, select" );
+		for( var i = 0; i < elements.length; ++i ) {
+			var element = elements[i];
+			var name = element.name;
+			var value = element.value;
 
-window.onload = function(){
-	document.getElementById("submitButton").addEventListener("click", submitForm, false);
-}
+			if( name ) {
+				obj[ name ] = value;
+			}
+		}
+
+		return JSON.stringify( obj );
+	}
+
+	document.addEventListener( "DOMContentLoaded", function() {
+		var form = document.getElementById( "test" );
+		var output = document.getElementById( "output" );
+		form.addEventListener( "submit", function( e ) {
+			e.preventDefault();
+			var url = 'form.html';
+			var data = toJSONString( this );
+			console.log(data);
+			fetch(url, {
+			  method: 'POST', // or 'PUT'
+			  body: JSON.stringify(data), // data can be `string` or {object}!
+			  headers:{
+			    'Content-Type': 'application/json'
+			  }
+			}).then(res => res.json())
+			.then(response => console.log('Success:', JSON.stringify(response)))
+			.catch(error => console.error('Error:', error));
+			output.innerHTML = data;
+
+		}, false);
+
+	});
+
+})();
