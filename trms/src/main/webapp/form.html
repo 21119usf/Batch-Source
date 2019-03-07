@@ -15,37 +15,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Tuition Reimbursement Form 0</title>
+    <title>Tuition Reimbursment Form 0</title>
     <style>
     </style>
 </head>
 <body>
     <br>
     <div>
-        <form>
+        <form id = test method = "post">
             <div class = "row">
                 <div class = "col-sm-1"></div>
             <div class = "col-sm-2">
                 Full name: <br>
-                <input type = "text" id = "name"><br>
+                <input type = "text" name = "name"><br>
                 Date: <br>
-                <input type = "date" id = "startDate"><br>
+                <input type = "date" name = "startDate"><br>
                 Start Time: <br>
-                <input type = "time" id = "startTime"><br>   
+                <input type = "time" name = "startTime"><br>   
                 End Time: <br>
-                <input type = "time" id = "endTime"><br>   
+                <input type = "time" name = "endTime"><br>   
                 Location: <br>
-                <input type = "text" id = "location"><br>
+                <input type = "text" name = "location"><br>
             </div>
             <div class = "col-sm-2">
                 Description: <br>
-                <input type = "text" id = "description"><br>
+                <input type = "text" name = "description"><br>
                 Cost: <br>
-                <input type = "text" id = "cost"><br>
+                <input type = "text" name = "cost"><br>
                 Grading Format: <br>
-                <input type = "text" id = "format"><br>
+                <input type = "text" name = "format"><br>
                 Type of event: <br>
-                <select>
+                <select name = "select">
                     <option value = "University Class">University Class</option>
                     <option value = "Seminar">Seminar</option>
                     <option value = "Certification Class">Certification Class</option>
@@ -56,14 +56,15 @@
                 Other attachments: <br>
                 <input type="file"><br>
                 Supervisor: <br>
-                <input type = "text" id = "supervisor"><br> 
+                <input type = "text" name = "supervisor"><br> 
                 Benefits Coordinator: <br>
-                <input type = "text" id = "benCo"><br>
-                <input type = "button" id = "submitButton">Submit</input>
+                <input type = "text" name = "benCo"><br>
+                <input type = "submit" name = "submitbutton"></input>
             </div>
             </div>
             
         </form>
+        <pre id="output"></pre>
     </div>
     <script type = "text/javascript" src= "submission.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
