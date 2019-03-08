@@ -5,25 +5,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.revature.dao.UserDao;
 import com.revature.util.ConnFactory;
 
-public class UserDaoImpl {
+public class UserDaoImpl implements UserDao {
 
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-	public void findForm(int caseNumber)throws SQLException {
+	@Override
+	public boolean verify(String username, String password) throws SQLException {
 		Connection conn = cf.getConnection();
-        Statement statement = conn.createStatement();
-
-        ResultSet results = statement.executeQuery("SELECT * FROM REIMBURSEMENT "
-        		+ "WHERE FORMID = '" + caseNumber + "'");
-
-        if(results.next()) {
-
-            System.out.println("column index for row: " + results.getRow() + ", Form ID" + results.getInt(1) + ", Full Name"
-            		+ results.getString(2) + ", Event Date" + results.getString(3) + ", Start Time" + results.getString(4) +
-            		",End Time" + results.getString(5) + ", Event Location" + results.getString(6) + ", Description" +
-            		results.getString(7) + ", Cost" + results.getDouble(8) + ", Grading" + results.getString(9));
-        }
+		Statement stmt=conn.createStatement();
+		ResultSet rsA = stmt.executeQuery("SELECT * FROM TRMS_USER");
+		while(rsA.next()) {
+			if (rsA.getString(2).equals(username)) {
+				if (rsA.getString(3).equals(password)) {
+					return true;
+				} else {
+					System.out.println("password not correct");
+					return false;
+				}
+			}
+		}
+		System.out.println("username not found");
+		return false;
 	}
+
 }
