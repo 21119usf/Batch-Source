@@ -32,7 +32,7 @@ public class Menu {
 		System.out.println("2: Customer Login");
 		System.out.println("3: Employee Login");
 		System.out.println("4: Admin Login");
-		System.out.println("0: to end program");
+		System.out.println("0: Exit application");
 		int choice = Integer.parseInt(sc.nextLine());
 		switch(choice) {
 			case 1:
@@ -48,7 +48,7 @@ public class Menu {
 				last = sc.nextLine();
 				Customer customer = new Customer(userName, passWord, name, last);
 				customers.add(customer);
-				LoggerUtil.LOGGER.info("Customer " + name + " " + last + " registered");
+				//LoggerUtil.LOGGER.info("Customer " + name + " " + last + " registered");
 				CustomerMenu(customer);
 				break;
 			case 2:
@@ -60,7 +60,7 @@ public class Menu {
 				//Check Login
 				for (int i=0; i<customers.size();i++) {
 					if(userName.equals(customers.get(i).getUsername()) && passWord.equals(customers.get(i).getPassword())) {
-						LoggerUtil.LOGGER.info("Customer " + userName + " logged in");
+						//LoggerUtil.LOGGER.info("Customer " + userName + " logged in");
 						CustomerMenu(customers.get(i));
 						break;
 					}	
@@ -77,7 +77,7 @@ public class Menu {
 				//Check Login
 				for (int i=0; i<employees.size();i++) {
 					if(userName.equals(employees.get(i).getUsername()) && passWord.equals(employees.get(i).getPassword())) {
-						LoggerUtil.LOGGER.info("Employee " + userName + " logged in");
+						//LoggerUtil.LOGGER.info("Employee " + userName + " logged in");
 						EmployeeMenu(employees.get(i));
 						break;
 					}
@@ -94,7 +94,7 @@ public class Menu {
 				//Check Login
 				for (int i=0; i<admins.size();i++) {
 					if(userName.equals(admins.get(i).getUsername()) && passWord.equals(admins.get(i).getPassword())) {
-						LoggerUtil.LOGGER.info("Admin " + userName + " logged in");
+						//LoggerUtil.LOGGER.info("Admin " + userName + " logged in");
 						AdminMenu();
 						break;
 					}
@@ -104,7 +104,7 @@ public class Menu {
 				break;
 			case 0: 
 				LoadToDB();
-				System.out.println("Loaded to Database exiting program");
+				System.out.println("Exiting program");
 				System.exit(0);
 				break;
 		}
@@ -129,7 +129,7 @@ public class Menu {
 							c.addAccounts(newAcc);
 							customers.get(i).addAccounts(newAcc);
 							System.out.println("Applied for an account");
-							LoggerUtil.LOGGER.info("Customer: " + c.getUsername()+ " applied for account with: "+ customers.get(i).getUsername());
+							//LoggerUtil.LOGGER.info("Customer: " + c.getUsername()+ " applied for account with: "+ customers.get(i).getUsername());
 							CustomerMenu(c);
 							break;
 						}
@@ -144,7 +144,7 @@ public class Menu {
 						//c.addAccounts(newAcc);
 					accounts.add(newAcc);
 					System.out.println("Applied for an account");
-					LoggerUtil.LOGGER.info("Customer: " + c.getUsername()+ " applied for an account");
+					//LoggerUtil.LOGGER.info("Customer: " + c.getUsername()+ " applied for an account");
 					CustomerMenu(c);
 					break;
 				}
@@ -214,7 +214,8 @@ public class Menu {
 								for(int k = 0; k<customers.get(j).getAccounts().size(); k++) {
 									if(customers.get(j).getAccounts().get(k).equals(accounts.get(i))) {
 										customers.get(j).getAccounts().get(k).Activate();
-										LoggerUtil.LOGGER.info("Account: "+ appId + " Activated");									
+										//LoggerUtil.LOGGER.info("Account: "+ appId + " Activated");
+										
 										}
 								}
 							}
@@ -225,8 +226,7 @@ public class Menu {
 								for(int k = 0; k<customers.get(j).getAccounts().size(); k++) {
 									if(customers.get(j).getAccounts().get(k).equals(accounts.get(i))) {
 										customers.get(j).removeAccount(accounts.get(i));
-										LoggerUtil.LOGGER.info("Account: "+ appId + " Activated");									
-										
+										//LoggerUtil.LOGGER.info("Account: "+ appId + " Activated");									
 									}
 								}
 							}
@@ -235,6 +235,9 @@ public class Menu {
 							break;
 						}
 					}
+					System.out.println("Account not found or already accepted");
+					AdminMenu();
+					break;
 				}
 				break;
 			case 2:
@@ -327,8 +330,8 @@ public class Menu {
 		}
 	}
 	void LoadFromDB() {
-		System.out.println("Loading values from database");
-		LoggerUtil.LOGGER.info("Loading values from database");
+		//System.out.println("Loading values from database");
+		//LoggerUtil.LOGGER.info("Loading values from database");
 		ReadIMP ri = new ReadIMP();
 		try {
 			customers = ri.getCustomerList();
@@ -336,7 +339,7 @@ public class Menu {
 			accounts = ri.getAccountList();
 			admins = ri.getAdminList();
 			ri.getAccountHolders(customers, accounts);
-			LoggerUtil.LOGGER.info("Succesully loaded from database");
+			//LoggerUtil.LOGGER.info("Succesully loaded from database");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -344,7 +347,7 @@ public class Menu {
 	void LoadToDB() {
 		LoadIMP li = new LoadIMP();
 		try {
-			LoggerUtil.LOGGER.info("Commiting changes to database");
+			//LoggerUtil.LOGGER.info("Commiting changes to database");
 			li.clearTables();
 			for(int i = 0; i<accounts.size(); i++) {
 				li.createAccount(accounts.get(i));

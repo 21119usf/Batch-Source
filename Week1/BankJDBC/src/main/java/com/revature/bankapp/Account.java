@@ -60,7 +60,7 @@ public class Account {
 		if(this.balance >= ammount) {
 			balance -= ammount;
 			System.out.println("Withdraw successful new balance is: " + balance);
-			LoggerUtil.LOGGER.info("Withdraw successful new balance is: " + balance);
+			//LoggerUtil.LOGGER.info("Withdraw successful new balance is: " + balance);
 
 		}
 		else {
@@ -71,7 +71,7 @@ public class Account {
 	void deposit(double ammount) {
 		balance += ammount;
 		System.out.println("Deposit successful new balance is: " + balance);
-		LoggerUtil.LOGGER.info("Deposit successful new balance is: " + balance);
+		//LoggerUtil.LOGGER.info("Deposit successful new balance is: " + balance);
 
 	}
 	void transfer(double ammount, Account a) {
@@ -79,7 +79,7 @@ public class Account {
 			withdraw(ammount);
 			a.deposit(ammount);
 			System.out.println("Transfer successful new balance is: " + balance);
-			LoggerUtil.LOGGER.info("Transfer successful new balance is: " + balance);
+			//LoggerUtil.LOGGER.info("Transfer successful new balance is: " + balance);
 
 		}
 		else {
