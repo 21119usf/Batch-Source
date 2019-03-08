@@ -3,7 +3,7 @@ package com.revature.beans;
 public class Form {
 
 	String fullName;
-	String date;
+	String startDate;
 	String startTime;
 	String endTime;
 	String location;
@@ -19,11 +19,11 @@ public class Form {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	public String getDate() {
-		return date;
+	public String getstartDate() {
+		return startDate;
 	}
 	public void setDate(String date) {
-		this.date = date;
+		this.startDate = date;
 	}
 	public String getStartTime() {
 		return startTime;
@@ -83,11 +83,11 @@ public class Form {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Form(String fullName, String date, String startTime, String endTime, String location, String description,
+	public Form(String fullName, String startDate, String startTime, String endTime, String location, String description,
 			Double cost, String gradingFormat, String eventType, String supervisor, String benCo) {
 		super();
 		this.fullName = fullName;
-		this.date = date;
+		this.startDate = startDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.location = location;
@@ -100,7 +100,7 @@ public class Form {
 	}
 	@Override
 	public String toString() {
-		return "Form [fullName=" + fullName + ", date=" + date + ", startTime=" + startTime + ", endTime=" + endTime
+		return "Form [fullName=" + fullName + ", startDate=" + startDate + ", startTime=" + startTime + ", endTime=" + endTime
 				+ ", location=" + location + ", description=" + description + ", cost=" + cost + ", gradingFormat="
 				+ gradingFormat + ", eventType=" + eventType + ", supervisor=" + supervisor + ", benCo=" + benCo + "]";
 	}

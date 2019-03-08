@@ -20,22 +20,21 @@
 		var output = document.getElementById( "output" );
 		form.addEventListener( "submit", function( e ) {
 			e.preventDefault();
-			var url = 'form.html';
+			var url = "/trms/form";
 			var data = toJSONString( this );
 			console.log(data);
-			fetch(url, {
-			  method: 'POST', // or 'PUT'
-			  body: JSON.stringify(data), // data can be `string` or {object}!
-			  headers:{
-			    'Content-Type': 'application/json'
-			  }
-			}).then(res => res.json())
-			.then(response => console.log('Success:', JSON.stringify(response)))
-			.catch(error => console.error('Error:', error));
 			output.innerHTML = data;
+			
+			return fetch(url, {
+			    method: "POST",
+			    body: data
+			})
+			.then(function(res){ return res.json(); })
+			.then(function(data){ alert( JSON.stringify( data ) ) })
+			
 
 		}, false);
-
+		
 	});
 
 })();
