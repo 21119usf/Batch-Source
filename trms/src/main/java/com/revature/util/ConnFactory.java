@@ -22,16 +22,13 @@ public class ConnFactory {
 	public Connection getConnection() {
 		Connection conn = null;
 		
-		Properties prop = new Properties();
 		try {
-			prop.load(new FileReader("database.properties"));
+			Properties prop = PropsUtility.getProps();
 			Class.forName(prop.getProperty("driver"));
 			conn = DriverManager.getConnection(
 					prop.getProperty("url"), 
 					prop.getProperty("usr"), 
 					prop.getProperty("password"));
-		}catch(IOException e) {
-			e.printStackTrace();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}catch(ClassNotFoundException e) {
