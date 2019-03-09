@@ -2,11 +2,31 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>TRMS</display-name>
   <servlet>
-  	<servlet-name>HomeServlet</servlet-name>
-  	<servlet-class>servlet.HomeServlet</servlet-class>
+    <servlet-name>HomeServlet</servlet-name>
+    <servlet-class>servlet.HomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>HomeServlet</servlet-name>
-  <url-pattern>/demo</url-pattern>
+    <servlet-name>HomeServlet</servlet-name>
+    <url-pattern>/demo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RequestForm</display-name>
+    <servlet-name>RequestForm</servlet-name>
+    <servlet-class>servlet.RequestForm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestForm</servlet-name>
+    <url-pattern>/RequestForm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MainEmployeePage</display-name>
+    <servlet-name>MainEmployeePage</servlet-name>
+    <servlet-class>servlet.MainEmployeePage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainEmployeePage</servlet-name>
+    <url-pattern>/MainEmployeePage</url-pattern>
   </servlet-mapping>
 </web-app>
