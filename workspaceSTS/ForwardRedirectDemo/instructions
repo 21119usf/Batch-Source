@@ -1,0 +1,5 @@
+1. You can use either the browser or postman
+2. enter the url: http://localhost:8080/ForwardRedirectDemo/home (or login)
+3. turn on the tomcat server (make sure that the project is on the server i.e. add/removed op)
+4. in postman, u can send requests from the servlet, or in browser press buttons
+5. both yield output in the console

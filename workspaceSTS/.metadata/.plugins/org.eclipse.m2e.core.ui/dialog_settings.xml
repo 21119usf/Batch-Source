@@ -2,8 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="JDBCBank"/>
+			<item value="SeesionDemo"/>
+			<item value="CookieExample"/>
 			<item value="com.revature"/>
+			<item value="JDBCBank"/>
 			<item value="com.revature.JDBC"/>
 			<item value="com.revature.jdbc"/>
 			<item value="BankingApp"/>
@@ -12,6 +14,10 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="SeesionDemo"/>
+			<item value="CookieExample"/>
+			<item value="ForwardRedirectDemo"/>
+			<item value="ServletDemo"/>
 			<item value="JDBCBank"/>
 			<item value="HeroJDBC1"/>
 			<item value="HeroJDBC"/>
@@ -65,6 +71,8 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\marka\Revature\Git\Batches\Batch-Source\workspaceSTS\CookieExample"/>
+			<item value="C:\Users\marka\Revature\Git\Batches\Batch-Source\workspaceSTS\ForwardRedirectDemo"/>
 			<item value="C:\Users\marka\Revature\sts-bundle\workspaceSTS\firstMarx"/>
 			<item value="C:\Users\marka\Revature\sts-bundle\workspaceSTS\ThatsSoMaven"/>
 		</list>

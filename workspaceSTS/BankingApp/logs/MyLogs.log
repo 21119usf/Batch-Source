@@ -88,3 +88,6 @@
 [INFO ] 2019-02-20 11:53:30.359 [main] Bank - Marx logged in.
 [INFO ] 2019-02-20 11:53:38.910 [main] Bank - Marx depositted $100.0 into Marx's account.
 [INFO ] 2019-02-20 11:56:29.654 [main] Bank - Marx logged out.
+[INFO ] 2019-03-04 18:53:14.427 [main] Bank - test1 submitted an application for an account.
+[INFO ] 2019-03-04 18:54:02.227 [main] Bank - Admin logged in.
+[INFO ] 2019-03-04 18:54:16.250 [main] Bank - test1's application was approved.
