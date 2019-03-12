@@ -59,6 +59,7 @@ public class VGServlet extends HttpServlet {
 		VideoGame vg=null;
 		ObjectMapper mapper= new ObjectMapper();
 		//convert JSON to Java Object
+		//YOU NEED A DEFAULT CONSTRUCTOR IN YOUR JAVA OBJECT CLASS IN ORDER TO USE THIS!!!
 		vg= mapper.readValue(request.getInputStream(),VideoGame.class);
 		//System.out.println(vg);
 		VGDaoImpl vgdi= new VGDaoImpl();
