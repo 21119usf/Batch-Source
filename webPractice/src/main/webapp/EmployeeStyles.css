@@ -1,0 +1,39 @@
+body{
+    background-image: url("blurred-city-background-images-1.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment:fixed; 
+}
+
+.jumbotron{
+    color: white;
+    background-color: rgba(0, 103, 121, 0.849)
+}
+.row{
+    color: white;
+    background-color: rgba(26, 26, 26, 0.89);
+}
+
+table{
+    color: white;
+}
+
+#Logout{
+    color: black;
+    background-color: rgb(211, 210, 210);
+    border-color: rgb(97, 97, 97);
+}
+#Logout:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#studentID{
+    width: 50%;
+}
+
+table tr{
+    color: white;
+    background-color: rgba(26, 26, 26, 0.931);
+    border-color: rgb(97, 97, 97);
+    
+}

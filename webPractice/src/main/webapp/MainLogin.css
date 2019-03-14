@@ -1,0 +1,22 @@
+
+body{
+    background-image: url("thankyouWallpaper.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.jumbotron{
+    color: white;
+    background-color: rgba(28, 59, 80, 0.616)
+}
+.row{
+    color: white;
+    background-color: rgba(26, 26, 26, 0.767)
+}
+
+input{font-size: 20pt;
+    font-weight: bold;}
+
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40t;
+}

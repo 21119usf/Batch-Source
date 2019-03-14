@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Benefits Coordinator</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="Benco.css">
+</head>
+<body>
+
+    <div class="container">
+            <div class="text-center">
+                    <div class="jumbotron text-center border border-dark">
+                        <div class="display-4">Benefit Coordinator</div>
+                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 background">
+                        <label for="Employee_Form"></label>
+                        <button id="getNewForm" class="btn btn-info btn-block">New Form</button>
+                </div>
+            </div> 
+
+            <div id="row"> 
+                    <div class="col-sm-12"><!-- Displays Student information from Database, pulls from the employee reim form -->
+                        <div class="form-group">
+                            <div id="formInfo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="row"> 
+                        <div class="col-sm-12"><!-- Displays Student information from Database, pulls from the employee reim form -->
+                            <div class="form-group">
+                                <div id="change"></div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <form id="register" action="html2" method="POST" >
+                                <div class="form-group">
+                                    <label for="student_ID">Student Reimbursement Forms</label>
+                                    <input id="studentID" type="text" name="name"class="form-control" placeholder="Enter Student ID Here">
+                                    <input type="hidden" name="requester" value="BenCo">
+                                </div>
+                                <div class="form-group">
+                                    <input id="mybutton" type="submit" value="Display Student Form" class="btn btn-info btn-block">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-sm-2 offset-md-7">
+                        <form action="MainLogin" method="GET">
+                            <input id="Logout" type="submit" value="Logout" class="btn btn-primary btn-block">
+                        </form>
+                    </div>
+            </div>
+
+            <div id="row">
+
+                <div class="col-sm-6 offset-md-6"><!-- The grading  percentages-->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Event Type</th>
+                            <th>Percentage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>University Course</td>
+                            <td>80%</td>
+                        </tr>
+                        <tr>
+                            <td>Seminar</td>
+                            <td>60%</td>
+                        </tr>
+                        <tr>
+                            <td>Certification Preparation</td>
+                            <td>75%</td>
+                        </tr>
+                        <tr>
+                            <td>Certification</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>Technical Training</td>
+                            <td>90%</td>
+                        </tr>
+                        <tr>
+                            <td>Others</td>
+                            <td>30%</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <form id="adjuster" action=""> 
+                            <div class="form-group">
+                                <label for="EventTypeAdjuster">Event Type Adjuster</label>
+                                <select name="adjusternum" id="choice" class="form-control custon-select">
+                                    <option selected value=null>Choose an Event Type</option>
+                                    <option value="100">Ceritifcation</option>
+                                    <option value="90">Technical Training</option>
+                                    <option value="80">University Course</option>
+                                    <option value="60">Seminar</option>
+                                    <option value="75">Certification Prep</option>
+                                    <option value="30">Other</option>
+                                </select>
+                                <!--<input  type="text" class="form-control" name = "adjusternum"placeholder="Type 80 for 80%"!-- Calculate   --> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <form id="approved" action="BenCoServlet" method="POST">
+                            <label for="EventTypeAdjuster">Calculated Amount</label>
+                            <input disabled name ="calculatedAmount" id="calculatedAmount" value="0" class="form-control"><!-- Calculate display  --> 
+                            <label for="student_ID">Student ID</label>
+                            <input type="text" name="name" class="form-control" placeholder="Enter Student ID"><!-- to do need to rename name attribute-->
+                            <input type="hidden" name="requester" value="BenCo">
+                        </form>
+                    </div>
+                </div>
+                    <div class="col-sm-3 offset-sm-3">
+                        <div class="form-group">
+                            <form id="override" action=""> 
+                                <div class="form-group">
+                                    <label for="EventTypeAdjuster">Overrride</label>
+                                    <input type="text" name="AmmountOverride" class="form-control" placeholder="Override Amount"> <!--resimbursement amount -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 offset-md-8">
+                        <form action="" method="POST">
+                            <input id="approveBtn" type="submit" name= "StudentAidToGive" value="Approve" class="btn btn-info btn-block"> <!-- Approve resimbursement amount button -->
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- Container div-->
+
+
+
+    <script src="jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="html1.js"></script>
+    
+</body>
+</html>

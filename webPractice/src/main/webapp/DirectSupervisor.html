@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Direct Supervisor</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="Benco.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text-center">
+            <div class="jumbotron text-center border border-dark">
+                <div class="display-4">Direct Supervisor</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 background">
+                <label for="Employee_Form"></label>
+                <button id="getNewForm" class="btn btn-info btn-block">New Form</button>
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-sm-12">
+                <!-- Displays Student information from Database, pulls from the employee reim form -->
+                <div class="form-group">
+                    <div id="formInfo"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-sm-12">
+                <!-- Displays Student information from Database, pulls from the employee reim form -->
+                <div class="form-group">
+                    <div id="change"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <form id="searchId" action="html2" method="POST">
+                        <div class="form-group">
+                            <label for="student_ID">Student Form Search</label>
+                            <input id="studentID" type="text" name="name" class="form-control"
+                                placeholder="Enter Student ID Here"><!-- to do need to rename name attribute-->
+                            <input type="hidden" name="requester" value="BenCo">
+                        </div>
+                        <div class="form-group">
+                            <input id="mybutton" type="submit" value="Display Student Form"
+                                class="btn btn-info btn-block">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-2 offset-md-7">
+                <form action="MainLogin" method="GET">
+                    <input id="Logout" type="submit" value="Logout" class="btn btn-primary btn-block">
+                </form>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+                <div class="col-sm-4 offset-md-2">
+                    <form action="" method="POST">
+                        <input id="approveBtn" type="submit" name="StudentAidToGive" value="Approve"
+                            class="btn btn-info btn-block"> <!-- Approve resimbursement amount button -->
+                    </form>
+                </div>
+    
+                <div class="col-sm-4">
+                    <form action="" method="POST">
+                        <input id="Fail" type="submit" name="StudentAidToGive" value="Reject"
+                            class="btn btn-info btn-block"> <!-- Fail resimbursement amount button -->
+                    </form>
+                </div>
+            </div>
+    </div> <!-- Container div-->
+
+
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="BenCo.js"></script>
+
+</body>
+
+</html>

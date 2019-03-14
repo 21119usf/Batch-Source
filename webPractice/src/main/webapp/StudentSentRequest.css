@@ -1,0 +1,21 @@
+body{
+    background-image: url("thankyouWallpaper.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.jumbotron{
+    color: white;
+    background-color: rgba(28, 59, 80, 0.616);
+
+}
+
+#Logout{
+    color: black;
+    background-color: rgb(196, 196, 196);
+    border-color: rgb(97, 97, 97);
+}
+
+#Logout:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
