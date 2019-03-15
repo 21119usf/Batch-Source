@@ -31,9 +31,16 @@ table{
     width: 50%;
 }
 
-table tr{
+/* table tr{
     color: white;
     background-color: rgba(26, 26, 26, 0.931);
     border-color: rgb(97, 97, 97);
     
+} */
+#sendInfo{
+    display: none;
 }
+
+/* table{
+    position: absolute !important;
+} */

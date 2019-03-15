@@ -93,7 +93,7 @@ public class FormsDaoImpl {
 	public void submitEmployeeForm(ReimbursementForm form, int sID) throws ClassNotFoundException {
 		String date = form.getMonth()+"/"+form.getDay()+"/"+form.getYear();
 		
-		String sql = "{ call NEWSEMPLOYEEFORM(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "{ call NEWEMPLOYEEFORM(?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			 Connection connector = DriverManager.getConnection("jdbc:oracle:thin:@bankapp1.clkgfudo2lkd.us-east-1.rds.amazonaws.com:1521:ORCL", 
@@ -102,16 +102,17 @@ public class FormsDaoImpl {
 			ps.setString(1, form.getFname());
 			ps.setString(2,form.getLname());
 			ps.setInt(3,form.getsID());
-			ps.setDouble(4, form.getCost());
-			ps.setDouble(5, form.getGrade());
-			ps.setString(6, form.getEventType());
-			ps.setString(7, form.getJustification());
-			ps.setString(8, date);
+			ps.setString(4, date);
+			ps.setDouble(5, form.getCost());
+			ps.setDouble(6, form.getGrade());
+			ps.setString(7, form.getEventType());
+			ps.setString(8, form.getJustification());
 			ps.setString(9,form.getStreet());
 			ps.setString(10,form.getCity());
 			ps.setString(11,form.getState());
 			ps.setInt(12, sID);
 			ps.execute();
+			System.out.println("asdasdasd");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
