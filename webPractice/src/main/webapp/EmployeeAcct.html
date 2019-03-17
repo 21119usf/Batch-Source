@@ -18,7 +18,7 @@
                 <div class="display-4">Employee Account</div>
             </div>
         </div>
-        <div id="row">
+        <div id="row background">
             <div class="col-sm-12">
                 <!-- Displays Student information from Database, pulls from the employee reim form -->
                 <div class="form-group">
@@ -26,52 +26,36 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <form id="register" action="html2" method="POST">
-                        <div class="form-group">
-                            <label for="student_ID">Student Reimbursement Forms</label>
-                            <input id="studentID" type="text" name="name" class="form-control"
-                                placeholder="Enter Student ID Here">
-                            <input type="hidden" name="requester" value="Employee">
-                        </div>
-                        <div class="form-group">
-                            <input id="mybutton" type="submit" value="Display Student Form"
-                                class="btn btn-info btn-block">
-                        </div>
+        <div class="row description">
+            <h4 id="forms_title" for="student_ID">Search New/Existing Student Reimbursement Forms</h>
+        </div>
+
+        <form id="register" action="html2" method="POST">
+            <div class="row background">
+                <div class="col-sm-4 offset-1">
+                    <div class="form-group">
+                        <input id="studentID" type="text" name="name" class="form-control"
+                            placeholder="Enter Student ID Here">
+                        <input type="hidden" name="requester" value="Employee">
+                    </div>
+                    <div class="form-group">
+                        <input id="mybutton" type="submit" value="Display Student Form" class="btn btn-info btn-block">
+                    </div>
+                </div>
+                
+                <div class="col-sm-2 offset-sm-5">
+                    <form action="MainLogin" method="GET">
+                        <input id="Logout" type="submit" value="Logout" class="btn btn-primary btn-block">
                     </form>
                 </div>
             </div>
-        </div>
+        </form>
 
 
-        <div class="row">
-            <div class="col-sm-3 background">
-               
+
+        <div class="row background">
+            <div class="col-sm-4 offset-1">
                 <button id="getNewForm" class="btn btn-info btn-block">New Form</button>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="form-group">
-                        <!-- <label for="EventTypeAdjuster">Event Type Adjuster</label> -->
-                        <select name="adjusternum" id="choice" class="form-control custom-select">
-                            <option selected value=null>Choose an Event Type</option>
-                            <option value="100">Ceritifcation</option>
-                            <option value="90">Technical Training</option>
-                            <option value="80">University Course</option>
-                            <option value="60">Seminar</option>
-                            <option value="75">Certification Prep</option>
-                            <option value="30">Other</option>
-                        </select>
-                        <!--<input  type="text" class="form-control" name = "adjusternum"placeholder="Type 80 for 80%"!-- Calculate   -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 offset-md-3">
-                <form action="MainLogin" method="GET">
-                    <input id="Logout" type="submit" value="Logout" class="btn btn-primary btn-block">
-                </form>
             </div>
         </div>
 
@@ -86,7 +70,7 @@
             </div>
         </div> -->
 
-        <div class="row">
+        <div class="row background">
             <div class="col-sm-12">
                 <!-- Displays Student information from Database, pulls from the employee reim form -->
                 <div class="form-group">
@@ -94,10 +78,14 @@
                 </div>
             </div>
         </div>
+        <div class="row description">
+            <h3 class="col-sm-6">Your form will be displayed below.</h3>
+            <h3 class="col-sm-6">Simply click a row to auto-calculate cost.</h3>
+        </div>
 
         <!-- Displays new formm -->
-        <div id="sure" class="row">
-            <div class="col-sm-6">
+        <div class="row background">
+            <div id="sure" class="col-sm-6">
                 <div class="form-group">
                     <form id="pushInfo" action="ServletWriter2" method="POST">
                         <div id="formInfo"></div>
@@ -106,10 +94,11 @@
                 </div>
             </div>
 
+            <!-- <input id="d" class="btn btn-info btn-md btn-block" type="text" value="0"> -->
 
             <div class="col-sm-6">
                 <!-- The grading  percentages-->
-                <table class="table table-hover table-bordered table-dark">
+                <table id="table_title" class="table text-white table-hover table-dark text-center">
                     <thead>
                         <tr class="bg-info">
                             <th>Event Type</th>
@@ -118,24 +107,27 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>University Course</td>
-                            <td>80%</td>
+                            <td>Certification</td>
+                            <td>100%</td>
+
                         </tr>
                         <tr>
-                            <td>Seminar</td>
-                            <td>60%</td>
+                            <td>Technical Training</td>
+                            <td>90%</td>
+
+                        </tr>
+                        <tr>
+                            <td>University Course</td>
+                            <td>80%</td>
+
                         </tr>
                         <tr>
                             <td>Certification Preparation</td>
                             <td>75%</td>
                         </tr>
                         <tr>
-                            <td>Certification</td>
-                            <td>100%</td>
-                        </tr>
-                        <tr>
-                            <td>Technical Training</td>
-                            <td>90%</td>
+                            <td>Seminar</td>
+                            <td>60%</td>
                         </tr>
                         <tr>
                             <td>Others</td>
@@ -155,18 +147,16 @@
                     <div class="form-group">
                         <label for="EventTypeAdjuster">Overrride</label>
                         <input type="text" name="AmmountOverride" class="form-control" placeholder="Override Amount">
-                        <resimbursement amount -->
+                        <resimbursement amount >
                     </div>
                 </form>
-            </div>
+             </div>
         </div> -->
-    </div>
     </div> <!-- Container div-->
 
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="html1.js"></script>
     <!-- <script type="text/javascript" src="EmployeeReimForm.js"></script> -->
-
 
 </body>
 

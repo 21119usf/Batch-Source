@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="EmployeeStyles.css">
+    <title>Document</title>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+    <div class="container">
+        <div class="background text-center">
+            <div class="jumbotron text-center border border-dark">
+                <div class="display-4">Employee Account</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9"><h3>Student Reimbursement Forms</h3></div>
+            <div class="col-sm-3">
+                <form action="MainLogin" method="GET">
+                <input id="Logout" type="submit" value="Logout" class="btn btn-primary btn-block"></div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <form id="register" action="html2" method="POST" >
+                        <div class="form-group">
+                        <input type="text" name="name"class="form-control" placeholder="Enter Student ID Here">
+                        </div>
+                        <div class="form-group">
+                        <input id="mybutton" type="submit" value="Display Student Form" class="btn btn-info btn-block">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div id="change"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 background">
+                <div class="form-group">
+                    <h3>Fill Out New Form</h3>
+                    <form id="form" action="EmployeeReimForm" method="POST" >
+                        <input id="getNewForm" type="submit" value="New Form" class="btn btn-info">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                 <div class="form-group">
+                    <div id="formInfo"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 background">
+                <p>Needs Passing Grade or Presentation</p>
+                <button class="btn btn-info btn-block">Submit to Benco</button>
+            </div>
+            <div class="col-sm-6 background">
+                <ol>
+                    <li>Unuiversity Courses 80%</li>
+                    <li>Seminar 60%</li>
+                    <li>Certification Preperation 75%</li>
+                    <li>Certification 100%</li>
+                    <li>Technical Training 90%</li>
+                    <li>Others 30%</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="html1.js"></script>
+    <script type="text/javascript" src="NewEmployeeForm.js"></script>
+</body>
+</html>
