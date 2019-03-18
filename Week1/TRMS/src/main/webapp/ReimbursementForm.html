@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reimbursement Form</title>
+        <h1>Please enter your reimbursement amount and reason.</h1>
+        
+        <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+            <form action="Reimbursement" method="post">
+                    <div class="form-group">
+                            <label for="amountRequest">Amount Requesting</label>
+                            <input type="amtReq" class="form-control" id="amountRequest" name="ammountReq" placeholder="Enter amount $">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                            <label for="requestType">Event Type  ( 1-University Courses   2-Seminars   3-Certification preparation classes  4-Certifications   5-Technical Training   6-Other )</label>
+                            <input type="amtReq" class="form-control" id="requestType" name="reqType" placeholder="Event Type">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                            <label for="gradeFormat">Grade Format 1-Letter Grade   2-Presentation  </label>
+                            <input type="amtReq" class="form-control" id="gradeFormat" name="gradeFormat" placeholder="Grading Format">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="ReasonForReimbursement">Reason for Reimbursement</label>
+                      <textarea class="form-control" id="ReasonForReimbursement" name="reimbursementReason" rows="3"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="location">Location</label>
+                      <textarea class="form-control" id="Location" name="location" ></textarea>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+        
+    </body>
+</html>

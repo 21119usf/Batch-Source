@@ -1,7 +1,6 @@
 package util;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,16 +20,11 @@ public class ConnFactory {
 	}
 	public Connection getConnection() {
 		Connection conn = null;
-		Properties prop = new Properties();
+		Properties prop = PropsUtility.getProps();
 		try {
-			prop.load(new FileReader("Database.properties"));
+			// prop.load(new FileReader("Database.properties"));
 			Class.forName(prop.getProperty("driver"));
 			conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("usr"), prop.getProperty("password"));
-		} catch(FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

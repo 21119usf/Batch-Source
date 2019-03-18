@@ -10,9 +10,9 @@ public class Driver {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ReadIMP ri = new ReadIMP();
-		ArrayList<Employee> emp = new ArrayList<Employee>();
+		Employee emp = new Employee();
 		try {
-			emp = ri.getEmployeeList();
+			emp = ri.checkLogin("rcarc", "carcasses1995");
 			System.out.println(emp);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
